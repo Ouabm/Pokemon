@@ -15,9 +15,12 @@ class Window {
     private:
     
     sf::RenderWindow* window;
-    sf::Texture pokemon1_texture , pokemon2_texture ;
+    sf::Texture pokemon1_texture , pokemon2_texture , Arene_texture;
     sf::Sprite pokemon1_sprite;
     sf::Sprite pokemon2_sprite;
+    sf::Sprite pokemon3_sprite;
+    sf::Sprite pokemon4_sprite;
+    sf::Sprite Arene_sprite;
     sf::Font font;
     sf::RectangleShape infoJ1;
     sf::RectangleShape infoJ2;
@@ -25,12 +28,30 @@ class Window {
 
     //move spe;
     void init_pokemon_positon();
-    void drawPokemonSprites();
     //void updatePokemoninfo(Joueur& J1, Joueur& J2);
-    void updateMoveButton(Pokemon* pokemon);
-    void handleinput();
     Pokemon pokemon1;
     Pokemon pokemon2;
+    Pokemon pokemon3;
+    Pokemon pokemon4;
+    // Animation states
+    bool isAnimating;
+    float animationProgress;
+    bool isFirstPokemonAttaking;
+    sf::Clock animationClock;
+    
+    // Attack animation properties
+    sf::Vector2f originalPos1;
+    sf::Vector2f originalPos2;
+    
+    // Health bar properties
+    sf::RectangleShape healthBar1;
+    sf::RectangleShape healthBar2;
+    sf::RectangleShape healthBarBackground1;
+    sf::RectangleShape healthBarBackground2;
+    sf::RectangleShape healthBar3;
+    sf::RectangleShape healthBar4;
+    sf::RectangleShape healthBarBackground3;
+    sf::RectangleShape healthBarBackground4;
     
     
 
@@ -38,9 +59,19 @@ class Window {
     
     Window();
     virtual ~Window();
-    void setupUI();
-    //void update(Joueur& J1,Joueur& J2);
     void render();
+    void setupUI();
+    void update();
+    void initializeHealthBars();
+    void updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage);
+    void animateAttack(bool isFirstPokemonAttacking);
+    void updateAnimations();
+    void handleinput();
+    void processevent();
+    bool isWindowopen()const{
+        return window->isOpen();
+    };
+
     };
  
 

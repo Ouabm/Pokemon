@@ -10,10 +10,12 @@
 #include<SFML/Window.hpp>
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
+#include"move.hpp"
+
 
 
 class Pokemon {
-    private:
+private:
     std::string nom;
     int hp;
     int hprestant;
@@ -21,25 +23,42 @@ class Pokemon {
     std::string type;
     int atk; 
     int vit;
-    //std::vector<move> spes ;
+    std::vector<move> spes;
     sf::Texture pokemon_texture;
     sf::Sprite pokemon_sprite;
-    void init_pokemon();
-    
-    public:
+   
+
+public:
     Pokemon(std::string nom, std::string type, int hp, int atk, int def, int vit, std::string texturePath);
-    //void rajoutspe(move spe){}
-    bool mort()const{
-        return hprestant<=0;
-    }
-    sf::Texture& getTexture() {
-        if (!pokemon_texture.loadFromFile("Palkia.png")) {
-                std::cout << "Error loading texture for " << nom << std::endl;
-            }
-        
-        return pokemon_texture;
     
+    // Getters
+    std::string getNom() const { return nom; }
+    int getHp() const { return hp; }
+    int getHpRestant() const { return hprestant; }
+    int getDef() const { return def; }
+    std::string getType() const { return type; }
+    int getAtk() const { return atk; }
+    int getVit() const { return vit; }
+    const std::vector<move>& getMoves() const { return spes; }
+    
+    // Setters
+    void setHpRestant(int newHp) { hprestant = newHp; }
+    
+    // Battle methods
+    void takeDamage(int damage) {
+        hprestant = std::max(0, hprestant - damage);
     }
+    
+    void addMove(const move& newMove) {
+        if (spes.size() < 4) {
+            spes.push_back(newMove);
+        }
+    }
+    
+    bool isDead() const { return hprestant <= 0; }
+    
+    sf::Texture& getTexture();
+    const sf::Sprite& getSprite() const { return pokemon_sprite; }
 };
 
 #endif
