@@ -59,6 +59,7 @@ public:
     
     sf::Texture& getTexture();
     const sf::Sprite& getSprite() const { return pokemon_sprite; }
+    void initializeMoves();
 };
 
 #endif

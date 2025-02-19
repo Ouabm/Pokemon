@@ -15,6 +15,7 @@ Window::Window(): pokemon1("Palkia", "Eau", 100, 100, 100, 100, "images/palkia_b
     this->init_pokemon_positon();
     this->initializeHealthBars();
     this->setupUI();
+    this->setupSwitchButtons();
 }
 
 Window::~Window() {
@@ -54,6 +55,13 @@ void Window::setupUI() {
         moveButtons[i].setPosition(50 + (i % 2) * 200, 600 + (i / 2) * 60);
         moveButtons[i].setFillColor(sf::Color(200, 200, 200));
     }
+    for (int i = 0; i < 4; i++) {
+        moveButtonTexts[i].setFont(font);
+        moveButtonTexts[i].setCharacterSize(20);
+        moveButtonTexts[i].setPosition(moveButtons[i].getPosition().x + 10,
+            moveButtons[i].getPosition().y + 10);
+    }
+
 }
 
 void Window::initializeHealthBars() {
@@ -146,12 +154,24 @@ void Window::updateAnimations() {
     }
 }
 
+void Window:: updatemovebutton(Pokemon* pokemon){
+    if(pokemon){
+        active=pokemon;
+        const std::vector<move>&moves =pokemon->getMoves();
+        for(int i=0;i<moves.size() && i<4 ;i++){
+            moveButtonTexts[i].setString(moves[i].nom);
+    }
+
+}
+}
+
 // Update the render function
 void Window::render() {
     this->window->clear();
     
     // Update animations
     updateAnimations();
+    updateSwapAnimation();
     
     // Draw arena
     if (!Arene_texture.loadFromFile("images/Background.jpg")) {
@@ -176,10 +196,12 @@ void Window::render() {
     this->window->draw(pokemon4_sprite);
     
     // Draw move buttons
-    for (const auto& button : moveButtons) {
-        this->window->draw(button);
+    for (int i = 0; i < 4; i++) {
+        window->draw(moveButtons[i]);
+        window->draw(moveButtonTexts[i]);
     }
-    
+    window->draw(switchButtons);
+    window->draw(switchButtonTexts);
     this->window->display();
 }
 void Window::handleinput() {
@@ -221,6 +243,8 @@ void Window::processevent() {
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window->close();
+
+            handleSwitching();
     }
 }
 
@@ -232,6 +256,96 @@ void Window::processevent() {
     }
 }*/
 
-/*void Window::handleinput() {
-    // Gérer les clics de souris et les entrées clavier
-}*/
+void Window::setupSwitchButtons() {
+    // Designe button switch à changer 
+    
+        switchButtons.setSize(sf::Vector2f(150, 40));
+        switchButtonTexts.setFont(font);
+        switchButtonTexts.setCharacterSize(16);
+        switchButtonTexts.setFillColor(sf::Color::Black);
+    
+    switchButtons.setPosition(50, 550);  // Team 1 switch button
+   
+    
+    switchButtons.setFillColor(sf::Color(200, 200, 200));
+    
+
+    
+    switchButtonTexts.setString("Switch Pokemon");
+   
+    
+  
+    switchButtonTexts.setPosition(60, 560);
+    
+
+    // Indices des equipe actives 
+    activeTeam1Index = 0;
+    activeTeam2Index = 0;
+    isSwapping = false;
+    swapProgress = 0.0f;
+
+    // revenir au position initial à changer 
+    originalPosTeam1[0] = pokemon1_sprite.getPosition();
+    originalPosTeam1[1] = pokemon3_sprite.getPosition();
+    originalPosTeam2[0] = pokemon2_sprite.getPosition();
+    originalPosTeam2[1] = pokemon4_sprite.getPosition();
+}
+
+void Window::handleSwitching() {
+    // Position curseur 
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+
+    // Gestion des clicks 
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        // Check if mouse is over team 1's switch button
+        if (switchButtons.getGlobalBounds().contains(mousePos.x, mousePos.y) && !isSwapping) {
+            animateSwitch(true);  // Start swap animation for team 1
+            activeTeam1Index = 1 - activeTeam1Index;  // Toggle between 0 and 1
+        }
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&& !isSwapping){
+       
+            animateSwitch(false);  // Start swap animation for team 2
+            activeTeam2Index = 1 - activeTeam2Index;  // Toggle between 0 and 
+    
+}
+}
+
+void Window::animateSwitch(bool isTeam1) {
+    if (!isSwapping) {
+        isSwapping = true;
+        swapProgress = 0.0f;
+        animationClock.restart();
+    }
+}
+
+void Window::updateSwapAnimation() {
+    if (isSwapping) {
+        float elapsed = animationClock.getElapsedTime().asSeconds();
+        swapProgress = elapsed * 2; // 0.5 second animation
+        
+        if (swapProgress >= 1.0f) {
+            // Animation complete, reset positions
+            pokemon1_sprite.setPosition(originalPosTeam1[activeTeam1Index]);
+            pokemon3_sprite.setPosition(originalPosTeam1[1 - activeTeam1Index]);
+            pokemon2_sprite.setPosition(originalPosTeam2[activeTeam2Index]);
+            pokemon4_sprite.setPosition(originalPosTeam2[1 - activeTeam2Index]);
+            isSwapping = false;
+        } else {
+            // Animate the swap
+            float yOffset = sin(swapProgress * 3.14159f) * 100.0f;
+            
+            // Team 1 Pokemon
+            pokemon1_sprite.setPosition(originalPosTeam1[activeTeam1Index].x,
+                                     originalPosTeam1[activeTeam1Index].y - yOffset);
+            pokemon3_sprite.setPosition(originalPosTeam1[1 - activeTeam1Index].x,
+                                     originalPosTeam1[1 - activeTeam1Index].y + yOffset);
+            
+            // Team 2 Pokemon
+            pokemon2_sprite.setPosition(originalPosTeam2[activeTeam2Index].x,
+                                     originalPosTeam2[activeTeam2Index].y - yOffset);
+            pokemon4_sprite.setPosition(originalPosTeam2[1 - activeTeam2Index].x,
+                                     originalPosTeam2[1 - activeTeam2Index].y + yOffset);
+        }
+    }
+}

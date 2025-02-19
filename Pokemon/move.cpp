@@ -1,10 +1,5 @@
 #include "move.hpp"
 
-move::move() {
-    // Par exemple, allouer dynamiquement de la mémoire pour un tableau
-    
-}
-
-move::~move() {
-   // Libération de la mémoire allouée
+move::move(std::string nom, int puissance, int precision, std::string type) 
+    : nom(nom), puissance(puissance), precision(precision), type(type) {
 }

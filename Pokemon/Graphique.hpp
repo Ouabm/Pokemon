@@ -25,6 +25,9 @@ class Window {
     sf::RectangleShape infoJ1;
     sf::RectangleShape infoJ2;
     sf::RectangleShape moveButtons[4];
+    sf::Text moveButtonTexts[4];
+    Pokemon* active;
+
 
     //move spe;
     void init_pokemon_positon();
@@ -53,7 +56,15 @@ class Window {
     sf::RectangleShape healthBarBackground3;
     sf::RectangleShape healthBarBackground4;
     
-    
+    //Switch 
+    sf::RectangleShape switchButtons;     // Buttons to switch Pokemon
+    sf::Text switchButtonTexts;           // Text for switch buttons
+    bool isSwapping;                         // Animation state for switching
+    float swapProgress;                      // Progress of swap animation
+    int activeTeam1Index;                    // Current active Pokemon for team 1 (0 or 1)
+    int activeTeam2Index;                    // Current active Pokemon for team 2 (0 or 1)
+    sf::Vector2f originalPosTeam1[2];        // Original positions for team 1 Pokemon
+    sf::Vector2f originalPosTeam2[2];    
 
     public :
     
@@ -71,9 +82,13 @@ class Window {
     bool isWindowopen()const{
         return window->isOpen();
     };
+    void updatemovebutton(Pokemon* active);
+    void setupSwitchButtons();
+    void handleSwitching();
+    void animateSwitch(bool isTeam1);
+    void updateSwapAnimation();
 
     };
- 
-
+    
 
 
