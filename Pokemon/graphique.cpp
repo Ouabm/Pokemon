@@ -6,13 +6,14 @@
 Window::Window(): pokemon1("Palkia", "Eau", 100, 100, 100, 100, "images/palkia_back.png"),
     pokemon2("Dialga", "Acier", 100, 100, 100, 100, "images/dialga.png"),
     pokemon3("Giratina", "Acier", 100, 100, 100, 100, "images/giratina_back.png"),
-    pokemon4("Arceus", "Acier", 100, 100, 100, 100, "images/arceus.png"),isFirstPokemonAttaking(false),isAnimating(false){
+    pokemon4("Arceus", "Acier", 100, 100, 100, 100, "images/arceus.png"),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false),isAnimating(false){
     // Initialisation de la fenêtre
     this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
     animationProgress=0.0f;    
     
     // Initialisation des éléments de l'interface graphique
     this->init_pokemon_positon();
+
     this->initializeHealthBars();
     this->setupUI();
     this->setupSwitchButtons();
@@ -46,20 +47,30 @@ void Window::setupUI() {
     infoJ1.setFillColor(sf::Color(255, 255, 255, 200));
 
     infoJ2.setSize(sf::Vector2f(300, 100));
-    infoJ2.setPosition(450, 500);
+    infoJ2.setPosition(700, 500);
     infoJ2.setFillColor(sf::Color(255, 255, 255, 200));
 
     // Initialiser les boutons de mouvement
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 8; i++) {
         moveButtons[i].setSize(sf::Vector2f(190, 50));
-        moveButtons[i].setPosition(50 + (i % 2) * 200, 600 + (i / 2) * 60);
         moveButtons[i].setFillColor(sf::Color(200, 200, 200));
     }
-    for (int i = 0; i < 4; i++) {
+    //J1
+    moveButtons[0].setPosition(50, 600);
+    moveButtons[1].setPosition(250, 600);
+    moveButtons[2].setPosition(50,660);
+    moveButtons[3].setPosition(250,660);
+    //J2
+    moveButtons[4].setPosition(600, 600);
+    moveButtons[5].setPosition(800, 600);
+    moveButtons[6].setPosition(600,660);
+    moveButtons[7].setPosition(800,660);
+    for (int i = 0; i < 8; i++) {
         moveButtonTexts[i].setFont(font);
         moveButtonTexts[i].setCharacterSize(20);
         moveButtonTexts[i].setPosition(moveButtons[i].getPosition().x + 10,
             moveButtons[i].getPosition().y + 10);
+        
     }
 
 }
@@ -103,6 +114,8 @@ void Window::initializeHealthBars() {
     // Store original positions for animations
     originalPos1 = pokemon1_sprite.getPosition();
     originalPos2 = pokemon2_sprite.getPosition();
+    originalPos3 = pokemon3_sprite.getPosition();
+    originalPos4 = pokemon4_sprite.getPosition();
     
 }
 
@@ -140,15 +153,37 @@ void Window::updateAnimations() {
             // Reset positions
             pokemon1_sprite.setPosition(originalPos1);
             pokemon2_sprite.setPosition(originalPos2);
+            pokemon3_sprite.setPosition(originalPos3);
+            pokemon4_sprite.setPosition(originalPos4);
             isAnimating = false;
+            isFirstPokemonAttaking = false;
+            isSecondPokemonAttaking = false;
+            isThirdPokemonAttaking = false;
+            isFourthPokemonAttaking = false;
         } else {
             // Simple attack animation - pokemon moves forward then back
-            if (isFirstPokemonAttaking) {
+            if (isFirstPokemonAttaking==true) {
                 float xOffset = sin(animationProgress * 3.14159f) * 50.0f;
-                pokemon1_sprite.setPosition(originalPos1.x + xOffset, originalPos1.y);
-            } else {
+                float yoffset= sin(animationProgress * 3.14159f) * 50.0f;
+                pokemon1_sprite.setPosition(originalPos1.x + xOffset, originalPos1.y-yoffset);
+               
+                
+            } 
+            else if (isSecondPokemonAttaking==true) {
                 float xOffset = sin(animationProgress * 3.14159f) * -50.0f;
-                pokemon2_sprite.setPosition(originalPos2.x + xOffset, originalPos2.y);
+                float yOffset = sin(animationProgress * 3.14159f) * -50.0f;
+                pokemon2_sprite.setPosition(originalPos2.x + xOffset, originalPos2.y-yOffset);
+                
+            }
+            else if(isThirdPokemonAttaking==true){
+                float xOffset = sin(animationProgress * 3.14159f) * 50.0f;
+                float yOffset = sin(animationProgress * 3.14159f) * 50.0f;
+                pokemon3_sprite.setPosition(originalPos3.x + xOffset, originalPos3.y-yOffset);
+            }
+            else if(isFourthPokemonAttaking==true){
+                float xOffset = sin(animationProgress * 3.14159f) * -50.0f;
+                float yOffset = sin(animationProgress * 3.14159f) * -50.0f;
+                pokemon4_sprite.setPosition(originalPos4.x + xOffset, originalPos4.y-yOffset);
             }
         }
     }
@@ -196,7 +231,7 @@ void Window::render() {
     this->window->draw(pokemon4_sprite);
     
     // Draw move buttons
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 8 ; i++) {
         window->draw(moveButtons[i]);
         window->draw(moveButtonTexts[i]);
     }
@@ -208,11 +243,27 @@ void Window::handleinput() {
     // Test controls for animations
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         // 'A' key triggers first Pokemon's attack
-        animateAttack(true);
+        isFirstPokemonAttaking=true;
+        animateAttack(isFirstPokemonAttaking);
+       
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         // 'D' key triggers second Pokemon's attack
-        animateAttack(true);
+        isSecondPokemonAttaking=true;
+        animateAttack(isSecondPokemonAttaking);
+        
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
+        // 'D' key triggers second Pokemon's attack
+        isThirdPokemonAttaking=true;
+        animateAttack(isThirdPokemonAttaking);
+        
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)) {
+        // 'D' key triggers second Pokemon's attack
+        isFourthPokemonAttaking=true;
+        animateAttack(isFourthPokemonAttaking);
+        
     }
     
     // Test controls for health bars
@@ -305,7 +356,7 @@ void Window::handleSwitching() {
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&& !isSwapping){
        
-            animateSwitch(false);  // Start swap animation for team 2
+            animateSwitch(true);  // Start swap animation for team 2
             activeTeam2Index = 1 - activeTeam2Index;  // Toggle between 0 and 
     
 }
@@ -333,7 +384,7 @@ void Window::updateSwapAnimation() {
             isSwapping = false;
         } else {
             // Animate the swap
-            float yOffset = sin(swapProgress * 3.14159f) * 100.0f;
+            float yOffset = sin(swapProgress * 3.14159f) * 10.0f;
             
             // Team 1 Pokemon
             pokemon1_sprite.setPosition(originalPosTeam1[activeTeam1Index].x,

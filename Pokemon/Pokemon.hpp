@@ -26,6 +26,13 @@ private:
     std::vector<move> spes;
     sf::Texture pokemon_texture;
     sf::Sprite pokemon_sprite;
+     sf::IntRect frameRect;      // Rectangle defining current frame
+    int currentFrame;           // Current frame index
+    float animationTimer;       // Timer for animation
+    float frameDuration;        // Duration of each frame
+    int frameCount;             // Total number of frames
+    bool isAnimating;           // Animation state
+    sf::Clock animClock;     
    
 
 public:

@@ -24,8 +24,8 @@ class Window {
     sf::Font font;
     sf::RectangleShape infoJ1;
     sf::RectangleShape infoJ2;
-    sf::RectangleShape moveButtons[4];
-    sf::Text moveButtonTexts[4];
+    sf::RectangleShape moveButtons[8];
+    sf::Text moveButtonTexts[8];
     Pokemon* active;
 
 
@@ -36,15 +36,24 @@ class Window {
     Pokemon pokemon2;
     Pokemon pokemon3;
     Pokemon pokemon4;
+    Pokemon* attacker;
+    Pokemon* defender;
+    bool turn;
+
     // Animation states
     bool isAnimating;
     float animationProgress;
     bool isFirstPokemonAttaking;
+    bool isSecondPokemonAttaking;
+    bool isThirdPokemonAttaking;
+    bool isFourthPokemonAttaking;
     sf::Clock animationClock;
     
     // Attack animation properties
     sf::Vector2f originalPos1;
     sf::Vector2f originalPos2;
+    sf::Vector2f originalPos3;
+    sf::Vector2f originalPos4;
     
     // Health bar properties
     sf::RectangleShape healthBar1;
@@ -87,6 +96,9 @@ class Window {
     void handleSwitching();
     void animateSwitch(bool isTeam1);
     void updateSwapAnimation();
+    bool handleMoveSelection(const sf::Vector2i& mousePos);
+    //void executeMove(const move& selectedMove, Pokemon* attacker, Pokemon* defender);
+    void updateMoveButtons(Pokemon* activePokemon);
 
     };
     
