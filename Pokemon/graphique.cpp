@@ -12,6 +12,9 @@ Window::Window(): pokemon1("Palkia", "Eau", 100, 100, 100, 100, "images/palkia_b
     this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
     std::cout << "Pokemon1 : [" << pokemon1.getType() << "]" << std::endl;
     animationProgress=0.0f;    
+
+    isDamageAnimating = false;
+    damageAnimationDuration = 0.01f;
     
     // Initialisation des éléments de l'interface graphique
     this->init_pokemon_positon();
@@ -223,72 +226,89 @@ void Window::animateAttack(bool isFirstPokemonAttacking) {
 
 void Window::updateAnimations() {
    
-    if (!isAnimating) return;  // Ne rien faire si aucune animation en cours
+       if (!isAnimating) return;
 
     float elapsed = attackAnimClock.getElapsedTime().asSeconds();
-    float frameDuration = 0.1f;  // Durée de chaque frame d'animation
+    float frameDuration = 0.04f;
    
-        if (elapsed > frameDuration) {  
-            attackAnimClock.restart();  // Redémarrer l’horloge
-            currentFrame++;  // Passer à la frame suivante
+    if (elapsed > frameDuration) {  
+        attackAnimClock.restart();
+        currentFrame++;
 
-            int columns = 2;  
-            int rows = 7;  
-            int frameWidth = attackEffectTexture1.getSize().x / columns;
-            int frameHeight = attackEffectTexture1.getSize().y / rows;
-            int numFrames = columns * rows;
+        int columns = 2;  
+        int rows = 7;  
+        int frameWidth = attackEffectTexture1.getSize().x / columns;
+        int frameHeight = attackEffectTexture1.getSize().y / rows;
+        int numFrames = columns * rows-1;
 
-            if (currentFrame >= numFrames) {  
-                currentFrame = 0;  
-                isAnimating = false;  
-            }
-
-            int x = (currentFrame % columns) * frameWidth;
-            int y = (currentFrame / columns) * frameHeight;
-            attackEffectSprite1.setTextureRect(sf::IntRect(x, y, frameWidth+10, frameHeight));
-            std::cout << "  Frame mise à jour : " << currentFrame << "/" << numFrames 
-                    << " | Position : (" << x << ", " << y << ")" << std::endl;
+        if (currentFrame >= numFrames) {  
+            currentFrame = 0;  
+            isAnimating = false;
+            
+            // Reset Pokemon colors when attack animation ends
+            pokemon1_sprite.setColor(sf::Color::White);
+            pokemon2_sprite.setColor(sf::Color::White);
+            pokemon3_sprite.setColor(sf::Color::White);
+            pokemon4_sprite.setColor(sf::Color::White);
         }
 
-    // ===  Ajout du mouvement Pokémon pendant l’attaque ===
-    float attackSpeed = 50.0f;  // Distance de mouvement
-    float attackTime = 0.5f;    // Temps total de l'animation
+        int x = (currentFrame % columns) * frameWidth;
+        int y = (currentFrame / columns) * frameHeight;
+        attackEffectSprite1.setTextureRect(sf::IntRect(x, y, frameWidth+10, frameHeight));
+        std::cout << "  Frame mise à jour : " << currentFrame << "/" << numFrames 
+                    << " | Position : (" << x << ", " << y << ")" << std::endl;
+    }
+
+    // === 💥 Attack movement animation ===
+    float attackSpeed = 50.0f;
+    float attackTime = 0.5f;
 
     float attackProgress = animationClock.getElapsedTime().asSeconds() / attackTime;
     sf::Vector2f attackPosition;
+    
     if (attackProgress < 1.0f) {
         float xOffset = sin(attackProgress * 3.14159f) * attackSpeed;
         float yOffset = sin(attackProgress * 3.14159f) * attackSpeed;
 
+        // Set the target Pokemon red during the attack
         if (isFirstPokemonAttaking) {
             pokemon1_sprite.setPosition(originalPos1.x + xOffset, originalPos1.y - yOffset);
-            attackPosition.x=pokemon2_sprite.getPosition().x-70;
-            attackPosition.y=pokemon2_sprite.getPosition().y-10;
+            pokemon2_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+            attackPosition.x = pokemon2_sprite.getPosition().x-70;
+            attackPosition.y = pokemon2_sprite.getPosition().y-10;
         }
         else if (isSecondPokemonAttaking) {
             pokemon2_sprite.setPosition(originalPos2.x - xOffset, originalPos2.y + yOffset);
-            attackPosition.x=pokemon2_sprite.getPosition().x-60;
-            attackPosition.y=pokemon2_sprite.getPosition().y-150;
+            pokemon1_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
         }
         else if (isThirdPokemonAttaking) {
             pokemon3_sprite.setPosition(originalPos3.x + xOffset, originalPos3.y - yOffset);
+            pokemon4_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
         }
         else if (isFourthPokemonAttaking) {
             pokemon4_sprite.setPosition(originalPos4.x - xOffset, originalPos4.y - yOffset);
+            pokemon3_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
         }
+        
         attackEffectSprite1.setPosition(attackPosition);
         attackEffectSprite2.setPosition(attackPosition);
         attackEffectSprite3.setPosition(attackPosition);
         attackEffectSprite4.setPosition(attackPosition);
     }
     else {
-        // Fin de l'animation -> Retour aux positions d'origine
+        // Reset all colors and positions when animation ends
+        pokemon1_sprite.setColor(sf::Color::White);
+        pokemon2_sprite.setColor(sf::Color::White);
+        pokemon3_sprite.setColor(sf::Color::White);
+        pokemon4_sprite.setColor(sf::Color::White);
+        
+        // Return to original positions
         pokemon1_sprite.setPosition(originalPos1);
         pokemon2_sprite.setPosition(originalPos2);
         pokemon3_sprite.setPosition(originalPos3);
         pokemon4_sprite.setPosition(originalPos4);
         
-        // Réinitialisation des états d'attaque
+        // Reset animation states
         isAnimating = false;
         isFirstPokemonAttaking = false;
         isSecondPokemonAttaking = false;
@@ -296,6 +316,7 @@ void Window::updateAnimations() {
         isFourthPokemonAttaking = false;
     }
 }
+
 
 
 
@@ -313,11 +334,21 @@ void Window:: updatemovebutton(Pokemon* pokemon){
 // Update the render function
 void Window::render() {
     this->window->clear();
+   
+    
+    
+    
+   
     
     // Update animations
     updateAnimations();
     updateSwapAnimation();
-    
+
+     // Update damage animations for all Pokemon
+    pokemon1.updateDamageAnimation();
+    pokemon2.updateDamageAnimation();
+    pokemon3.updateDamageAnimation();
+    pokemon4.updateDamageAnimation();
     // Draw arena
     if (!Arene_texture.loadFromFile("images/Background.jpg")) {
         std::cerr << "Erreur: Impossible de charger le fond." << std::endl;
@@ -365,6 +396,7 @@ void Window::handleinput() {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         for (int i = 0; i < 4; i++) {  // Vérifie les boutons des attaques du premier Pokémon
             if (moveButtons[i].getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                std::cout << "Postion : "  << moveButtons[i].getGlobalBounds().getPosition().x << moveButtons[i].getGlobalBounds().getPosition().y <<std::endl;
                 isFirstPokemonAttaking = true;
                 animateAttack(isFirstPokemonAttaking);
 
@@ -526,3 +558,4 @@ void Window::setAttackEffectSprite(const std::string& movePath) {
     }
     attackEffectSprite1.setTexture(attackEffectTexture1);
 }
+

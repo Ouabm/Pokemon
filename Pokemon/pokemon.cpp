@@ -67,3 +67,41 @@ void Pokemon::initializeMoves() {
         spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
     }
 }
+
+void Pokemon::startDamageAnimation() {
+        isDamageAnimating = true;
+        damageAnimationTimer = 0.0f;
+        originalColor = pokemon_sprite.getColor();
+        originalPosition = pokemon_sprite.getPosition();
+        damageAnimClock.restart();
+    }
+
+void Pokemon::updateDamageAnimation() {
+        if (!isDamageAnimating) return;
+
+        float elapsed = damageAnimClock.getElapsedTime().asSeconds();
+        
+        // Flash red and shake for 0.6 seconds
+        if (elapsed < DAMAGE_ANIMATION_DURATION) {
+            // Flash between red and normal color
+            float flashSpeed = 8.0f; // Adjust for faster/slower flashing
+            bool shouldBeRed = static_cast<int>(elapsed * flashSpeed) % 2 == 0;
+            
+            if (shouldBeRed) {
+                pokemon_sprite.setColor(sf::Color(255, 100, 100, 255)); // Red tint
+            } else {
+                pokemon_sprite.setColor(originalColor);
+            }
+            
+            // Shake effect
+            float shakeAmount = 5.0f; // Adjust for more/less shake
+            float shakeX = originalPosition.x + (std::rand() % static_cast<int>(shakeAmount * 2) - shakeAmount);
+            float shakeY = originalPosition.y + (std::rand() % static_cast<int>(shakeAmount * 2) - shakeAmount);
+            pokemon_sprite.setPosition(shakeX, shakeY);
+        } else {
+            // Reset everything when animation is done
+            isDamageAnimating = false;
+            pokemon_sprite.setColor(originalColor);
+            pokemon_sprite.setPosition(originalPosition);
+        }
+    }

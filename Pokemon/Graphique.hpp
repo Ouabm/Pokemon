@@ -40,9 +40,6 @@ class Window {
     float attackAnimationTimer;
     sf::Clock attackAnimClock;
     sf::Vector2f attackPosition;
-    
-    void initializeAttackEffects();
-    void updateAttackAnimation();
 
     //move spe;
     void init_pokemon_positon();
@@ -97,28 +94,43 @@ class Window {
     sf::Vector2f originalPosTeam2[2];    
     bool animationFinished;
     int currentFrame;
+
+    sf::Clock damageEffectClock;
+    bool isDamageAnimating;
+    float damageAnimationDuration;
+    
+
     public :
     
     Window();
     virtual ~Window();
     void render();
     void setupUI();
-    void update();
+    void setupSwitchButtons();
+
+
     void initializeHealthBars();
     void updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage);
-    void animateAttack(bool isFirstPokemonAttacking);
+    void updatemovebutton(Pokemon* active);
     void updateAnimations();
+    void updateSwapAnimation();
+    
+
+    void animateAttack(bool isFirstPokemonAttacking);
+    void animateSwitch(bool isTeam1);
+    void setAttackEffectSprite(const std::string& movePath);
+    
+    
+
     void handleinput();
     void processevent();
     bool isWindowopen()const{
         return window->isOpen();
     };
-    void updatemovebutton(Pokemon* active);
-    void setupSwitchButtons();
     void handleSwitching();
-    void animateSwitch(bool isTeam1);
-    void updateSwapAnimation();
-    void setAttackEffectSprite(const std::string& movePath);
+
+
+   
     };
     
 
