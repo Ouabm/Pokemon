@@ -11,9 +11,6 @@
 
 class move {
     private:
-    std::string type;
-    
-    std::string texturepath;
     int power;
    
 
@@ -22,6 +19,8 @@ public:
     std::string nom;
     int puissance;
     int precision;
+    std::string type;
+    std::string texturepath;
     bool isSpecial; // For special attacks like Spacial Rend
     std::string getmovestype(){return type;};
     std::string getmovename(){return nom;};

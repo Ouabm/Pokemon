@@ -35,7 +35,7 @@ class Window {
     sf::Texture attackEffectTexture3;
     sf::Sprite attackEffectSprite4;
     sf::Texture attackEffectTexture4;
-    bool isAttackAnimating;
+   
     int attackFrame;
     float attackAnimationTimer;
     sf::Clock attackAnimClock;
@@ -59,6 +59,7 @@ class Window {
     bool isSecondPokemonAttaking;
     bool isThirdPokemonAttaking;
     bool isFourthPokemonAttaking;
+    bool isAttackAnimating;
     sf::Clock animationClock;
     
     // Attack animation properties
@@ -86,6 +87,8 @@ class Window {
     //Switch 
     sf::RectangleShape switchButtons;     // Buttons to switch Pokemon
     sf::Text switchButtonTexts;           // Text for switch buttons
+    sf::RectangleShape switchButtons2;     // Buttons to switch Pokemon
+    sf::Text switchButtonTexts2;           // Text for switch buttons
     bool isSwapping;                         // Animation state for switching
     float swapProgress;                      // Progress of swap animation
     int activeTeam1Index;                    // Current active Pokemon for team 1 (0 or 1)
@@ -94,6 +97,7 @@ class Window {
     sf::Vector2f originalPosTeam2[2];    
     bool animationFinished;
     int currentFrame;
+    
 
     sf::Clock damageEffectClock;
     bool isDamageAnimating;
@@ -128,6 +132,8 @@ class Window {
         return window->isOpen();
     };
     void handleSwitching();
+    
+
 
 
    

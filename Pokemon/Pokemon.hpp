@@ -16,11 +16,11 @@
 class Pokemon {
 private:
     const std::string nom;
+    std::string type;
     const int hp;
     int hprestant;
+    int atk;
     int def;
-    std::string type;
-    int atk; 
     int vit;
     std::vector<move> spes;
     sf::Texture pokemon_texture;
