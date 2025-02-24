@@ -1,45 +1,80 @@
 #ifndef POKEMON_HPP
 #define POKEMON_HPP
-#include<string>
-#include <iostream>
-#include<vector>
-#include<ctime>
-#include<sstream>
-#include<SFML/Graphics.hpp>
-#include<SFML/System.hpp>
-#include<SFML/Window.hpp>
-#include<SFML/Audio.hpp>
-#include<SFML/Network.hpp>
 
+#include <string>
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <sstream>
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
+#include "move.hpp"
 
 class Pokemon {
-    private:
-    std::string nom;
-    int hp;
+private:
+    const std::string nom;
+    const int hp;
     int hprestant;
     int def;
     std::string type;
     int atk; 
     int vit;
-    //std::vector<move> spes ;
+    std::vector<move> spes;
     sf::Texture pokemon_texture;
     sf::Sprite pokemon_sprite;
-    void init_pokemon();
-    
-    public:
-    Pokemon(std::string nom, std::string type, int hp, int atk, int def, int vit, std::string texturePath);
-    //void rajoutspe(move spe){}
-    bool mort()const{
-        return hprestant<=0;
+    sf::IntRect frameRect;      // Rectangle defining current frame
+    int currentFrame;           // Current frame index
+    float animationTimer;       // Timer for animation
+    float frameDuration;        // Duration of each frame
+    int frameCount;             // Total number of frames
+    bool isAnimating;           // Animation state
+    sf::Clock animClock;     
+
+public:
+    Pokemon(const std::string& nom, const std::string& type, int hp, int atk, int def, int vit, const std::string& texturePath)
+        : nom(nom), type(type), hp(hp), hprestant(hp), atk(atk), def(def), vit(vit), currentFrame(0), animationTimer(0.0f), frameDuration(0.1f), frameCount(0), isAnimating(false) {
+        if (!pokemon_texture.loadFromFile(texturePath)) {
+            std::cerr << "Failed to load texture: " << texturePath << std::endl;
+        }
+        pokemon_sprite.setTexture(pokemon_texture);
     }
-    sf::Texture& getTexture() {
-        if (!pokemon_texture.loadFromFile("Palkia.png")) {
-                std::cout << "Error loading texture for " << nom << std::endl;
-            }
-        
-        return pokemon_texture;
-    
+
+    ~Pokemon() {
+        std::cout << "Destruction de " << nom << std::endl;
     }
+
+    // Getters
+    const std::string& getName() const { return nom; }
+    int getHp() const { return hp; }
+    int getHpRestant() const { return hprestant; }
+    int getDef() const { return def; }
+    const std::string& getType() const { return type; }
+    int getAtk() const { return atk; }
+    int getVit() const { return vit; }
+    const std::vector<move>& getMoves() const { return spes; }
+    
+    // Setters
+    void setHpRestant(int newHp) { hprestant = newHp; }
+    
+    // Battle methods
+    void takeDamage(int damage) {
+        hprestant = std::max(0, hprestant - damage);
+    }
+    
+    void addMove(const move& newMove) {
+        if (spes.size() < 4) {
+            spes.push_back(newMove);
+        }
+    }
+    
+    bool isDead() const { return hprestant <= 0; }
+    
+    sf::Texture& getTexture() { return pokemon_texture; }
+    const sf::Sprite& getSprite() const { return pokemon_sprite; }
+    void initializeMoves();
 };
 
 #endif

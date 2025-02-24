@@ -15,34 +15,111 @@ class Window {
     private:
     
     sf::RenderWindow* window;
-    sf::Texture pokemon1_texture , pokemon2_texture ;
+    sf::Texture pokemon1_texture , pokemon2_texture , Arene_texture;
     sf::Sprite pokemon1_sprite;
     sf::Sprite pokemon2_sprite;
+    sf::Sprite pokemon3_sprite;
+    sf::Sprite pokemon4_sprite;
+    sf::Sprite Arene_sprite;
     sf::Font font;
     sf::RectangleShape infoJ1;
     sf::RectangleShape infoJ2;
-    sf::RectangleShape moveButtons[4];
+    sf::RectangleShape moveButtons[8];
+    sf::Text moveButtonTexts[8];
+    Pokemon* active;
+    sf::Texture attackEffectTexture1;
+    sf::Sprite attackEffectSprite1;
+    sf::Texture attackEffectTexture2;
+    sf::Sprite attackEffectSprite2;
+    sf::Sprite attackEffectSprite3;
+    sf::Texture attackEffectTexture3;
+    sf::Sprite attackEffectSprite4;
+    sf::Texture attackEffectTexture4;
+    bool isAttackAnimating;
+    int attackFrame;
+    float attackAnimationTimer;
+    sf::Clock attackAnimClock;
+    sf::Vector2f attackPosition;
+    
+    void initializeAttackEffects();
+    void updateAttackAnimation();
 
     //move spe;
     void init_pokemon_positon();
-    void drawPokemonSprites();
     //void updatePokemoninfo(Joueur& J1, Joueur& J2);
-    void updateMoveButton(Pokemon* pokemon);
-    void handleinput();
     Pokemon pokemon1;
     Pokemon pokemon2;
-    
-    
+    Pokemon pokemon3;
+    Pokemon pokemon4;
+    Pokemon* attacker;
+    Pokemon* defender;
+    bool turn;
 
+    // Animation states
+    bool isAnimating;
+    float animationProgress;
+    bool isFirstPokemonAttaking;
+    bool isSecondPokemonAttaking;
+    bool isThirdPokemonAttaking;
+    bool isFourthPokemonAttaking;
+    sf::Clock animationClock;
+    
+    // Attack animation properties
+    sf::Vector2f originalPos1;
+    sf::Vector2f originalPos2;
+    sf::Vector2f originalPos3;
+    sf::Vector2f originalPos4;
+    
+    // Health bar properties
+    sf::RectangleShape healthBar1;
+    sf::RectangleShape healthBar2;
+    sf::RectangleShape healthBarBackground1;
+    sf::RectangleShape healthBarBackground2;
+    sf::RectangleShape healthBar3;
+    sf::RectangleShape healthBar4;
+    sf::RectangleShape healthBarBackground3;
+    sf::RectangleShape healthBarBackground4;
+    sf::RectangleShape healthbg1;
+    sf::RectangleShape healthbg2;
+    sf::Text healthText1;
+    sf::Text healthText2;
+    sf::Text healthText3;
+    sf::Text healthText4;
+    
+    //Switch 
+    sf::RectangleShape switchButtons;     // Buttons to switch Pokemon
+    sf::Text switchButtonTexts;           // Text for switch buttons
+    bool isSwapping;                         // Animation state for switching
+    float swapProgress;                      // Progress of swap animation
+    int activeTeam1Index;                    // Current active Pokemon for team 1 (0 or 1)
+    int activeTeam2Index;                    // Current active Pokemon for team 2 (0 or 1)
+    sf::Vector2f originalPosTeam1[2];        // Original positions for team 1 Pokemon
+    sf::Vector2f originalPosTeam2[2];    
+    bool animationFinished;
+    int currentFrame;
     public :
     
     Window();
     virtual ~Window();
-    void setupUI();
-    //void update(Joueur& J1,Joueur& J2);
     void render();
+    void setupUI();
+    void update();
+    void initializeHealthBars();
+    void updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage);
+    void animateAttack(bool isFirstPokemonAttacking);
+    void updateAnimations();
+    void handleinput();
+    void processevent();
+    bool isWindowopen()const{
+        return window->isOpen();
     };
- 
-
+    void updatemovebutton(Pokemon* active);
+    void setupSwitchButtons();
+    void handleSwitching();
+    void animateSwitch(bool isTeam1);
+    void updateSwapAnimation();
+    void setAttackEffectSprite(const std::string& movePath);
+    };
+    
 
 
