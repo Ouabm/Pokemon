@@ -132,6 +132,8 @@ class Window {
         return window->isOpen();
     };
     void handleSwitching();
+
+    bool isSwitch();
     
 
 

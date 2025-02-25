@@ -132,6 +132,8 @@ void Window::setupUI() {
     }
     std::vector<move> special1 =pokemon1.getMoves();
     std::vector<move> special2 =pokemon2.getMoves();
+    std::vector<move> special3 =pokemon3.getMoves();
+    std::vector<move> special4 =pokemon4.getMoves();
     std::cout << "setupUI() : Nombre d'attaques dans special1 : " << special1.size() << std::endl;
     std::cout << "setupUI() : Nombre d'attaques dans special2 : " << special2.size() << std::endl;
 
@@ -144,10 +146,7 @@ if (special1.size() >= 4 && special2.size() >= 4) {
     moveButtonTexts[5].setString(special2[1].getmovename());
     moveButtonTexts[6].setString(special2[2].getmovename());
     moveButtonTexts[7].setString(special2[3].getmovename());
-} else {
-    std::cerr << "Erreur : Pas assez d'attaques disponibles !" << std::endl;
 }
-
 
 }
 
@@ -284,8 +283,11 @@ void Window::updateAnimations() {
             
         }
         else if (isSecondPokemonAttaking) {
+            pokemon1_sprite.setPosition(originalPos1.x - 8, originalPos1.y + 8);
             pokemon2_sprite.setPosition(originalPos2.x - xOffset, originalPos2.y + yOffset);
             pokemon1_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+            attackPosition.x = pokemon1_sprite.getPosition().x+40;
+            attackPosition.y = pokemon1_sprite.getPosition().y+100;
         }
         else if (isThirdPokemonAttaking) {
             pokemon3_sprite.setPosition(originalPos3.x + xOffset, originalPos3.y - yOffset);
@@ -315,12 +317,16 @@ void Window::updateAnimations() {
         pokemon4_sprite.setPosition(originalPos4);
         
         // Reset animation states
+        
         isAnimating = false;
         isFirstPokemonAttaking = false;
         isSecondPokemonAttaking = false;
         isThirdPokemonAttaking = false;
         isFourthPokemonAttaking = false;
+        
+        currentFrame=0;
     }
+    
 }
 
 
@@ -423,8 +429,8 @@ void Window::handleinput() {
             }
     }
     
-    
-    // Test controls for health bar
+    std::vector<move> moves2 = pokemon2.getMoves();
+    // Test controls for health barstd::vector<move> moves2 = pokemon2.getMoves();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
          // Vérifie les boutons des attaques du premier Pokémon
             std::vector<move> moves = pokemon2.getMoves();
@@ -436,7 +442,10 @@ void Window::handleinput() {
                 animateAttack(isSecondPokemonAttaking);
 
                 // Récupérer l'attaque associée
-        }
+                
+                
+                setAttackEffectSprite(moves2[0].getmovepath());
+    }
     else {
         moveButtons[4].setOutlineThickness(0);
         // moveButtons[4].setScale(1.f,1.f);
@@ -454,6 +463,7 @@ void Window::handleinput() {
                 animateAttack(isSecondPokemonAttaking);
 
                 // Récupérer l'attaque associée
+                setAttackEffectSprite(moves2[1].getmovepath());
         }
     else {
         moveButtons[5].setOutlineThickness(0);
@@ -472,6 +482,7 @@ void Window::handleinput() {
                 animateAttack(isSecondPokemonAttaking);
 
                 // Récupérer l'attaque associée
+                setAttackEffectSprite(moves2[2].getmovepath());
         }
     else {
         moveButtons[6].setOutlineThickness(0);
@@ -490,6 +501,7 @@ void Window::handleinput() {
                 animateAttack(isSecondPokemonAttaking);
 
                 // Récupérer l'attaque associée
+                setAttackEffectSprite(moves2[3].getmovepath());
         }
     else {
         moveButtons[7].setOutlineThickness(0);
@@ -595,7 +607,7 @@ void Window::handleSwitching() {
             switchButtons.setScale(1.f,1.f);
             switchButtonTexts.setScale(1.f,1.f);
         }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P)&& !isSwapping){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::P)&&  !isSwapping){
             switchButtons2.setScale(1.1f,1.1f);
             switchButtonTexts2.setScale(1.1f,1.1f);
             animateSwitch(true);  // Start swap animation for team 2
@@ -661,4 +673,3 @@ void Window::setAttackEffectSprite(const std::string& movePath) {
     }
     attackEffectSprite1.setTexture(attackEffectTexture1);
 }
-

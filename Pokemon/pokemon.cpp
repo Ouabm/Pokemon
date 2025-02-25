@@ -13,17 +13,17 @@ void Pokemon::initializeMoves() {
         std::cout << "Ajout : Spacial Rend, spes.size() = " << spes.size() << std::endl;
 
         spes.push_back(move("Hydro Pump", 110, 80, "Water","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Dragon Claw", 80, 100, "Dragon","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Aqua Tail", 90, 90, "Water","attacks/Hydro-Pump.png"));
+        spes.push_back(move("Dragon Claw", 80, 100, "Dragon","attacks/Dragon-Claw.png"));
+        spes.push_back(move("Aqua Tail", 90, 90, "Water","attacks/Flare-Blitz.png"));
         
     std::cout << "Nombre total d'attaques après ajout pour " << nom << " : " << spes.size() << std::endl;
     
 }   //Dialga
     else if (nom == "Dialga") {
-        spes.push_back(move("Roar of Time", 150, 90, "Dragon","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Flash Cannon", 80, 100, "Steel","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Dragon Breath", 60, 100, "Dragon","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Metal Claw", 50, 95, "Steel","attacks/Hydro-Pump.png"));
+        spes.push_back(move("Roar of Time", 150, 90, "Dragon","attacks/Sacred-Fire.png"));
+        spes.push_back(move("Flash Cannon", 80, 100, "Steel","attacks/Flash-Cannon.png"));
+        spes.push_back(move("Dragon Breath", 60, 100, "Dragon","attacks/Energy-Ball.png"));
+        spes.push_back(move("Metal Claw", 50, 95, "Steel","attacks/Mud-Sport.png"));
     }
     //Giratina
     else if (nom == "Giratina") {
