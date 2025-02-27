@@ -97,17 +97,26 @@ class Window {
     sf::Vector2f originalPosTeam2[2];    
     bool animationFinished;
     int currentFrame;
-    
+    bool active1;
+    bool active2;
 
     sf::Clock damageEffectClock;
     bool isDamageAnimating;
     float damageAnimationDuration;
     
-
+    // Add to private section of Window class in Graphique.hpp
+    int currentTargetTeam1 = 0;  // 0 for pokemon2, 1 for pokemon4
+    int currentTargetTeam2 = 0;  // 0 for pokemon1, 1 for pokemon3
+    bool isTargetingMode;
+    sf::CircleShape targetIndicator;
+    bool attackChosen = false;
+    size_t selectedAttackIndex ;
+    Pokemon* selectedAttackingPokemon;
     public :
     
     Window();
     virtual ~Window();
+    //void setpokemon(const Pokemon&p1,const Pokemon& p2 ,const Pokemon& p3 , const Pokemon& p4 );
     void render();
     void setupUI();
     void setupSwitchButtons();
@@ -132,9 +141,12 @@ class Window {
         return window->isOpen();
     };
     void handleSwitching();
-
-    bool isSwitch();
-    
+      // Methods for targeting
+    void setupTargetingSystem();
+    void renderTargetIndicator();
+    void cycleTargets(bool isTeam1);
+    Pokemon* getCurrentTarget(bool isTeam1);
+    void confirmTargetAndAttack();
 
 
 

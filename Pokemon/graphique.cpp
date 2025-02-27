@@ -12,7 +12,7 @@ Window::Window(): pokemon1("Palkia", "Eau", 100, 100, 100, 100, "images/palkia_b
     this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
     std::cout << "Pokemon1 : [" << pokemon1.getType() << "]" << std::endl;
     animationProgress=0.0f;    
-
+    isTargetingMode=false;
     isDamageAnimating = false;
     damageAnimationDuration = 0.01f;
     
@@ -148,6 +148,16 @@ if (special1.size() >= 4 && special2.size() >= 4) {
     moveButtonTexts[7].setString(special2[3].getmovename());
 }
 
+
+//Target 
+   targetIndicator.setRadius(25);
+    targetIndicator.setFillColor(sf::Color(255, 0, 0, 80));  // Semi-transparent red
+    targetIndicator.setOutlineColor(sf::Color::Red);
+    targetIndicator.setOutlineThickness(5);
+    targetIndicator.setOrigin(25, 25);  //
+    // Default targets
+    currentTargetTeam1 = 0;
+    currentTargetTeam2 = 0;
 }
 
 void Window::initializeHealthBars() {
@@ -270,32 +280,48 @@ void Window::updateAnimations() {
         float yOffset = sin(attackProgress * 3.14159f) * attackSpeed;
 
         // Set the target Pokemon red during the attack
-        if (isFirstPokemonAttaking) {
-            pokemon2_sprite.setPosition(originalPos2.x - 8, originalPos2.y + 8);
-            pokemon1_sprite.setPosition(originalPos1.x + xOffset, originalPos1.y - yOffset);
-            pokemon2_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+      if (isFirstPokemonAttaking || isThirdPokemonAttaking) {
+            sf::Sprite& attackerSprite = isFirstPokemonAttaking ? pokemon1_sprite : pokemon3_sprite;
+            sf::Sprite& targetSprite = (currentTargetTeam1 == 0) ? pokemon2_sprite : pokemon4_sprite;
             
-            attackPosition.x = pokemon2_sprite.getPosition().x-70;
-            attackPosition.y = pokemon2_sprite.getPosition().y-10;
+            // Attacker movement
+            attackerSprite.setPosition(
+                (isFirstPokemonAttaking ? originalPos1 : originalPos3).x + xOffset, 
+                (isFirstPokemonAttaking ? originalPos1 : originalPos3).y - yOffset
+            );
             
-            //pokemon2_sprite.setPosition(originalPos2.x + 8, originalPos2.y + 8);
-        
+            // Target effects
+            targetSprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+            targetSprite.setPosition(
+                (currentTargetTeam1 == 0 ? originalPos2 : originalPos4).x - 8, 
+                (currentTargetTeam1 == 0 ? originalPos2 : originalPos4).y + 8
+            );
             
+            // Position attack effect sprite
+            attackPosition.x = targetSprite.getPosition().x - 70;
+            attackPosition.y = targetSprite.getPosition().y - 10;
         }
-        else if (isSecondPokemonAttaking) {
-            pokemon1_sprite.setPosition(originalPos1.x - 8, originalPos1.y + 8);
-            pokemon2_sprite.setPosition(originalPos2.x - xOffset, originalPos2.y + yOffset);
-            pokemon1_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
-            attackPosition.x = pokemon1_sprite.getPosition().x+40;
-            attackPosition.y = pokemon1_sprite.getPosition().y+100;
-        }
-        else if (isThirdPokemonAttaking) {
-            pokemon3_sprite.setPosition(originalPos3.x + xOffset, originalPos3.y - yOffset);
-            pokemon4_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
-        }
-        else if (isFourthPokemonAttaking) {
-            pokemon4_sprite.setPosition(originalPos4.x - xOffset, originalPos4.y - yOffset);
-            pokemon3_sprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+        // When Team 2 is attacking
+        else if (isSecondPokemonAttaking || isFourthPokemonAttaking) {
+            sf::Sprite& attackerSprite = isSecondPokemonAttaking ? pokemon2_sprite : pokemon4_sprite;
+            sf::Sprite& targetSprite = (currentTargetTeam2 == 0) ? pokemon1_sprite : pokemon3_sprite;
+            
+            // Attacker movement
+            attackerSprite.setPosition(
+                (isSecondPokemonAttaking ? originalPos2 : originalPos4).x - xOffset, 
+                (isSecondPokemonAttaking ? originalPos2 : originalPos4).y + yOffset
+            );
+            
+            // Target effects
+            targetSprite.setColor(sf::Color(255, 0, 0, 255));  // Target turns red
+            targetSprite.setPosition(
+                (currentTargetTeam2 == 0 ? originalPos1 : originalPos3).x - 8, 
+                (currentTargetTeam2 == 0 ? originalPos1 : originalPos3).y + 8
+            );
+            
+            // Position attack effect sprite
+            attackPosition.x = targetSprite.getPosition().x + 40;
+            attackPosition.y = targetSprite.getPosition().y + 100;
         }
         
         attackEffectSprite1.setPosition(attackPosition);
@@ -365,6 +391,7 @@ void Window::render() {
     this->window->draw(Arene_sprite);
     window->draw(healthbg1);
     window->draw(healthbg2);
+    
     // Draw health bars
     this->window->draw(healthBarBackground1);
     this->window->draw(healthBarBackground2);
@@ -393,58 +420,138 @@ void Window::render() {
     window->draw(switchButtonTexts);
     window->draw(switchButtons2);
     window->draw(switchButtonTexts2);
+     
     if (isAnimating && !animationFinished) {
         window->draw(attackEffectSprite1);
         //window->draw(attackEffectSprite2);
     }
+    renderTargetIndicator();
+    
+   
    
     this->window->display();
 }
 void Window::handleinput() {
-     sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
-
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        for (size_t i = 0; i < 4; i++) {  // Vérifie les boutons des attaques du premier Pokémon
-            if (moveButtons[i].getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                std::cout << "Postion : "  << moveButtons[i].getGlobalBounds().getPosition().x << moveButtons[i].getGlobalBounds().getPosition().y <<std::endl;
-                moveButtons[i].setOutlineThickness(5);
-                moveButtons[i].setOutlineColor(sf::Color::Red);
+    sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
+    
+    // Targeting mode toggle
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
+        isTargetingMode = !isTargetingMode;  // Toggle targeting mode on/off
+        
+        // When entering targeting mode, set default attackers
+        if (isTargetingMode) {
+            // Determine which team is currently selecting a target
+            if (activeTeam1Index == 0) {
+                // Pokemon 1 is active for team 1
                 isFirstPokemonAttaking = true;
-                animateAttack(isFirstPokemonAttaking);
-
-                // Récupérer l'attaque associée
-                std::vector<move> moves = pokemon1.getMoves();
-                if (i < moves.size()) {
-                    setAttackEffectSprite(moves[i].getmovepath());
-                }
+                isThirdPokemonAttaking = false;
+            } else {
+                // Pokemon 3 is active for team 1
+                isFirstPokemonAttaking = false;
+                isThirdPokemonAttaking = true;
             }
             
+            // Reset other attackers
+            isSecondPokemonAttaking = false;
+            isFourthPokemonAttaking = false;
         }
-
-       
-    }
-    else{
-        for (size_t i = 0; i < 4; i++) {
-                moveButtons[i].setOutlineThickness(0);
-            }
     }
     
-    std::vector<move> moves2 = pokemon2.getMoves();
-    // Test controls for health barstd::vector<move> moves2 = pokemon2.getMoves();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+    
+    // Target cycling (only when in targeting mode)
+    if (isTargetingMode) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
+            // Cycle targets based on which team is attacking
+            if (isFirstPokemonAttaking || isThirdPokemonAttaking) {
+                cycleTargets(true);
+            } else if (isSecondPokemonAttaking || isFourthPokemonAttaking) {
+                cycleTargets(false);
+            }
+        }
+        
+        // Exit targeting mode with Escape key
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+            isTargetingMode = false;
+        }
+    }
+    
+    // Attack buttons (only process when not in targeting mode or animation)
+    if (!isTargetingMode && !isAnimating) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            for (size_t i = 0; i < 4; i++) {
+                if (moveButtons[i].getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    moveButtons[i].setOutlineThickness(5);
+                    moveButtons[i].setOutlineColor(sf::Color::Red);
+                    
+                    // Set the attacker based on active team 1 index
+                    if (activeTeam1Index == 0) {
+                        isFirstPokemonAttaking = true;
+                        isThirdPokemonAttaking = false;
+                    } else {
+                        isFirstPokemonAttaking = false;
+                        isThirdPokemonAttaking = true;
+                    }
+                    
+                    // Start the attack animation
+                    animateAttack(isFirstPokemonAttaking);
+                    
+                    // Get the attack move
+                    std::vector<move> moves = activeTeam1Index == 0 ? pokemon1.getMoves() : pokemon3.getMoves();
+                    if (i < moves.size()) {
+                        setAttackEffectSprite(moves[i].getmovepath());
+                    }
+                }
+            }
+        } else {
+            for (size_t i = 0; i < 4; i++) {
+                moveButtons[i].setOutlineThickness(0);
+            }
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
+        isTargetingMode = !isTargetingMode;  // Toggle targeting mode on/off
+        
+        // When entering targeting mode, set default attackers
+        if (isTargetingMode) {
+            // Determine which team is currently selecting a target
+            if (activeTeam1Index == 0) {
+                // Pokemon 1 is active for team 1
+                isSecondPokemonAttaking = true;
+                isFourthPokemonAttaking = false;
+            } else {
+                // Pokemon 3 is active for team 1
+                isSecondPokemonAttaking = false;
+                isFourthPokemonAttaking = true;
+            }
+            
+            // Reset other attackers
+            isFirstPokemonAttaking = false;
+            isThirdPokemonAttaking = false;
+        }
+    }
+        // Handle Team 2 attacks with keyboard (ZQSD keys)
+        // Similar logic for team 2 attacks as shown in your original code...
+     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+        std::vector<move> moves = pokemon2.getMoves();
          // Vérifie les boutons des attaques du premier Pokémon
-            std::vector<move> moves = pokemon2.getMoves();
+           
             moveButtons[4].setOutlineThickness(5);
             moveButtons[4].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
+             if (activeTeam2Index == 0) {
+                        isSecondPokemonAttaking = true;
+                        isFourthPokemonAttaking = false;
+                    } else {
+                        isSecondPokemonAttaking = false;
+                        isFourthPokemonAttaking = true;
+                    }
+                setAttackEffectSprite(moves[0].getmovepath());
                 isSecondPokemonAttaking = true;
                 animateAttack(isSecondPokemonAttaking);
 
-                // Récupérer l'attaque associée
+            
                 
-                
-                setAttackEffectSprite(moves2[0].getmovepath());
+               
     }
     else {
         moveButtons[4].setOutlineThickness(0);
@@ -453,17 +560,25 @@ void Window::handleinput() {
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-         // Vérifie les boutons des attaques du premier Pokémon
-            std::vector<move> moves = pokemon2.getMoves();
+
+        std::vector<move> moves = pokemon2.getMoves();
+         
             moveButtons[5].setOutlineThickness(5);
             moveButtons[5].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
+             if (activeTeam2Index == 0) {
+                        isSecondPokemonAttaking = true;
+                        isFourthPokemonAttaking = false;
+                    } else {
+                        isSecondPokemonAttaking = false;
+                        isFourthPokemonAttaking = true;
+                    }
+                setAttackEffectSprite(moves[1].getmovepath());
                 isSecondPokemonAttaking = true;
                 animateAttack(isSecondPokemonAttaking);
 
-                // Récupérer l'attaque associée
-                setAttackEffectSprite(moves2[1].getmovepath());
+            
         }
     else {
         moveButtons[5].setOutlineThickness(0);
@@ -472,17 +587,24 @@ void Window::handleinput() {
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-         // Vérifie les boutons des attaques du premier Pokémon
-            std::vector<move> moves = pokemon2.getMoves();
+        std::vector<move> moves = pokemon2.getMoves();
+       
             moveButtons[6].setOutlineThickness(5);
             moveButtons[6].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
+             if (activeTeam2Index == 0) {
+                        isSecondPokemonAttaking = true;
+                        isFourthPokemonAttaking = false;
+                    } else {
+                        isSecondPokemonAttaking = false;
+                        isFourthPokemonAttaking = true;
+                    }
+                setAttackEffectSprite(moves[2].getmovepath());
                 isSecondPokemonAttaking = true;
                 animateAttack(isSecondPokemonAttaking);
 
-                // Récupérer l'attaque associée
-                setAttackEffectSprite(moves2[2].getmovepath());
+            
         }
     else {
         moveButtons[6].setOutlineThickness(0);
@@ -491,17 +613,24 @@ void Window::handleinput() {
 
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-         // Vérifie les boutons des attaques du premier Pokémon
-            std::vector<move> moves = pokemon2.getMoves();
+        std::vector<move> moves = pokemon2.getMoves();
+         //
             moveButtons[7].setOutlineThickness(5);
             moveButtons[7].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
+             if (activeTeam2Index == 0) {
+                        isSecondPokemonAttaking = true;
+                        isFourthPokemonAttaking = false;
+                    } else {
+                        isSecondPokemonAttaking = false;
+                        isFourthPokemonAttaking = true;
+                    }
+                setAttackEffectSprite(moves[3].getmovepath());
                 isSecondPokemonAttaking = true;
                 animateAttack(isSecondPokemonAttaking);
 
-                // Récupérer l'attaque associée
-                setAttackEffectSprite(moves2[3].getmovepath());
+            
         }
     else {
         moveButtons[7].setOutlineThickness(0);
@@ -509,8 +638,10 @@ void Window::handleinput() {
         // moveButtonTexts[4].setScale(1.f,1.f);
 
     }
-    
+
+    }
 }
+
     /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
         // 'E' key reduces second Pokemon's health by 10%
         static float health2 = 1.0f;
@@ -672,4 +803,121 @@ void Window::setAttackEffectSprite(const std::string& movePath) {
         return;
     }
     attackEffectSprite1.setTexture(attackEffectTexture1);
+}
+
+//On definie le cercle pour les targets 
+void Window::setupTargetingSystem() {
+    // Setup target indicator
+    targetIndicator.setRadius(15);
+    targetIndicator.setFillColor(sf::Color::Transparent);
+    targetIndicator.setOutlineColor(sf::Color::Red);
+    targetIndicator.setOutlineThickness(3);
+    targetIndicator.setOrigin(15, 15);  // Center the circle
+    
+    // Default targets
+    currentTargetTeam1 = 0;  // Default to pokemon2
+    currentTargetTeam2 = 0;  // Default to pokemon1
+}
+
+// Method to render the target indicator
+
+// Method to cycle through targets
+void Window::cycleTargets(bool isTeam1) {
+    if (isTeam1) {
+        currentTargetTeam1 = 1 - currentTargetTeam1;  // ici c'est gauche qui attack 
+    } else {
+        currentTargetTeam2 = 1 - currentTargetTeam2;  // ici c'est droit qui attack 
+    }
+}
+
+// Get the currently targeted Pokemon
+Pokemon* Window::getCurrentTarget(bool isTeam1) {
+    if (isTeam1) {
+        return (currentTargetTeam1 == 0) ? &pokemon2 : &pokemon4; //si c'est tema1 et qu'il target 
+    } else {
+        return (currentTargetTeam2 == 0) ? &pokemon1 : &pokemon3;
+    }
+}
+
+void Window::confirmTargetAndAttack() {
+    // Set the appropriate attack flag based on which Pokemon is attacking
+    if (selectedAttackingPokemon == &pokemon1) {
+        isFirstPokemonAttaking = true;
+    } else if (selectedAttackingPokemon == &pokemon2) {
+        isSecondPokemonAttaking = true;
+    } else if (selectedAttackingPokemon == &pokemon3) {
+        isThirdPokemonAttaking = true;
+    } else if (selectedAttackingPokemon == &pokemon4) {
+        isFourthPokemonAttaking = true;
+    }
+    
+    // Start the attack animation
+    animateAttack(isFirstPokemonAttaking || isThirdPokemonAttaking);
+    
+    // Get the appropriate moves vector
+    std::vector<move> moves;
+    if (selectedAttackingPokemon == &pokemon1) {
+        moves = pokemon1.getMoves();
+    } else if (selectedAttackingPokemon == &pokemon2) {
+        moves = pokemon2.getMoves();
+    } else if (selectedAttackingPokemon == &pokemon3) {
+        moves = pokemon3.getMoves();
+    } else if (selectedAttackingPokemon == &pokemon4) {
+        moves = pokemon4.getMoves();
+    }
+    
+    // Set the attack effect sprite
+    if (selectedAttackIndex < moves.size()) {
+        setAttackEffectSprite(moves[selectedAttackIndex].getmovepath());
+    }
+    
+    // Exit targeting mode
+    isTargetingMode = false;
+}
+void Window::renderTargetIndicator() {
+    if (!isTargetingMode) return;
+    
+    // Position the indicator on the current target
+    sf::Vector2f targetPos;
+    
+    // If team 1 is targeting
+    if (isFirstPokemonAttaking || isThirdPokemonAttaking) {
+        if (currentTargetTeam1 == 0) {
+            // Targeting pokemon2
+            targetPos = pokemon2_sprite.getPosition();
+            targetPos.x += pokemon2_sprite.getGlobalBounds().width / 2;
+            targetPos.y += pokemon2_sprite.getGlobalBounds().height / 2;
+        } else {
+            // Targeting pokemon4
+            targetPos = pokemon4_sprite.getPosition();
+            targetPos.x += pokemon4_sprite.getGlobalBounds().width / 2;
+            targetPos.y += pokemon4_sprite.getGlobalBounds().height / 2;
+        }
+    } 
+    // If team 2 is targeting
+    else if (isSecondPokemonAttaking || isFourthPokemonAttaking) {
+        if (currentTargetTeam2 == 0) {
+            // Targeting pokemon1
+            targetPos = pokemon1_sprite.getPosition();
+            targetPos.x += pokemon1_sprite.getGlobalBounds().width / 2;
+            targetPos.y += pokemon1_sprite.getGlobalBounds().height / 2;
+        } else {
+            // Targeting pokemon3
+            targetPos = pokemon3_sprite.getPosition();
+            targetPos.x += pokemon3_sprite.getGlobalBounds().width / 2;
+            targetPos.y += pokemon3_sprite.getGlobalBounds().height / 2;
+        }
+    }
+    
+    targetIndicator.setPosition(targetPos);
+    window->draw(targetIndicator);
+    
+    // Add a text indicator to show targeting mode is active
+    sf::Text targetingText;
+    targetingText.setFont(font);
+    targetingText.setString("TARGETING MODE - Press Tab to cycle targets");
+    targetingText.setCharacterSize(16);
+    targetingText.setFillColor(sf::Color::Red);
+    targetingText.setPosition(320, 30);
+    window->draw(targetingText);
 }

@@ -1,5 +1,10 @@
 #include"Pokemon.hpp"
 
+void Pokemon:: initializePokemons(){
+    
+
+}
+
 void Pokemon::initializeMoves() {
     // Initialize moves for each Pokemon
     if (nom == "Palkia") {

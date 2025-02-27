@@ -41,6 +41,7 @@ private:
     sf::Clock damageAnimClock;
 
 public:
+    Pokemon();
     Pokemon(const std::string& nom, const std::string& type, int hp, int atk, int def, int vit, const std::string& texturePath)
         : nom(nom), type(type), hp(hp), hprestant(hp), atk(atk), def(def), vit(vit), currentFrame(0), animationTimer(0.0f), frameDuration(0.1f), frameCount(0), isAnimating(false),isDamageAnimating(false), damageAnimationTimer(0.0f) {
         if (!pokemon_texture.loadFromFile(texturePath)) {
@@ -81,6 +82,7 @@ public:
     
     sf::Texture& getTexture() { return pokemon_texture; }
     const sf::Sprite& getSprite() const { return pokemon_sprite; }
+    void initializePokemons();
     void initializeMoves();
     void updateDamageAnimation();
     void startDamageAnimation();
