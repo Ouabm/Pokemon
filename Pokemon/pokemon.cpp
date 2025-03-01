@@ -19,7 +19,7 @@ void Pokemon::initializeMoves() {
 
         spes.push_back(move("Hydro Pump", 110, 80, "Water","attacks/Hydro-Pump.png"));
         spes.push_back(move("Dragon Claw", 80, 100, "Dragon","attacks/Dragon-Claw.png"));
-        spes.push_back(move("Aqua Tail", 90, 90, "Water","attacks/Flare-Blitz.png"));
+        spes.push_back(move("Aqua Tail", 90, 90, "Water","attacks/Waterfall.png"));
         
     std::cout << "Nombre total d'attaques après ajout pour " << nom << " : " << spes.size() << std::endl;
     
@@ -32,10 +32,10 @@ void Pokemon::initializeMoves() {
     }
     //Giratina
     else if (nom == "Giratina") {
-        spes.push_back(move("Shadow Force", 120, 90, "Ghost","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Dragon Claw", 80, 100, "Dragon","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Shadow Ball", 80, 100, "Ghost","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Ancient Power", 60, 100, "Rock","attacks/Hydro-Pump.png"));
+        spes.push_back(move("Shadow Force", 120, 90, "Ghost","attacks/Shadow-Force.png"));
+        spes.push_back(move("Dragon Claw", 80, 100, "Dragon","attacks/Dragon-Claw.png"));
+        spes.push_back(move("Shadow Ball", 80, 100, "Ghost","attacks/image.png"));
+        spes.push_back(move("Ancient Power", 60, 100, "Rock","attacks/Ancient-Power.png"));
     }
     //Arceus 
     else if (nom == "Arceus") {

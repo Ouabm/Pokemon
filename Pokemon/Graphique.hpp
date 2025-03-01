@@ -127,6 +127,7 @@ class Window {
     void updatemovebutton(Pokemon* active);
     void updateAnimations();
     void updateSwapAnimation();
+    void updateMoveButtons();
     
 
     void animateAttack(bool isFirstPokemonAttacking);
