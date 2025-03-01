@@ -9,12 +9,14 @@
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
 #include "Pokemon.hpp"
+#include "PokemonDB.hpp"
 
 
 class Window {
     private:
     
     sf::RenderWindow* window;
+    PokemonDB Pokemondb;
     sf::Texture pokemon1_texture , pokemon2_texture , Arene_texture;
     sf::Sprite pokemon1_sprite;
     sf::Sprite pokemon2_sprite;
@@ -148,6 +150,7 @@ class Window {
     void cycleTargets(bool isTeam1);
     Pokemon* getCurrentTarget(bool isTeam1);
     void confirmTargetAndAttack();
+    int takeDammage();
 
 
 

@@ -4,20 +4,14 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <ctime>
-#include <sstream>
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
 #include "move.hpp"
 
 class Pokemon {
 private:
-    const std::string nom;
+    std::string nom;
     std::string type;
-    const int hp;
+    int hp;
     int hprestant;
     int atk;
     int def;
@@ -25,67 +19,61 @@ private:
     std::vector<move> spes;
     sf::Texture pokemon_texture;
     sf::Sprite pokemon_sprite;
-    sf::IntRect frameRect;      // Rectangle defining current frame
-    int currentFrame;           // Current frame index
-    float animationTimer;       // Timer for animation
-    float frameDuration;        // Duration of each frame
-    int frameCount;             // Total number of frames
-    bool isAnimating;           // Animation state
-    sf::Clock animClock;     
-    //Degats 
-    bool isDamageAnimating;
-    float damageAnimationTimer;
-    const float DAMAGE_ANIMATION_DURATION = 0.6f;
-    sf::Color originalColor;
-    sf::Vector2f originalPosition;
-    sf::Clock damageAnimClock;
 
 public:
-    Pokemon();
+    // ✅ Constructeur par défaut (permet d'initialiser un Pokémon vide)
+    Pokemon() : nom(""), type(""), hp(0), hprestant(0), atk(0), def(0), vit(0) {}
+
+    // ✅ Constructeur avec paramètres (CORRIGÉ)
     Pokemon(const std::string& nom, const std::string& type, int hp, int atk, int def, int vit, const std::string& texturePath)
-        : nom(nom), type(type), hp(hp), hprestant(hp), atk(atk), def(def), vit(vit), currentFrame(0), animationTimer(0.0f), frameDuration(0.1f), frameCount(0), isAnimating(false),isDamageAnimating(false), damageAnimationTimer(0.0f) {
+        : nom(nom), type(type), hp(hp), hprestant(hp), atk(atk), def(def), vit(vit) {
         if (!pokemon_texture.loadFromFile(texturePath)) {
-            std::cerr << "Failed to load texture: " << texturePath << std::endl;
+            std::cerr << "Erreur : Impossible de charger l'image " << texturePath << std::endl;
         }
         pokemon_sprite.setTexture(pokemon_texture);
     }
 
-    ~Pokemon() {
-        std::cout << "Destruction de " << nom << std::endl;
+    // ✅ Méthode pour charger un Pokémon après son instanciation
+    void loadFromData(const std::string& nom, const std::string& type, int hp, int atk, int def, int vit, const std::string& texturePath) {
+        this->nom = nom;
+        this->type = type;
+        this->hp = hp;
+        this->hprestant = hp;
+        this->atk = atk;
+        this->def = def;
+        this->vit = vit;
+
+        if (!pokemon_texture.loadFromFile(texturePath)) {
+            std::cerr << "Erreur : Impossible de charger l'image " << texturePath << std::endl;
+        }
+        pokemon_sprite.setTexture(pokemon_texture);
     }
 
     // Getters
     const std::string& getName() const { return nom; }
     int getHp() const { return hp; }
     int getHpRestant() const { return hprestant; }
-    int getDef() const { return def; }
-    const std::string& getType() const { return type; }
     int getAtk() const { return atk; }
+    int getDef() const { return def; }
     int getVit() const { return vit; }
-    const std::vector<move>& getMoves() const { return spes; }
-    
+    const std::string& getType() const { return type; }
+    const sf::Sprite& getSprite() const { return pokemon_sprite; }
+
     // Setters
     void setHpRestant(int newHp) { hprestant = newHp; }
-    
-    // Battle methods
-    void takeDamage(int damage) {
-        hprestant = std::max(0, hprestant - damage);
-    }
-    
-    void addMove(const move& newMove) {
-        if (spes.size() < 4) {
-            spes.push_back(newMove);
-        }
-    }
-    
+
+    // Méthodes de combat
+    void takeDamage(int damage) { hprestant = std::max(0, hprestant - damage); }
     bool isDead() const { return hprestant <= 0; }
-    
-    sf::Texture& getTexture() { return pokemon_texture; }
-    const sf::Sprite& getSprite() const { return pokemon_sprite; }
-    void initializePokemons();
+
+    // Gestion des attaques
+    void addMove(const move& newMove) { if (spes.size() < 4) spes.push_back(newMove); }
+
     void initializeMoves();
-    void updateDamageAnimation();
-    void startDamageAnimation();
+    sf::Texture& getTexture() { return pokemon_texture; }
+   
+    const std::vector<move>& getMoves() const { return spes; }
+
 };
 
 #endif

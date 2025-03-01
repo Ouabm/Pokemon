@@ -3,10 +3,10 @@
 #include "math.h"
 
 
-Window::Window(): pokemon1("Palkia", "Eau", 100, 100, 100, 100, "images/palkia_back.png"),
-    pokemon2("Dialga", "Acier", 100, 100, 100, 100, "images/dialga.png"),
-    pokemon3("Giratina", "Acier", 100, 100, 100, 100, "images/giratina_back.png"),
-    pokemon4("Arceus", "Acier", 100, 100, 100, 100, "images/arceus.png"),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false){
+Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
+    pokemon2(Pokemondb.getPokemonByName("Charizard")),
+    pokemon3(Pokemondb.getPokemonByName("Arceus")),
+    pokemon4(Pokemondb.getPokemonByName("Giratina")),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false){
     // Initialisation de la fenêtre
    
     this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
@@ -226,6 +226,8 @@ void Window::updateHealthBars(float health1Percentage, float health2Percentage,f
     if (health2Percentage > 0.5f) healthBar2.setFillColor(sf::Color::Green);
     else if (health2Percentage > 0.2f) healthBar2.setFillColor(sf::Color::Yellow);
     else healthBar2.setFillColor(sf::Color::Red);
+    int dammage=takeDammage();
+    health1Percentage-=dammage;
 }
 
 void Window::animateAttack(bool isFirstPokemonAttacking) {
@@ -386,7 +388,7 @@ void Window::render() {
     // Update animations
     updateAnimations();
     updateSwapAnimation();
-
+    
      
     // Draw arena
     if (!Arene_texture.loadFromFile("images/Background.jpg")) {
@@ -965,4 +967,23 @@ void Window::updateMoveButtons() {
         std::cerr << "Error: Not enough moves for one or both Pokemon" << std::endl;
     }
 }
+
+int Window:: takeDammage(){
+    std::vector<move> moves1 = pokemon1.getMoves();
+    std::vector<move> moves2 = pokemon2.getMoves();
+    std::vector<move> moves3 = pokemon3.getMoves();
+    std::vector<move> moves4 = pokemon4.getMoves();
+    int damage1 = 0;
+    int damage2 = 0;
+    int damage3 = 0;
+    int damage4 = 0;
+    for (int i = 0; i < 4; i++) {
+        if (moves1[i].getmovename() == "Hudro-pump") {
+            damage1 = 10;
+    
+    }
+    }
+    return damage1;
+}
+
 

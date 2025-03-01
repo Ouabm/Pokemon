@@ -6,14 +6,14 @@ int main() {
 
     // Charger la texture
     sf::Texture texture;
-    if (!texture.loadFromFile("attacks/Hydro-Pump.png")) {
+    if (!texture.loadFromFile("attacks/Shadow-Force.png")) {
         std::cerr << "Erreur : Impossible de charger l'image." << std::endl;
         return -1;
     }
 
     // Paramètres de l'animation
-    int columns = 2;  // Mets le vrai nombre de colonnes ici
-    int rows = 7;     // Mets le vrai nombre de lignes ici
+    int columns = 6;  // Mets le vrai nombre de colonnes ici
+    int rows = 2;     // Mets le vrai nombre de lignes ici
     int frameWidth = texture.getSize().x / columns;
     int frameHeight = texture.getSize().y / rows;
     int numFrames = columns * rows;
