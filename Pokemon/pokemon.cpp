@@ -63,11 +63,12 @@ void Pokemon::initializeMoves() {
         spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
     }
     else if (nom == "Mewtwo") {
-        spes.push_back(move("Judgment", 100, 100, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Cosmic Power", 0, 100, "Psychic","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
+        spes.push_back(move("Psystrike", 140, 100, "Psychic","attacks/Psychic.png"));
+        spes.push_back(move("Shadow Ball", 80, 100, "Ghost","attacks/Shadow-Ball.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
     }
+    
 }
 
 // void Pokemon::startDamageAnimation() {
