@@ -52,7 +52,6 @@ class Window {
     Pokemon pokemon4;
     Pokemon* attacker;
     Pokemon* defender;
-    bool turn;
 
     // Animation states
     bool isAnimating;

@@ -4,8 +4,8 @@
 
 
 Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
-    pokemon2(Pokemondb.getPokemonByName("Charizard")),
-    pokemon3(Pokemondb.getPokemonByName("Mewtwo")),
+    pokemon2(Pokemondb.getPokemonByName("Dialga")),
+    pokemon3(Pokemondb.getPokemonByName("Arceus")),
     pokemon4(Pokemondb.getPokemonByName("Giratina")),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false){
     // Initialisation de la fenêtre
    

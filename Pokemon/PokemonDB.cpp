@@ -1,5 +1,6 @@
 
 #include "PokemonDB.hpp"
+#include "type.hpp"
 
 PokemonDB::PokemonDB() {
     // Ajouter des Pokémon à la base de données
