@@ -35,11 +35,11 @@ void Create_Table_Type(){
     }; 
 }
 
-int Calcul_dmg(int p_niveau=50 , int p_att , int m_power , int p_def , m_type, p1_type_1, p1_type_2, p2_type_1, p2_type_2, p1_modifier, p2_modifier){
+int Calcul_dmg(int p_niveau=50 , int p_att , int m_power , int p_def , m_type, p1_type_1, p1_type_2, p2_type_1, p2_type_2){
     int min1 = 0 ,  max1 = 15;
     int min2 = 85 ,  max2 = 100;
     int randomInRange = min1 + std::rand() % (max1 - min1 + 1);
     int crit = randomInRange == 15 ? 1.5 : 1;
     int role = min2 + std::rand() % (max2 - min2 + 1);
     int STAB = m_type == (p1_type_1 || p1_type_2) ? 1.5 : 1;
-    return ((((p_niveau*0.4+2)*p_att*m_power*p1_modifier)/(p_def*50*p2_modifier))*STAB*Type_damage(m_type, p2_type_1, p2_type_2)*crit*(role/100))+1;
+    return ((((p_niveau*0.4+2)*p_att*m_power)/(p_def*50))*STAB*Type_damage(m_type, p2_type_1, p2_type_2)*crit*(role/100))+1;
