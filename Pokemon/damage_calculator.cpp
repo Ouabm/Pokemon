@@ -3,7 +3,7 @@
 #include <ctime>    // Pour time()
 #include <type.hpp>
 
-float Type_damage(Type attack , Type def_1.0 , Type def_2){
+float Type_damage(Type attack , Type def_1 , Type def_2){
     if (Type def_2!=None){
         return Table_Type[attack][def_1]*Table[attack][def_2];
     }
