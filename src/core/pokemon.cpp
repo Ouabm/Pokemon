@@ -1,23 +1,33 @@
 #include "pokemon.hpp"
 
 // Constructeur
-Pokemon::Pokemon(const std::string &p_name, Type p_type1, Type p_type2, int p_level, int p_hp,
+Pokemon::Pokemon(const std::string &p_name, Type p_type1, Type p_type2, int p_level, int p_hp, int p_hpRestant,
                  float p_attack, float p_specialAttack, float p_defense, float p_specialDefense,
-                 float p_speed, const Move &m1, const Move &m2, const Move &m3, const Move &m4)
-    : name(p_name), type1(p_type1), type2(p_type2), level(p_level), hp(p_hp), attack(p_attack), specialAttack(p_specialAttack),
-      defense(p_defense), specialDefense(p_specialDefense), speed(p_speed), moves{&m1, &m2, &m3, &m4} {}
+                 float p_speed, const Move &m1, const Move &m2, const Move &m3, const Move &m4, const string &texturePath)
+    : name(p_name), type1(p_type1), type2(p_type2), level(p_level), hp(p_hp), hpRestant(p_hpRestant), attack(p_attack), specialAttack(p_specialAttack),
+      defense(p_defense), specialDefense(p_specialDefense), speed(p_speed), moves{&m1, &m2, &m3, &m4}
+{
+  if (!pokemonTexture.loadFromFile(texturePath))
+  {
+    std::cerr << "Erreur : Impossible de charger l'image " << texturePath << std::endl;
+  }
+  pokemonSprite.setTexture(pokemonTexture);
+}
 
 // Getters
 string Pokemon::getName() const { return name; }
 Type Pokemon::getType1() const { return type1; }
 Type Pokemon::getType2() const { return type2; }
 int Pokemon::getHp() const { return hp; }
+int Pokemon::gethpRestant() const { return hpRestant; }
 float Pokemon::getAttack() const { return attack; }
 float Pokemon::getSpecialAttack() const { return specialAttack; }
 float Pokemon::getDefense() const { return defense; }
 float Pokemon::getSpecialDefense() const { return specialDefense; }
 float Pokemon::getSpeed() const { return speed; }
 vector<const Move *> Pokemon::getMoves() const { return moves; }
+Sprite &Pokemon::getSprite() const{ return const_cast<Sprite &>(pokemonSprite); }
+Texture &Pokemon::getTexture() const{ return const_cast<Texture &>(pokemonTexture); }
 
 // Setters
 void Pokemon::setHp(int p_hp) { hp = p_hp; }

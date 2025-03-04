@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude/core -Iinclude/ui
 
-SRC = src/core/type.cpp src/core/pokemon_data.cpp src/core/pokemon.cpp src/core/move_data.cpp src/core/move.cpp src/core/trainer.cpp src/core/battle.cpp src/core/game.cpp src/core/main.cpp
+SRC = src/core/type.cpp src/core/pokemon_db.cpp src/core/pokemon.cpp src/core/move_db.cpp src/core/move.cpp src/core/trainer.cpp src/core/battle.cpp src/core/game.cpp src/core/main.cpp
 OBJ_DIR = build
 OBJ = $(SRC:src/core/%.cpp=$(OBJ_DIR)/%.o)
 EXEC = pokepute

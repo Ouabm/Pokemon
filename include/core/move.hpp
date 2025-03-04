@@ -7,39 +7,37 @@
 
 #include "type.hpp"
 
+using namespace std;
+
 class Move
 {
 private:
-    std::string name;     // Nom du mouvement
-    Type type;            // Type du mouvement (ex : Fire, Water, Normal, etc.)
-    int power;            // Puissance du mouvement
-    int accuracy;         // Précision du mouvement (valeur entre 0 et 100)
+    string name;  // Nom du mouvement
+    Type type;    // Type du mouvement (ex : Fire, Water, Normal, etc.)
+    int power;    // Puissance du mouvement
+    int accuracy; // Précision du mouvement (valeur entre 0 et 100)
+    bool isPhysical;
 
 public:
     // Constructeur
-    Move(const std::string &p_name = "Unnamed Move", Type p_type = Type::Normal, 
-         int p_power = 0, int p_accuracy = 100)
+    Move(const string &p_name = "Unnamed Move", Type p_type = Type::Normal,
+         int p_power = 0, int p_accuracy = 100, string)
         : name(p_name), type(p_type), power(p_power), accuracy(p_accuracy) {}
 
     // Getters
-    std::string getName() const { return name; }
+    string getName() const { return name; }
     Type getType() const { return type; }
     int getPower() const { return power; }
     int getAccuracy() const { return accuracy; }
-
-    // Setters
-    void setName(const std::string &p_name) { name = p_name; }
-    void setType(Type p_type) { type = p_type; }
-    void setPower(int p_power) { power = p_power; }
-    void setAccuracy(int p_accuracy) { accuracy = p_accuracy; }
+    int isPhysical() const { return 0; } // A completer
 
     // Méthode pour afficher les informations d'un mouvement
     void displayMoveInfo() const
     {
-        std::cout << "Move: " << name << "\n";
-        std::cout << "Type: " << typeToString(type) << "\n";  // Type converti en string pour affichage
-        std::cout << "Power: " << power << "\n";
-        std::cout << "Accuracy: " << accuracy << "%" << std::endl;
+        cout << "Move: " << name << "\n";
+        cout << "Type: " << typeToString(type) << "\n"; // Type converti en string pour affichage
+        cout << "Power: " << power << "\n";
+        cout << "Accuracy: " << accuracy << "%" << endl;
     }
 };
 
