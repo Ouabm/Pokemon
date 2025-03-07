@@ -8,7 +8,7 @@ CFLAGS = -std=c++11 -Wall -g
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Les fichiers source
-SRC = pokemon.cpp graphique.cpp main.cpp move.cpp PokemonDB.cpp
+SRC = pokemon.cpp graphique.cpp main.cpp move.cpp PokemonDB.cpp Game_master.cpp
 
 # Les fichiers objets
 OBJ = $(SRC:.cpp=.o)

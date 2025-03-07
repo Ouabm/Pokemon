@@ -19,11 +19,11 @@ Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     // Initialisation des éléments de l'interface graphique
     this->init_pokemon_positon();
     
-    this->pokemon1.initializeMoves();
-    this->pokemon2.initializeMoves();
-    this->pokemon3.initializeMoves();
-    this->pokemon4.initializeMoves();
-     
+    // this->pokemon1.initializeMoves();
+    // this->pokemon2.initializeMoves();
+    // this->pokemon3.initializeMoves();
+    // this->pokemon4.initializeMoves();
+    
     
     this->initializeHealthBars();
     
@@ -41,6 +41,12 @@ Window::~Window() {
     delete this->window; // Libération de la mémoire de la fenêtre
 }
 
+void Window::init() {
+    updatemovebutton(&pokemon1);
+    updatemovebutton(&pokemon2);
+    updatemovebutton(&pokemon3);
+    updatemovebutton(&pokemon4);
+}
 void Window::init_pokemon_positon() {
     if (!font.loadFromFile("font/prstartk.ttf")) {
         std::cout << "Font loaded successfully " << std::endl;
@@ -48,10 +54,10 @@ void Window::init_pokemon_positon() {
 
     // Création des objets Pokémon avec le constructeur
     // Appliquer la texture aux sprites
-    pokemon1_sprite.setTexture(pokemon1.getTexture());  // Pokémon 1 (Gauche)
-    pokemon2_sprite.setTexture(pokemon2.getTexture());
-    pokemon3_sprite.setTexture(pokemon3.getTexture());
-    pokemon4_sprite.setTexture(pokemon4.getTexture());  // Pokémon 2 (Droite)
+    pokemon1_sprite.setTexture(pokemon1.getTextureback());  // Pokémon 1 (Gauche)
+    pokemon2_sprite.setTexture(pokemon2.getTexturefront());
+    pokemon3_sprite.setTexture(pokemon3.getTextureback());
+    pokemon4_sprite.setTexture(pokemon4.getTexturefront());  // Pokémon 2 (Droite)
 
     pokemon1_sprite.setPosition(20, 290); // Position du Pokémon 1 (Gauche)
     pokemon2_sprite.setPosition(600, 150); // Position du Pokémon 2 (Droite)
@@ -82,29 +88,7 @@ void Window::setupUI() {
     healthbg2.setOutlineColor(sf::Color::Black);
 
     //Pokemon1
-    healthText1.setString(this->pokemon1.getName());
-    healthText1.setFont(font);
-    healthText1.setCharacterSize(10);
-    healthText1.setFillColor(sf::Color::White);
-    healthText1.setPosition(15, 29);
-    //Pokemon2
-    healthText2.setString(this->pokemon3.getName());
-    healthText2.setFont(font);
-    healthText2.setCharacterSize(10);
-    healthText2.setFillColor(sf::Color::White);
-    healthText2.setPosition(15, 60);
-    //Pokemon3
-    healthText3.setString(this->pokemon2.getName());
-    healthText3.setFont(font);
-    healthText3.setCharacterSize(10);
-    healthText3.setFillColor(sf::Color::White);
-    healthText3.setPosition(615, 469);
-    //Pokemon4
-    healthText4.setString(this->pokemon4.getName());
-    healthText4.setFont(font);
-    healthText4.setCharacterSize(10);
-    healthText4.setFillColor(sf::Color::White);
-    healthText4.setPosition(615, 500);
+   
     
     
 
@@ -132,23 +116,23 @@ void Window::setupUI() {
             moveButtons[i].getPosition().y + 10);
         
     }
-    std::vector<move> special1 =pokemon1.getMoves();
-    std::vector<move> special2 =pokemon2.getMoves();
-    std::vector<move> special3 =pokemon3.getMoves();
-    std::vector<move> special4 =pokemon4.getMoves();
-    std::cout << "setupUI() : Nombre d'attaques dans special1 : " << special1.size() << std::endl;
-    std::cout << "setupUI() : Nombre d'attaques dans special2 : " << special2.size() << std::endl;
+//     std::vector<move> special1 =pokemon1.getMoves();
+//     std::vector<move> special2 =pokemon2.getMoves();
+//     std::vector<move> special3 =pokemon3.getMoves();
+//     std::vector<move> special4 =pokemon4.getMoves();
+//     std::cout << "setupUI() : Nombre d'attaques dans special1 : " << special1.size() << std::endl;
+//     std::cout << "setupUI() : Nombre d'attaques dans special2 : " << special2.size() << std::endl;
 
-if (special1.size() >= 4 && special2.size() >= 4) { 
-    moveButtonTexts[0].setString(special1[0].getmovename());
-    moveButtonTexts[1].setString(special1[1].getmovename());
-    moveButtonTexts[2].setString(special1[2].getmovename());
-    moveButtonTexts[3].setString(special1[3].getmovename());
-    moveButtonTexts[4].setString(special2[0].getmovename());
-    moveButtonTexts[5].setString(special2[1].getmovename());
-    moveButtonTexts[6].setString(special2[2].getmovename());
-    moveButtonTexts[7].setString(special2[3].getmovename());
-}
+// if (special1.size() >= 4 && special2.size() >= 4) { 
+//     moveButtonTexts[0].setString(special1[0].getmovename());
+//     moveButtonTexts[1].setString(special1[1].getmovename());
+//     moveButtonTexts[2].setString(special1[2].getmovename());
+//     moveButtonTexts[3].setString(special1[3].getmovename());
+//     moveButtonTexts[4].setString(special2[0].getmovename());
+//     moveButtonTexts[5].setString(special2[1].getmovename());
+//     moveButtonTexts[6].setString(special2[2].getmovename());
+//     moveButtonTexts[7].setString(special2[3].getmovename());
+// }
 
 
 
@@ -193,12 +177,12 @@ void Window::initializeHealthBars() {
     healthBar2.setFillColor(sf::Color::Green);
     healthBar2.setOutlineThickness(2);
 
-    healthBar3.setSize(sf::Vector2f(200, 10));
+    healthBar3.setSize(sf::Vector2f(200, 5));
     healthBar3.setPosition(100, 60);
     healthBar3.setFillColor(sf::Color::Green);
     healthBar3.setOutlineThickness(2);
 
-    healthBar4.setSize(sf::Vector2f(200, 10));
+    healthBar4.setSize(sf::Vector2f(200, 5));
     healthBar4.setPosition(700, 500);
     healthBar4.setFillColor(sf::Color::Green);
     healthBar4.setOutlineThickness(2);
@@ -226,8 +210,7 @@ void Window::updateHealthBars(float health1Percentage, float health2Percentage,f
     if (health2Percentage > 0.5f) healthBar2.setFillColor(sf::Color::Green);
     else if (health2Percentage > 0.2f) healthBar2.setFillColor(sf::Color::Yellow);
     else healthBar2.setFillColor(sf::Color::Red);
-    int dammage=takeDammage();
-    health1Percentage-=dammage;
+    
 }
 
 void Window::animateAttack(bool isFirstPokemonAttacking) {
@@ -274,7 +257,7 @@ void Window::updateAnimations() {
                     << " | Position : (" << x << ", " << y << ")" << std::endl;
     }
 
-    // === 💥 Attack movement animation === animateAttack(isSecondPokemonAttaking);
+    // ===  Attack movement animation === animateAttack(isSecondPokemonAttaking);
 
     float attackSpeed = 50.0f;
     float attackTime = 0.5f;
@@ -441,32 +424,32 @@ void Window::render() {
 void Window::handleinput() {
     sf::Vector2f mousePos = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
     
-    // Targeting mode toggle
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
-        isTargetingMode = !isTargetingMode;  // Toggle targeting mode on/off
+    // // Targeting mode toggle
+    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::T)) {
+    //     isTargetingMode = !isTargetingMode;  // Toggle targeting mode on/off
         
-        // When entering targeting mode, set default attackers
-        if (isTargetingMode) {
-            // Determine which team is currently selecting a target
-            if (activeTeam1Index == 0) {
-                // Pokemon 1 is active for team 1
-                isFirstPokemonAttaking = true;
-                isThirdPokemonAttaking = false;
-            } else {
-                // Pokemon 3 is active for team 1
-                isFirstPokemonAttaking = false;
-                isThirdPokemonAttaking = true;
-            }
+    //     // When entering targeting mode, set default attackers
+    //     if (isTargetingMode) {
+    //         // Determine which team is currently selecting a target
+    //         if (activeTeam1Index == 0) {
+    //             // Pokemon 1 is active for team 1
+    //             isFirstPokemonAttaking = true;
+    //             isThirdPokemonAttaking = false;
+    //         } else {
+    //             // Pokemon 3 is active for team 1
+    //             isFirstPokemonAttaking = false;
+    //             isThirdPokemonAttaking = true;
+    //         }
             
-            // Reset other attackers
-            isSecondPokemonAttaking = false;
-            isFourthPokemonAttaking = false;
-        }
-    }
+    //         // Reset other attackers
+    //         isSecondPokemonAttaking = false;
+    //         isFourthPokemonAttaking = false;
+    //     }
+    // }
     
     
     // Target cycling (only when in targeting mode)
-    if (isTargetingMode) {
+   /*if (isTargetingMode) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
             // Cycle targets based on which team is attacking
             if (isFirstPokemonAttaking || isThirdPokemonAttaking) {
@@ -480,7 +463,7 @@ void Window::handleinput() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             isTargetingMode = false;
         }
-    }
+    }*/
     
     // Attack buttons (only process when not in targeting mode or animation)
     if (!isTargetingMode && !isAnimating) {
@@ -490,23 +473,23 @@ void Window::handleinput() {
                     moveButtons[i].setOutlineThickness(5);
                     moveButtons[i].setOutlineColor(sf::Color::Red);
                     
-                    // Set the attacker based on active team 1 index
-                    if (activeTeam1Index == 0) {
-                        isFirstPokemonAttaking = true;
-                        isThirdPokemonAttaking = false;
-                    } else {
-                        isFirstPokemonAttaking = false;
-                        isThirdPokemonAttaking = true;
-                    }
+                    // // Set the attacker based on active team 1 index
+                    // if (activeTeam1Index == 0) {
+                    //     isFirstPokemonAttaking = true;
+                    //     isThirdPokemonAttaking = false;
+                    // } else {
+                    //     isFirstPokemonAttaking = false;
+                    //     isThirdPokemonAttaking = true;
+                    // }
                     
                     // Start the attack animation
-                    animateAttack(isFirstPokemonAttaking);
+                    //animateAttack(isFirstPokemonAttaking);
                     
                     // Get the attack move
-                    std::vector<move> moves = activeTeam1Index == 0 ? pokemon1.getMoves() : pokemon3.getMoves();
+                    /*std::vector<move> moves = activeTeam1Index == 0 ? pokemon1.getMoves() : pokemon3.getMoves();
                     if (i < moves.size()) {
                         setAttackEffectSprite(moves[i].getmovepath());
-                    }
+                    }*/
                 }
             }
         } else {
@@ -514,7 +497,7 @@ void Window::handleinput() {
                 moveButtons[i].setOutlineThickness(0);
             }
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
+        /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
         isTargetingMode = !isTargetingMode;  // Toggle targeting mode on/off
         
         // When entering targeting mode, set default attackers
@@ -534,7 +517,7 @@ void Window::handleinput() {
             isFirstPokemonAttaking = false;
             isThirdPokemonAttaking = false;
         }
-    }
+    }*/
         // Handle Team 2 attacks with keyboard (ZQSD keys)
         // Similar logic for team 2 attacks as shown in your original code...
      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
@@ -545,15 +528,15 @@ void Window::handleinput() {
             moveButtons[4].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
-             if (activeTeam2Index == 0) {
-                        isSecondPokemonAttaking = true;
-                        isFourthPokemonAttaking = false;
-                    } else {
-                        isSecondPokemonAttaking = false;
-                        isFourthPokemonAttaking = true;
-                    }
-                animateAttack(isSecondPokemonAttaking);
-                setAttackEffectSprite(moves[0].getmovepath());
+            //  if (activeTeam2Index == 0) {
+            //             isSecondPokemonAttaking = true;
+            //             isFourthPokemonAttaking = false;
+            //         } else {
+            //             isSecondPokemonAttaking = false;
+            //             isFourthPokemonAttaking = true;
+            //         }
+                //animateAttack(isSecondPokemonAttaking);
+                //setAttackEffectSprite(moves[0].getmovepath());
                
 
             
@@ -573,16 +556,16 @@ void Window::handleinput() {
             moveButtons[5].setOutlineThickness(5);
             moveButtons[5].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
-            // moveButtonTexts[4].setScale(1.1f,1.1f);
-             if (activeTeam2Index == 0) {
-                        isSecondPokemonAttaking = true;
-                        isFourthPokemonAttaking = false;
-                    } else {
-                        isSecondPokemonAttaking = false;
-                        isFourthPokemonAttaking = true;
-                    }
-                animateAttack(isSecondPokemonAttaking);
-                setAttackEffectSprite(moves[1].getmovepath());
+            // // moveButtonTexts[4].setScale(1.1f,1.1f);
+            //  if (activeTeam2Index == 0) {
+            //             isSecondPokemonAttaking = true;
+            //             isFourthPokemonAttaking = false;
+            //         } else {
+            //             isSecondPokemonAttaking = false;
+            //             isFourthPokemonAttaking = true;
+            //         }
+                //animateAttack(isSecondPokemonAttaking);
+                //setAttackEffectSprite(moves[1].getmovepath());
                 //isSecondPokemonAttaking = true;
                
 
@@ -601,15 +584,15 @@ void Window::handleinput() {
             moveButtons[6].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
-             if (activeTeam2Index == 0) {
-                        isSecondPokemonAttaking = true;
-                        isFourthPokemonAttaking = false;
-                    } else {
-                        isSecondPokemonAttaking = false;
-                        isFourthPokemonAttaking = true;
-                    }
-                animateAttack(isSecondPokemonAttaking);
-                setAttackEffectSprite(moves[2].getmovepath());
+            //  if (activeTeam2Index == 0) {
+            //             isSecondPokemonAttaking = true;
+            //             isFourthPokemonAttaking = false;
+            //         } else {
+            //             isSecondPokemonAttaking = false;
+            //             isFourthPokemonAttaking = true;
+            //         }
+                //animateAttack(isSecondPokemonAttaking);
+                //setAttackEffectSprite(moves[2].getmovepath());
                 //isSecondPokemonAttaking = true;
                 
             
@@ -627,15 +610,15 @@ void Window::handleinput() {
             moveButtons[7].setOutlineColor(sf::Color::Red);
             // moveButtons[4].setScale(1.1f,1.f);
             // moveButtonTexts[4].setScale(1.1f,1.1f);
-             if (activeTeam2Index == 0) {
-                        isSecondPokemonAttaking = true;
-                        isFourthPokemonAttaking = false;
-                    } else {
-                        isSecondPokemonAttaking = false;
-                        isFourthPokemonAttaking = true;
-                    }
-                animateAttack(isSecondPokemonAttaking);
-                setAttackEffectSprite(moves[3].getmovepath());
+            //  if (activeTeam2Index == 0) {
+            //             isSecondPokemonAttaking = true;
+            //             isFourthPokemonAttaking = false;
+            //         } else {
+            //             isSecondPokemonAttaking = false;
+            //             isFourthPokemonAttaking = true;
+            //         }
+                //animateAttack(isSecondPokemonAttaking);
+                //setAttackEffectSprite(moves[3].getmovepath());
                 //isSecondPokemonAttaking = true;
                
             
@@ -665,6 +648,7 @@ void Window::handleinput() {
 
 
 void Window::processevent() {
+
     sf::Event event;
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed){
@@ -672,6 +656,7 @@ void Window::processevent() {
             
         }
         handleSwitching();
+        
     }
 }
 
@@ -850,42 +835,42 @@ Pokemon* Window::getCurrentTarget(bool isTeam1) {
     }
 }
 
-void Window::confirmTargetAndAttack() {
-    // Set the appropriate attack flag based on which Pokemon is attacking
-    if (selectedAttackingPokemon == &pokemon1) {
-        isFirstPokemonAttaking = true;
-    } else if (selectedAttackingPokemon == &pokemon2) {
-        isSecondPokemonAttaking = true;
-    } else if (selectedAttackingPokemon == &pokemon3) {
-        isThirdPokemonAttaking = true;
-    } else if (selectedAttackingPokemon == &pokemon4) {
-        isFourthPokemonAttaking = true;
-    }
+// void Window::confirmTargetAndAttack() {
+//     // Set the appropriate attack flag based on which Pokemon is attacking
+//     if (selectedAttackingPokemon == &pokemon1) {
+//         isFirstPokemonAttaking = true;
+//     } else if (selectedAttackingPokemon == &pokemon2) {
+//         isSecondPokemonAttaking = true;
+//     } else if (selectedAttackingPokemon == &pokemon3) {
+//         isThirdPokemonAttaking = true;
+//     } else if (selectedAttackingPokemon == &pokemon4) {
+//         isFourthPokemonAttaking = true;
+//     }
     
-    // Start the attack animation
-    animateAttack(isFirstPokemonAttaking || isThirdPokemonAttaking);
-    animateAttack(isSecondPokemonAttaking || isFourthPokemonAttaking);
+//     // Start the attack animation
+//     animateAttack(isFirstPokemonAttaking || isThirdPokemonAttaking);
+//     animateAttack(isSecondPokemonAttaking || isFourthPokemonAttaking);
     
-    // Get the appropriate moves vector
-    std::vector<move> moves;
-    if (selectedAttackingPokemon == &pokemon1) {
-        moves = pokemon1.getMoves();
-    } else if (selectedAttackingPokemon == &pokemon2) {
-        moves = pokemon2.getMoves();
-    } else if (selectedAttackingPokemon == &pokemon3) {
-        moves = pokemon3.getMoves();
-    } else if (selectedAttackingPokemon == &pokemon4) {
-        moves = pokemon4.getMoves();
-    }
+//     // Get the appropriate moves vector
+//     std::vector<move> moves;
+//     if (selectedAttackingPokemon == &pokemon1) {
+//         moves = pokemon1.getMoves();
+//     } else if (selectedAttackingPokemon == &pokemon2) {
+//         moves = pokemon2.getMoves();
+//     } else if (selectedAttackingPokemon == &pokemon3) {
+//         moves = pokemon3.getMoves();
+//     } else if (selectedAttackingPokemon == &pokemon4) {
+//         moves = pokemon4.getMoves();
+//     }
     
-    // Set the attack effect sprite
-    if (selectedAttackIndex < moves.size()) {
-        setAttackEffectSprite(moves[selectedAttackIndex].getmovepath());
-    }
+//     // Set the attack effect sprite
+//     if (selectedAttackIndex < moves.size()) {
+//         setAttackEffectSprite(moves[selectedAttackIndex].getmovepath());
+//     }
     
-    // Exit targeting mode
-    isTargetingMode = false;
-}
+//     // Exit targeting mode
+//     isTargetingMode = false;
+// }
 void Window::renderTargetIndicator() {
     if (!isTargetingMode) return;
     
@@ -899,7 +884,8 @@ void Window::renderTargetIndicator() {
             targetPos = pokemon2_sprite.getPosition();
             targetPos.x += pokemon2_sprite.getGlobalBounds().width / 2;
             targetPos.y += pokemon2_sprite.getGlobalBounds().height / 2;
-        } else {
+        } 
+        else {
             // Targeting pokemon4
             targetPos = pokemon4_sprite.getPosition();
             targetPos.x += pokemon4_sprite.getGlobalBounds().width / 2;
@@ -967,23 +953,139 @@ void Window::updateMoveButtons() {
         std::cerr << "Error: Not enough moves for one or both Pokemon" << std::endl;
     }
 }
+void Window::showPokemonSelection() {
+    sf::RenderWindow selectionWindow(sf::VideoMode(800, 600), "Sélection des Pokémon");
 
-int Window:: takeDammage(){
-    std::vector<move> moves1 = pokemon1.getMoves();
-    std::vector<move> moves2 = pokemon2.getMoves();
-    std::vector<move> moves3 = pokemon3.getMoves();
-    std::vector<move> moves4 = pokemon4.getMoves();
-    int damage1 = 0;
-    int damage2 = 0;
-    int damage3 = 0;
-    int damage4 = 0;
-    for (int i = 0; i < 4; i++) {
-        if (moves1[i].getmovename() == "Hudro-pump") {
-            damage1 = 10;
-    
+    // Charger l'image de fond
+    sf::Texture background;
+    if (!background.loadFromFile("images/Background_menu.jpg")) {
+        std::cerr << "Error: Unable to load background image" << std::endl;
     }
+    sf::Sprite background_sprite(background);
+
+    // Charger la police
+    if (!font.loadFromFile("font/prstartk.ttf")) {
+        std::cerr << "Erreur de chargement de la police !" << std::endl;
     }
-    return damage1;
+
+    // Charger les textures des Pokémon
+    std::vector<sf::Texture> pokemonTextures(allPokemon.size());
+    std::vector<sf::Sprite> pokemonSprites(allPokemon.size());
+
+    for (size_t i = 0; i < allPokemon.size(); i++) {
+        if (!pokemonTextures[i].loadFromFile("images/" + allPokemon[i].getName() + ".png")) {
+            std::cerr << "Erreur de chargement de l'image pour " << allPokemon[i].getName() << std::endl;
+        }
+        pokemonSprites[i].setTexture(pokemonTextures[i]);
+        pokemonSprites[i].setScale(0.7f, 0.7f); // Ajuster la taille
+    }
+
+    int selectedIndexJ1 = 0, selectedIndexJ2 = 0;
+    bool j1Confirmed = false, j2Confirmed = false;
+    std::vector<int> teamJ1, teamJ2;
+
+    while (selectionWindow.isOpen()) {
+        sf::Event event;
+        while (selectionWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                selectionWindow.close();
+
+            if (event.type == sf::Event::KeyPressed) {
+                // Sélection du Joueur 1
+                if (!j1Confirmed) {
+                    if (event.key.code == sf::Keyboard::Left)
+                        selectedIndexJ1 = (selectedIndexJ1 - 1 + allPokemon.size()) % allPokemon.size();
+                    if (event.key.code == sf::Keyboard::Right)
+                        selectedIndexJ1 = (selectedIndexJ1 + 1) % allPokemon.size();
+                    if (event.key.code == sf::Keyboard::Enter) {
+                        if (teamJ1.size() < 2 && std::find(teamJ1.begin(), teamJ1.end(), selectedIndexJ1) == teamJ1.end()) {
+                            teamJ1.push_back(selectedIndexJ1);
+                        }
+                        if (teamJ1.size() == 2) j1Confirmed = true;
+                    }
+                }
+                
+                // Sélection du Joueur 2
+                else if (!j2Confirmed) {
+                    if (event.key.code == sf::Keyboard::A)
+                        selectedIndexJ2 = (selectedIndexJ2 - 1 + allPokemon.size()) % allPokemon.size();
+                    if (event.key.code == sf::Keyboard::D)
+                        selectedIndexJ2 = (selectedIndexJ2 + 1) % allPokemon.size();
+                    if (event.key.code == sf::Keyboard::Space) {
+                        if (teamJ2.size() < 2 && std::find(teamJ2.begin(), teamJ2.end(), selectedIndexJ2) == teamJ2.end()) {
+                            teamJ2.push_back(selectedIndexJ2);
+                        }
+                        if (teamJ2.size() == 2) j2Confirmed = true;
+                    }
+                }
+
+                // Démarrer le combat
+                if (j1Confirmed && j2Confirmed) {
+                    this->pokemon1 = allPokemon[teamJ1[0]];
+                    this->pokemon3 = allPokemon[teamJ1[1]];
+                    this->pokemon2 = allPokemon[teamJ2[0]];
+                    this->pokemon4 = allPokemon[teamJ2[1]];
+                    pokemon1.initializeMoves();
+                    pokemon2.initializeMoves();
+                    pokemon3.initializeMoves();
+                    pokemon4.initializeMoves();
+                    // updatemovebutton(&pokemon1);
+                    // updatemovebutton(&pokemon2);
+                    // updatemovebutton(&pokemon3);
+                    // updatemovebutton(&pokemon4);
+                    selectionWindow.close();
+                }
+            }
+        }
+
+        selectionWindow.clear();
+        selectionWindow.draw(background_sprite);
+
+        // Affichage des Pokémon
+        for (size_t i = 0; i < allPokemon.size(); i++) {
+            int row = i / 4;
+            int col = i % 4;
+            pokemonSprites[i].setPosition(50 + col * 180, 50 + row * 150);
+            selectionWindow.draw(pokemonSprites[i]);
+
+            // Encadrer les Pokémon sélectionnés
+            if(std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end() ||
+            std::find(teamJ2.begin(), teamJ2.end(), i) != teamJ2.end() ||
+            (!j1Confirmed && i == selectedIndexJ1) ||
+            (!j2Confirmed && i == selectedIndexJ2)){
+                sf::RectangleShape highlight(sf::Vector2f(120, 120));
+                highlight.setPosition(50 + col * 180, 50 + row * 150);
+                highlight.setOutlineThickness(5);
+                highlight.setOutlineColor(
+                    std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end() ? sf::Color::Blue : sf::Color::Red);
+                highlight.setFillColor(sf::Color::Transparent);
+                selectionWindow.draw(highlight);
+            }
+        }
+    healthText1.setString(this->pokemon1.getName());
+    healthText1.setFont(font);
+    healthText1.setCharacterSize(10);
+    healthText1.setFillColor(sf::Color::White);
+    healthText1.setPosition(15, 29);
+    //Pokemon2
+    healthText2.setString(this->pokemon3.getName());
+    healthText2.setFont(font);
+    healthText2.setCharacterSize(10);
+    healthText2.setFillColor(sf::Color::White);
+    healthText2.setPosition(15, 60);
+    //Pokemon3
+    healthText3.setString(this->pokemon2.getName());
+    healthText3.setFont(font);
+    healthText3.setCharacterSize(10);
+    healthText3.setFillColor(sf::Color::White);
+    healthText3.setPosition(615, 469);
+    //Pokemon4
+    healthText4.setString(this->pokemon4.getName());
+    healthText4.setFont(font);
+    healthText4.setCharacterSize(10);
+    healthText4.setFillColor(sf::Color::White);
+    healthText4.setPosition(615, 500);
+
+        selectionWindow.display();
+    }
 }
-
-

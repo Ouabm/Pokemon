@@ -1,15 +1,15 @@
 
 #include "PokemonDB.hpp"
-#include "type.hpp"
+
 
 PokemonDB::PokemonDB() {
     // Ajouter des Pokémon à la base de données
-    pokemonList["Palkia"] = Pokemon("Palkia", "Eau", 100, 120, 90, 100, "images/palkia_back.png");
-    pokemonList["Dialga"] = Pokemon("Dialga", "Acier", 100, 130, 100, 120, "images/dialga.png");
-    pokemonList["Giratina"] = Pokemon("Giratina", "Spectre", 150, 100, 120, 90, "images/giratina.png");
-    pokemonList["Arceus"] = Pokemon("Arceus", "Normal", 120, 140, 120, 120, "images/arceus_back.png");
-    pokemonList["Charizard"] = Pokemon("Charizard", "Feu", 150,10,100,100,"images/charizard.png");
-    pokemonList["Mewtwo"] = Pokemon("Mewtwo", "Psy", 150, 120, 100, 120,"images/mewtwo_back.png");
+    pokemonList["Palkia"] = Pokemon("Palkia", "Eau", 100, 120, 90, 100, "images/Palkia.png","images/palkia_back.png");
+    pokemonList["Dialga"] = Pokemon("Dialga", "Acier", 100, 130, 100, 120, "images/Dialga.png","images/palkia_back.png");
+    pokemonList["Giratina"] = Pokemon("Giratina", "Spectre", 150, 100, 120, 90, "images/Giratina.png","images/giratina_back.png");
+    pokemonList["Arceus"] = Pokemon("Arceus", "Normal", 120, 140, 120, 120, "images/Arceus.png","images/arceus_back.png");
+    pokemonList["Charizard"] = Pokemon("Charizard", "Feu", 150,10,100,100,"images/charizard.png","images/palkia_back.png");
+    pokemonList["Mewtwo"] = Pokemon("Mewtwo", "Psy", 150, 120, 100, 120,"images/Mewtwo.png","images/mewtwo_back.png");
 
     // Ajouter plus de Pokémon ici
 }

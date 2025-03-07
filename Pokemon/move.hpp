@@ -22,8 +22,9 @@ public:
     std::string type;
     std::string texturepath;
     bool isSpecial; // For special attacks like Spacial Rend
-    std::string getmovestype(){return type;};
+    std::string getmovetype(){return type;};
     std::string getmovename(){return nom;};
+    const int getmovepower(){return puissance;};
     std::string& getmovepath(){
     return texturepath;};
 

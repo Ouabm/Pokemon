@@ -11,11 +11,12 @@
 #include "Pokemon.hpp"
 #include "PokemonDB.hpp"
 
-
+class GameMaster;
 class Window {
+    friend class GameMaster;
     private:
     
-    sf::RenderWindow* window;
+    
     PokemonDB Pokemondb;
     sf::Texture pokemon1_texture , pokemon2_texture , Arene_texture;
     sf::Sprite pokemon1_sprite;
@@ -54,13 +55,8 @@ class Window {
     Pokemon* defender;
 
     // Animation states
-    bool isAnimating;
+    
     float animationProgress;
-    bool isFirstPokemonAttaking;
-    bool isSecondPokemonAttaking;
-    bool isThirdPokemonAttaking;
-    bool isFourthPokemonAttaking;
-    bool isAttackAnimating;
     sf::Clock animationClock;
     
     // Attack animation properties
@@ -92,8 +88,6 @@ class Window {
     sf::Text switchButtonTexts2;           // Text for switch buttons
     bool isSwapping;                         // Animation state for switching
     float swapProgress;                      // Progress of swap animation
-    int activeTeam1Index;                    // Current active Pokemon for team 1 (0 or 1)
-    int activeTeam2Index;                    // Current active Pokemon for team 2 (0 or 1)
     sf::Vector2f originalPosTeam1[2];        // Original positions for team 1 Pokemon
     sf::Vector2f originalPosTeam2[2];    
     bool animationFinished;
@@ -106,14 +100,13 @@ class Window {
     float damageAnimationDuration;
     
     // Add to private section of Window class in Graphique.hpp
-    int currentTargetTeam1 = 0;  // 0 for pokemon2, 1 for pokemon4
-    int currentTargetTeam2 = 0;  // 0 for pokemon1, 1 for pokemon3
-    bool isTargetingMode;
+   
     sf::CircleShape targetIndicator;
     bool attackChosen = false;
     size_t selectedAttackIndex ;
     Pokemon* selectedAttackingPokemon;
     public :
+    sf::RenderWindow* window;
     
     Window();
     virtual ~Window();
@@ -121,7 +114,7 @@ class Window {
     void render();
     void setupUI();
     void setupSwitchButtons();
-
+    void init();
 
     void initializeHealthBars();
     void updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage);
@@ -150,8 +143,36 @@ class Window {
     Pokemon* getCurrentTarget(bool isTeam1);
     void confirmTargetAndAttack();
     int takeDammage();
+    void init_game_over();
+    void showPokemonSelection();
+
+   // These are needed for the GameMaster to access
+    bool isAnimating;
+    bool isFirstPokemonAttaking;
+    bool isSecondPokemonAttaking;
+    bool isThirdPokemonAttaking;
+    bool isFourthPokemonAttaking;
+    bool isTargetingMode;
+    int currentTargetTeam1;
+    int currentTargetTeam2;
+    int activeTeam1Index;                    // Current active Pokemon for team 1 (0 or 1)
+    int activeTeam2Index;                    // Current active Pokemon for team 2 (0 or 1)
 
 
+    std::vector<Pokemon> allPokemon = {
+    Pokemondb.getPokemonByName("Pikachu"),
+    Pokemondb.getPokemonByName("Dracaufeu"),
+    Pokemondb.getPokemonByName("Tortank"),
+    Pokemondb.getPokemonByName("Florizarre"),
+    Pokemondb.getPokemonByName("Ectoplasma"),
+    Pokemondb.getPokemonByName("Mewtwo"),
+    Pokemondb.getPokemonByName("Rayquaza"),
+    Pokemondb.getPokemonByName("Groudon"),
+    Pokemondb.getPokemonByName("Giratina"),
+    Pokemondb.getPokemonByName("Arceus"),
+    Pokemondb.getPokemonByName("Palkia"),
+    Pokemondb.getPokemonByName("Dialga")
+    };
 
    
     };
