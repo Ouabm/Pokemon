@@ -48,26 +48,49 @@ void Pokemon::initializeMoves() {
         spes.push_back(move("Cosmic Power", 0, 100, "Psychic","attacks/Hydro-Pump.png"));
         spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
     }
-    //Tortank
-    else if (nom == "Tortank") {
-        spes.push_back(move("Judgment", 100, 100, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Cosmic Power", 0, 100, "Psychic","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
-    }
-    //Pikachu 
-    else if (nom == "Pikachu") {
-        spes.push_back(move("Judgment", 100, 100, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Cosmic Power", 0, 100, "Psychic","attacks/Hydro-Pump.png"));
-        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Hydro-Pump.png"));
-    }
     else if (nom == "Mewtwo") {
         spes.push_back(move("Psystrike", 140, 100, "Psychic","attacks/Psychic.png"));
         spes.push_back(move("Shadow Ball", 80, 100, "Ghost","attacks/Shadow-Ball.png"));
         spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
         spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
     }
+    else if (nom == "Reshiram") {
+        spes.push_back(move("Dragon Ascent", 120, 100, "Dragon",
+        "attacks/Dragon-Ascent.png"));
+        spes.push_back(move("Fire Blast", 120, 100, "Fire","attacks/Fire-Blast.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
+        }
+    else if(nom=="Zekrom"){
+        spes.push_back(move("Dragon Ascent", 120, 100, "Dragon","attacks/Dragon-Ascent.png"));
+        spes.push_back(move("Thunderbolt", 120, 100, "Electric","attacks/Thunderbolt.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
+        }
+    else if(nom=="Rayquaza"){
+        spes.push_back(move("Dragon Ascent", 120, 100, "Dragon","attacks/Dragon-Ascent.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
+        spes.push_back(move("Outrage", 120, 100, "Dragon","attacks/Outrage.png"));
+        }
+    else if(nom=="Lugia"){
+        spes.push_back(move("Aeroblast", 120, 100, "Flying","attacks/Aeroblast.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
+        spes.push_back(move("Aurora Beam", 120, 100, "Icing","attacks/Aurora-Beam.png"));
+        
+    }
+    else if (nom=="Pikachu"){
+        spes.push_back(move("Thunderbolt", 120, 100, "Electric","attacks/Thunderbolt.png"));
+        spes.push_back(move("Hyper Beam", 150, 90, "Normal","attacks/Hyper-Beam.png"));
+        spes.push_back(move("Recover", 0, 100, "Normal","attacks/Recover.png"));
+        spes.push_back(move("Quick Attack", 120, 100, "Normal","attacks/Quick-Attack.png"));
+    
+    }
+
+    
+    
+
     
 }
 

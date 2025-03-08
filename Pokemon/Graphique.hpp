@@ -161,17 +161,17 @@ class Window {
 
     std::vector<Pokemon> allPokemon = {
     Pokemondb.getPokemonByName("Pikachu"),
-    Pokemondb.getPokemonByName("Dracaufeu"),
-    Pokemondb.getPokemonByName("Tortank"),
-    Pokemondb.getPokemonByName("Florizarre"),
-    Pokemondb.getPokemonByName("Ectoplasma"),
+    Pokemondb.getPokemonByName("Charizard"),
+    Pokemondb.getPokemonByName("Lugia"),
+    Pokemondb.getPokemonByName("Reshiram"),
+    Pokemondb.getPokemonByName("Zekrom"),
     Pokemondb.getPokemonByName("Mewtwo"),
+    Pokemondb.getPokemonByName("Blastoise"),
     Pokemondb.getPokemonByName("Rayquaza"),
-    Pokemondb.getPokemonByName("Groudon"),
     Pokemondb.getPokemonByName("Giratina"),
     Pokemondb.getPokemonByName("Arceus"),
     Pokemondb.getPokemonByName("Palkia"),
-    Pokemondb.getPokemonByName("Dialga")
+    Pokemondb.getPokemonByName("Dialga"),
     };
 
    
