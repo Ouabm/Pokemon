@@ -94,6 +94,10 @@ class Window {
     int currentFrame;
     bool active1;
     bool active2;
+    sf::Texture backgroundm;
+    sf::Sprite background_spritem;
+    sf::Texture backgroundfin;
+    sf::Sprite background_spritefin;
 
     sf::Clock damageEffectClock;
     bool isDamageAnimating;
@@ -105,11 +109,14 @@ class Window {
     bool attackChosen = false;
     size_t selectedAttackIndex ;
     Pokemon* selectedAttackingPokemon;
+    
     public :
     sf::RenderWindow* window;
-    
+    bool debut=false;
     Window();
     virtual ~Window();
+    void showMainMenu();
+    void showEndGameMenu(int winningTeam);
     //void setpokemon(const Pokemon&p1,const Pokemon& p2 ,const Pokemon& p3 , const Pokemon& p4 );
     void render();
     void setupUI();
@@ -141,9 +148,6 @@ class Window {
     void renderTargetIndicator();
     void cycleTargets(bool isTeam1);
     Pokemon* getCurrentTarget(bool isTeam1);
-    void confirmTargetAndAttack();
-    int takeDammage();
-    void init_game_over();
     void showPokemonSelection();
 
    // These are needed for the GameMaster to access
@@ -171,7 +175,15 @@ class Window {
     Pokemondb.getPokemonByName("Giratina"),
     Pokemondb.getPokemonByName("Arceus"),
     Pokemondb.getPokemonByName("Palkia"),
-    Pokemondb.getPokemonByName("Dialga"),
+    Pokemondb.getPokemonByName("Zapdos"),
+    Pokemondb.getPokemonByName("Articuno"),
+    Pokemondb.getPokemonByName("Raikou"),
+    Pokemondb.getPokemonByName("Entei"),
+    Pokemondb.getPokemonByName("Suicune"),
+    Pokemondb.getPokemonByName("Kyogre"),
+    Pokemondb.getPokemonByName("Groudon"),
+    Pokemondb.getPokemonByName("Ho-Oh"),
+    Pokemondb.getPokemonByName("Moltres"),
     };
 
    

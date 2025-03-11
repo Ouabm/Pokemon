@@ -12,11 +12,19 @@ PokemonDB::PokemonDB() {
     pokemonList["Mewtwo"] = Pokemon("Mewtwo", "Psy", 150, 120, 100, 120,"images/Mewtwo.png","images/mewtwo_back.png");
     pokemonList["Pikachu"] = Pokemon("Pikachu", "elctrique", 100,120,100,100,"images/Pikachu.png","images/Pikachu_back.png");
     pokemonList["Reshiram"] = Pokemon("Reshiram", "Dragon",100,120,120,100,"images/Reshiram.png","images/Reshiram_back.png");    // Ajouter plus de Pokémon ici
-
     pokemonList["Zekrom"]=Pokemon("Zekrom","Dragon",100,120,100,100,"images/Zekrom.png","images/Zekrom_back.png");
     pokemonList["Blastoise"]=Pokemon("Blastoise","Eau",150,120,100,100,"images/Blastoise.png","images/Blastoise_back.png");
     pokemonList["Rayquaza"]=Pokemon("Rayquaza","Dragon",100,120,100,100,"images/Rayquaza.png","images/Rayquaza_back.png");
     pokemonList["Lugia"]=Pokemon("Lugia","Dragon",100,120,100,100,"images/Lugia.png","images/Lugia_back.png");
+    pokemonList["Ho-Oh"]=Pokemon("Ho-Oh","Feu",100,120,100,100,"images/Ho-Oh.png","images/Ho-Oh_back.png");
+    pokemonList["Groudon"]=Pokemon("Groudon","Terre",100,120,100,100,"images/Groudon.png","images/Groudon_back.png");
+    pokemonList["Kyogre"]=Pokemon("Kyogre","Eau",100,120,100,100,"images/Kyogre.png","images/Kyogre_back.png");
+    pokemonList["Suicune"]=Pokemon("Suicune","Eau",100,120,100,100,"images/Suicune.png","images/Suicune_back.png");
+    pokemonList["Entei"]=Pokemon("Entei","Feu",100,120,100,100,"images/Entei.png","images/Entei_back.png");
+    pokemonList["Raikou"]=Pokemon("Raikou","elctrique",100,100,100,100,"images/Raikou.png","images/Raikou_back.png");
+    pokemonList["Articuno"]=Pokemon("Articuno","Glace",100,120,100,100,"images/Articuno.png","images/Articuno_back.png");
+    pokemonList["Zapdos"]=Pokemon("Zapdos","elctrique",100,100,100,100,"images/Zapdos.png","images/Zapdos_back.png");
+    pokemonList["Moltres"]=Pokemon("Moltres","Feu",100,100,100,100,"images/Moltres.png","images/Moltres_back.png");
 
 
 

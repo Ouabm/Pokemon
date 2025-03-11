@@ -6,10 +6,10 @@
 Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     pokemon2(Pokemondb.getPokemonByName("Dialga")),
     pokemon3(Pokemondb.getPokemonByName("Arceus")),
-    pokemon4(Pokemondb.getPokemonByName("Giratina")),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false){
+    pokemon4(Pokemondb.getPokemonByName("Giratina")),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false),debut(false){
     // Initialisation de la fenêtre
    
-    this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
+    
     std::cout << "Pokemon1 : [" << pokemon1.getType() << "]" << std::endl;
     animationProgress=0.0f;    
     isTargetingMode=false;
@@ -19,13 +19,16 @@ Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     // Initialisation des éléments de l'interface graphique
     this->init_pokemon_positon();
     
-    // this->pokemon1.initializeMoves();
-    // this->pokemon2.initializeMoves();
-    // this->pokemon3.initializeMoves();
-    // this->pokemon4.initializeMoves();
+     this->pokemon1.initializeMoves();
+     this->pokemon2.initializeMoves();
+     this->pokemon3.initializeMoves();
+     this->pokemon4.initializeMoves();
     
     
     this->initializeHealthBars();
+    
+
+    
     
     this->setupUI();
    
@@ -43,8 +46,8 @@ Window::~Window() {
 
 void Window::init() {
     updatemovebutton(&pokemon1);
-    updatemovebutton(&pokemon2);
     updatemovebutton(&pokemon3);
+    updatemovebutton(&pokemon2);
     updatemovebutton(&pokemon4);
 }
 void Window::init_pokemon_positon() {
@@ -145,6 +148,7 @@ void Window::setupUI() {
     // Default targets
     currentTargetTeam1 = 0;
     currentTargetTeam2 = 0;
+    
 }
 
 void Window::initializeHealthBars() {
@@ -369,8 +373,10 @@ void Window::render() {
    
     
     // Update animations
+    
     updateAnimations();
     updateSwapAnimation();
+    
     
      
     // Draw arena
@@ -405,6 +411,7 @@ void Window::render() {
     for (int i = 0; i < 8 ; i++) {
         window->draw(moveButtons[i]);
         window->draw(moveButtonTexts[i]);
+        
     }
     window->draw(switchButtons);
     window->draw(switchButtonTexts);
@@ -954,11 +961,11 @@ void Window::updateMoveButtons() {
     }
 }
 void Window::showPokemonSelection() {
-    sf::RenderWindow selectionWindow(sf::VideoMode(800, 600), "Sélection des Pokémon");
+    sf::RenderWindow selectionWindow(sf::VideoMode(1024, 700), "Sélection des Pokémon");
 
     // Charger l'image de fond
     sf::Texture background;
-    if (!background.loadFromFile("images/Background_menu.jpg")) {
+    if (!background.loadFromFile("images/selection_background.jpg")) {
         std::cerr << "Error: Unable to load background image" << std::endl;
     }
     sf::Sprite background_sprite(background);
@@ -1025,15 +1032,10 @@ void Window::showPokemonSelection() {
                     this->pokemon3 = allPokemon[teamJ1[1]];
                     this->pokemon2 = allPokemon[teamJ2[0]];
                     this->pokemon4 = allPokemon[teamJ2[1]];
-                    pokemon1.initializeMoves();
-                    pokemon2.initializeMoves();
-                    pokemon3.initializeMoves();
-                    pokemon4.initializeMoves();
-                    // updatemovebutton(&pokemon1);
-                    // updatemovebutton(&pokemon2);
-                    // updatemovebutton(&pokemon3);
-                    // updatemovebutton(&pokemon4);
+                   
                     selectionWindow.close();
+                    this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
+                    this->debut=true;
                 }
             }
         }
@@ -1043,8 +1045,8 @@ void Window::showPokemonSelection() {
 
         // Affichage des Pokémon
         for (size_t i = 0; i < allPokemon.size(); i++) {
-            int row = i / 4;
-            int col = i % 4;
+            int row = i / 5;
+            int col = i % 5;
             pokemonSprites[i].setPosition(50 + col * 180, 50 + row * 150);
             selectionWindow.draw(pokemonSprites[i]);
 
@@ -1062,6 +1064,7 @@ void Window::showPokemonSelection() {
                 selectionWindow.draw(highlight);
             }
         }
+    
     healthText1.setString(this->pokemon1.getName());
     healthText1.setFont(font);
     healthText1.setCharacterSize(10);
@@ -1085,7 +1088,165 @@ void Window::showPokemonSelection() {
     healthText4.setCharacterSize(10);
     healthText4.setFillColor(sf::Color::White);
     healthText4.setPosition(615, 500);
+    
+
 
         selectionWindow.display();
+    }
+}
+void Window::showMainMenu() {
+    sf::RenderWindow menuWindow(sf::VideoMode(1024, 640), "Menu Principal");
+
+    // Charger la police
+    if (!font.loadFromFile("font/prstartk.ttf")) {
+        std::cerr << "Erreur de chargement de la police !" << std::endl;
+    }
+
+    //Fond 
+     
+     if (!backgroundm.loadFromFile("images/Menu.jpg")) {
+        std::cerr << "Error: Unable to load background image" << std::endl;
+    }
+   background_spritem.setTexture(backgroundm);
+
+
+    // Bouton "Start"
+    sf::RectangleShape startButton(sf::Vector2f(200, 50));
+    startButton.setPosition(430, 400);
+    startButton.setFillColor(sf::Color(100, 200, 100));
+
+    sf::Text startText("START", font, 20);
+    startText.setFillColor(sf::Color::White);
+    startText.setPosition(490, 410);
+
+    // Bouton "Help"
+    sf::RectangleShape helpButton(sf::Vector2f(200, 50));
+    helpButton.setPosition(430, 500);
+    helpButton.setFillColor(sf::Color(200, 100, 100));
+
+    sf::Text helpText("HELP", font, 20);
+    helpText.setFillColor(sf::Color::White);
+    helpText.setPosition(490, 510);
+
+    while (menuWindow.isOpen()) {
+        sf::Event event;
+        while (menuWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                menuWindow.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                sf::Vector2f mousePos = menuWindow.mapPixelToCoords(sf::Mouse::getPosition(menuWindow));
+
+                // Vérifier si "Start" est cliqué
+                if (startButton.getGlobalBounds().contains(mousePos)) {
+                    menuWindow.close();
+                    showPokemonSelection(); // Lancer la sélection de Pokémon
+                }
+
+                // Vérifier si "Help" est cliqué
+                if (helpButton.getGlobalBounds().contains(mousePos)) {
+                    sf::RenderWindow helpWindow(sf::VideoMode(600, 400), "Instructions");
+                    sf::Text instructions("Choisissez 2 Pokemon chacun et combattez !\nUtilisez les attaques pour battre votre adversaire.", font, 7);
+                    instructions.setFillColor(sf::Color::White);
+                    instructions.setPosition(50, 100);
+
+                    while (helpWindow.isOpen()) {
+                        sf::Event helpEvent;
+                        while (helpWindow.pollEvent(helpEvent)) {
+                            if (helpEvent.type == sf::Event::Closed)
+                                helpWindow.close();
+                        }
+
+                        helpWindow.clear(sf::Color::Black);
+                        helpWindow.draw(instructions);
+                        helpWindow.display();
+                    }
+                }
+            }
+        }
+
+        menuWindow.clear();
+        menuWindow.draw(background_spritem);
+        menuWindow.draw(startButton);
+        menuWindow.draw(startText);
+        menuWindow.draw(helpButton);
+        menuWindow.draw(helpText);
+        menuWindow.display();
+    }
+}
+
+void Window::showEndGameMenu(int winningTeam) {
+    sf::RenderWindow endGameWindow(sf::VideoMode(1024, 640), "Fin du jeu");
+
+    // Charger la police
+    if (!font.loadFromFile("font/prstartk.ttf")) {
+        std::cerr << "Erreur de chargement de la police !" << std::endl;
+    }
+
+    if (!backgroundfin.loadFromFile("images/end_game.jpg")) {
+        std::cerr << "Error: Unable to load background image" << std::endl;
+    }
+   background_spritefin.setTexture(backgroundfin);
+
+
+    // Texte de victoire
+    sf::Text winnerText("Team " + std::to_string(winningTeam) + " Wins ", font, 20);
+    winnerText.setFillColor(sf::Color::White);
+    winnerText.setPosition(300, 150);
+
+    // Bouton "Rejouer"
+    sf::RectangleShape replayButton(sf::Vector2f(200, 50));
+    replayButton.setPosition(412, 250);
+    replayButton.setFillColor(sf::Color(100, 200, 100));
+
+    sf::Text replayText("Rejouer", font, 20);
+    replayText.setFillColor(sf::Color::White);
+    
+    sf::FloatRect replayTextBounds = replayText.getLocalBounds();
+    replayText.setOrigin(replayTextBounds.left + replayTextBounds.width / 2.0f, replayTextBounds.top + replayTextBounds.height / 2.0f);
+    replayText.setPosition(replayButton.getPosition().x + replayButton.getSize().x / 2.0f, replayButton.getPosition().y + replayButton.getSize().y / 2.0f);
+
+    // Bouton "Quitter"
+    sf::RectangleShape quitButton(sf::Vector2f(200, 50));
+    quitButton.setPosition(412, 350);
+    quitButton.setFillColor(sf::Color(200, 100, 100));
+
+    sf::Text quitText("Quitter", font, 20);
+    quitText.setFillColor(sf::Color::White);
+    sf::FloatRect quitTextBounds = quitText.getLocalBounds();
+    quitText.setOrigin(quitTextBounds.left + quitTextBounds.width / 2.0f, quitTextBounds.top + quitTextBounds.height / 2.0f);
+    quitText.setPosition(quitButton.getPosition().x + quitButton.getSize().x / 2.0f, quitButton.getPosition().y + quitButton.getSize().y / 2.0f);
+
+    while (endGameWindow.isOpen()) {
+        sf::Event event;
+        window->close();
+        while (endGameWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                endGameWindow.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                sf::Vector2f mousePos = endGameWindow.mapPixelToCoords(sf::Mouse::getPosition(endGameWindow));
+
+                if (replayButton.getGlobalBounds().contains(mousePos)) {
+                    
+                    endGameWindow.close();
+                    showMainMenu();  // Retour au menu principal
+                }
+
+                if (quitButton.getGlobalBounds().contains(mousePos)) {
+                    endGameWindow.close();
+                    exit(0);  // Quitte totalement le jeu
+                }
+            }
+        }
+
+        endGameWindow.clear();
+        endGameWindow.draw(background_spritefin);
+        endGameWindow.draw(winnerText);
+        endGameWindow.draw(replayButton);
+        endGameWindow.draw(replayText);
+        endGameWindow.draw(quitButton);
+        endGameWindow.draw(quitText);
+        endGameWindow.display();
     }
 }

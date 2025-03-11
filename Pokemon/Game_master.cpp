@@ -52,6 +52,7 @@ void GameMaster::initializeBattle() {
 
 void GameMaster::update(float deltaTime) {
     // State machine for battle flow
+    
     switch (currentState) {
         case BattleState::WAITING_FOR_INPUT:
             // Wait for player input, handled in handleInput
@@ -95,8 +96,9 @@ void GameMaster::update(float deltaTime) {
             break;
             
         case BattleState::GAME_OVER:
-            // Display game over message and winner
-            // Could add a reset option here
+            std::cout << "Game over! Team " << winningTeam << " wins!" << std::endl;
+            window->showEndGameMenu(winningTeam);
+            isGameOver=false;
             break;
             
         default:
