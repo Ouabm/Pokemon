@@ -7,7 +7,7 @@
 Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     pokemon2(Pokemondb.getPokemonByName("Dialga")),
     pokemon3(Pokemondb.getPokemonByName("Arceus")),
-    pokemon4(Pokemondb.getPokemonByName("Giratina")),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false),debut(false){
+    pokemon4(Pokemondb.getPokemonByName("Giratina")),debut(false),isAnimating(false),isFirstPokemonAttaking(false),isSecondPokemonAttaking(false),isThirdPokemonAttaking(false),isFourthPokemonAttaking(false){
     // Initialisation de la fenêtre
    
     
@@ -989,7 +989,7 @@ void Window::showPokemonSelection() {
         pokemonSprites[i].setScale(0.7f, 0.7f); // Ajuster la taille
     }
 
-    int selectedIndexJ1 = 0, selectedIndexJ2 = 0;
+    size_t selectedIndexJ1 = 0, selectedIndexJ2 = 0;
     bool j1Confirmed = false, j2Confirmed = false;
     std::vector<int> teamJ1, teamJ2;
 
