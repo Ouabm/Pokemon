@@ -5,7 +5,7 @@
 
 GameMaster::GameMaster(Window* win) : window(win), currentState(BattleState::WAITING_FOR_INPUT),
     selectedMoveIndex(-1), selectedTargetIndex(-1), team1TurnComplete(false),
-    team2TurnComplete(false), isGameOver(false), winningTeam(0) {
+    team2TurnComplete(false), isGameOver(false), winningTeam(0),team1hasattacked(false),team2hasattacked(false) {
     
     // Initialize RNG
     rng.seed(static_cast<unsigned int>(std::time(nullptr)));
@@ -44,6 +44,7 @@ void GameMaster::initializeBattle() {
         team1Pokemon[1]->getHpRestant()  / static_cast<float>(team1Pokemon[1]->getHp()),
         team2Pokemon[1]->getHpRestant()  / static_cast<float>(team2Pokemon[1]->getHp())
     );
+    window->updateMoveButtons();
     
     std::cout << "Battle initialized with Pokemon: " << std::endl;
     std::cout << "Team 1: " << team1Pokemon[0]->getName() << " and " << team1Pokemon[1]->getName() << std::endl;
@@ -99,6 +100,7 @@ void GameMaster::update(float deltaTime) {
             std::cout << "Game over! Team " << winningTeam << " wins!" << std::endl;
             window->showEndGameMenu(winningTeam);
             isGameOver=false;
+            reset();
             break;
             
         default:
@@ -111,6 +113,15 @@ void GameMaster::handleInput(sf::Event& event) {
     if (currentState != BattleState::WAITING_FOR_INPUT && 
         currentState != BattleState::MOVE_SELECTION &&
         currentState != BattleState::TARGET_SELECTION) {
+        return;
+    }
+    if (event.type == sf::Event::KeyPressed && event.key.code!=sf::Keyboard::Tab && event.key.code!=sf::Keyboard::Return && event.key.code!=sf::Keyboard::Escape && !team1TurnComplete) {
+        std::cout << "Attendez que le joueur 1 choisisse son action !" << std::endl;
+        return;
+    }
+    if ((event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left && team1TurnComplete) ||
+        (event.type == sf::Event::KeyPressed && team2TurnComplete)) {
+        std::cout << "Cette équipe a déjà terminé son tour." << std::endl;
         return;
     }
     
@@ -211,7 +222,12 @@ void GameMaster::handleInput(sf::Event& event) {
                 selectTarget(teamNumber, targetIndex);
                 confirmAction(teamNumber);
                 
+                
                 window->isTargetingMode = false;
+                window->isFirstPokemonAttaking = false;
+                window->isSecondPokemonAttaking = false;
+                window->isThirdPokemonAttaking = false;
+                window->isFourthPokemonAttaking = false;
                 currentState = BattleState::WAITING_FOR_INPUT;
                 
                 // Check if both teams have acted
@@ -238,14 +254,20 @@ void GameMaster::selectMove(int teamNumber, size_t moveIndex) {
     std::cout << "Team " << teamNumber << " selected move index " << moveIndex << std::endl;
     selectedMoveIndex = moveIndex;
     
-    // Determine which Pokémon is active for this team
-    Pokemon* activePokemon = nullptr;
+    // Vérifier si le Pokémon est K.O.
+   
+    
     if (teamNumber == 1) {
         activePokemon = team1Pokemon[window->activeTeam1Index];
     } else {
         activePokemon = team2Pokemon[window->activeTeam2Index];
     }
-    
+
+     if (activePokemon->getHpRestant() <= 0) {
+        std::cout << "Ce Pokémon est K.O. ! Sélectionne un autre Pokémon." << std::endl;
+        return;
+    }
+     
     // Debug info
     if (activePokemon) {
         std::vector<move> moves = activePokemon->getMoves();
@@ -255,32 +277,62 @@ void GameMaster::selectMove(int teamNumber, size_t moveIndex) {
             std::cout << "Error: Move index out of bounds" << std::endl;
         }
     }
+    
 }
 
 void GameMaster::selectTarget(int teamNumber, int targetIndex) {
+    
     std::cout << "Team " << teamNumber << " selected target index " << targetIndex << std::endl;
     selectedTargetIndex = targetIndex;
     
     // For now, Team 1 targets Team 2 and vice versa
-    Pokemon* targetPokemon = nullptr;
+   
     if (teamNumber == 1) {
-        targetPokemon = team1Pokemon[targetIndex];
+        targetPokemon = team2Pokemon[targetIndex];
         
     } 
     else {
-        targetPokemon = team2Pokemon[targetIndex];
+        targetPokemon = team1Pokemon[targetIndex];
         std::cout << "Team " << teamNumber<< std::endl;
+    }
+    if (targetPokemon->getHpRestant() <= 0) {
+        std::cout << "Ce Pokémon est K.O. ! Sélectionne un autre Pokémon." << std::endl;
+        return;
     }
     
     if (targetPokemon) {
         std::cout << "Selected target: " << targetPokemon->getName() << std::endl;
     }
+     // Vérifier si le Pokémon est K.O.
+    
 }
 
 void GameMaster::confirmAction(int teamNumber) {
+
+
+    if ((teamNumber == 1 && team1TurnComplete) || (teamNumber == 2 && team2TurnComplete)) {
+        std::cout << "Cette équipe a déjà confirmé une action ce tour." << std::endl;
+        return;
+    }
+    if (teamNumber == 2 && !team1TurnComplete) {
+        std::cout << "Attendez que le joueur 1 choisisse son action !" << std::endl;
+        return;
+    }
+
+    // Vérifier si l'équipe a déjà confirmé une action ce tour
+    if ((teamNumber == 1 && team1TurnComplete) || (teamNumber == 2 && team2TurnComplete)) {
+        std::cout << "Cette équipe a déjà confirmé une action ce tour." << std::endl;
+        return;
+    }
+
     // Get the active Pokémon for this team
-    Pokemon* activePokemon = nullptr;
-    Pokemon* targetPokemon = nullptr;
+
+    Pokemon* activePokemon = (teamNumber == 1) ? team1Pokemon[window->activeTeam1Index] 
+                                               : team2Pokemon[window->activeTeam2Index];
+    Pokemon* targetPokemon = (teamNumber == 1) ? team2Pokemon[selectedTargetIndex] 
+                                               : team1Pokemon[selectedTargetIndex];
+
+    
     int activeIndex = 0;
     
     if (teamNumber == 1) {
@@ -293,6 +345,10 @@ void GameMaster::confirmAction(int teamNumber) {
         activePokemon = team2Pokemon[activeIndex];
         targetPokemon = team1Pokemon[selectedTargetIndex];
         team2TurnComplete = true;
+    }
+    if (targetPokemon->getHpRestant() <= 0) {
+        std::cout << "Impossible d'attaquer " << targetPokemon->getName() << " car il est déjà K.O. !" << std::endl;
+        return;
     }
     
     if (activePokemon && targetPokemon) {
@@ -319,9 +375,13 @@ void GameMaster::executeTurn() {
         return;
     }
     
+
     // Get the next action
     TurnAction action = turnQueue.top();
     turnQueue.pop();
+    if(action.attacker->getHpRestant()<=0){
+        return;
+    }
     
     // Execute the move
     int damage = calculateDamage(action.attacker, action.target, action.selectedMove);
@@ -452,6 +512,7 @@ void GameMaster::checkGameOver() {
     } else if (checkTeamDefeated(2)) {
         isGameOver = true;
         winningTeam = 1;
+        
     }
 }
 
@@ -473,8 +534,10 @@ bool GameMaster::isActionReady(int teamNumber) const {
 }
 
 void GameMaster::reset() {
+    isGameOver=false;
     // Reset battle state
     currentState = BattleState::WAITING_FOR_INPUT;
+
     
     // Reset turn queue
     while (!turnQueue.empty()) {
@@ -497,6 +560,7 @@ void GameMaster::reset() {
     
     // Update health bars
     window->updateHealthBars(1.0f, 1.0f, 1.0f, 1.0f);
+    initializeBattle();
     
     std::cout << "Battle reset!" << std::endl;
 }

@@ -3,6 +3,7 @@
 #include "math.h"
 
 
+
 Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     pokemon2(Pokemondb.getPokemonByName("Dialga")),
     pokemon3(Pokemondb.getPokemonByName("Arceus")),
@@ -37,6 +38,7 @@ Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
       // Initialize attack effect
     attackAnimationTimer = 0.0f;
     attackFrame = 0;
+
 }
 
 
@@ -1228,7 +1230,6 @@ void Window::showEndGameMenu(int winningTeam) {
                 sf::Vector2f mousePos = endGameWindow.mapPixelToCoords(sf::Mouse::getPosition(endGameWindow));
 
                 if (replayButton.getGlobalBounds().contains(mousePos)) {
-                    
                     endGameWindow.close();
                     showMainMenu();  // Retour au menu principal
                 }

@@ -72,7 +72,10 @@ private:
     // Game over flag
     bool isGameOver;
     int winningTeam; // 0 = no winner yet, 1 = team1, 2 = team2
-
+    Pokemon* targetPokemon = nullptr;
+    Pokemon* activePokemon=nullptr;
+    bool team1hasattacked;
+    bool team2hasattacked;
 public:
     // Constructor
     GameMaster(Window* win);

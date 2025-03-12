@@ -11,6 +11,7 @@
 #include "Pokemon.hpp"
 #include "PokemonDB.hpp"
 
+
 class GameMaster;
 class Window {
     friend class GameMaster;
@@ -109,9 +110,12 @@ class Window {
     bool attackChosen = false;
     size_t selectedAttackIndex ;
     Pokemon* selectedAttackingPokemon;
+   
     
     public :
+    
     sf::RenderWindow* window;
+   
     bool debut=false;
     Window();
     virtual ~Window();
@@ -170,7 +174,7 @@ class Window {
     Pokemondb.getPokemonByName("Reshiram"),
     Pokemondb.getPokemonByName("Zekrom"),
     Pokemondb.getPokemonByName("Mewtwo"),
-    Pokemondb.getPokemonByName("Blastoise"),
+    Pokemondb.getPokemonByName("Dialga"),
     Pokemondb.getPokemonByName("Rayquaza"),
     Pokemondb.getPokemonByName("Giratina"),
     Pokemondb.getPokemonByName("Arceus"),
