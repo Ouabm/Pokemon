@@ -29,7 +29,9 @@ PokemonDB::PokemonDB() {
 
 
 }
-
+PokemonDB::~PokemonDB(){
+    
+}
 Pokemon PokemonDB::getPokemonByName(const std::string& name) const {
     auto it = pokemonList.find(name);
     if (it != pokemonList.end()) {

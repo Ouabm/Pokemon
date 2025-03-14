@@ -3,6 +3,7 @@
 int main() {
     // Créer la fenêtre du menu
     Window window;
+   
     window.showMainMenu();  // Afficher le menu principal
     
     // Attendre que le joueur sélectionne ses Pokémon

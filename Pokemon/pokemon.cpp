@@ -59,7 +59,7 @@ void Pokemon::initializeMoves() {
     else if (nom == "Reshiram") {
         spes.push_back(move("Blue Flare", 130, 85, "Fire", "attacks/Sacred-Fire.png"));
         spes.push_back(move("Dragon Claw", 85, 100, "Dragon", "attacks/Dragon-Claw.png"));
-        spes.push_back(move("Fusion Flare", 100, 100, "Fire", "attacks/Fire-Punch.png"));
+        spes.push_back(move("Fusion Flare", 100, 100, "Fire", "attacks/Fire-Blast.png"));
         spes.push_back(move("Srone Edge", 100, 80, "Rock", "attacks/Ancient-Power.png"));
     }
     // Zekrom
@@ -87,12 +87,12 @@ void Pokemon::initializeMoves() {
     else if (nom == "Zapdos") {
         spes.push_back(move("Thunderbolt", 90, 100, "Electric", "attacks/Flash-Cannon.png"));
         spes.push_back(move("Drill Peck", 80, 100, "Flying", "attacks/Iron-Head.png"));
-        spes.push_back(move("Heat Wave", 95, 90, "Fire", "attacks/Fire-Punch.png"));
+        spes.push_back(move("Heat Wave", 95, 90, "Fire", "attacks/Blast-Burn.png"));
         spes.push_back(move("Roost", 0, 100, "Flying", "attacks/Iron-Head.png"));
     }
     // Moltres
     else if (nom == "Moltres") {
-        spes.push_back(move("Fire Blast", 110, 85, "Fire", "attacks/Fire-Punch.png"));
+        spes.push_back(move("Fire Blast", 110, 85, "Fire", "attacks/Fire-Blast.png"));
         spes.push_back(move("Air Slash", 75, 95, "Flying", "attacks/Iron-Head.png"));
         spes.push_back(move("Solar Beam", 120, 100, "Grass", "attacks/Cut.png"));
         spes.push_back(move("Roost", 0, 100, "Flying", "attacks/Iron-Head.png"));

@@ -16,7 +16,9 @@ class GameMaster;
 class Window {
     friend class GameMaster;
     private:
-    
+     //Music 
+    sf::Music music_Arrière_plan;
+    sf::Music music;
     
     PokemonDB Pokemondb;
     sf::Texture pokemon1_texture , pokemon2_texture , Arene_texture;
@@ -153,7 +155,8 @@ class Window {
     void cycleTargets(bool isTeam1);
     Pokemon* getCurrentTarget(bool isTeam1);
     void showPokemonSelection();
-
+    void init_music();
+    void playMusic(const std::string& filename);
    // These are needed for the GameMaster to access
     bool isAnimating;
     bool isFirstPokemonAttaking;

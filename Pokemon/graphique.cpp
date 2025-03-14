@@ -17,6 +17,7 @@ Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
     isDamageAnimating = false;
     damageAnimationDuration = 0.01f;
     
+    
     // Initialisation des éléments de l'interface graphique
     this->init_pokemon_positon();
     
@@ -44,6 +45,24 @@ Window::Window(): pokemon1(Pokemondb.getPokemonByName("Palkia")),
 
 Window::~Window() {
     delete this->window; // Libération de la mémoire de la fenêtre
+}
+
+void Window::playMusic(const std::string& filename) {
+    if (music.getStatus() == sf::Music::Playing) {
+        music.stop();  // Arrêter la musique actuelle avant de changer
+    }
+
+    if (!music.openFromFile(filename)) {
+        std::cerr << "Erreur : Impossible de charger la musique " << filename << std::endl;
+        return;
+    }
+
+    music.setLoop(true);
+    music.setVolume(50);
+    music.play();
+}
+void Window::init_music(){
+   playMusic("audio/Music.ogg");
 }
 
 void Window::init() {
@@ -964,7 +983,7 @@ void Window::updateMoveButtons() {
 }
 void Window::showPokemonSelection() {
     sf::RenderWindow selectionWindow(sf::VideoMode(1024, 700), "Sélection des Pokémon");
-
+    playMusic("audio/selection.ogg");
     // Charger l'image de fond
     sf::Texture background;
     if (!background.loadFromFile("images/selection_background.jpg")) {
@@ -1036,6 +1055,7 @@ void Window::showPokemonSelection() {
                     this->pokemon4 = allPokemon[teamJ2[1]];
                    
                     selectionWindow.close();
+                    init_music();
                     this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
                     this->debut=true;
                 }
@@ -1098,7 +1118,7 @@ void Window::showPokemonSelection() {
 }
 void Window::showMainMenu() {
     sf::RenderWindow menuWindow(sf::VideoMode(1024, 640), "Menu Principal");
-
+    playMusic("audio/Title.ogg");
     // Charger la police
     if (!font.loadFromFile("font/prstartk.ttf")) {
         std::cerr << "Erreur de chargement de la police !" << std::endl;

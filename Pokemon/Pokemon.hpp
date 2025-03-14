@@ -23,7 +23,7 @@ private:
     sf::Sprite pokemon_sprite_front;
 
 public:
-    // sConstructeur par défaut (permet d'initialiser un Pokémon vide)
+    // Constructeur par défaut (permet d'initialiser un Pokémon vide)
     Pokemon() : nom(""), type(""), hp(0), hprestant(0), atk(0), def(0), vit(0) {}
 
     // Constructeur avec paramètres (CORRIGÉ)
