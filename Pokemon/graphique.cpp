@@ -863,42 +863,6 @@ Pokemon* Window::getCurrentTarget(bool isTeam1) {
     }
 }
 
-// void Window::confirmTargetAndAttack() {
-//     // Set the appropriate attack flag based on which Pokemon is attacking
-//     if (selectedAttackingPokemon == &pokemon1) {
-//         isFirstPokemonAttaking = true;
-//     } else if (selectedAttackingPokemon == &pokemon2) {
-//         isSecondPokemonAttaking = true;
-//     } else if (selectedAttackingPokemon == &pokemon3) {
-//         isThirdPokemonAttaking = true;
-//     } else if (selectedAttackingPokemon == &pokemon4) {
-//         isFourthPokemonAttaking = true;
-//     }
-    
-//     // Start the attack animation
-//     animateAttack(isFirstPokemonAttaking || isThirdPokemonAttaking);
-//     animateAttack(isSecondPokemonAttaking || isFourthPokemonAttaking);
-    
-//     // Get the appropriate moves vector
-//     std::vector<move> moves;
-//     if (selectedAttackingPokemon == &pokemon1) {
-//         moves = pokemon1.getMoves();
-//     } else if (selectedAttackingPokemon == &pokemon2) {
-//         moves = pokemon2.getMoves();
-//     } else if (selectedAttackingPokemon == &pokemon3) {
-//         moves = pokemon3.getMoves();
-//     } else if (selectedAttackingPokemon == &pokemon4) {
-//         moves = pokemon4.getMoves();
-//     }
-    
-//     // Set the attack effect sprite
-//     if (selectedAttackIndex < moves.size()) {
-//         setAttackEffectSprite(moves[selectedAttackIndex].getmovepath());
-//     }
-    
-//     // Exit targeting mode
-//     isTargetingMode = false;
-// }
 void Window::renderTargetIndicator() {
     if (!isTargetingMode) return;
     
@@ -1019,6 +983,9 @@ void Window::showPokemonSelection() {
                 selectionWindow.close();
 
             if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Escape) {  
+                    selectionWindow.close();
+                }
                 // Sélection du Joueur 1
                 if (!j1Confirmed) {
                     if (event.key.code == sf::Keyboard::Left)
@@ -1035,7 +1002,7 @@ void Window::showPokemonSelection() {
                 
                 // Sélection du Joueur 2
                 else if (!j2Confirmed) {
-                    if (event.key.code == sf::Keyboard::A)
+                    if (event.key.code == sf::Keyboard::Q)
                         selectedIndexJ2 = (selectedIndexJ2 - 1 + allPokemon.size()) % allPokemon.size();
                     if (event.key.code == sf::Keyboard::D)
                         selectedIndexJ2 = (selectedIndexJ2 + 1) % allPokemon.size();
