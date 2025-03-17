@@ -5,15 +5,15 @@
 #include <map>
 #include "Pokemon.hpp"
 
-class PokemonDB : public Pokemon {
+class PokemonDB {
 private:
-    std::map<std::string, Pokemon> pokemonList;  // Stocker les Pokémon avec leur nom comme clé
+    std::map<std::string, Pokemon*> pokemonList;  // Stocker les Pokémon avec leur nom comme clé
 
 public:
     PokemonDB();  // Constructeur qui charge les données
     virtual ~PokemonDB();
 
-    Pokemon getPokemonByName(const std::string& name) const;
+    Pokemon* getPokemonByName(const std::string& name) const;
     std::vector<std::string> getAllPokemonNames() const;
 };
 

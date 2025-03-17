@@ -9,7 +9,7 @@
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
 #include "Pokemon.hpp"
-#include "PokemonDB.hpp"
+#include "PokemonDB.hpp" 
 
 
 class GameMaster;
@@ -50,10 +50,10 @@ class Window {
     //move spe;
     void init_pokemon_positon();
     //void updatePokemoninfo(Joueur& J1, Joueur& J2);
-    Pokemon pokemon1;
-    Pokemon pokemon2;
-    Pokemon pokemon3;
-    Pokemon pokemon4;
+    Pokemon* pokemon1;
+    Pokemon* pokemon2;
+    Pokemon* pokemon3;
+    Pokemon* pokemon4;
     Pokemon* attacker;
     Pokemon* defender;
 
@@ -152,6 +152,7 @@ class Window {
       // Methods for targeting
     void setupTargetingSystem();
     void renderTargetIndicator();
+    void updatePokemonSprites();
     void cycleTargets(bool isTeam1);
     Pokemon* getCurrentTarget(bool isTeam1);
     void showPokemonSelection();
@@ -170,7 +171,7 @@ class Window {
     int activeTeam2Index;                    // Current active Pokemon for team 2 (0 or 1)
 
 
-    std::vector<Pokemon> allPokemon = {
+    std::vector<Pokemon*> allPokemon = {
     Pokemondb.getPokemonByName("Pikachu"),
     Pokemondb.getPokemonByName("Charizard"),
     Pokemondb.getPokemonByName("Lugia"),

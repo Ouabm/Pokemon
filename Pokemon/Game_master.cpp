@@ -10,15 +10,17 @@ GameMaster::GameMaster(Window* win) : window(win), currentState(BattleState::WAI
     // Initialize RNG
     rng.seed(static_cast<unsigned int>(std::time(nullptr)));
     
-    // Initialize the Pokémon pointers
-    team1Pokemon[0] = &win->pokemon1;
-    team1Pokemon[1] = &win->pokemon3;
-    team2Pokemon[0] = &win->pokemon2;
-    team2Pokemon[1] = &win->pokemon4;
     
+    updatePokemonPointers(win);
     initializeBattle();
 }
-
+void GameMaster::updatePokemonPointers(Window* win) {
+    // Mettre à jour les pointeurs des Pokémon
+    team1Pokemon[0] = win->pokemon1;
+    team1Pokemon[1] = win->pokemon3;
+    team2Pokemon[0] = win->pokemon2;
+    team2Pokemon[1] = win->pokemon4;
+}
 void GameMaster::initializeBattle() {
     // Set initial state
     currentState = BattleState::WAITING_FOR_INPUT;
@@ -100,6 +102,9 @@ void GameMaster::update(float deltaTime) {
             std::cout << "Game over! Team " << winningTeam << " wins!" << std::endl;
             window->showEndGameMenu(winningTeam);
             isGameOver=false;
+            
+            
+
             reset();
             break;
             
@@ -270,9 +275,9 @@ void GameMaster::selectMove(int teamNumber, size_t moveIndex) {
      
     // Debug info
     if (activePokemon) {
-        std::vector<move> moves = activePokemon->getMoves();
+        std::vector<move*> moves = activePokemon->getMoves();
         if (moveIndex < moves.size()) {
-            std::cout << "Selected move: " << moves[moveIndex].getmovename() << std::endl;
+            std::cout << "Selected move: " << moves[moveIndex]->getmovename() << std::endl;
         } else {
             std::cout << "Error: Move index out of bounds" << std::endl;
         }
@@ -353,16 +358,16 @@ void GameMaster::confirmAction(int teamNumber) {
     
     if (activePokemon && targetPokemon) {
         // Get the selected move
-        std::vector<move> moves = activePokemon->getMoves();
+        std::vector<move*> moves = activePokemon->getMoves();
         if (selectedMoveIndex < moves.size()) {
-            move selectedMove = moves[selectedMoveIndex];
+            move* selectedMove = moves[selectedMoveIndex];
             
             // Create a turn action and add it to the queue
             int priority = 0; // Could be derived from move properties
             turnQueue.push(TurnAction(activePokemon, targetPokemon, selectedMove, priority));
             
             std::cout << "Action confirmed: " << activePokemon->getName() 
-                      << " will use " << selectedMove.getmovename() 
+                      << " will use " << selectedMove->getmovename() 
                       << " on " << targetPokemon->getName() << std::endl;
         }
     }
@@ -391,7 +396,7 @@ void GameMaster::executeTurn() {
     int newHP = std::max(0, currentHP - damage);
     action.target->setHpRestant(newHP);
     
-    std::cout << action.attacker->getName() << " used " << action.selectedMove.getmovename() 
+    std::cout << action.attacker->getName() << " used " << action.selectedMove->getmovename() 
               << " on " << action.target->getName() << " for " << damage << " damage!" << std::endl;
     
     // Update health bars
@@ -418,17 +423,17 @@ void GameMaster::executeTurn() {
     }
     
     // Start the attack animation and set the attack effect sprite
-    window->setAttackEffectSprite(action.selectedMove.getmovepath());
+    window->setAttackEffectSprite(action.selectedMove->getmovepath());
     window->animateAttack(window->isFirstPokemonAttaking || window->isThirdPokemonAttaking);
     currentState = BattleState::ANIMATION_PLAYING;
 }
 
-int GameMaster::calculateDamage(Pokemon* attacker, Pokemon* defender,  move& selectedMove) {
+int GameMaster::calculateDamage(Pokemon* attacker, Pokemon* defender,  move* selectedMove) {
     // Basic formula: damage = ((2 * level / 5 + 2) * power * attack / defense) / 50 + 2
     // Simplified for this implementation
     
     // Get base damage from move
-    int power = selectedMove.getmovepower();
+    int power = selectedMove->getmovepower();
     
     // Get attacker's attack stat
     int attackStat = attacker->getAtk();
@@ -441,7 +446,7 @@ int GameMaster::calculateDamage(Pokemon* attacker, Pokemon* defender,  move& sel
     float baseDamage = ((2 * level / 5 + 2) * power * attackStat / defenseStat) / 50 + 2;
     
     // Apply type effectiveness multiplier
-    float typeEffectiveness = calculateTypeEffectiveness(selectedMove.getmovetype(), defender->getType());
+    float typeEffectiveness = calculateTypeEffectiveness(selectedMove->getmovetype(), defender->getType());
     
     // Apply random factor (85-100%)
     std::uniform_int_distribution<int> dist(85, 100);
@@ -449,7 +454,7 @@ int GameMaster::calculateDamage(Pokemon* attacker, Pokemon* defender,  move& sel
     
     // Same Type Attack Bonus (STAB)
     float stab = 1.0f;
-    if (selectedMove.getmovetype() == attacker->getType()) {
+    if (selectedMove->getmovetype() == attacker->getType()) {
         stab = 1.5f;
     }
     
@@ -534,33 +539,51 @@ bool GameMaster::isActionReady(int teamNumber) const {
 }
 
 void GameMaster::reset() {
-    isGameOver=false;
+    isGameOver = false;
+
     // Reset battle state
     currentState = BattleState::WAITING_FOR_INPUT;
 
-    
     // Reset turn queue
     while (!turnQueue.empty()) {
         turnQueue.pop();
     }
-    
+
     // Reset turn flags
     team1TurnComplete = false;
     team2TurnComplete = false;
-    
+
     // Reset game over flags
     isGameOver = false;
     winningTeam = 0;
-    
+
     // Reset Pokémon HP
+    PokemonDB db;
     for (int i = 0; i < 2; i++) {
-        team1Pokemon[i]->setHpRestant(team1Pokemon[i]->getHp());
-        team2Pokemon[i]->setHpRestant(team2Pokemon[i]->getHp());
+    team1Pokemon[i]->setHpRestant(team1Pokemon[i]->getHp());
+    team2Pokemon[i]->setHpRestant(team2Pokemon[i]->getHp());
+
+    // Réinitialiser les attaques de chaque Pokémon
+    team1Pokemon[i]->resetMoves();
+    team2Pokemon[i]->resetMoves();
+
+    // Ajouter à nouveau les attaques depuis PokemonDB
+    PokemonDB db;
+    Pokemon* newPokemon1 = db.getPokemonByName(team1Pokemon[i]->getName());
+    Pokemon* newPokemon2 = db.getPokemonByName(team2Pokemon[i]->getName());
+
+    if (newPokemon1 && newPokemon2) {
+        *team1Pokemon[i] = *newPokemon1;
+        *team2Pokemon[i] = *newPokemon2;
     }
-    
-    // Update health bars
+    }
+
+    // Met à jour les barres de vie
     window->updateHealthBars(1.0f, 1.0f, 1.0f, 1.0f);
+
+    // Réinitialise le combat
     initializeBattle();
-    
+
     std::cout << "Battle reset!" << std::endl;
+
 }

@@ -25,11 +25,11 @@ enum class BattleState {
 struct TurnAction {
     Pokemon* attacker;
     Pokemon* target;
-    move selectedMove;
+    move* selectedMove;
     int priority; // For priority moves
     
     // Constructor
-    TurnAction(Pokemon* atk, Pokemon* tgt, move mv, int pri = 0) 
+    TurnAction(Pokemon* atk, Pokemon* tgt, move* mv, int pri = 0) 
         : attacker(atk), target(tgt), selectedMove(mv), priority(pri) {}
         
     // Comparison operator for priority queue
@@ -79,6 +79,7 @@ private:
 public:
     // Constructor
     GameMaster(Window* win);
+    void updatePokemonPointers(Window* win);
     
     // Initialization methods
     void initializeBattle();
@@ -94,7 +95,7 @@ public:
     void executeTurn();
     
     // Damage calculation
-    int calculateDamage(Pokemon* attacker, Pokemon* defender,  move& selectedMove);
+    int calculateDamage(Pokemon* attacker, Pokemon* defender,  move* selectedMove);
     float calculateTypeEffectiveness(const std::string& moveType, const std::string& defenderType);
     
     // Check battle conditions
