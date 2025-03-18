@@ -1,4 +1,12 @@
 #include "Pokemon.hpp"
+
+Pokemon::~Pokemon(){
+    for(move* m :spes){
+        delete m;
+
+    }
+    spes.clear();
+}
 void Pokemon::resetMoves()
 {
     for (auto m : spes)

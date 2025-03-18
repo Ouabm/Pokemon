@@ -44,7 +44,7 @@ public:
 
 
     virtual void initializeMoves() = 0;  // Fonction virtuelle pure pour l'héritage
-    virtual ~Pokemon() {}
+    virtual ~Pokemon();
     void resetMoves();  
     sf::Texture frontTexture;
     std::vector<move*> spes;
