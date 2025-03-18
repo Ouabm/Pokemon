@@ -3,107 +3,72 @@
 #include "PokemonDB.hpp"
 
 class GameMaster;
+
 class Window
 {
   friend class GameMaster;
 
 private:
-  // Music
+  // --- Musique ---
   sf::Music music_Arriere_plan;
   sf::Music music;
 
+  // --- Pokémon et DB ---
   PokemonDB Pokemondb;
+  Pokemon *pokemon1, *pokemon2, *pokemon3, *pokemon4;
+  Pokemon *active, *attacker, *defender;
+
+  // --- Interface utilisateur ---
   sf::Texture pokemon1_texture, pokemon2_texture, Arene_texture;
-  sf::Sprite pokemon1_sprite;
-  sf::Sprite pokemon2_sprite;
-  sf::Sprite pokemon3_sprite;
-  sf::Sprite pokemon4_sprite;
   sf::Sprite Arene_sprite;
   sf::Font font;
-  sf::RectangleShape infoJ1;
-  sf::RectangleShape infoJ2;
+  sf::RectangleShape infoJ1, infoJ2;
   sf::RectangleShape moveButtons[8];
   sf::Text moveButtonTexts[8];
-  Pokemon *active;
-  sf::Texture attackEffectTexture1;
-  sf::Sprite attackEffectSprite1;
-  sf::Texture attackEffectTexture2;
-  sf::Sprite attackEffectSprite2;
-  sf::Sprite attackEffectSprite3;
-  sf::Texture attackEffectTexture3;
-  sf::Sprite attackEffectSprite4;
-  sf::Texture attackEffectTexture4;
+  sf::RectangleShape healthBar[4];
+  sf::RectangleShape healthBarBackground[4];
+  sf::RectangleShape healthbg[2];
+  sf::Text healthText[4];
+  sf::RectangleShape switchButtons, switchButtons2;
+  sf::Text switchButtonTexts, switchButtonTexts2;
 
+  // --- Animation ---
   int attackFrame;
   float attackAnimationTimer;
   sf::Clock attackAnimClock;
   sf::Vector2f attackPosition;
-
-  // move spe;
-  void init_pokemon_positon();
-  // void updatePokemoninfo(Joueur& J1, Joueur& J2);
-  Pokemon *pokemon1;
-  Pokemon *pokemon2;
-  Pokemon *pokemon3;
-  Pokemon *pokemon4;
-  Pokemon *attacker;
-  Pokemon *defender;
-
-  // Animation states
-
   float animationProgress;
   sf::Clock animationClock;
-
-  // Attack animation properties
-  sf::Vector2f originalPos1;
-  sf::Vector2f originalPos2;
-  sf::Vector2f originalPos3;
-  sf::Vector2f originalPos4;
-
-  // Health bar properties
-  sf::RectangleShape healthBar1;
-  sf::RectangleShape healthBar2;
-  sf::RectangleShape healthBar3;
-  sf::RectangleShape healthBar4;
-  sf::RectangleShape healthBarBackground1;
-  sf::RectangleShape healthBarBackground2;
-  sf::RectangleShape healthBarBackground3;
-  sf::RectangleShape healthBarBackground4;
-  sf::RectangleShape healthbg1;
-  sf::RectangleShape healthbg2;
-  sf::Text healthText1;
-  sf::Text healthText2;
-  sf::Text healthText3;
-  sf::Text healthText4;
-
-  // Switch
-  sf::RectangleShape switchButtons;  // Buttons to switch Pokemon
-  sf::Text switchButtonTexts;        // Text for switch buttons
-  sf::RectangleShape switchButtons2; // Buttons to switch Pokemon
-  sf::Text switchButtonTexts2;       // Text for switch buttons
-  bool isSwapping;                   // Animation state for switching
-  float swapProgress;                // Progress of swap animation
-  sf::Vector2f originalPosTeam1[2];  // Original positions for team 1 Pokemon
-  sf::Vector2f originalPosTeam2[2];
-  bool animationFinished;
-  int currentFrame;
-  bool active1;
-  bool active2;
-  sf::Texture backgroundm;
-  sf::Sprite background_spritem;
-  sf::Texture backgroundfin;
-  sf::Sprite background_spritefin;
-
-  sf::Clock damageEffectClock;
+  sf::Vector2f originalPos[4];
   bool isDamageAnimating;
   float damageAnimationDuration;
+  sf::Clock damageEffectClock;
 
-  // Add to private section of Window class in Graphique.hpp
+  // --- Switching Pokémon ---
+  bool isSwapping;
+  float swapProgress;
+  bool animationFinished;
+  int currentFrame;
+  bool active1, active2;
+  sf::Vector2f originalPosTeam1[2], originalPosTeam2[2];
 
+  // --- Backgrounds ---
+  sf::Texture backgroundm, backgroundfin;
+  sf::Sprite background_spritem, background_spritefin;
+
+  // --- Ciblage et Attaque ---
   sf::CircleShape targetIndicator;
   bool attackChosen = false;
   size_t selectedAttackIndex;
   Pokemon *selectedAttackingPokemon;
+
+  // A voir
+  sf::Texture attackEffectTexture[4];
+  sf::Sprite attackEffectSprite[4];
+  sf::Sprite pokemonSprite[4];
+
+  // move spe;
+  void init_pokemon_positon();
 
 public:
   sf::RenderWindow *window;

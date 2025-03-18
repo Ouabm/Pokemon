@@ -76,38 +76,32 @@ void Window::init_pokemon_positon()
 
     // Création des objets Pokémon avec le constructeur
     // Appliquer la texture aux sprites
-    pokemon1_sprite.setTexture(pokemon1->getTextureback()); // Pokémon 1 (Gauche)
-    pokemon2_sprite.setTexture(pokemon2->getTexturefront());
-    pokemon3_sprite.setTexture(pokemon3->getTextureback());
-    pokemon4_sprite.setTexture(pokemon4->getTexturefront()); // Pokémon 2 (Droite)
+    pokemonSprite[0].setTexture(pokemon1->getTextureback()); // Pokémon 1 (Gauche)
+    pokemonSprite[1].setTexture(pokemon2->getTexturefront());
+    pokemonSprite[2].setTexture(pokemon3->getTextureback());
+    pokemonSprite[3].setTexture(pokemon4->getTexturefront()); // Pokémon 2 (Droite)
 
-    pokemon1_sprite.setPosition(20, 290);  // Position du Pokémon 1 (Gauche)
-    pokemon2_sprite.setPosition(600, 150); // Position du Pokémon 2 (Droite)
-    pokemon3_sprite.setPosition(300, 290);
-    pokemon4_sprite.setPosition(750, 150);
+    pokemonSprite[0].setPosition(20, 290);  // Position du Pokémon 1 (Gauche)
+    pokemonSprite[1].setPosition(600, 150); // Position du Pokémon 2 (Droite)
+    pokemonSprite[2].setPosition(300, 290);
+    pokemonSprite[3].setPosition(750, 150);
 }
 
 void Window::setupUI()
 {
-    infoJ1.setSize(sf::Vector2f(300, 100));
-    infoJ1.setPosition(50, 350);
-    infoJ1.setFillColor(sf::Color(255, 255, 255, 200));
+   
 
-    infoJ2.setSize(sf::Vector2f(300, 100));
-    infoJ2.setPosition(700, 500);
-    infoJ2.setFillColor(sf::Color(255, 255, 255, 200));
+    healthbg[0].setSize(sf::Vector2f(300, 90));
+    healthbg[0].setPosition(10, 10);
+    healthbg[0].setFillColor(sf::Color(100, 100, 100));
+    healthbg[0].setOutlineThickness(5);
+    healthbg[0].setOutlineColor(sf::Color::Black);
 
-    healthbg1.setSize(sf::Vector2f(300, 90));
-    healthbg1.setPosition(10, 10);
-    healthbg1.setFillColor(sf::Color(100, 100, 100));
-    healthbg1.setOutlineThickness(5);
-    healthbg1.setOutlineColor(sf::Color::Black);
-
-    healthbg2.setSize(sf::Vector2f(300, 90));
-    healthbg2.setPosition(610, 450);
-    healthbg2.setFillColor(sf::Color(100, 100, 100));
-    healthbg2.setOutlineThickness(5);
-    healthbg2.setOutlineColor(sf::Color::Black);
+    healthbg[1].setSize(sf::Vector2f(300, 90));
+    healthbg[1].setPosition(610, 450);
+    healthbg[1].setFillColor(sf::Color(100, 100, 100));
+    healthbg[1].setOutlineThickness(5);
+    healthbg[1].setOutlineColor(sf::Color::Black);
 
     // Pokemon1
 
@@ -150,85 +144,85 @@ void Window::setupUI()
 void Window::initializeHealthBars()
 {
     // Setup health bar backgrounds
-    healthBarBackground1.setSize(sf::Vector2f(200, 10));
-    healthBarBackground1.setPosition(50, 20);
-    healthBarBackground1.setFillColor(sf::Color(100, 100, 100));
+    healthBarBackground[0].setSize(sf::Vector2f(200, 10));
+    healthBarBackground[0].setPosition(50, 20);
+    healthBarBackground[0].setFillColor(sf::Color(100, 100, 100));
 
-    healthBarBackground2.setSize(sf::Vector2f(200, 20));
-    healthBarBackground2.setPosition(700, 450);
-    healthBarBackground2.setFillColor(sf::Color(100, 100, 100));
+    healthBarBackground[1].setSize(sf::Vector2f(200, 20));
+    healthBarBackground[1].setPosition(700, 450);
+    healthBarBackground[1].setFillColor(sf::Color(100, 100, 100));
 
-    healthBarBackground3.setSize(sf::Vector2f(200, 20));
-    healthBarBackground3.setPosition(50, 50);
-    healthBarBackground3.setFillColor(sf::Color(100, 100, 100));
+    healthBarBackground[2].setSize(sf::Vector2f(200, 20));
+    healthBarBackground[2].setPosition(50, 50);
+    healthBarBackground[2].setFillColor(sf::Color(100, 100, 100));
 
-    healthBarBackground4.setSize(sf::Vector2f(200, 20));
-    healthBarBackground4.setPosition(700, 480);
-    healthBarBackground4.setFillColor(sf::Color(100, 100, 100));
+    healthBarBackground[3].setSize(sf::Vector2f(200, 20));
+    healthBarBackground[3].setPosition(700, 480);
+    healthBarBackground[3].setFillColor(sf::Color(100, 100, 100));
 
     // Setup health bars
-    healthBar1.setSize(sf::Vector2f(200, 10));
-    healthBar1.setPosition(100, 30);
-    healthBar1.setFillColor(sf::Color::Green);
-    healthBar1.setOutlineThickness(2);
+    healthBar[0].setSize(sf::Vector2f(200, 10));
+    healthBar[0].setPosition(100, 30);
+    healthBar[0].setFillColor(sf::Color::Green);
+    healthBar[0].setOutlineThickness(2);
 
-    healthBar2.setSize(sf::Vector2f(200, 10));
-    healthBar2.setPosition(700, 470);
-    healthBar2.setFillColor(sf::Color::Green);
-    healthBar2.setOutlineThickness(2);
+    healthBar[1].setSize(sf::Vector2f(200, 10));
+    healthBar[1].setPosition(700, 470);
+    healthBar[1].setFillColor(sf::Color::Green);
+    healthBar[1].setOutlineThickness(2);
 
-    healthBar3.setSize(sf::Vector2f(200, 5));
-    healthBar3.setPosition(100, 60);
-    healthBar3.setFillColor(sf::Color::Green);
-    healthBar3.setOutlineThickness(2);
+    healthBar[2].setSize(sf::Vector2f(200, 5));
+    healthBar[2].setPosition(100, 60);
+    healthBar[2].setFillColor(sf::Color::Green);
+    healthBar[2].setOutlineThickness(2);
 
-    healthBar4.setSize(sf::Vector2f(200, 5));
-    healthBar4.setPosition(700, 500);
-    healthBar4.setFillColor(sf::Color::Green);
-    healthBar4.setOutlineThickness(2);
+    healthBar[3].setSize(sf::Vector2f(200, 5));
+    healthBar[3].setPosition(700, 500);
+    healthBar[3].setFillColor(sf::Color::Green);
+    healthBar[3].setOutlineThickness(2);
 
     // Store original positions for animations
-    originalPos1 = pokemon1_sprite.getPosition();
-    originalPos2 = pokemon2_sprite.getPosition();
-    originalPos3 = pokemon3_sprite.getPosition();
-    originalPos4 = pokemon4_sprite.getPosition();
+    originalPos[0] = pokemonSprite[0].getPosition();
+    originalPos[1] = pokemonSprite[1].getPosition();
+    originalPos[2] = pokemonSprite[2].getPosition();
+    originalPos[3] = pokemonSprite[3].getPosition();
 }
 
 void Window::updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage)
 {
-    healthBar1.setSize(sf::Vector2f(200 * health1Percentage, 20));
-    healthBar2.setSize(sf::Vector2f(200 * health2Percentage, 20));
-    healthBar3.setSize(sf::Vector2f(200 * health3Percentage, 20));
-    healthBar4.setSize(sf::Vector2f(200 * health4Percentage, 20));
+    healthBar[0].setSize(sf::Vector2f(200 * health1Percentage, 20));
+    healthBar[1].setSize(sf::Vector2f(200 * health2Percentage, 20));
+    healthBar[2].setSize(sf::Vector2f(200 * health3Percentage, 20));
+    healthBar[3].setSize(sf::Vector2f(200 * health4Percentage, 20));
 
     // Change color based on health
     if (health1Percentage > 0.5f)
-        healthBar1.setFillColor(sf::Color::Green);
+        healthBar[0].setFillColor(sf::Color::Green);
     else if (health1Percentage > 0.2f)
-        healthBar1.setFillColor(sf::Color::Yellow);
+        healthBar[0].setFillColor(sf::Color::Yellow);
     else
-        healthBar1.setFillColor(sf::Color::Red);
+        healthBar[0].setFillColor(sf::Color::Red);
 
     if (health2Percentage > 0.5f)
-        healthBar2.setFillColor(sf::Color::Green);
+        healthBar[1].setFillColor(sf::Color::Green);
     else if (health2Percentage > 0.2f)
-        healthBar2.setFillColor(sf::Color::Yellow);
+        healthBar[1].setFillColor(sf::Color::Yellow);
     else
-        healthBar2.setFillColor(sf::Color::Red);
+        healthBar[1].setFillColor(sf::Color::Red);
 
     if (health3Percentage > 0.5f)
-        healthBar3.setFillColor(sf::Color::Green);
+        healthBar[2].setFillColor(sf::Color::Green);
     else if (health2Percentage > 0.2f)
-        healthBar3.setFillColor(sf::Color::Yellow);
+        healthBar[2].setFillColor(sf::Color::Yellow);
     else
-        healthBar3.setFillColor(sf::Color::Red);
+        healthBar[2].setFillColor(sf::Color::Red);
 
     if (health4Percentage > 0.5f)
-        healthBar4.setFillColor(sf::Color::Green);
+        healthBar[3].setFillColor(sf::Color::Green);
     else if (health4Percentage > 0.2f)
-        healthBar4.setFillColor(sf::Color::Yellow);
+        healthBar[3].setFillColor(sf::Color::Yellow);
     else
-        healthBar4.setFillColor(sf::Color::Red);
+        healthBar[3].setFillColor(sf::Color::Red);
 }
 
 void Window::animateAttack(bool isFirstPokemonAttacking)
@@ -257,8 +251,8 @@ void Window::updateAnimations()
 
         int columns = 2;
         int rows = 7;
-        int frameWidth = attackEffectTexture1.getSize().x / columns;
-        int frameHeight = attackEffectTexture1.getSize().y / rows;
+        int frameWidth = attackEffectTexture[0].getSize().x / columns;
+        int frameHeight = attackEffectTexture[0].getSize().y / rows;
         int numFrames = columns * rows - 1;
 
         if (currentFrame >= numFrames)
@@ -267,15 +261,15 @@ void Window::updateAnimations()
             isAnimating = false;
 
             // Reset Pokemon colors when attack animation ends
-            pokemon1_sprite.setColor(sf::Color::White);
-            pokemon2_sprite.setColor(sf::Color::White);
-            pokemon3_sprite.setColor(sf::Color::White);
-            pokemon4_sprite.setColor(sf::Color::White);
+            pokemonSprite[0].setColor(sf::Color::White);
+            pokemonSprite[1].setColor(sf::Color::White);
+            pokemonSprite[2].setColor(sf::Color::White);
+            pokemonSprite[3].setColor(sf::Color::White);
         }
 
         int x = (currentFrame % columns) * frameWidth;
         int y = (currentFrame / columns) * frameHeight;
-        attackEffectSprite1.setTextureRect(sf::IntRect(x, y, frameWidth + 10, frameHeight));
+        attackEffectSprite[0].setTextureRect(sf::IntRect(x, y, frameWidth + 10, frameHeight));
         std::cout << "  Frame mise à jour : " << currentFrame << "/" << numFrames
                   << " | Position : (" << x << ", " << y << ")" << std::endl;
     }
@@ -296,19 +290,19 @@ void Window::updateAnimations()
         // Set the target Pokemon red during the attack
         if (isFirstPokemonAttaking || isThirdPokemonAttaking)
         {
-            sf::Sprite &attackerSprite = isFirstPokemonAttaking ? pokemon1_sprite : pokemon3_sprite;
-            sf::Sprite &targetSprite = (currentTargetTeam1 == 0) ? pokemon2_sprite : pokemon4_sprite;
+            sf::Sprite &attackerSprite = isFirstPokemonAttaking ? pokemonSprite[0] : pokemonSprite[2];
+            sf::Sprite &targetSprite = (currentTargetTeam1 == 0) ? pokemonSprite[1] : pokemonSprite[3];
 
             // Attacker movement
             attackerSprite.setPosition(
-                (isFirstPokemonAttaking ? originalPos1 : originalPos3).x + xOffset,
-                (isFirstPokemonAttaking ? originalPos1 : originalPos3).y - yOffset);
+                (isFirstPokemonAttaking ? originalPos[0] : originalPos[2]).x + xOffset,
+                (isFirstPokemonAttaking ? originalPos[0] : originalPos[2]).y - yOffset);
 
             // Target effects
             targetSprite.setColor(sf::Color(255, 0, 0, 255)); // Target turns red
             targetSprite.setPosition(
-                (currentTargetTeam1 == 0 ? originalPos2 : originalPos4).x - 8,
-                (currentTargetTeam1 == 0 ? originalPos2 : originalPos4).y + 8);
+                (currentTargetTeam1 == 0 ? originalPos[1] : originalPos[3]).x - 8,
+                (currentTargetTeam1 == 0 ? originalPos[1] : originalPos[3]).y + 8);
 
             // Position attack effect sprite
             attackPosition.x = targetSprite.getPosition().x - 70;
@@ -317,43 +311,43 @@ void Window::updateAnimations()
         // When Team 2 is attacking
         else if (isSecondPokemonAttaking || isFourthPokemonAttaking)
         {
-            sf::Sprite &attackerSprite = isSecondPokemonAttaking ? pokemon2_sprite : pokemon4_sprite;
-            sf::Sprite &targetSprite = (currentTargetTeam2 == 0) ? pokemon1_sprite : pokemon3_sprite;
+            sf::Sprite &attackerSprite = isSecondPokemonAttaking ? pokemonSprite[1] : pokemonSprite[3];
+            sf::Sprite &targetSprite = (currentTargetTeam2 == 0) ? pokemonSprite[0] : pokemonSprite[2];
 
             // Attacker movement
             attackerSprite.setPosition(
-                (isSecondPokemonAttaking ? originalPos2 : originalPos4).x - xOffset,
-                (isSecondPokemonAttaking ? originalPos2 : originalPos4).y + yOffset);
+                (isSecondPokemonAttaking ? originalPos[1] : originalPos[3]).x - xOffset,
+                (isSecondPokemonAttaking ? originalPos[1] : originalPos[3]).y + yOffset);
 
             // Target effects
             targetSprite.setColor(sf::Color(255, 0, 0, 255)); // Target turns red
             targetSprite.setPosition(
-                (currentTargetTeam2 == 0 ? originalPos1 : originalPos3).x - 8,
-                (currentTargetTeam2 == 0 ? originalPos1 : originalPos3).y + 8);
+                (currentTargetTeam2 == 0 ? originalPos[0] : originalPos[2]).x - 8,
+                (currentTargetTeam2 == 0 ? originalPos[0] : originalPos[2]).y + 8);
 
             // Position attack effect sprite
             attackPosition.x = targetSprite.getPosition().x + 40;
             attackPosition.y = targetSprite.getPosition().y + 100;
         }
 
-        attackEffectSprite1.setPosition(attackPosition);
-        attackEffectSprite2.setPosition(attackPosition);
-        attackEffectSprite3.setPosition(attackPosition);
-        attackEffectSprite4.setPosition(attackPosition);
+        attackEffectSprite[0].setPosition(attackPosition);
+        attackEffectSprite[1].setPosition(attackPosition);
+        attackEffectSprite[2].setPosition(attackPosition);
+        attackEffectSprite[3].setPosition(attackPosition);
     }
     else
     {
         // Reset all colors and positions when animation ends
-        pokemon1_sprite.setColor(sf::Color::White);
-        pokemon2_sprite.setColor(sf::Color::White);
-        pokemon3_sprite.setColor(sf::Color::White);
-        pokemon4_sprite.setColor(sf::Color::White);
+        pokemonSprite[0].setColor(sf::Color::White);
+        pokemonSprite[1].setColor(sf::Color::White);
+        pokemonSprite[2].setColor(sf::Color::White);
+        pokemonSprite[3].setColor(sf::Color::White);
 
         // Return to original positions
-        pokemon1_sprite.setPosition(originalPos1);
-        pokemon2_sprite.setPosition(originalPos2);
-        pokemon3_sprite.setPosition(originalPos3);
-        pokemon4_sprite.setPosition(originalPos4);
+        pokemonSprite[0].setPosition(originalPos[0]);
+        pokemonSprite[1].setPosition(originalPos[1]);
+        pokemonSprite[2].setPosition(originalPos[2]);
+        pokemonSprite[3].setPosition(originalPos[3]);
 
         // Reset animation states
 
@@ -397,26 +391,26 @@ void Window::render()
     }
     Arene_sprite.setTexture(Arene_texture);
     this->window->draw(Arene_sprite);
-    window->draw(healthbg1);
-    window->draw(healthbg2);
+    window->draw(healthbg[0]);
+    window->draw(healthbg[1]);
 
     // Draw health bars
-    this->window->draw(healthBarBackground1);
-    this->window->draw(healthBarBackground2);
-    this->window->draw(healthBar1);
-    this->window->draw(healthBar2);
-    this->window->draw(healthBar3);
-    this->window->draw(healthBar4);
-    this->window->draw(healthText1);
-    this->window->draw(healthText2);
-    this->window->draw(healthText3);
-    this->window->draw(healthText4);
+    this->window->draw(healthBarBackground[0]);
+    this->window->draw(healthBarBackground[1]);
+    this->window->draw(healthBar[0]);
+    this->window->draw(healthBar[1]);
+    this->window->draw(healthBar[2]);
+    this->window->draw(healthBar[3]);
+    this->window->draw(healthText[0]);
+    this->window->draw(healthText[1]);
+    this->window->draw(healthText[2]);
+    this->window->draw(healthText[3]);
 
     // Draw Pokemon sprites
-    this->window->draw(pokemon1_sprite);
-    this->window->draw(pokemon2_sprite);
-    this->window->draw(pokemon3_sprite);
-    this->window->draw(pokemon4_sprite);
+    this->window->draw(pokemonSprite[0]);
+    this->window->draw(pokemonSprite[1]);
+    this->window->draw(pokemonSprite[2]);
+    this->window->draw(pokemonSprite[3]);
 
     // Draw move buttons
     for (int i = 0; i < 8; i++)
@@ -431,8 +425,8 @@ void Window::render()
 
     if (isAnimating && !animationFinished)
     {
-        window->draw(attackEffectSprite1);
-        // window->draw(attackEffectSprite2);
+        window->draw(attackEffectSprite[0]);
+        // window->draw(attackEffectSprite[1]);
     }
     renderTargetIndicator();
 
@@ -559,10 +553,10 @@ void Window::setupSwitchButtons()
     swapProgress = 0.0f;
 
     // revenir au position initial à changer
-    originalPosTeam1[0] = pokemon1_sprite.getPosition();
-    originalPosTeam1[1] = pokemon3_sprite.getPosition();
-    originalPosTeam2[0] = pokemon2_sprite.getPosition();
-    originalPosTeam2[1] = pokemon4_sprite.getPosition();
+    originalPosTeam1[0] = pokemonSprite[0].getPosition();
+    originalPosTeam1[1] = pokemonSprite[2].getPosition();
+    originalPosTeam2[0] = pokemonSprite[1].getPosition();
+    originalPosTeam2[1] = pokemonSprite[3].getPosition();
 }
 
 void Window::handleSwitching()
@@ -626,24 +620,24 @@ void Window::updateSwapAnimation()
         if (swapProgress >= 1.0f)
         {
             // Animation complete, reset positions
-            pokemon1_sprite.setPosition(originalPosTeam1[0]);
-            pokemon3_sprite.setPosition(originalPosTeam1[1]);
-            pokemon2_sprite.setPosition(originalPosTeam2[0]);
-            pokemon4_sprite.setPosition(originalPosTeam2[1]);
+            pokemonSprite[0].setPosition(originalPosTeam1[0]);
+            pokemonSprite[2].setPosition(originalPosTeam1[1]);
+            pokemonSprite[1].setPosition(originalPosTeam2[0]);
+            pokemonSprite[3].setPosition(originalPosTeam2[1]);
             isSwapping = false;
             // Animate the swap
             float yOffset = sin(swapProgress * 3.14159f) * 10.0f;
 
             // Team 1 Pokemon
-            pokemon1_sprite.setPosition(originalPosTeam1[0].x,
+            pokemonSprite[0].setPosition(originalPosTeam1[0].x,
                                         originalPosTeam1[0].y + yOffset);
-            pokemon3_sprite.setPosition(originalPosTeam1[1].x,
+            pokemonSprite[2].setPosition(originalPosTeam1[1].x,
                                         originalPosTeam1[1].y + yOffset);
 
             // Team 2 Pokemon
-            pokemon2_sprite.setPosition(originalPosTeam2[0].x,
+            pokemonSprite[1].setPosition(originalPosTeam2[0].x,
                                         originalPosTeam2[0].y - yOffset);
-            pokemon4_sprite.setPosition(originalPosTeam2[1].x,
+            pokemonSprite[3].setPosition(originalPosTeam2[1].x,
                                         originalPosTeam2[1].y + yOffset);
         }
     }
@@ -651,12 +645,12 @@ void Window::updateSwapAnimation()
 
 void Window::setAttackEffectSprite(const std::string &movePath)
 {
-    if (!attackEffectTexture1.loadFromFile(movePath))
+    if (!attackEffectTexture[0].loadFromFile(movePath))
     {
         std::cerr << "Erreur : Impossible de charger l'effet d'attaque " << movePath << std::endl;
         return;
     }
-    attackEffectSprite1.setTexture(attackEffectTexture1);
+    attackEffectSprite[0].setTexture(attackEffectTexture[0]);
 }
 
 // On definie le cercle pour les targets
@@ -713,16 +707,16 @@ void Window::renderTargetIndicator()
         if (currentTargetTeam1 == 0)
         {
             // Targeting pokemon2
-            targetPos = pokemon2_sprite.getPosition();
-            targetPos.x += pokemon2_sprite.getGlobalBounds().width / 2;
-            targetPos.y += pokemon2_sprite.getGlobalBounds().height / 2;
+            targetPos = pokemonSprite[1].getPosition();
+            targetPos.x += pokemonSprite[1].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[1].getGlobalBounds().height / 2;
         }
         else
         {
             // Targeting pokemon4
-            targetPos = pokemon4_sprite.getPosition();
-            targetPos.x += pokemon4_sprite.getGlobalBounds().width / 2;
-            targetPos.y += pokemon4_sprite.getGlobalBounds().height / 2;
+            targetPos = pokemonSprite[3].getPosition();
+            targetPos.x += pokemonSprite[3].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[3].getGlobalBounds().height / 2;
         }
     }
     // If team 2 is targeting
@@ -731,16 +725,16 @@ void Window::renderTargetIndicator()
         if (currentTargetTeam2 == 0)
         {
             // Targeting pokemon1
-            targetPos = pokemon1_sprite.getPosition();
-            targetPos.x += pokemon1_sprite.getGlobalBounds().width / 2;
-            targetPos.y += pokemon1_sprite.getGlobalBounds().height / 2;
+            targetPos = pokemonSprite[0].getPosition();
+            targetPos.x += pokemonSprite[0].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[0].getGlobalBounds().height / 2;
         }
         else
         {
             // Targeting pokemon3
-            targetPos = pokemon3_sprite.getPosition();
-            targetPos.x += pokemon3_sprite.getGlobalBounds().width / 2;
-            targetPos.y += pokemon3_sprite.getGlobalBounds().height / 2;
+            targetPos = pokemonSprite[2].getPosition();
+            targetPos.x += pokemonSprite[2].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[2].getGlobalBounds().height / 2;
         }
     }
 
@@ -933,29 +927,29 @@ void Window::showPokemonSelection()
             }
         }
 
-        healthText1.setString(pokemon1->getName());
-        healthText1.setFont(font);
-        healthText1.setCharacterSize(10);
-        healthText1.setFillColor(sf::Color::White);
-        healthText1.setPosition(15, 29);
+        healthText[0].setString(pokemon1->getName());
+        healthText[0].setFont(font);
+        healthText[0].setCharacterSize(10);
+        healthText[0].setFillColor(sf::Color::White);
+        healthText[0].setPosition(15, 29);
         // Pokemon2
-        healthText2.setString(pokemon3->getName());
-        healthText2.setFont(font);
-        healthText2.setCharacterSize(10);
-        healthText2.setFillColor(sf::Color::White);
-        healthText2.setPosition(15, 60);
+        healthText[1].setString(pokemon3->getName());
+        healthText[1].setFont(font);
+        healthText[1].setCharacterSize(10);
+        healthText[1].setFillColor(sf::Color::White);
+        healthText[1].setPosition(15, 60);
         // Pokemon3
-        healthText3.setString(pokemon2->getName());
-        healthText3.setFont(font);
-        healthText3.setCharacterSize(10);
-        healthText3.setFillColor(sf::Color::White);
-        healthText3.setPosition(615, 469);
+        healthText[2].setString(pokemon2->getName());
+        healthText[2].setFont(font);
+        healthText[2].setCharacterSize(10);
+        healthText[2].setFillColor(sf::Color::White);
+        healthText[2].setPosition(615, 469);
         // Pokemon4
-        healthText4.setString(pokemon4->getName());
-        healthText4.setFont(font);
-        healthText4.setCharacterSize(10);
-        healthText4.setFillColor(sf::Color::White);
-        healthText4.setPosition(615, 500);
+        healthText[3].setString(pokemon4->getName());
+        healthText[3].setFont(font);
+        healthText[3].setCharacterSize(10);
+        healthText[3].setFillColor(sf::Color::White);
+        healthText[3].setPosition(615, 500);
 
         selectionWindow.display();
     }
@@ -1137,18 +1131,18 @@ void Window::updatePokemonSprites()
 {
     if (pokemon1)
     {
-        pokemon1_sprite.setTexture(pokemon1->getTextureback());
+        pokemonSprite[0].setTexture(pokemon1->getTextureback());
     }
     if (pokemon2)
     {
-        pokemon2_sprite.setTexture(pokemon2->getTexturefront());
+        pokemonSprite[1].setTexture(pokemon2->getTexturefront());
     }
     if (pokemon3)
     {
-        pokemon3_sprite.setTexture(pokemon3->getTextureback());
+        pokemonSprite[2].setTexture(pokemon3->getTextureback());
     }
     if (pokemon4)
     {
-        pokemon4_sprite.setTexture(pokemon4->getTexturefront());
+        pokemonSprite[3].setTexture(pokemon4->getTexturefront());
     }
 }
