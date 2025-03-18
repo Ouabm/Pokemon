@@ -1,8 +1,7 @@
 #ifndef POKEMONDB_HPP
 #define POKEMONDB_HPP
 
-#include <vector>
-#include <map>
+#include "utile.hpp"
 #include "Pokemon.hpp"
 
 class PokemonDB

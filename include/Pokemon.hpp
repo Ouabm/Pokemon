@@ -1,10 +1,7 @@
 #ifndef POKEMON_HPP
 #define POKEMON_HPP
 
-#include <string>
-#include <iostream>
-#include <vector>
-#include <SFML/Graphics.hpp>
+#include "utile.hpp"
 #include "move.hpp"
 
 class Pokemon {

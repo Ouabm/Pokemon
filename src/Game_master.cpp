@@ -1,7 +1,4 @@
 #include "Game_master.hpp"
-#include <iostream>
-#include <algorithm>
-#include <ctime>
 
 GameMaster::GameMaster(Window *win) : window(win), currentState(BattleState::WAITING_FOR_INPUT),
                                       selectedMoveIndex(-1), selectedTargetIndex(-1), team1TurnComplete(false),

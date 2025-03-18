@@ -1,11 +1,9 @@
 #ifndef GAME_MASTER_HPP
 #define GAME_MASTER_HPP
 
+#include "utile.hpp"
 #include "Pokemon.hpp"
 #include "Graphique.hpp"
-#include <queue>
-#include <functional>
-#include <random>
 
 // Forward declaration to resolve circular dependencys
 class Window;

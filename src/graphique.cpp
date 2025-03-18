@@ -1,6 +1,6 @@
 #include "Graphique.hpp"
 #include "Pokemon.hpp"
-#include "math.h"
+
 
 Window::Window() : pokemon1(Pokemondb.getPokemonByName("Palkia")),
                    pokemon2(Pokemondb.getPokemonByName("Dialga")),
@@ -135,23 +135,6 @@ void Window::setupUI()
         moveButtonTexts[i].setPosition(moveButtons[i].getPosition().x + 10,
                                        moveButtons[i].getPosition().y + 10);
     }
-    //     std::vector<move> special1 =pokemon1.getMoves();
-    //     std::vector<move> special2 =pokemon2.getMoves();
-    //     std::vector<move> special3 =pokemon3.getMoves();
-    //     std::vector<move> special4 =pokemon4.getMoves();
-    //     std::cout << "setupUI() : Nombre d'attaques dans special1 : " << special1.size() << std::endl;
-    //     std::cout << "setupUI() : Nombre d'attaques dans special2 : " << special2.size() << std::endl;
-
-    // if (special1.size() >= 4 && special2.size() >= 4) {
-    //     moveButtonTexts[0].setString(special1[0].getmovename());
-    //     moveButtonTexts[1].setString(special1[1].getmovename());
-    //     moveButtonTexts[2].setString(special1[2].getmovename());
-    //     moveButtonTexts[3].setString(special1[3].getmovename());
-    //     moveButtonTexts[4].setString(special2[0].getmovename());
-    //     moveButtonTexts[5].setString(special2[1].getmovename());
-    //     moveButtonTexts[6].setString(special2[2].getmovename());
-    //     moveButtonTexts[7].setString(special2[3].getmovename());
-    // }
 
     // Target
     targetIndicator.setRadius(25);
