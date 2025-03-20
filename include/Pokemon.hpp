@@ -122,7 +122,7 @@ public:
         : Pokemon(n, "Psy", h, atk, def, spd, front, back) {}
 
     void initializeMoves() override {
-        spes.push_back(new move("Psystrike", 100, 100, "Psychic", "assets/attacks/Psystrike.png"));
+        spes.push_back(new move("Psystrike", 100, 100, "Psychic", "assets/attacks/Psychic.png"));
         spes.push_back(new move("Shadow Ball", 80, 100, "Ghost", "assets/attacks/Shadow-Ball.png"));
         spes.push_back(new move("Aura Sphere", 80, 100, "Fighting", "assets/attacks/Ancient-Power.png"));
         spes.push_back(new move("Giga-impact",70 , 100, "Fighting", "assets/attacks/Giga-Impact.png"));

@@ -42,18 +42,39 @@ sf::RectangleShape Window::createButton(sf::Vector2f size, sf::Vector2f position
 
 void Window::showHelpWindow()
 {
-    sf::RenderWindow helpWindow(sf::VideoMode(600, 400), "Help");
+      sf::RenderWindow helpWindow(sf::VideoMode(1024, 600), "Help");
 
-    // Récupérer les dimensions de la fenêtre
-    float helpWindowWidth = helpWindow.getSize().x;
-    float helpWindowHeight = helpWindow.getSize().y;
+    // Charger les ressources
+    sf::Texture bgTexture;
+    if (!bgTexture.loadFromFile("assets/images/help.png"))
+    {
+        std::cerr << "Erreur : Impossible de charger l'image de fond du menu d'aide." << std::endl;
+        return;
+    }
+    sf::Sprite bgSprite(bgTexture);
+    std::string helpText = 
+        " Regles du combat Pokemon \n\n"
+        "  Deroulement :\n"
+        "- Chaque joueur choisit 2 Pokemon.\n"
+        "- Les combats se deroulent au tour par tour.\n"
+        "- A chaque tour, vous pouvez attaquer ou changer de Pokemon.\n\n"
+        "  Attaques & Degets :\n"
+        "- Chaque Pokemon a 4 attaques.\n"
+        "- Les degats sont influences par le type (feu, eau, plante...).\n"
+        "- Un coup critique inflige 1,5x les degats normaux.\n"
+        "- Une attaque est 'super efficace' si elle cible une faiblesse.\n"
+        "- Une attaque est 'peu efficace' si elle cible une resistance.\n\n"
+        "  Strategies :\n"
+        "- Changer de Pokemon peut etre utile pour eviter une faiblesse.\n"
+        "- Utilisez les attaques de statut pour prendre l'avantage.\n"
+        "- Gerez vos PV et attaques pour maximiser vos chances de victoire !";
 
-    // Texte help
-    sf::Text helpWindowText = createText("Choisissez 2 Pokemons chacun et combattez !\nUtilisez les attaques pour battre votre adversaire.", 10);
+    sf::Text helpWindowText = createText(helpText, 14);
+    helpWindowText.setLineSpacing(1.5f);
+    helpWindowText.setFillColor(sf::Color::Black);
 
-    // Centrer le texte dans la fenêtre
     sf::FloatRect textBounds = helpWindowText.getLocalBounds();
-    helpWindowText.setPosition((helpWindowWidth - textBounds.width) / 2, (helpWindowHeight - textBounds.height) / 2);
+    helpWindowText.setPosition(500-(textBounds.width) / 2, 40); // Centrer le texte en haut
 
     while (helpWindow.isOpen())
     {
@@ -61,12 +82,21 @@ void Window::showHelpWindow()
         while (helpWindow.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                helpWindow.close();
+            {
+                helpWindow.close(); // Fermer proprement la fenêtre
+            }
         }
 
-        helpWindow.clear(sf::Color::Black); // Fond noir pour la fenêtre
-        helpWindow.draw(helpWindowText);    // Dessiner le texte
-        helpWindow.display();               // Afficher la fenêtre
+        // Vérification pour éviter d'utiliser la fenêtre après sa fermeture
+        if (!helpWindow.isOpen())
+            break;
+
+        helpWindow.clear();
+        helpWindow.draw(bgSprite);
+        helpWindow.draw(helpWindowText);
+        //helpWindow.draw(pokemonSprite1);
+        //helpWindow.draw(pokemonSprite2);
+        helpWindow.display();
     }
 }
 // =================== FIN MAIN MENU =================== //
@@ -115,8 +145,10 @@ void Window::showMainMenu()
         sf::Event event;
         while (mainMenuWindow.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 mainMenuWindow.close();
+                exit(0);
+            }
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
@@ -133,7 +165,9 @@ void Window::showMainMenu()
                 else if (exitButton.getGlobalBounds().contains(mousePos))
                 {
                     mainMenuWindow.close();
+                    exit(0);
                 }
+
             }
         }
 
@@ -216,8 +250,10 @@ void Window::showPokemonSelection()
         sf::Event event;
         while (selectionWindow.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 selectionWindow.close();
+                exit(0);
+            }
 
             if (event.type == sf::Event::KeyPressed)
             {
@@ -311,30 +347,30 @@ void Window::displayHealthNames(sf::RenderWindow &window)
 {
     healthText[0].setString(pokemon1->getName());
     healthText[0].setFont(font);
-    healthText[0].setCharacterSize(10);
+    healthText[0].setCharacterSize(9.5);
     healthText[0].setFillColor(sf::Color::White);
-    healthText[0].setPosition(15, 29);
+    healthText[0].setPosition(15, 28);
     window.draw(healthText[0]);
 
     healthText[1].setString(pokemon3->getName());
     healthText[1].setFont(font);
-    healthText[1].setCharacterSize(10);
+    healthText[1].setCharacterSize(9.5);
     healthText[1].setFillColor(sf::Color::White);
-    healthText[1].setPosition(15, 60);
+    healthText[1].setPosition(15, 61);
     window.draw(healthText[1]);
 
     healthText[2].setString(pokemon2->getName());
     healthText[2].setFont(font);
-    healthText[2].setCharacterSize(10);
+    healthText[2].setCharacterSize(9.5);
     healthText[2].setFillColor(sf::Color::White);
-    healthText[2].setPosition(615, 469);
+    healthText[2].setPosition(615, 470);
     window.draw(healthText[2]);
 
     healthText[3].setString(pokemon4->getName());
     healthText[3].setFont(font);
-    healthText[3].setCharacterSize(10);
+    healthText[3].setCharacterSize(9.5);
     healthText[3].setFillColor(sf::Color::White);
-    healthText[3].setPosition(615, 500);
+    healthText[3].setPosition(615, 501);
     window.draw(healthText[3]);
 }
 
@@ -397,8 +433,8 @@ void Window::initHealthBarElement(sf::RectangleShape &healthElement, const sf::V
 void Window::initializeHealthBars(void)
 {
     // Positions et tailles pour les barres de fond
-    sf::Vector2f bgBarPos[2] = {{100, 30}, {700, 470}};
-    sf::Vector2f bgBarSizes = {200, 50};
+    sf::Vector2f bgBarPos[2] = {{10, 10}, {610, 450}};
+    sf::Vector2f bgBarSizes = {300, 90};
 
     // Positions et tailles pour les barres de vie
     sf::Vector2f barPos[4] = {{100, 30}, {700, 470}, {100, 60}, {700, 500}};
@@ -551,7 +587,7 @@ void Window::initMoveButton(sf::RectangleShape &button, sf::Text &text, sf::Vect
     button.setPosition(position);
 
     text.setFont(font);
-    text.setCharacterSize(12);
+    text.setCharacterSize(11.5);
     text.setFillColor(sf::Color::Black);
     text.setPosition(position.x + 10, position.y + 10);
 }
@@ -568,6 +604,7 @@ void Window::updatemovebutton(Pokemon *pokemon)
         {
             moveButtonTexts[i].setString(moves[i]->nom);
         }
+
     }
 }
 
@@ -751,19 +788,17 @@ void Window::updateMoveButtons()
     // Make sure we have moves to display
     if (moves1.size() >= 4 && moves2.size() >= 4)
     {
-        // Update Team 1 move buttons (0-3)
-        for (int i = 0; i < 4; i++)
-        {
-            moveButtonTexts[i].setString(moves1[i]->getmovename());
-            std::cout << "Team 1 move " << i << ": " << moves1[i]->getmovename() << std::endl;
-        }
+        // Ajouter les touches devant les attaques pour le Joueur 1
+        moveButtonTexts[0].setString(moves1[0]->getmovename());
+        moveButtonTexts[1].setString(moves1[1]->getmovename());
+        moveButtonTexts[2].setString(moves1[2]->getmovename());
+        moveButtonTexts[3].setString(moves1[3]->getmovename());
 
-        // Update Team 2 move buttons (4-7)
-        for (int i = 0; i < 4; i++)
-        {
-            moveButtonTexts[i + 4].setString(moves2[i]->getmovename());
-            std::cout << "Team 2 move " << i << ": " << moves2[i]->getmovename() << std::endl;
-        }
+        // Ajouter les touches devant les attaques pour le Joueur 2
+        moveButtonTexts[4].setString("Z: " + moves2[0]->getmovename());
+        moveButtonTexts[5].setString("Q: " + moves2[1]->getmovename());
+        moveButtonTexts[6].setString("S: " + moves2[2]->getmovename());
+        moveButtonTexts[7].setString("D: " + moves2[3]->getmovename());
     }
     else
     {
@@ -851,6 +886,7 @@ void Window::processevent()
         if (event.type == sf::Event::Closed)
         {
             window->close();
+            exit(0);
         }
         handleSwitching();
     }
@@ -1044,8 +1080,10 @@ void Window::showEndGameMenu(int winningTeam)
         window->close();
         while (endGameWindow.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 endGameWindow.close();
+                exit(0);
+            }
 
             if (event.type == sf::Event::MouseButtonPressed)
             {

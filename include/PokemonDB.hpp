@@ -7,7 +7,7 @@
 class PokemonDB
 {
 private:
-    std::map<std::string, Pokemon *> pokemonList; // Stocker les Pokémon avec leur nom comme clé
+    std::map<std::string, Pokemon *> pokemonList; // Stocker les Pokémon avec leur nom comme clé Polymorphisme
 
 public:
     PokemonDB(); // Constructeur qui charge les données
