@@ -1,48 +1,351 @@
 #include "Graphique.hpp"
 #include "Pokemon.hpp"
 
-
-Window::Window() : pokemon1(Pokemondb.getPokemonByName("Palkia")),
-                   pokemon2(Pokemondb.getPokemonByName("Dialga")),
-                   pokemon3(Pokemondb.getPokemonByName("Arceus")),
-                   pokemon4(Pokemondb.getPokemonByName("Giratina")), debut(false), isAnimating(false), isFirstPokemonAttaking(false), isSecondPokemonAttaking(false), isThirdPokemonAttaking(false), isFourthPokemonAttaking(false)
+// =================== DEBUT MAIN MENU =================== //
+void Window::loadResources(const std::string &fontFile, const std::string &bgTextureFile)
 {
-    // Initialisation de la fenêtre
-
-    std::cout << "Pokemon1 : [" << pokemon1->getType() << "]" << std::endl;
-    animationProgress = 0.0f;
-    isTargetingMode = false;
-    isDamageAnimating = false;
-    damageAnimationDuration = 0.01f;
-
-    // Initialisation des éléments de l'interface graphique
-    this->init_pokemon_positon();
-
-    this->initializeHealthBars();
-
-    this->setupUI();
-
-    this->setupSwitchButtons();
-    std::cout << "Appel de initializeMoves pour " << pokemon1->getName() << std::endl;
-    // Initialize attack effect
-    attackAnimationTimer = 0.0f;
-    attackFrame = 0;
-}
-
-Window::~Window()
-{
-    delete pokemon1;
-    delete pokemon2;
-    delete pokemon3;
-    delete pokemon4;
-    delete this->window; // Libération de la mémoire de la fenêtre
-}
-
-void Window::playMusic(const std::string &filename)
-{
-    if (music.getStatus() == sf::Music::Playing)
+    // Charger la police
+    if (!font.loadFromFile(fontFile))
     {
-        music.stop(); // Arrêter la musique actuelle avant de changer
+        std::cerr << "Erreur de chargement de la police à partir de : " << fontFile << std::endl;
+    }
+
+    // Charger l'image de fond
+    if (!BGTexture.loadFromFile(bgTextureFile))
+    {
+        std::cerr << "Erreur de chargement de l'image de fond à partir de : " << bgTextureFile << std::endl;
+    }
+    BGSprite.setTexture(BGTexture);
+}
+
+sf::Text Window::createText(const std::string &textContent, unsigned int fontSize)
+{
+    sf::Text text;
+
+    // Configurer le texte
+    text.setFont(font);                  // Assigner la police au texte
+    text.setString(textContent);         // Assigner le texte à afficher
+    text.setCharacterSize(fontSize);     // Définir la taille des caractères
+    text.setFillColor(sf::Color::White); // Définir la couleur du texte (ici en blanc)
+    text.setStyle(sf::Text::Regular);    // Définir le style du texte (normal ici)
+
+    return text;
+}
+
+sf::RectangleShape Window::createButton(sf::Vector2f size, sf::Vector2f position, sf::Color color)
+{
+    sf::RectangleShape button(size);
+    button.setPosition(position);
+    button.setFillColor(color);
+    return button;
+}
+
+void Window::showHelpWindow()
+{
+    sf::RenderWindow helpWindow(sf::VideoMode(600, 400), "Help");
+
+    // Récupérer les dimensions de la fenêtre
+    float helpWindowWidth = helpWindow.getSize().x;
+    float helpWindowHeight = helpWindow.getSize().y;
+
+    // Texte help
+    sf::Text helpWindowText = createText("Choisissez 2 Pokemons chacun et combattez !\nUtilisez les attaques pour battre votre adversaire.", 10);
+
+    // Centrer le texte dans la fenêtre
+    sf::FloatRect textBounds = helpWindowText.getLocalBounds();
+    helpWindowText.setPosition((helpWindowWidth - textBounds.width) / 2, (helpWindowHeight - textBounds.height) / 2);
+
+    while (helpWindow.isOpen())
+    {
+        sf::Event event;
+        while (helpWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                helpWindow.close();
+        }
+
+        helpWindow.clear(sf::Color::Black); // Fond noir pour la fenêtre
+        helpWindow.draw(helpWindowText);    // Dessiner le texte
+        helpWindow.display();               // Afficher la fenêtre
+    }
+}
+// =================== FIN MAIN MENU =================== //
+
+void Window::showMainMenu()
+{
+    sf::RenderWindow mainMenuWindow(sf::VideoMode(1024, 640), "Menu Principal");
+
+    loadResources("assets/font/prstartk.ttf", "assets/images/Menu.jpg");
+    playMusic("assets/audio/Title.ogg", 50.0, true);
+
+    // Taille de la fenêtre
+    float mainMenuwindowWidth = mainMenuWindow.getSize().x;
+    float mainMenuwindowHeight = mainMenuWindow.getSize().y;
+
+    // Taille des boutons
+    sf::Vector2f buttonSize(200, 50);
+    float startButtonsPos = mainMenuwindowHeight * 7.0 / 12;
+    float endButtonsPos = mainMenuwindowHeight * 11.0 / 12;
+
+    // Calcul des positions pour centrer les boutons
+    sf::Vector2f startButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos);
+    sf::Vector2f helpButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 1 / 3);
+    sf::Vector2f exitButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 2 / 3);
+
+    sf::RectangleShape startButton = createButton(buttonSize, startButtonPos, sf::Color::Green);
+    sf::Text startText = createText("Start", 20);
+    // Centrer le texte dans le bouton
+    sf::FloatRect startTextBounds = startText.getLocalBounds();
+    startText.setPosition(startButtonPos.x + (buttonSize.x - startTextBounds.width) / 2, startButtonPos.y + (buttonSize.y - startTextBounds.height) / 2);
+
+    sf::RectangleShape helpButton = createButton(buttonSize, helpButtonPos, sf::Color::Blue);
+    sf::Text helpText = createText("Help", 20);
+    // Centrer le texte dans le bouton
+    sf::FloatRect helpTextBounds = helpText.getLocalBounds();
+    helpText.setPosition(helpButtonPos.x + (buttonSize.x - helpTextBounds.width) / 2, helpButtonPos.y + (buttonSize.y - helpTextBounds.height) / 2);
+
+    sf::RectangleShape exitButton = createButton(buttonSize, exitButtonPos, sf::Color::Red);
+    sf::Text exitText = createText("Exit", 20);
+    // Centrer le texte dans le bouton
+    sf::FloatRect exitTextBounds = exitText.getLocalBounds();
+    exitText.setPosition(exitButtonPos.x + (buttonSize.x - exitTextBounds.width) / 2, exitButtonPos.y + (buttonSize.y - exitTextBounds.height) / 2);
+
+    while (mainMenuWindow.isOpen())
+    {
+        sf::Event event;
+        while (mainMenuWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                mainMenuWindow.close();
+
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                sf::Vector2f mousePos = mainMenuWindow.mapPixelToCoords(sf::Mouse::getPosition(mainMenuWindow));
+                if (startButton.getGlobalBounds().contains(mousePos))
+                {
+                    mainMenuWindow.close();
+                    showPokemonSelection();
+                }
+                else if (helpButton.getGlobalBounds().contains(mousePos))
+                {
+                    showHelpWindow();
+                }
+                else if (exitButton.getGlobalBounds().contains(mousePos))
+                {
+                    mainMenuWindow.close();
+                }
+            }
+        }
+
+        mainMenuWindow.clear();
+        mainMenuWindow.draw(BGSprite);
+        mainMenuWindow.draw(startButton);
+        mainMenuWindow.draw(startText);
+        mainMenuWindow.draw(helpButton);
+        mainMenuWindow.draw(helpText);
+        mainMenuWindow.draw(exitButton);
+        mainMenuWindow.draw(exitText);
+        mainMenuWindow.display();
+    }
+}
+
+// =================== DEBUT MENU POKEMON SELECTION =================== //
+
+// =================== FIN MENU POKEMON SELECTION =================== //
+
+void Window::handleSelection(bool &jConfirmed, size_t &selectedIndex, std::vector<int> &team, sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey, sf::Keyboard::Key upKey, sf::Keyboard::Key downKey, sf::Keyboard::Key confirmKey)
+{
+    if (!jConfirmed)
+    {
+        int rowCount = (allPokemon.size() + 4) / 5; // Calculer le nombre de lignes (en fonction du nombre de Pokémon et de la grille de 5 colonnes)
+        int colCount = 5;                           // Le nombre de colonnes est fixé à 5
+
+        // Calculer les indices de la ligne et de la colonne actuelle
+        int currentRow = selectedIndex / colCount;
+        int currentCol = selectedIndex % colCount;
+
+        if (sf::Keyboard::isKeyPressed(leftKey) && currentCol > 0)
+            selectedIndex--; // Se déplacer d'une case à gauche (colonne précédente)
+
+        if (sf::Keyboard::isKeyPressed(rightKey) && currentCol < colCount - 1)
+            selectedIndex++; // Se déplacer d'une case à droite (colonne suivante)
+
+        if (sf::Keyboard::isKeyPressed(upKey) && currentRow > 0)
+            selectedIndex -= colCount; // Se déplacer d'une ligne vers le haut
+
+        if (sf::Keyboard::isKeyPressed(downKey) && currentRow < rowCount - 1)
+            selectedIndex += colCount; // Se déplacer d'une ligne vers le bas
+
+        if (sf::Keyboard::isKeyPressed(confirmKey))
+        {
+            if (team.size() < 2 && std::find(team.begin(), team.end(), selectedIndex) == team.end())
+                team.push_back(selectedIndex);
+            if (team.size() == 2)
+                jConfirmed = true;
+        }
+    }
+}
+
+void Window::showPokemonSelection()
+{
+    sf::RenderWindow selectionWindow(sf::VideoMode(1024, 700), "Sélection des Pokémon");
+
+    loadResources("assets/font/prstartk.ttf", "assets/images/selection_background.jpg");
+    playMusic("assets/audio/selection.ogg", 50.0, true);
+
+    // Charger les textures des Pokémon
+    std::vector<sf::Texture> pokemonTextures(allPokemon.size());
+    std::vector<sf::Sprite> pokemonSprites(allPokemon.size());
+
+    for (size_t i = 0; i < allPokemon.size(); i++)
+    {
+        if (!pokemonTextures[i].loadFromFile("assets/images/" + allPokemon[i]->getName() + ".png"))
+        {
+            std::cerr << "Erreur de chargement de l'image pour " << allPokemon[i]->getName() << std::endl;
+        }
+        pokemonSprites[i].setTexture(pokemonTextures[i]);
+        pokemonSprites[i].setScale(0.7f, 0.7f); // Ajuster la taille
+    }
+
+    size_t selectedIndexJ1 = 0, selectedIndexJ2 = 0;
+    bool j1Confirmed = false, j2Confirmed = false;
+    std::vector<int> teamJ1, teamJ2;
+
+    while (selectionWindow.isOpen())
+    {
+        sf::Event event;
+        while (selectionWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                selectionWindow.close();
+
+            if (event.type == sf::Event::KeyPressed)
+            {
+                // Sélection du Joueur 1
+                handleSelection(j1Confirmed, selectedIndexJ1, teamJ1, sf::Keyboard::Left, sf::Keyboard::Right, sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Enter);
+
+                // Sélection du Joueur 2
+                handleSelection(j2Confirmed, selectedIndexJ2, teamJ2, sf::Keyboard::Q, sf::Keyboard::D, sf::Keyboard::Z, sf::Keyboard::S, sf::Keyboard::Space);
+
+                // Démarrer le combat
+                if (j1Confirmed && j2Confirmed)
+                {
+                    this->pokemon1 = allPokemon[teamJ1[0]];
+                    this->pokemon3 = allPokemon[teamJ1[1]];
+                    this->pokemon2 = allPokemon[teamJ2[0]];
+                    this->pokemon4 = allPokemon[teamJ2[1]];
+
+                    updatePokemonSprites();
+                    initPokemonPostion();
+                    pokemon1->initializeMoves();
+                    pokemon2->initializeMoves();
+                    pokemon3->initializeMoves();
+                    pokemon4->initializeMoves();
+
+                    selectionWindow.close();
+
+                    // Affichage des noms des Pokémon sélectionnés
+                    displayHealthNames(selectionWindow);
+
+                    playMusic("assets/audio/Music.ogg", 50.0, true);
+                    this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
+                    this->debut = true;
+                }
+            }
+        }
+
+        selectionWindow.clear();
+        selectionWindow.draw(BGSprite);
+
+        // Affichage des Pokémon et des encadrés
+        for (size_t i = 0; i < allPokemon.size(); i++)
+        {
+            int row = i / 5;
+            int col = i % 5;
+            pokemonSprites[i].setPosition(50 + col * 180, 50 + row * 150);
+            selectionWindow.draw(pokemonSprites[i]);
+
+            drawHighlight(i, teamJ1, teamJ2, selectedIndexJ1, selectedIndexJ2, j1Confirmed, j2Confirmed, col, row, selectionWindow);
+        }
+        selectionWindow.display();
+    }
+}
+
+void Window::drawHighlight(size_t i, const std::vector<int> &teamJ1, const std::vector<int> &teamJ2, size_t selectedIndexJ1, size_t selectedIndexJ2, bool j1Confirmed, bool j2Confirmed, int col, int row, sf::RenderWindow &window)
+{
+    sf::RectangleShape highlight(sf::Vector2f(120, 120));
+    highlight.setPosition(50 + col * 180, 50 + row * 150);
+
+    if (std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end() ||
+        std::find(teamJ2.begin(), teamJ2.end(), i) != teamJ2.end() ||
+        (!j1Confirmed && i == selectedIndexJ1) ||
+        (!j2Confirmed && i == selectedIndexJ2))
+    {
+
+        if (!j1Confirmed && std::find(teamJ1.begin(), teamJ1.end(), i) == teamJ1.end() && i == selectedIndexJ1)
+        {
+            highlight.setOutlineColor(sf::Color::Blue);
+            highlight.setOutlineThickness(5);
+        }
+        else if (j1Confirmed && !j2Confirmed && std::find(teamJ2.begin(), teamJ2.end(), i) == teamJ2.end() && i == selectedIndexJ2)
+        {
+            highlight.setOutlineColor(sf::Color::Red);
+            highlight.setOutlineThickness(6);
+        }
+        else if (std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end())
+        {
+            highlight.setOutlineColor(sf::Color::Blue);
+            highlight.setOutlineThickness(5);
+        }
+        else if (std::find(teamJ2.begin(), teamJ2.end(), i) != teamJ2.end())
+        {
+            highlight.setOutlineColor(sf::Color::Red);
+            highlight.setOutlineThickness(6);
+        }
+        highlight.setFillColor(sf::Color::Transparent);
+        window.draw(highlight);
+    }
+}
+
+void Window::displayHealthNames(sf::RenderWindow &window)
+{
+    healthText[0].setString(pokemon1->getName());
+    healthText[0].setFont(font);
+    healthText[0].setCharacterSize(10);
+    healthText[0].setFillColor(sf::Color::White);
+    healthText[0].setPosition(15, 29);
+    window.draw(healthText[0]);
+
+    healthText[1].setString(pokemon3->getName());
+    healthText[1].setFont(font);
+    healthText[1].setCharacterSize(10);
+    healthText[1].setFillColor(sf::Color::White);
+    healthText[1].setPosition(15, 60);
+    window.draw(healthText[1]);
+
+    healthText[2].setString(pokemon2->getName());
+    healthText[2].setFont(font);
+    healthText[2].setCharacterSize(10);
+    healthText[2].setFillColor(sf::Color::White);
+    healthText[2].setPosition(615, 469);
+    window.draw(healthText[2]);
+
+    healthText[3].setString(pokemon4->getName());
+    healthText[3].setFont(font);
+    healthText[3].setCharacterSize(10);
+    healthText[3].setFillColor(sf::Color::White);
+    healthText[3].setPosition(615, 500);
+    window.draw(healthText[3]);
+}
+
+// =================== MUSIQUE ===================
+
+void Window::playMusic(const std::string &filename, float volume, bool loop)
+{
+    // Vérifier si la musique en cours est déjà celle demandée
+    if (music.getStatus() == sf::Music::Playing && currentMusic == filename)
+    {
+        return; // Rien à faire si c'est déjà la bonne musique
     }
 
     if (!music.openFromFile(filename))
@@ -51,23 +354,16 @@ void Window::playMusic(const std::string &filename)
         return;
     }
 
-    music.setLoop(true);
-    music.setVolume(50);
+    music.setLoop(loop);
+    music.setVolume(volume);
     music.play();
-}
-void Window::init_music()
-{
-    playMusic("assets/audio/Music.ogg");
+
+    currentMusic = filename; // Stocker le nom de la musique en cours pour éviter les rechargements inutiles
 }
 
-void Window::init()
-{
-    updatemovebutton(pokemon1);
-    updatemovebutton(pokemon3);
-    updatemovebutton(pokemon2);
-    updatemovebutton(pokemon4);
-}
-void Window::init_pokemon_positon()
+// =================== MÉTHODES D'INITIALISATION ===================
+
+void Window::initPokemonPostion(void)
 {
     if (!font.loadFromFile("assets/font/prstartk.ttf"))
     {
@@ -87,151 +383,191 @@ void Window::init_pokemon_positon()
     pokemonSprite[3].setPosition(750, 150);
 }
 
-void Window::setupUI()
+
+// =================== BARRE DE VIE =================== //
+void Window::initHealthBarElement(sf::RectangleShape &healthElement, const sf::Vector2f &position, const sf::Vector2f &size, const sf::Color &fillColor, const sf::Color &outlineColor, float outlineThickness)
 {
-   
-
-    healthbg[0].setSize(sf::Vector2f(300, 90));
-    healthbg[0].setPosition(10, 10);
-    healthbg[0].setFillColor(sf::Color(100, 100, 100));
-    healthbg[0].setOutlineThickness(5);
-    healthbg[0].setOutlineColor(sf::Color::Black);
-
-    healthbg[1].setSize(sf::Vector2f(300, 90));
-    healthbg[1].setPosition(610, 450);
-    healthbg[1].setFillColor(sf::Color(100, 100, 100));
-    healthbg[1].setOutlineThickness(5);
-    healthbg[1].setOutlineColor(sf::Color::Black);
-
-    // Pokemon1
-
-    // Initialiser les boutons de mouvement
-    for (int i = 0; i < 8; i++)
-    {
-        moveButtons[i].setSize(sf::Vector2f(190, 50));
-        moveButtons[i].setFillColor(sf::Color(200, 200, 200));
-    }
-    // J1
-    moveButtons[0].setPosition(50, 600);
-    moveButtons[1].setPosition(250, 600);
-    moveButtons[2].setPosition(50, 660);
-    moveButtons[3].setPosition(250, 660);
-    // J2
-    moveButtons[4].setPosition(600, 600);
-    moveButtons[5].setPosition(800, 600);
-    moveButtons[6].setPosition(600, 660);
-    moveButtons[7].setPosition(800, 660);
-    for (int i = 0; i < 8; i++)
-    {
-        moveButtonTexts[i].setFont(font);
-        moveButtonTexts[i].setCharacterSize(12);
-        moveButtonTexts[i].setFillColor(sf::Color::Black);
-        moveButtonTexts[i].setPosition(moveButtons[i].getPosition().x + 10,
-                                       moveButtons[i].getPosition().y + 10);
-    }
-
-    // Target
-    targetIndicator.setRadius(25);
-    targetIndicator.setFillColor(sf::Color(255, 0, 0, 80)); // Semi-transparent red
-    targetIndicator.setOutlineColor(sf::Color::Red);
-    targetIndicator.setOutlineThickness(5);
-    targetIndicator.setOrigin(25, 25); //
-    // Default targets
-    currentTargetTeam1 = 0;
-    currentTargetTeam2 = 0;
+    healthElement.setSize(size);
+    healthElement.setPosition(position);
+    healthElement.setFillColor(fillColor);
+    healthElement.setOutlineThickness(outlineThickness);
+    healthElement.setOutlineColor(outlineColor);
 }
 
-void Window::initializeHealthBars()
+void Window::initializeHealthBars(void)
 {
-    // Setup health bar backgrounds
-    healthBarBackground[0].setSize(sf::Vector2f(200, 10));
-    healthBarBackground[0].setPosition(50, 20);
-    healthBarBackground[0].setFillColor(sf::Color(100, 100, 100));
+    // Positions et tailles pour les barres de fond
+    sf::Vector2f bgBarPos[2] = {{100, 30}, {700, 470}};
+    sf::Vector2f bgBarSizes = {200, 50};
 
-    healthBarBackground[1].setSize(sf::Vector2f(200, 20));
-    healthBarBackground[1].setPosition(700, 450);
-    healthBarBackground[1].setFillColor(sf::Color(100, 100, 100));
+    // Positions et tailles pour les barres de vie
+    sf::Vector2f barPos[4] = {{100, 30}, {700, 470}, {100, 60}, {700, 500}};
+    sf::Vector2f barSizes = {200, 10};
 
-    healthBarBackground[2].setSize(sf::Vector2f(200, 20));
-    healthBarBackground[2].setPosition(50, 50);
-    healthBarBackground[2].setFillColor(sf::Color(100, 100, 100));
+    // Initialisation des barres de fond et des barres de vie
+    for (int i = 0; i < 4; i++)
+    {
+        // Initialisation des barres de fond
+        initHealthBarElement(healthBarBackground[i], bgBarPos[i], bgBarSizes, sf::Color(100, 100, 100));
 
-    healthBarBackground[3].setSize(sf::Vector2f(200, 20));
-    healthBarBackground[3].setPosition(700, 480);
-    healthBarBackground[3].setFillColor(sf::Color(100, 100, 100));
-
-    // Setup health bars
-    healthBar[0].setSize(sf::Vector2f(200, 10));
-    healthBar[0].setPosition(100, 30);
-    healthBar[0].setFillColor(sf::Color::Green);
-    healthBar[0].setOutlineThickness(2);
-
-    healthBar[1].setSize(sf::Vector2f(200, 10));
-    healthBar[1].setPosition(700, 470);
-    healthBar[1].setFillColor(sf::Color::Green);
-    healthBar[1].setOutlineThickness(2);
-
-    healthBar[2].setSize(sf::Vector2f(200, 5));
-    healthBar[2].setPosition(100, 60);
-    healthBar[2].setFillColor(sf::Color::Green);
-    healthBar[2].setOutlineThickness(2);
-
-    healthBar[3].setSize(sf::Vector2f(200, 5));
-    healthBar[3].setPosition(700, 500);
-    healthBar[3].setFillColor(sf::Color::Green);
-    healthBar[3].setOutlineThickness(2);
-
-    // Store original positions for animations
-    originalPos[0] = pokemonSprite[0].getPosition();
-    originalPos[1] = pokemonSprite[1].getPosition();
-    originalPos[2] = pokemonSprite[2].getPosition();
-    originalPos[3] = pokemonSprite[3].getPosition();
+        // Initialisation des barres de vie
+        initHealthBarElement(healthBar[i], barPos[i], barSizes, sf::Color::Green, sf::Color::Black, 2.f);
+    }
 }
 
 void Window::updateHealthBars(float health1Percentage, float health2Percentage, float health3Percentage, float health4Percentage)
 {
-    healthBar[0].setSize(sf::Vector2f(200 * health1Percentage, 20));
-    healthBar[1].setSize(sf::Vector2f(200 * health2Percentage, 20));
-    healthBar[2].setSize(sf::Vector2f(200 * health3Percentage, 20));
-    healthBar[3].setSize(sf::Vector2f(200 * health4Percentage, 20));
+    // Fonction pour mettre à jour les barres de santé avec un dégradé de couleurs
+    auto updateHealthBar = [](sf::RectangleShape &bar, float healthPercentage)
+    {
+        // Définir la taille de la barre
+        bar.setSize(sf::Vector2f(200 * healthPercentage, 20));
 
-    // Change color based on health
-    if (health1Percentage > 0.5f)
-        healthBar[0].setFillColor(sf::Color::Green);
-    else if (health1Percentage > 0.2f)
-        healthBar[0].setFillColor(sf::Color::Yellow);
-    else
-        healthBar[0].setFillColor(sf::Color::Red);
+        // Dégradé de couleurs (vert -> jaune -> orange -> rouge)
+        sf::Color color;
+        if (healthPercentage > 0.75f)
+        {
+            // Vert (santé haute)
+            color = sf::Color(0, 255, 0); // Vert
+        }
+        else if (healthPercentage > 0.5f)
+        {
+            // Jaune (santé moyenne)
+            int green = static_cast<int>(255 * (1.0f - (healthPercentage - 0.5f) * 2));
+            color = sf::Color(255, green, 0); // Jaune à orange
+        }
+        else if (healthPercentage > 0.25f)
+        {
+            // Orange (santé faible)
+            int red = static_cast<int>(255 * (1.0f - (healthPercentage - 0.25f) * 4));
+            color = sf::Color(red, 165, 0); // Orange
+        }
+        else
+        {
+            // Rouge (santé très faible)
+            color = sf::Color(255, 0, 0); // Rouge
+        }
 
-    if (health2Percentage > 0.5f)
-        healthBar[1].setFillColor(sf::Color::Green);
-    else if (health2Percentage > 0.2f)
-        healthBar[1].setFillColor(sf::Color::Yellow);
-    else
-        healthBar[1].setFillColor(sf::Color::Red);
+        bar.setFillColor(color);
+    };
 
-    if (health3Percentage > 0.5f)
-        healthBar[2].setFillColor(sf::Color::Green);
-    else if (health2Percentage > 0.2f)
-        healthBar[2].setFillColor(sf::Color::Yellow);
-    else
-        healthBar[2].setFillColor(sf::Color::Red);
+    // Mise à jour des barres de santé pour chaque Pokémon
+    updateHealthBar(healthBar[0], health1Percentage);
+    updateHealthBar(healthBar[1], health2Percentage);
+    updateHealthBar(healthBar[2], health3Percentage);
+    updateHealthBar(healthBar[3], health4Percentage);
+}
+// =================== BARRE DE VIE =================== //
 
-    if (health4Percentage > 0.5f)
-        healthBar[3].setFillColor(sf::Color::Green);
-    else if (health4Percentage > 0.2f)
-        healthBar[3].setFillColor(sf::Color::Yellow);
-    else
-        healthBar[3].setFillColor(sf::Color::Red);
+
+
+void Window::init()
+{
+    updatemovebutton(pokemon1);
+    updatemovebutton(pokemon3);
+    updatemovebutton(pokemon2);
+    updatemovebutton(pokemon4);
 }
 
-void Window::animateAttack(bool isFirstPokemonAttacking)
+void Window::setupUI()
 {
-    if (!isAnimating)
+    initializeHealthBars();
+
+    // Stockage des positions originales pour les animations
+    for (int i = 0; i < 4; i++)
     {
-        isAnimating = true;
-        animationProgress = 0;
-        animationClock.restart();
+        originalPos[i] = pokemonSprite[i].getPosition();
+    }
+
+    // Initialisation des boutons de mouvement
+    sf::Vector2f movePositions[8] = {
+        {50, 600}, {250, 600}, {50, 660}, {250, 660}, // J1
+        {600, 600},
+        {800, 600},
+        {600, 660},
+        {800, 660} // J2
+    };
+
+    for (int i = 0; i < 8; i++)
+    {
+        initMoveButton(moveButtons[i], moveButtonTexts[i], movePositions[i]);
+    }
+
+    // Initialisation du marqueur de ciblage
+    targetIndicator.setRadius(25);
+    targetIndicator.setFillColor(sf::Color(255, 0, 0, 80)); // Rouge semi-transparent
+    targetIndicator.setOutlineColor(sf::Color::Red);
+    targetIndicator.setOutlineThickness(5);
+    targetIndicator.setOrigin(25, 25);
+
+    // Définition des cibles par défaut
+    currentTargetTeam1 = 0;
+    currentTargetTeam2 = 0;
+}
+
+void Window::setupSwitchButtons()
+{
+    // Designe button switch à changer
+
+    switchButtons.setSize(sf::Vector2f(150, 40));
+    switchButtonTexts.setFont(font);
+    switchButtonTexts.setCharacterSize(9);
+    switchButtonTexts.setFillColor(sf::Color::Black);
+
+    switchButtons2.setSize(sf::Vector2f(150, 40));
+    switchButtonTexts2.setFont(font);
+    switchButtonTexts2.setCharacterSize(9);
+    switchButtonTexts2.setFillColor(sf::Color::Black);
+
+    switchButtons.setPosition(50, 550); // Team 1 switch button
+    switchButtons2.setPosition(600, 550);
+
+    switchButtons.setFillColor(sf::Color(200, 200, 200));
+    switchButtons2.setFillColor(sf::Color(200, 200, 200));
+
+    switchButtonTexts.setString("Switch Pokemon");
+    switchButtonTexts2.setString("Switch Pokemon");
+
+    switchButtonTexts.setPosition(60, 560);
+    switchButtonTexts2.setPosition(610, 560);
+
+    // Indices des equipe actives
+    activeTeam1Index = 0;
+    activeTeam2Index = 0;
+    isSwapping = false;
+    swapProgress = 0.0f;
+
+    // revenir au position initial à changer
+    originalPosTeam1[0] = pokemonSprite[0].getPosition();
+    originalPosTeam1[1] = pokemonSprite[2].getPosition();
+    originalPosTeam2[0] = pokemonSprite[1].getPosition();
+    originalPosTeam2[1] = pokemonSprite[3].getPosition();
+}
+
+void Window::initMoveButton(sf::RectangleShape &button, sf::Text &text, sf::Vector2f position)
+{
+    button.setSize({190, 50});
+    button.setFillColor(sf::Color(200, 200, 200));
+    button.setPosition(position);
+
+    text.setFont(font);
+    text.setCharacterSize(12);
+    text.setFillColor(sf::Color::Black);
+    text.setPosition(position.x + 10, position.y + 10);
+}
+
+// =================== MÉTHODES D'ACTION ===================
+
+void Window::updatemovebutton(Pokemon *pokemon)
+{
+    if (pokemon)
+    {
+        active = pokemon;
+        const std::vector<move *> &moves = pokemon->getMoves();
+        for (size_t i = 0; i < moves.size() && i < 4; i++)
+        {
+            moveButtonTexts[i].setString(moves[i]->nom);
+        }
     }
 }
 
@@ -361,202 +697,108 @@ void Window::updateAnimations()
     }
 }
 
-void Window::updatemovebutton(Pokemon *pokemon)
+void Window::updateSwapAnimation()
 {
-    if (pokemon)
+    if (isSwapping)
     {
-        active = pokemon;
-        const std::vector<move *> &moves = pokemon->getMoves();
-        for (size_t i = 0; i < moves.size() && i < 4; i++)
+        float elapsed = animationClock.getElapsedTime().asSeconds();
+        swapProgress = elapsed * 2; // 0.5 second animation
+
+        if (swapProgress >= 1.0f)
         {
-            moveButtonTexts[i].setString(moves[i]->nom);
+            // Animation complete, reset positions
+            pokemonSprite[0].setPosition(originalPosTeam1[0]);
+            pokemonSprite[2].setPosition(originalPosTeam1[1]);
+            pokemonSprite[1].setPosition(originalPosTeam2[0]);
+            pokemonSprite[3].setPosition(originalPosTeam2[1]);
+            isSwapping = false;
+            // Animate the swap
+            float yOffset = sin(swapProgress * 3.14159f) * 10.0f;
+
+            // Team 1 Pokemon
+            pokemonSprite[0].setPosition(originalPosTeam1[0].x,
+                                         originalPosTeam1[0].y + yOffset);
+            pokemonSprite[2].setPosition(originalPosTeam1[1].x,
+                                         originalPosTeam1[1].y + yOffset);
+
+            // Team 2 Pokemon
+            pokemonSprite[1].setPosition(originalPosTeam2[0].x,
+                                         originalPosTeam2[0].y - yOffset);
+            pokemonSprite[3].setPosition(originalPosTeam2[1].x,
+                                         originalPosTeam2[1].y + yOffset);
         }
     }
 }
 
-// Update the render function
-void Window::render()
+void Window::updateMoveButtons()
 {
-    this->window->clear();
+    // Get the currently active Pokemon for each team
+    Pokemon *activePokemon1 = (activeTeam1Index == 0) ? pokemon1 : pokemon3;
+    Pokemon *activePokemon2 = (activeTeam2Index == 0) ? pokemon2 : pokemon4;
 
-    // Update animations
+    // Get their moves
+    std::vector<move *> moves1 = activePokemon1->getMoves();
+    std::vector<move *> moves2 = activePokemon2->getMoves();
 
-    updateAnimations();
-    updateSwapAnimation();
+    // Debug output to check what's happening
+    std::cout << "Updating move buttons. Team 1 active: "
+              << activePokemon1->getName()
+              << " with " << moves1.size() << " moves" << std::endl;
+    std::cout << "Updating move buttons. Team 2 active: "
+              << activePokemon2->getName()
+              << " with " << moves2.size() << " moves" << std::endl;
 
-    // Draw arena
-    if (!Arene_texture.loadFromFile("assets/images/Background.jpg"))
+    // Make sure we have moves to display
+    if (moves1.size() >= 4 && moves2.size() >= 4)
     {
-        std::cerr << "Erreur: Impossible de charger le fond." << std::endl;
+        // Update Team 1 move buttons (0-3)
+        for (int i = 0; i < 4; i++)
+        {
+            moveButtonTexts[i].setString(moves1[i]->getmovename());
+            std::cout << "Team 1 move " << i << ": " << moves1[i]->getmovename() << std::endl;
+        }
+
+        // Update Team 2 move buttons (4-7)
+        for (int i = 0; i < 4; i++)
+        {
+            moveButtonTexts[i + 4].setString(moves2[i]->getmovename());
+            std::cout << "Team 2 move " << i << ": " << moves2[i]->getmovename() << std::endl;
+        }
     }
-    Arene_sprite.setTexture(Arene_texture);
-    this->window->draw(Arene_sprite);
-    window->draw(healthbg[0]);
-    window->draw(healthbg[1]);
-
-    // Draw health bars
-    this->window->draw(healthBarBackground[0]);
-    this->window->draw(healthBarBackground[1]);
-    this->window->draw(healthBar[0]);
-    this->window->draw(healthBar[1]);
-    this->window->draw(healthBar[2]);
-    this->window->draw(healthBar[3]);
-    this->window->draw(healthText[0]);
-    this->window->draw(healthText[1]);
-    this->window->draw(healthText[2]);
-    this->window->draw(healthText[3]);
-
-    // Draw Pokemon sprites
-    this->window->draw(pokemonSprite[0]);
-    this->window->draw(pokemonSprite[1]);
-    this->window->draw(pokemonSprite[2]);
-    this->window->draw(pokemonSprite[3]);
-
-    // Draw move buttons
-    for (int i = 0; i < 8; i++)
+    else
     {
-        window->draw(moveButtons[i]);
-        window->draw(moveButtonTexts[i]);
-    }
-    window->draw(switchButtons);
-    window->draw(switchButtonTexts);
-    window->draw(switchButtons2);
-    window->draw(switchButtonTexts2);
-
-    if (isAnimating && !animationFinished)
-    {
-        window->draw(attackEffectSprite[0]);
-        // window->draw(attackEffectSprite[1]);
-    }
-    renderTargetIndicator();
-
-    this->window->display();
-}
-
-void Window::handleinput()
-{
-    sf::Vector2f mousePos = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
-
-    if (!isTargetingMode && !isAnimating)
-    {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            for (size_t i = 0; i < 4; i++)
-            {
-                if (moveButtons[i].getGlobalBounds().contains(mousePos.x, mousePos.y))
-                {
-                    moveButtons[i].setOutlineThickness(5);
-                    moveButtons[i].setOutlineColor(sf::Color::Red);
-                }
-            }
-        }
-        else
-        {
-            for (size_t i = 0; i < 4; i++)
-            {
-                moveButtons[i].setOutlineThickness(0);
-            }
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-        {
-            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
-            // Vérifie les boutons des attaques du premier Pokémon
-
-            moveButtons[4].setOutlineThickness(5);
-            moveButtons[4].setOutlineColor(sf::Color::Red);
-        }
-        else
-        {
-            moveButtons[4].setOutlineThickness(0);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        {
-
-            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
-
-            moveButtons[5].setOutlineThickness(5);
-            moveButtons[5].setOutlineColor(sf::Color::Red);
-        }
-        else
-        {
-            moveButtons[5].setOutlineThickness(0);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
-
-            moveButtons[6].setOutlineThickness(5);
-            moveButtons[6].setOutlineColor(sf::Color::Red);
-        }
-        else
-        {
-            moveButtons[6].setOutlineThickness(0);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
-            //
-            moveButtons[7].setOutlineThickness(5);
-            moveButtons[7].setOutlineColor(sf::Color::Red);
-        }
-        else
-        {
-            moveButtons[7].setOutlineThickness(0);
-        }
+        std::cerr << "Error: Not enough moves for one or both Pokemon" << std::endl;
     }
 }
 
-void Window::processevent()
+void Window::animateAttack(bool isFirstPokemonAttacking)
 {
-
-    sf::Event event;
-    while (window->pollEvent(event))
+    if (!isAnimating)
     {
-        if (event.type == sf::Event::Closed)
-        {
-            window->close();
-        }
-        handleSwitching();
+        isAnimating = true;
+        animationProgress = 0;
+        animationClock.restart();
     }
 }
 
-void Window::setupSwitchButtons()
+void Window::animateSwitch(bool isTeam1)
 {
-    // Designe button switch à changer
+    if (!isSwapping)
+    {
+        isSwapping = true;
+        swapProgress = 0.0f;
+        animationClock.restart();
+    }
+}
 
-    switchButtons.setSize(sf::Vector2f(150, 40));
-    switchButtonTexts.setFont(font);
-    switchButtonTexts.setCharacterSize(9);
-    switchButtonTexts.setFillColor(sf::Color::Black);
-
-    switchButtons2.setSize(sf::Vector2f(150, 40));
-    switchButtonTexts2.setFont(font);
-    switchButtonTexts2.setCharacterSize(9);
-    switchButtonTexts2.setFillColor(sf::Color::Black);
-
-    switchButtons.setPosition(50, 550); // Team 1 switch button
-    switchButtons2.setPosition(600, 550);
-
-    switchButtons.setFillColor(sf::Color(200, 200, 200));
-    switchButtons2.setFillColor(sf::Color(200, 200, 200));
-
-    switchButtonTexts.setString("Switch Pokemon");
-    switchButtonTexts2.setString("Switch Pokemon");
-
-    switchButtonTexts.setPosition(60, 560);
-    switchButtonTexts2.setPosition(610, 560);
-
-    // Indices des equipe actives
-    activeTeam1Index = 0;
-    activeTeam2Index = 0;
-    isSwapping = false;
-    swapProgress = 0.0f;
-
-    // revenir au position initial à changer
-    originalPosTeam1[0] = pokemonSprite[0].getPosition();
-    originalPosTeam1[1] = pokemonSprite[2].getPosition();
-    originalPosTeam2[0] = pokemonSprite[1].getPosition();
-    originalPosTeam2[1] = pokemonSprite[3].getPosition();
+void Window::setAttackEffectSprite(const std::string &movePath)
+{
+    if (!attackEffectTexture[0].loadFromFile(movePath))
+    {
+        std::cerr << "Erreur : Impossible de charger l'effet d'attaque " << movePath << std::endl;
+        return;
+    }
+    attackEffectSprite[0].setTexture(attackEffectTexture[0]);
 }
 
 void Window::handleSwitching()
@@ -600,73 +842,20 @@ void Window::handleSwitching()
     }
 }
 
-void Window::animateSwitch(bool isTeam1)
+void Window::processevent()
 {
-    if (!isSwapping)
-    {
-        isSwapping = true;
-        swapProgress = 0.0f;
-        animationClock.restart();
-    }
-}
 
-void Window::updateSwapAnimation()
-{
-    if (isSwapping)
+    sf::Event event;
+    while (window->pollEvent(event))
     {
-        float elapsed = animationClock.getElapsedTime().asSeconds();
-        swapProgress = elapsed * 2; // 0.5 second animation
-
-        if (swapProgress >= 1.0f)
+        if (event.type == sf::Event::Closed)
         {
-            // Animation complete, reset positions
-            pokemonSprite[0].setPosition(originalPosTeam1[0]);
-            pokemonSprite[2].setPosition(originalPosTeam1[1]);
-            pokemonSprite[1].setPosition(originalPosTeam2[0]);
-            pokemonSprite[3].setPosition(originalPosTeam2[1]);
-            isSwapping = false;
-            // Animate the swap
-            float yOffset = sin(swapProgress * 3.14159f) * 10.0f;
-
-            // Team 1 Pokemon
-            pokemonSprite[0].setPosition(originalPosTeam1[0].x,
-                                        originalPosTeam1[0].y + yOffset);
-            pokemonSprite[2].setPosition(originalPosTeam1[1].x,
-                                        originalPosTeam1[1].y + yOffset);
-
-            // Team 2 Pokemon
-            pokemonSprite[1].setPosition(originalPosTeam2[0].x,
-                                        originalPosTeam2[0].y - yOffset);
-            pokemonSprite[3].setPosition(originalPosTeam2[1].x,
-                                        originalPosTeam2[1].y + yOffset);
+            window->close();
         }
+        handleSwitching();
     }
 }
 
-void Window::setAttackEffectSprite(const std::string &movePath)
-{
-    if (!attackEffectTexture[0].loadFromFile(movePath))
-    {
-        std::cerr << "Erreur : Impossible de charger l'effet d'attaque " << movePath << std::endl;
-        return;
-    }
-    attackEffectSprite[0].setTexture(attackEffectTexture[0]);
-}
-
-// On definie le cercle pour les targets
-void Window::setupTargetingSystem()
-{
-    // Setup target indicator
-    targetIndicator.setRadius(15);
-    targetIndicator.setFillColor(sf::Color::Transparent);
-    targetIndicator.setOutlineColor(sf::Color::Red);
-    targetIndicator.setOutlineThickness(3);
-    targetIndicator.setOrigin(15, 15); // Center the circle
-
-    // Default targets
-    currentTargetTeam1 = 1; // Default to pokemon2
-    currentTargetTeam2 = 1; // Default to pokemon1
-}
 // Method to cycle through targets
 void Window::cycleTargets(bool isTeam1)
 {
@@ -693,356 +882,116 @@ Pokemon *Window::getCurrentTarget(bool isTeam1)
     }
 }
 
-void Window::renderTargetIndicator()
+// On definie le cercle pour les targets
+void Window::setupTargetingSystem(void)
 {
-    if (!isTargetingMode)
-        return;
+    // Setup target indicator
+    targetIndicator.setRadius(15);
+    targetIndicator.setFillColor(sf::Color::Transparent);
+    targetIndicator.setOutlineColor(sf::Color::Red);
+    targetIndicator.setOutlineThickness(3);
+    targetIndicator.setOrigin(15, 15); // Center the circle
 
-    // Position the indicator on the current target
-    sf::Vector2f targetPos;
-
-    // If team 1 is targeting
-    if (isFirstPokemonAttaking || isThirdPokemonAttaking)
-    {
-        if (currentTargetTeam1 == 0)
-        {
-            // Targeting pokemon2
-            targetPos = pokemonSprite[1].getPosition();
-            targetPos.x += pokemonSprite[1].getGlobalBounds().width / 2;
-            targetPos.y += pokemonSprite[1].getGlobalBounds().height / 2;
-        }
-        else
-        {
-            // Targeting pokemon4
-            targetPos = pokemonSprite[3].getPosition();
-            targetPos.x += pokemonSprite[3].getGlobalBounds().width / 2;
-            targetPos.y += pokemonSprite[3].getGlobalBounds().height / 2;
-        }
-    }
-    // If team 2 is targeting
-    else if (isSecondPokemonAttaking || isFourthPokemonAttaking)
-    {
-        if (currentTargetTeam2 == 0)
-        {
-            // Targeting pokemon1
-            targetPos = pokemonSprite[0].getPosition();
-            targetPos.x += pokemonSprite[0].getGlobalBounds().width / 2;
-            targetPos.y += pokemonSprite[0].getGlobalBounds().height / 2;
-        }
-        else
-        {
-            // Targeting pokemon3
-            targetPos = pokemonSprite[2].getPosition();
-            targetPos.x += pokemonSprite[2].getGlobalBounds().width / 2;
-            targetPos.y += pokemonSprite[2].getGlobalBounds().height / 2;
-        }
-    }
-
-    targetIndicator.setPosition(targetPos);
-    window->draw(targetIndicator);
-
-    // Add a text indicator to show targeting mode is active
-    sf::Text targetingText;
-    targetingText.setFont(font);
-    targetingText.setString("TARGETING MODE - Press Tab to cycle targets");
-    targetingText.setCharacterSize(16);
-    targetingText.setFillColor(sf::Color::Red);
-    targetingText.setPosition(320, 30);
-    window->draw(targetingText);
-}
-void Window::updateMoveButtons()
-{
-    // Get the currently active Pokemon for each team
-    Pokemon *activePokemon1 = (activeTeam1Index == 0) ? pokemon1 : pokemon3;
-    Pokemon *activePokemon2 = (activeTeam2Index == 0) ? pokemon2 : pokemon4;
-
-    // Get their moves
-    std::vector<move *> moves1 = activePokemon1->getMoves();
-    std::vector<move *> moves2 = activePokemon2->getMoves();
-
-    // Debug output to check what's happening
-    std::cout << "Updating move buttons. Team 1 active: "
-              << activePokemon1->getName()
-              << " with " << moves1.size() << " moves" << std::endl;
-    std::cout << "Updating move buttons. Team 2 active: "
-              << activePokemon2->getName()
-              << " with " << moves2.size() << " moves" << std::endl;
-
-    // Make sure we have moves to display
-    if (moves1.size() >= 4 && moves2.size() >= 4)
-    {
-        // Update Team 1 move buttons (0-3)
-        for (int i = 0; i < 4; i++)
-        {
-            moveButtonTexts[i].setString(moves1[i]->getmovename());
-            std::cout << "Team 1 move " << i << ": " << moves1[i]->getmovename() << std::endl;
-        }
-
-        // Update Team 2 move buttons (4-7)
-        for (int i = 0; i < 4; i++)
-        {
-            moveButtonTexts[i + 4].setString(moves2[i]->getmovename());
-            std::cout << "Team 2 move " << i << ": " << moves2[i]->getmovename() << std::endl;
-        }
-    }
-    else
-    {
-        std::cerr << "Error: Not enough moves for one or both Pokemon" << std::endl;
-    }
-}
-void Window::showPokemonSelection()
-{
-
-    sf::RenderWindow selectionWindow(sf::VideoMode(1024, 700), "Sélection des Pokémon");
-    playMusic("assets/audio/selection.ogg");
-    // Charger l'image de fond
-    sf::Texture background;
-    if (!background.loadFromFile("assets/images/selection_background.jpg"))
-    {
-        std::cerr << "Error: Unable to load background image" << std::endl;
-    }
-    sf::Sprite background_sprite(background);
-
-    // Charger la police
-    if (!font.loadFromFile("assets/font/prstartk.ttf"))
-    {
-        std::cerr << "Erreur de chargement de la police !" << std::endl;
-    }
-
-    // Charger les textures des Pokémon
-    std::vector<sf::Texture> pokemonTextures(allPokemon.size());
-    std::vector<sf::Sprite> pokemonSprites(allPokemon.size());
-
-    for (size_t i = 0; i < allPokemon.size(); i++)
-    {
-        if (!pokemonTextures[i].loadFromFile("assets/images/" + allPokemon[i]->getName() + ".png"))
-        {
-            std::cerr << "Erreur de chargement de l'image pour " << allPokemon[i]->getName() << std::endl;
-        }
-        pokemonSprites[i].setTexture(pokemonTextures[i]);
-        pokemonSprites[i].setScale(0.7f, 0.7f); // Ajuster la taille
-    }
-
-    size_t selectedIndexJ1 = 0, selectedIndexJ2 = 0;
-    bool j1Confirmed = false, j2Confirmed = false;
-    std::vector<int> teamJ1, teamJ2;
-
-    while (selectionWindow.isOpen())
-    {
-        sf::Event event;
-        while (selectionWindow.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                selectionWindow.close();
-
-            if (event.type == sf::Event::KeyPressed)
-            {
-                if (event.key.code == sf::Keyboard::Escape)
-                {
-                    selectionWindow.close();
-                }
-                // Sélection du Joueur 1
-                if (!j1Confirmed)
-                {
-                    if (event.key.code == sf::Keyboard::Left)
-                        selectedIndexJ1 = (selectedIndexJ1 - 1 + allPokemon.size()) % allPokemon.size();
-                    if (event.key.code == sf::Keyboard::Right)
-                        selectedIndexJ1 = (selectedIndexJ1 + 1) % allPokemon.size();
-                    if (event.key.code == sf::Keyboard::Enter)
-                    {
-                        if (teamJ1.size() < 2 && std::find(teamJ1.begin(), teamJ1.end(), selectedIndexJ1) == teamJ1.end())
-                        {
-                            teamJ1.push_back(selectedIndexJ1);
-                        }
-                        if (teamJ1.size() == 2)
-                            j1Confirmed = true;
-                    }
-                }
-
-                // Sélection du Joueur 2
-                else if (!j2Confirmed)
-                {
-                    if (event.key.code == sf::Keyboard::Q)
-                        selectedIndexJ2 = (selectedIndexJ2 - 1 + allPokemon.size()) % allPokemon.size();
-                    if (event.key.code == sf::Keyboard::D)
-                        selectedIndexJ2 = (selectedIndexJ2 + 1) % allPokemon.size();
-                    if (event.key.code == sf::Keyboard::Space)
-                    {
-                        if (teamJ2.size() < 2 && std::find(teamJ2.begin(), teamJ2.end(), selectedIndexJ2) == teamJ2.end())
-                        {
-                            teamJ2.push_back(selectedIndexJ2);
-                        }
-                        if (teamJ2.size() == 2)
-                            j2Confirmed = true;
-                    }
-                }
-
-                // Démarrer le combat
-                if (j1Confirmed && j2Confirmed)
-                {
-                    this->pokemon1 = allPokemon[teamJ1[0]];
-                    this->pokemon3 = allPokemon[teamJ1[1]];
-                    this->pokemon2 = allPokemon[teamJ2[0]];
-                    this->pokemon4 = allPokemon[teamJ2[1]];
-
-                    updatePokemonSprites();
-
-                    init_pokemon_positon();
-                    pokemon1->initializeMoves();
-                    pokemon2->initializeMoves();
-                    pokemon3->initializeMoves();
-                    pokemon4->initializeMoves();
-                    selectionWindow.close();
-                    init_music();
-                    this->window = new sf::RenderWindow(sf::VideoMode(1024, 700), "Combat Pokémon");
-                    this->debut = true;
-                }
-            }
-        }
-
-        selectionWindow.clear();
-        selectionWindow.draw(background_sprite);
-
-        // Affichage des Pokémon
-        for (size_t i = 0; i < allPokemon.size(); i++)
-        {
-            int row = i / 5;
-            int col = i % 5;
-            pokemonSprites[i].setPosition(50 + col * 180, 50 + row * 150);
-            selectionWindow.draw(pokemonSprites[i]);
-
-            // Encadrer les Pokémon sélectionnés
-            if (std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end() ||
-                std::find(teamJ2.begin(), teamJ2.end(), i) != teamJ2.end() ||
-                (!j1Confirmed && i == selectedIndexJ1) ||
-                (!j2Confirmed && i == selectedIndexJ2))
-            {
-                sf::RectangleShape highlight(sf::Vector2f(120, 120));
-                highlight.setPosition(50 + col * 180, 50 + row * 150);
-                highlight.setOutlineThickness(5);
-                highlight.setOutlineColor(
-                    std::find(teamJ1.begin(), teamJ1.end(), i) != teamJ1.end() ? sf::Color::Blue : sf::Color::Red);
-                highlight.setFillColor(sf::Color::Transparent);
-                selectionWindow.draw(highlight);
-            }
-        }
-
-        healthText[0].setString(pokemon1->getName());
-        healthText[0].setFont(font);
-        healthText[0].setCharacterSize(10);
-        healthText[0].setFillColor(sf::Color::White);
-        healthText[0].setPosition(15, 29);
-        // Pokemon2
-        healthText[1].setString(pokemon3->getName());
-        healthText[1].setFont(font);
-        healthText[1].setCharacterSize(10);
-        healthText[1].setFillColor(sf::Color::White);
-        healthText[1].setPosition(15, 60);
-        // Pokemon3
-        healthText[2].setString(pokemon2->getName());
-        healthText[2].setFont(font);
-        healthText[2].setCharacterSize(10);
-        healthText[2].setFillColor(sf::Color::White);
-        healthText[2].setPosition(615, 469);
-        // Pokemon4
-        healthText[3].setString(pokemon4->getName());
-        healthText[3].setFont(font);
-        healthText[3].setCharacterSize(10);
-        healthText[3].setFillColor(sf::Color::White);
-        healthText[3].setPosition(615, 500);
-
-        selectionWindow.display();
-    }
+    // Default targets
+    currentTargetTeam1 = 1; // Default to pokemon2
+    currentTargetTeam2 = 1; // Default to pokemon1
 }
 
-void Window::showMainMenu()
+// =================== CONSTRUCTEUR / DESTRUCTEUR ===================
+
+Window::Window() : pokemon1(Pokemondb.getPokemonByName("Palkia")),
+                   pokemon2(Pokemondb.getPokemonByName("Dialga")),
+                   pokemon3(Pokemondb.getPokemonByName("Arceus")),
+                   pokemon4(Pokemondb.getPokemonByName("Giratina")), debut(false), isAnimating(false), isFirstPokemonAttaking(false), isSecondPokemonAttaking(false), isThirdPokemonAttaking(false), isFourthPokemonAttaking(false)
 {
-    sf::RenderWindow menuWindow(sf::VideoMode(1024, 640), "Menu Principal");
-    playMusic("assets/audio/Title.ogg");
-    // Charger la police
-    if (!font.loadFromFile("assets/font/prstartk.ttf"))
+    // Initialisation de la fenêtre
+
+    std::cout << "Pokemon1 : [" << pokemon1->getType() << "]" << std::endl;
+    animationProgress = 0.0f;
+    isTargetingMode = false;
+    isDamageAnimating = false;
+    damageAnimationDuration = 0.01f;
+
+    // Initialisation des éléments de l'interface graphique
+    this->initPokemonPostion();
+
+    this->setupUI();
+
+    this->setupSwitchButtons();
+    std::cout << "Appel de initializeMoves pour " << pokemon1->getName() << std::endl;
+    // Initialize attack effect
+    attackAnimationTimer = 0.0f;
+    attackFrame = 0;
+}
+
+Window::~Window()
+{
+    delete pokemon1;
+    delete pokemon2;
+    delete pokemon3;
+    delete pokemon4;
+    delete this->window; // Libération de la mémoire de la fenêtre
+}
+
+// =================== AFFICHAGE ===================
+
+// Update the render function
+void Window::render()
+{
+    this->window->clear();
+
+    // Update animations
+
+    updateAnimations();
+    updateSwapAnimation();
+
+    // Draw arena
+    if (!ArenaTexture.loadFromFile("assets/images/Background.jpg"))
     {
-        std::cerr << "Erreur de chargement de la police !" << std::endl;
+        std::cerr << "Erreur: Impossible de charger le fond." << std::endl;
     }
+    ArenaSprite.setTexture(ArenaTexture);
+    this->window->draw(ArenaSprite);
+    // window->draw(healthbg[0]);
+    // window->draw(healthbg[1]);
 
-    // Fond
+    // Draw health bars
+    this->window->draw(healthBarBackground[0]);
+    this->window->draw(healthBarBackground[1]);
+    this->window->draw(healthBar[0]);
+    this->window->draw(healthBar[1]);
+    this->window->draw(healthBar[2]);
+    this->window->draw(healthBar[3]);
+    this->window->draw(healthText[0]);
+    this->window->draw(healthText[1]);
+    this->window->draw(healthText[2]);
+    this->window->draw(healthText[3]);
 
-    if (!backgroundm.loadFromFile("assets/images/Menu.jpg"))
+    // Draw Pokemon sprites
+    this->window->draw(pokemonSprite[0]);
+    this->window->draw(pokemonSprite[1]);
+    this->window->draw(pokemonSprite[2]);
+    this->window->draw(pokemonSprite[3]);
+
+    // Draw move buttons
+    for (int i = 0; i < 8; i++)
     {
-        std::cerr << "Error: Unable to load background image" << std::endl;
+        window->draw(moveButtons[i]);
+        window->draw(moveButtonTexts[i]);
     }
-    background_spritem.setTexture(backgroundm);
+    window->draw(switchButtons);
+    window->draw(switchButtonTexts);
+    window->draw(switchButtons2);
+    window->draw(switchButtonTexts2);
 
-    // Bouton "Start"
-    sf::RectangleShape startButton(sf::Vector2f(200, 50));
-    startButton.setPosition(430, 400);
-    startButton.setFillColor(sf::Color(100, 200, 100));
-
-    sf::Text startText("START", font, 20);
-    startText.setFillColor(sf::Color::White);
-    startText.setPosition(490, 410);
-
-    // Bouton "Help"
-    sf::RectangleShape helpButton(sf::Vector2f(200, 50));
-    helpButton.setPosition(430, 500);
-    helpButton.setFillColor(sf::Color(200, 100, 100));
-
-    sf::Text helpText("HELP", font, 20);
-    helpText.setFillColor(sf::Color::White);
-    helpText.setPosition(490, 510);
-
-    while (menuWindow.isOpen())
+    if (isAnimating && !animationFinished)
     {
-        sf::Event event;
-        while (menuWindow.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                menuWindow.close();
-
-            if (event.type == sf::Event::MouseButtonPressed)
-            {
-                sf::Vector2f mousePos = menuWindow.mapPixelToCoords(sf::Mouse::getPosition(menuWindow));
-
-                // Vérifier si "Start" est cliqué
-                if (startButton.getGlobalBounds().contains(mousePos))
-                {
-                    menuWindow.close();
-                    showPokemonSelection(); // Lancer la sélection de Pokémon
-                }
-
-                // Vérifier si "Help" est cliqué
-                if (helpButton.getGlobalBounds().contains(mousePos))
-                {
-                    sf::RenderWindow helpWindow(sf::VideoMode(600, 400), "Instructions");
-                    sf::Text instructions("Choisissez 2 Pokemon chacun et combattez !\nUtilisez les attaques pour battre votre adversaire.", font, 7);
-                    instructions.setFillColor(sf::Color::White);
-                    instructions.setPosition(50, 100);
-
-                    while (helpWindow.isOpen())
-                    {
-                        sf::Event helpEvent;
-                        while (helpWindow.pollEvent(helpEvent))
-                        {
-                            if (helpEvent.type == sf::Event::Closed)
-                                helpWindow.close();
-                        }
-
-                        helpWindow.clear(sf::Color::Black);
-                        helpWindow.draw(instructions);
-                        helpWindow.display();
-                    }
-                }
-            }
-        }
-
-        menuWindow.clear();
-        menuWindow.draw(background_spritem);
-        menuWindow.draw(startButton);
-        menuWindow.draw(startText);
-        menuWindow.draw(helpButton);
-        menuWindow.draw(helpText);
-        menuWindow.display();
+        window->draw(attackEffectSprite[0]);
+        // window->draw(attackEffectSprite[1]);
     }
+    renderTargetIndicator();
+
+    this->window->display();
 }
 
 void Window::showEndGameMenu(int winningTeam)
@@ -1127,6 +1076,64 @@ void Window::showEndGameMenu(int winningTeam)
     }
 }
 
+void Window::renderTargetIndicator()
+{
+    if (!isTargetingMode)
+        return;
+
+    // Position the indicator on the current target
+    sf::Vector2f targetPos;
+
+    // If team 1 is targeting
+    if (isFirstPokemonAttaking || isThirdPokemonAttaking)
+    {
+        if (currentTargetTeam1 == 0)
+        {
+            // Targeting pokemon2
+            targetPos = pokemonSprite[1].getPosition();
+            targetPos.x += pokemonSprite[1].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[1].getGlobalBounds().height / 2;
+        }
+        else
+        {
+            // Targeting pokemon4
+            targetPos = pokemonSprite[3].getPosition();
+            targetPos.x += pokemonSprite[3].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[3].getGlobalBounds().height / 2;
+        }
+    }
+    // If team 2 is targeting
+    else if (isSecondPokemonAttaking || isFourthPokemonAttaking)
+    {
+        if (currentTargetTeam2 == 0)
+        {
+            // Targeting pokemon1
+            targetPos = pokemonSprite[0].getPosition();
+            targetPos.x += pokemonSprite[0].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[0].getGlobalBounds().height / 2;
+        }
+        else
+        {
+            // Targeting pokemon3
+            targetPos = pokemonSprite[2].getPosition();
+            targetPos.x += pokemonSprite[2].getGlobalBounds().width / 2;
+            targetPos.y += pokemonSprite[2].getGlobalBounds().height / 2;
+        }
+    }
+
+    targetIndicator.setPosition(targetPos);
+    window->draw(targetIndicator);
+
+    // Add a text indicator to show targeting mode is active
+    sf::Text targetingText;
+    targetingText.setFont(font);
+    targetingText.setString("TARGETING MODE - Press Tab to cycle targets");
+    targetingText.setCharacterSize(16);
+    targetingText.setFillColor(sf::Color::Red);
+    targetingText.setPosition(320, 30);
+    window->draw(targetingText);
+}
+
 void Window::updatePokemonSprites()
 {
     if (pokemon1)
@@ -1144,5 +1151,78 @@ void Window::updatePokemonSprites()
     if (pokemon4)
     {
         pokemonSprite[3].setTexture(pokemon4->getTexturefront());
+    }
+}
+
+void Window::handleinput()
+{
+    sf::Vector2f mousePos = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
+
+    if (!isTargetingMode && !isAnimating)
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        {
+            for (size_t i = 0; i < 4; i++)
+            {
+                if (moveButtons[i].getGlobalBounds().contains(mousePos.x, mousePos.y))
+                {
+                    moveButtons[i].setOutlineThickness(5);
+                    moveButtons[i].setOutlineColor(sf::Color::Red);
+                }
+            }
+        }
+        else
+        {
+            for (size_t i = 0; i < 4; i++)
+            {
+                moveButtons[i].setOutlineThickness(0);
+            }
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+        {
+            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
+            // Vérifie les boutons des attaques du premier Pokémon
+
+            moveButtons[4].setOutlineThickness(5);
+            moveButtons[4].setOutlineColor(sf::Color::Red);
+        }
+        else
+        {
+            moveButtons[4].setOutlineThickness(0);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+        {
+
+            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
+
+            moveButtons[5].setOutlineThickness(5);
+            moveButtons[5].setOutlineColor(sf::Color::Red);
+        }
+        else
+        {
+            moveButtons[5].setOutlineThickness(0);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
+
+            moveButtons[6].setOutlineThickness(5);
+            moveButtons[6].setOutlineColor(sf::Color::Red);
+        }
+        else
+        {
+            moveButtons[6].setOutlineThickness(0);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            std::vector<move *> moves = activeTeam2Index == 0 ? pokemon2->getMoves() : pokemon4->getMoves();
+            //
+            moveButtons[7].setOutlineThickness(5);
+            moveButtons[7].setOutlineColor(sf::Color::Red);
+        }
+        else
+        {
+            moveButtons[7].setOutlineThickness(0);
+        }
     }
 }

@@ -4,7 +4,7 @@
 #include "utile.hpp"
 #include "Pokemon.hpp"
 #include "Graphique.hpp"
-
+ 
 // Forward declaration to resolve circular dependencys
 class Window;
 
