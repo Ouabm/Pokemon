@@ -1,18 +1,13 @@
 #include "../../include/states/SelectionState.hpp"
 #include <iostream>
 
-SelectionState::SelectionState(GameStateManager *manager) : GameState(manager)
+SelectionState::SelectionState(GameStateManager *manager)
+    : GameState(manager), selectedIndex(0), playerTurn(0)
 {
-    // Lecture de la musique de fond
     ResourceManager::getInstance().playMusic("SelectionStateMusic", 50.0f, true);
-
-    // Chargement de l'arrière-plan
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("SelectionStateBG"));
 
-    // Récupérer les noms des Pokémon depuis PokemonManager
     std::vector<std::string> pokemonNames = PokemonManager::getInstance().getAllPokemonNames();
-
-    // Charger les sprites des Pokémon en fonction de leurs noms
     for (const std::string &name : pokemonNames)
     {
         sf::Sprite sprite;
@@ -20,10 +15,10 @@ SelectionState::SelectionState(GameStateManager *manager) : GameState(manager)
         pokemonSprites.push_back(sprite);
     }
 
-    Pokemon* a = PokemonManager::getInstance().getPokemonByName("Pikachu");
-
-    std::cout << typeToString(a->getType1()) << std::endl; // CA MARCHE INCROYALE LA STRUCTURE DE REVE
-
+    selectionBox.setSize(sf::Vector2f(120, 120));
+    selectionBox.setFillColor(sf::Color::Transparent);
+    selectionBox.setOutlineThickness(5);
+    selectionBox.setOutlineColor(sf::Color::Yellow);
 }
 
 void SelectionState::handleInput(sf::RenderWindow &window)
@@ -35,10 +30,46 @@ void SelectionState::handleInput(sf::RenderWindow &window)
             window.close();
         if (event.type == sf::Event::KeyPressed)
         {
-            if (event.key.code == sf::Keyboard::Enter) // A modifier selon ton choix de touche
+            if (event.key.code == sf::Keyboard::Enter)
             {
-                gameManager->changeState(std::make_unique<BattleState>(gameManager)); // Transition vers BattleState
+                std::string selectedPokemonName = PokemonManager::getInstance().getAllPokemonNames()[selectedIndex];
+
+                // Vérifie si le Pokémon est déjà dans l'une des équipes
+                bool pokemonAlreadyInRedTeam = std::find(redTeam.begin(), redTeam.end(), selectedPokemonName) != redTeam.end();
+                bool pokemonAlreadyInBlueTeam = std::find(blueTeam.begin(), blueTeam.end(), selectedPokemonName) != blueTeam.end();
+
+                // Ajoute le Pokémon à l'équipe rouge ou bleue :
+                if (playerTurn)
+                {
+                    if (!pokemonAlreadyInRedTeam) // On peut ajouter && !pokemonAlreadyInBlueTeam pour n'avoir aucun doublons // Revient a le mettre avant le playTurn
+                    {
+                        redTeam.push_back(selectedPokemonName); // Ajoute à l'équipe rouge
+                        playerTurn = !playerTurn;
+                    }
+                }
+                else
+                {
+                    if (!pokemonAlreadyInBlueTeam) // On peut ajouter && !pokemonAlreadyInRedTeam pour n'avoir aucun doublons // Revient a le mettre avant le playTurn
+                    {
+                        blueTeam.push_back(selectedPokemonName); // Ajoute à l'équipe bleue
+                        playerTurn = !playerTurn;
+                    }
+                }
+
+                // Si les deux équipes sont complètes, lance l'état suivant
+                if (redTeam.size() == 2 && blueTeam.size() == 2)
+                {
+                    gameManager->changeState(std::make_unique<BattleState>(gameManager, redTeam, blueTeam)); // On passe en argument les noms des pokemons choisis
+                }
             }
+            else if (event.key.code == sf::Keyboard::Right && (selectedIndex % 5) < 4)
+                selectedIndex++;
+            else if (event.key.code == sf::Keyboard::Left && (selectedIndex % 5) > 0)
+                selectedIndex--;
+            else if (event.key.code == sf::Keyboard::Down && selectedIndex + 5 < pokemonSprites.size())
+                selectedIndex += 5;
+            else if (event.key.code == sf::Keyboard::Up && selectedIndex >= 5)
+                selectedIndex -= 5;
         }
     }
 }
@@ -48,17 +79,31 @@ void SelectionState::update() {}
 void SelectionState::render(sf::RenderWindow &window)
 {
     window.clear();
-    window.draw(backgroundSprite); // Dessiner l'arrière-plan
+    window.draw(backgroundSprite);
 
-    // Afficher les sprites des Pokémon
     for (size_t i = 0; i < pokemonSprites.size(); i++)
     {
         int row = i / 5;
         int col = i % 5;
         pokemonSprites[i].setPosition(60 + col * 180, 30 + row * 150);
-        pokemonSprites[i].setScale(0.7f, 0.7f); // Ajuster la taille
-        window.draw(pokemonSprites[i]); // Dessiner chaque sprite de Pokémon
+        pokemonSprites[i].setScale(0.7f, 0.7f);
+        window.draw(pokemonSprites[i]);
     }
 
+    int row = selectedIndex / 5;
+    int col = selectedIndex % 5;
+    selectionBox.setPosition(60 + col * 180, 30 + row * 150);
+
+    // Change la couleur du rectangle en fonction de l'équipe en cours
+    if (playerTurn)
+    {
+        selectionBox.setOutlineColor(sf::Color::Red); // Équipe rouge
+    }
+    else
+    {
+        selectionBox.setOutlineColor(sf::Color::Blue); // Équipe bleue
+    }
+
+    window.draw(selectionBox);
     window.display();
 }

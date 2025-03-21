@@ -25,8 +25,6 @@ MenuState::MenuState(GameStateManager *manager) : GameState(manager)
     startButton = createButton("MenuStateFont", "Start", buttonSize, startButtonPos, sf::Color::Green, sf::Color::White);
     helpButton = createButton("MenuStateFont", "Help", buttonSize, helpButtonPos, sf::Color::Blue, sf::Color::White);
     quitButton = createButton("MenuStateFont", "Quit", buttonSize, exitButtonPos, sf::Color::Red, sf::Color::White);
-
-    // Jouer la musique en utilisant ResourceManager
 }
 
 void MenuState::handleInput(sf::RenderWindow &window)

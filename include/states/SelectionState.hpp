@@ -1,13 +1,11 @@
 #pragma once
 
 #include "GameState.hpp"
-
 #include "../../include/states/BattleState.hpp"
-
 #include "../../include/GameStateManager.hpp"
 #include "../../include/PokemonManager.hpp"
-
 #include "../../include/ElementUI.hpp"
+#include <memory>  // pour std::shared_ptr
 
 class SelectionState : public GameState
 {
@@ -19,7 +17,13 @@ public:
 
 private:
     sf::Sprite backgroundSprite;
-
-    // Vecteur pour stocker les sprites des Pokémon
     std::vector<sf::Sprite> pokemonSprites;
+
+    sf::RectangleShape selectionBox;
+    int selectedIndex;
+    
+    bool playerTurn;
+
+    std::vector<std::string> redTeam;
+    std::vector<std::string>  blueTeam; 
 };
