@@ -1,12 +1,12 @@
 #include "ResourceManager.hpp"
 #include "GameStateManager.hpp"
 
-#include "states/MenuState.hpp"
+#include "MenuState.hpp"
 
 int main()
 {
     ResourceManager::getInstance().loadAllResources();
-    
+
     sf::RenderWindow window(sf::VideoMode(1024, 640), "Pokemon");
 
     // Création du GameStateManager

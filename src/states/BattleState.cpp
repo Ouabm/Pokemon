@@ -1,8 +1,8 @@
-#include "../../include/states/BattleState.hpp"
-#include "../../include/states/EndState.hpp"
+#include "BattleState.hpp"
+#include "EndState.hpp"
 
-#include "../../include/GameStateManager.hpp"
-#include "../../include/PokemonManager.hpp"
+#include "GameStateManager.hpp"
+#include "PokemonManager.hpp"
 
 BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &blueTeamPokemonsNames, const std::vector<std::string> &redTeamPokemonsNames) : GameState(manager)
 {

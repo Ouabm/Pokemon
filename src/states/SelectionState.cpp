@@ -1,8 +1,8 @@
-#include "../../include/states/SelectionState.hpp" // Etat actuel ou l'on se trouve
-#include "../../include/states/BattleState.hpp"    // Sert uniquement pour la transition
+#include "SelectionState.hpp" // Etat actuel ou l'on se trouve
+#include "BattleState.hpp"    // Sert uniquement pour la transition
 
-#include "../../include/GameStateManager.hpp"
-#include "../../include/PokemonManager.hpp"
+#include "GameStateManager.hpp"
+#include "PokemonManager.hpp"
 
 SelectionState::SelectionState(GameStateManager *manager) : GameState(manager), selectedIndex(0), playerTurn(0)
 {

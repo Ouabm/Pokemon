@@ -1,6 +1,6 @@
-#include "../../include/states/MenuState.hpp"      // Etat actuel ou l'on se trouve
-#include "../../include/states/SelectionState.hpp" // Sert uniquement pour la transition
-#include "../../include/GameStateManager.hpp"
+#include "MenuState.hpp"      // Etat actuel ou l'on se trouve
+#include "SelectionState.hpp" // Sert uniquement pour la transition
+#include "GameStateManager.hpp"
 
 MenuState::MenuState(GameStateManager *manager) : GameState(manager)
 {

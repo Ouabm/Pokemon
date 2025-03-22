@@ -1,7 +1,7 @@
-#include "../../include/states/EndState.hpp"  // Etat actuel ou l'on se trouve
-#include "../../include/states/MenuState.hpp" // Sert uniquement pour la transition (si on rejoue)
+#include "EndState.hpp"  // Etat actuel ou l'on se trouve
+#include "MenuState.hpp" // Sert uniquement pour la transition (si on rejoue)
 
-#include "../../include/GameStateManager.hpp"
+#include "GameStateManager.hpp"
 
 EndState::EndState(GameStateManager *manager) : GameState(manager)
 {
