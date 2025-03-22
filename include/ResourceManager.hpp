@@ -23,7 +23,7 @@ public:
 
     // Chargement groupé
     void loadAllResources();       // Charge toutes les ressources globales
-    void loadAllPokemonTextures(); // Charge toutes les textures des Pokémon
+    void loadAllPokemonTextures(); // Charge toutes les textures des Pokémons
 
     // Gestion de la musique
     void playMusic(const std::string &musicKey, float volume = 50.0f, bool loop = true);

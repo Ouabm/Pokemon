@@ -22,7 +22,7 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
 
     // Initialise les boutons et les sprites
     createMoveButtons();
-    initHealthBars();
+    createHealthBars();
 }
 
 void BattleState::handleInput(sf::RenderWindow &window)
@@ -73,6 +73,9 @@ void BattleState::render(sf::RenderWindow &window)
     drawMoveButtons(window, blueTeamStruct);
     drawMoveButtons(window, redTeamStruct);
 
+    drawHealthBars(window, blueTeamStruct);
+    drawHealthBars(window, redTeamStruct);
+
     window.display();
 }
 
@@ -109,14 +112,12 @@ void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPok
     }
 }
 
-void BattleState::initHealthBars()
+void BattleState::drawPokemonTeam(sf::RenderWindow &window, PokemonTeam &teamStruct)
 {
-    // Initialisation des barres de vie
-}
-
-void BattleState::updateHealthBars()
-{
-    // Mise à jour des barres de vie
+    for (auto &sprite : teamStruct.pokemonSprites)
+    {
+        window.draw(sprite);
+    }
 }
 
 // =================== BOUTONS ===================
@@ -137,14 +138,6 @@ void BattleState::createMoveButtons()
     redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 20, sf::Color::Red, sf::Color::Black);
 }
 
-void BattleState::drawPokemonTeam(sf::RenderWindow &window, PokemonTeam &teamStruct)
-{
-    for (auto &sprite : teamStruct.pokemonSprites)
-    {
-        window.draw(sprite);
-    }
-}
-
 void BattleState::drawMoveButtons(sf::RenderWindow &window, PokemonTeam &teamStruct)
 {
     for (size_t i = 0; i < 4; i++)
@@ -156,6 +149,43 @@ void BattleState::drawMoveButtons(sf::RenderWindow &window, PokemonTeam &teamStr
 
     window.draw(teamStruct.switchButton.shape);
     window.draw(teamStruct.switchButton.text);
+}
+
+// =================== BARRE DE VIE ===================
+void BattleState::createHealthBars()
+{
+    // Positions et tailles pour les barres de fond
+    sf::Vector2f blueBGBarsPos = {100, 30};
+    sf::Vector2f redBGBarsPos = {700, 470};
+    sf::Vector2f bgBarSizes = {200, 50};
+
+    // Positions et tailles pour les barres de vie
+    std::vector<sf::Vector2f> blueBarsPos = {{100, 30}, {100, 60}};
+    std::vector<sf::Vector2f> redBarsPos = {{700, 470}, {700, 500}};
+    sf::Vector2f barSizes = {200, 10};
+
+    // Initialisation des barres de fond et des barres de vie
+    for (int i = 0; i < 2; i++)
+    {
+        // Initialisation des barres de fond
+        blueTeamStruct.healthBars.push_back(createRectangle(barSizes, blueBarsPos[i], sf::Color::Green, 0, sf::Color::Transparent));
+        redTeamStruct.healthBars.push_back(createRectangle(barSizes, redBarsPos[i], sf::Color::Green, 0, sf::Color::Transparent));
+    }
+}
+
+void BattleState::updateHealthBars()
+{
+    // Mise à jour des barres de vie
+}
+
+void BattleState::drawHealthBars(sf::RenderWindow &window, PokemonTeam &teamStruct)
+{
+    // Dessiner les barres de vie pour chaque Pokémon
+    for (size_t i = 0; i < 2; i++)
+    {
+        // Dessiner les barres de vie
+        window.draw(teamStruct.healthBars[i]);
+    }
 }
 
 // =================== LOGIQUE DU JEU ===================

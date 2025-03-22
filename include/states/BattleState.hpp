@@ -38,8 +38,9 @@ private:
     void createMoveButtons();                                                // Création des boutons d'attaques
     void drawMoveButtons(sf::RenderWindow &window, PokemonTeam &teamStruct); // Affichage des boutons
 
-    void initHealthBars();   // Initialisation des barres de vie
+    void createHealthBars();   // Initialisation des barres de vie
     void updateHealthBars(); // Mise à jour des barres de vie
+    void drawHealthBars(sf::RenderWindow &window, PokemonTeam &teamStruct);
 
     /* ======================== Logique du jeu ======================== */
     void loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames);

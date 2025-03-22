@@ -24,3 +24,9 @@ int main()
 
     return 0;
 }
+
+
+
+// Note : 
+
+// 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat

@@ -24,7 +24,5 @@ private:
     std::vector<std::string> redTeam;
 
     void loadPokemonSprites();
-    void configureSelectionBox();
-
     void handlePokemonSelection();
 };
