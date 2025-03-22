@@ -7,21 +7,28 @@
 BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &redTeamNames, const std::vector<std::string> &blueTeamNames)
     : GameState(manager)
 {
-    // Musique et texte de combat
     ResourceManager::getInstance().playMusic("BattleStateMusic", 50.0f, true);
-    battleText = createText("EndStateFont", "Début du combat !", 24, sf::Color::White, sf::Vector2f(50, 200));
+    backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
 
+    // Création des Pokémon choisis
+    std::vector<Pokemon *> pokemons = {
+        PokemonManager::getInstance().getPokemonByName(blueTeamNames[0]),
+        PokemonManager::getInstance().getPokemonByName(blueTeamNames[1]),
+        PokemonManager::getInstance().getPokemonByName(redTeamNames[0]),
+        PokemonManager::getInstance().getPokemonByName(redTeamNames[1])};
 
-    Pokemon* a = PokemonManager::getInstance().getPokemonByName(blueTeamNames[0]);
-    Pokemon* b = PokemonManager::getInstance().getPokemonByName(blueTeamNames[1]);
-    Pokemon* c = PokemonManager::getInstance().getPokemonByName(redTeamNames[0]);
-    Pokemon* d = PokemonManager::getInstance().getPokemonByName(redTeamNames[1]);
+    for (const auto &p : pokemons)
+        std::cout << p->getName() << std::endl;
 
-    std::cout << a->getName() << std::endl;
-    std::cout << b->getName() << std::endl;
-    std::cout << c->getName() << std::endl;
-    std::cout << d->getName() << std::endl;
+    // Définition des tailles et positions des boutons
+    const sf::Vector2f buttonSize(200, 40);
+    const std::vector<sf::Vector2f> movePositions = {{40, 540}, {250, 540}, {40, 590}, {250, 590}, {600, 540}, {810, 540}, {600, 590}, {810, 590}};
 
+    // Création des boutons avec une boucle
+    for (size_t i = 0; i < movePositions.size(); i++)
+    {
+        moveButtons.push_back(createButton("BattleStateFont", "moveButton" + std::to_string(i + 1), buttonSize, movePositions[i], sf::Color::White, sf::Color::Black));
+    }
 }
 
 void BattleState::handleInput(sf::RenderWindow &window)
@@ -46,7 +53,16 @@ void BattleState::update() {}
 void BattleState::render(sf::RenderWindow &window)
 {
     window.clear();
-    window.draw(battleText);
+
+    // Affichage de l'arrière-plan
+    window.draw(backgroundSprite);
+
+    // Dessiner tous les boutons dynamiquement
+    for (const auto &button : moveButtons)
+    {
+        window.draw(button.shape);
+        window.draw(button.text);
+    }
 
     window.display();
 }

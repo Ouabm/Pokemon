@@ -18,7 +18,7 @@ SelectionState::SelectionState(GameStateManager *manager)
     selectionBox.setSize(sf::Vector2f(120, 120));
     selectionBox.setFillColor(sf::Color::Transparent);
     selectionBox.setOutlineThickness(5);
-    selectionBox.setOutlineColor(sf::Color::Yellow);
+    selectionBox.setOutlineColor(sf::Color::Blue);
 }
 
 void SelectionState::handleInput(sf::RenderWindow &window)
