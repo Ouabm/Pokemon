@@ -3,13 +3,13 @@
 #include "Move.hpp"
 
 // Définition des mouvements
-inline const Move flamethrower("Flamethrower", Type::Fire, 90, 100,0);
+inline const Move Flamethrower("Flamethrower", Type::Fire, 90, 100,0);
 inline const Move Fire_Blast("Fire Blast",Type::Fire,110,85,0);
 inline const Move Fusion_Flare("Fusion Flare",Type::Fire,100,100,0);
-inline const Move fly("Fly", Type::Flying, 90, 95,1);
-inline const Move dragonClaw("Dragon Claw", Type::Dragon, 80, 95,1);
-inline const Move slash("Slash", Type::Normal, 70, 100,1);
-inline const Move judgment("judgment",Type::Normal,100,100,0);
+inline const Move Fly("Fly", Type::Flying, 90, 95,1);
+inline const Move DragonClaw("Dragon Claw", Type::Dragon, 80, 95,1);
+inline const Move Slash("Slash", Type::Normal, 70, 100,1);
+inline const Move Judgment("Judgment",Type::Normal,100,100,0);
 inline const Move Earth_Power("Earth Power",Type::Ground,90,100,0);
 inline const Move Gunk_Shot("Gunk Shot",Type::Poison,120,80,1);
 inline const Move Psychics("Psychics",Type::Psychic,90,100,0);
@@ -44,7 +44,7 @@ inline const Move Leaf_Blade("Leaf Blade",Type::Grass,90,100,1);
 inline const Move Poltergeist("Poltergeist",Type::Ghost,110,90,1);
 inline const Move Sacred_Fire("Sacred Fire",Type::Fire,100,95,1);
 inline const Move Fire_Punch("Fire Punch",Type::Fire,75,100,1);
-inline const Move Focus_Blast("Focus Blast",Type::Fighting,120,70,1);
+inline const Move Focus_Blast("Focus Blast",Type::Fighting,120,70,0);
 inline const Move Sacred_Sword("Sacred Sword",Type::Fighting,90,100,1);
 inline const Move Play_Rough("Play Rough",Type::Fairy,90,90,1);
 inline const Move Fusion_Bolt("Fusion Bolt",Type::Electric,100,100,1);
