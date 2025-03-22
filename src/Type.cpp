@@ -10,11 +10,7 @@ std::string typeToString(Type t)
     case Type::Water: return "Water";
     case Type::Electric: return "Electric";
     case Type::Ice: return "Ice";
-<<<<<<< HEAD
     case Type::Fighting: return "Fighting";
-=======
-    case Type::Fighting: return "Fight";
->>>>>>> 9662735bb72846d4f3da75d033d3614181d4fc2c
     case Type::Poison: return "Poison";
     case Type::Ground: return "Ground";
     case Type::Flying: return "Flying";

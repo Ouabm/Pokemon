@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Iinclude -Iinclude/states
 
-SRCS = src/main.cpp src/GameStateManager.cpp src/ResourceManager.cpp src/ElementUI.cpp src/PokemonManager.cpp src/Type.cpp  \
+SRCS = src/main.cpp src/GameStateManager.cpp src/ResourceManager.cpp src/ElementUI.cpp src/PokemonManager.cpp src/MoveManager.cpp src/Type.cpp  \
        src/states/MenuState.cpp src/states/SelectionState.cpp src/states/BattleState.cpp src/states/EndState.cpp
 
 # On génère les .o dans le répertoire build
