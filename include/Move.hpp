@@ -18,7 +18,7 @@ private:
 public:
     // Constructeur
     Move(const std::string &p_name = "Unnamed Move", Type p_type = Type::Normal,
-         int p_power = 0, int p_accuracy = 100)
+         int p_power = 0, int p_accuracy = 100,bool isPhysical=1)
         : name(p_name), type(p_type), power(p_power), accuracy(p_accuracy), isPhysical(true) {}
 
     // Getters
@@ -34,7 +34,8 @@ public:
         std::cout << "Move: " << name << "\n";
         std::cout << "Type: " << typeToString(type) << "\n"; // Type converti en string pour affichage
         std::cout << "Power: " << power << "\n";
-        std::cout << "Accuracy: " << accuracy << "%" << std::endl;
+        std::cout << "Accuracy: " << accuracy << "%" ;
+        std::cout << "isPhysical" << isPhysical << "\n" << std::endl;
     }
 };
 
