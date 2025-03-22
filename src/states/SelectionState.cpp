@@ -6,21 +6,17 @@
 
 SelectionState::SelectionState(GameStateManager *manager) : GameState(manager), selectedIndex(0), playerTurn(0)
 {
+    // Joue la musique de fond pour l'état de sélection
     ResourceManager::getInstance().playMusic("SelectionStateMusic", 50.0f, true);
+
+    // Charge l'arrière-plan
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("SelectionStateBG"));
 
-    std::vector<std::string> pokemonNames = PokemonManager::getInstance().getAllPokemonNames();
-    for (const std::string &name : pokemonNames)
-    {
-        sf::Sprite sprite;
-        sprite.setTexture(ResourceManager::getInstance().getTexture(name));
-        pokemonSprites.push_back(sprite);
-    }
+    // Charge les sprites des Pokémon
+    loadPokemonSprites();
 
-    selectionBox.setSize(sf::Vector2f(120, 120));
-    selectionBox.setFillColor(sf::Color::Transparent);
-    selectionBox.setOutlineThickness(5);
-    selectionBox.setOutlineColor(sf::Color::Blue);
+    // Configure la boîte de sélection pour mettre en surbrillance le Pokémon sélectionné
+    configureSelectionBox();
 }
 
 void SelectionState::handleInput(sf::RenderWindow &window)
@@ -28,41 +24,16 @@ void SelectionState::handleInput(sf::RenderWindow &window)
     sf::Event event;
     while (window.pollEvent(event))
     {
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+        {
             window.close();
+        }
+
         if (event.type == sf::Event::KeyPressed)
         {
             if (event.key.code == sf::Keyboard::Enter)
             {
-                std::string selectedPokemonName = PokemonManager::getInstance().getAllPokemonNames()[selectedIndex];
-
-                // Vérifie si le Pokémon est déjà dans l'une des équipes
-                bool pokemonAlreadyInRedTeam = std::find(redTeam.begin(), redTeam.end(), selectedPokemonName) != redTeam.end();
-                bool pokemonAlreadyInBlueTeam = std::find(blueTeam.begin(), blueTeam.end(), selectedPokemonName) != blueTeam.end();
-
-                // Ajoute le Pokémon à l'équipe rouge ou bleue :
-                if (playerTurn)
-                {
-                    if (!pokemonAlreadyInRedTeam) // On peut ajouter && !pokemonAlreadyInBlueTeam pour n'avoir aucun doublons // Revient a le mettre avant le playTurn
-                    {
-                        redTeam.push_back(selectedPokemonName); // Ajoute à l'équipe rouge
-                        playerTurn = !playerTurn;
-                    }
-                }
-                else
-                {
-                    if (!pokemonAlreadyInBlueTeam) // On peut ajouter && !pokemonAlreadyInRedTeam pour n'avoir aucun doublons // Revient a le mettre avant le playTurn
-                    {
-                        blueTeam.push_back(selectedPokemonName); // Ajoute à l'équipe bleue
-                        playerTurn = !playerTurn;
-                    }
-                }
-
-                // Si les deux équipes sont complètes, lance l'état suivant
-                if (redTeam.size() == 2 && blueTeam.size() == 2)
-                {
-                    gameManager->changeState(std::make_unique<BattleState>(gameManager, redTeam, blueTeam)); // On passe en argument les noms des pokemons choisis
-                }
+                handlePokemonSelection();
             }
             else if (event.key.code == sf::Keyboard::Right && (selectedIndex % 5) < 4)
                 selectedIndex++;
@@ -108,4 +79,53 @@ void SelectionState::render(sf::RenderWindow &window)
 
     window.draw(selectionBox);
     window.display();
+}
+
+// Sous fonctions pour ne pas surcharger les fonctions principales
+
+void SelectionState::loadPokemonSprites()
+{
+    std::vector<std::string> pokemonNames = PokemonManager::getInstance().getAllPokemonNames();
+    for (const std::string &name : pokemonNames)
+    {
+        sf::Sprite sprite;
+        sprite.setTexture(ResourceManager::getInstance().getTexture(name));
+        pokemonSprites.push_back(sprite);
+    }
+}
+
+void SelectionState::configureSelectionBox()
+{
+    selectionBox.setSize(sf::Vector2f(120, 120));
+    selectionBox.setFillColor(sf::Color::Transparent);
+    selectionBox.setOutlineThickness(5);
+    selectionBox.setOutlineColor(sf::Color::Blue);
+}
+
+// Gère la sélection d'un Pokémon et l'ajout à l'équipe
+void SelectionState::handlePokemonSelection()
+{
+    std::string selectedPokemonName = PokemonManager::getInstance().getAllPokemonNames()[selectedIndex];
+
+    // Vérifie si le Pokémon est déjà dans l'une des équipes
+    bool pokemonAlreadyInBlueTeam = std::find(blueTeam.begin(), blueTeam.end(), selectedPokemonName) != blueTeam.end();
+    bool pokemonAlreadyInRedTeam = std::find(redTeam.begin(), redTeam.end(), selectedPokemonName) != redTeam.end();
+
+    // Ajoute le Pokémon à l'équipe en fonction du tour du joueur
+    if (playerTurn && !pokemonAlreadyInRedTeam)
+    {
+        redTeam.push_back(selectedPokemonName);
+        playerTurn = !playerTurn;
+    }
+    else if (!playerTurn && !pokemonAlreadyInBlueTeam)
+    {
+        blueTeam.push_back(selectedPokemonName);
+        playerTurn = !playerTurn;
+    }
+
+    // Si les deux équipes sont complètes, on passe à l'état suivant (BattleState)
+    if (redTeam.size() == 2 && blueTeam.size() == 2)
+    {
+        gameManager->changeState(std::make_unique<BattleState>(gameManager, blueTeam, redTeam)); // Transition vers la bataille
+    }
 }

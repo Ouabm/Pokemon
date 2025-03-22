@@ -20,6 +20,11 @@ private:
 
     bool playerTurn;
 
-    std::vector<std::string> redTeam;
     std::vector<std::string> blueTeam;
+    std::vector<std::string> redTeam;
+
+    void loadPokemonSprites();
+    void configureSelectionBox();
+
+    void handlePokemonSelection();
 };
