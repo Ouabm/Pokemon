@@ -17,7 +17,12 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
         PokemonManager::getInstance().getPokemonByName(redTeamNames[1])};
 
     for (const auto &p : pokemons)
+    {
         std::cout << p->getName() << std::endl;
+        std::cout << typeToString(p->getType1()) << std::endl;
+        std::cout << p->getMoves()[0]->MoveToString() << std::endl; // exemple
+
+    }
 
     // Définition des tailles et positions des boutons
     const sf::Vector2f buttonSize(200, 40);

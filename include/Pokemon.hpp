@@ -1,10 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include "Type.hpp"
 #include "Move.hpp"
+#include <vector> // Pour stocker les moves
 
 class Pokemon
 {
@@ -21,19 +18,15 @@ protected:
     std::vector<const Move *> moves; // Liste des mouvements
 
 public:
-    // Constructeur
+    // Constructeur par défaut
     Pokemon()
-        : name("Unknown"), type1(Type::Normal), type2(Type::Normal), level(1), hp(50), hpRestant(50),
-          attack(10), specialAttack(10), defense(10), specialDefense(10), speed(10)
+        : name("Unknown"), type1(Type::None), type2(Type::None), level(0), hp(0), hpRestant(0),
+          attack(0), specialAttack(0), defense(0), specialDefense(0), speed(0)
     {
-        // Par défaut, aucun mouvement
-        moves.push_back(nullptr);
-        moves.push_back(nullptr);
-        moves.push_back(nullptr);
-        moves.push_back(nullptr);
+        moves = {nullptr, nullptr, nullptr, nullptr}; // Aucune attaque par défaut
     }
 
-    // Constructeur avec arguments (celui que tu as déjà)
+    // Constructeur avec arguments
     Pokemon(const std::string &p_name, Type p_type1, Type p_type2, int p_level, int p_hp, int p_hpRestant,
             float p_attack, float p_specialAttack, float p_defense, float p_specialDefense,
             float p_speed, const Move &m1, const Move &m2, const Move &m3, const Move &m4)
@@ -41,10 +34,7 @@ public:
           attack(p_attack), specialAttack(p_specialAttack), defense(p_defense), specialDefense(p_specialDefense),
           speed(p_speed)
     {
-        moves.push_back(&m1);
-        moves.push_back(&m2);
-        moves.push_back(&m3);
-        moves.push_back(&m4);
+        moves = {&m1, &m2, &m3, &m4};
     }
 
     // Getters
@@ -52,7 +42,7 @@ public:
     Type getType1() const { return type1; }
     Type getType2() const { return type2; }
     int getHp() const { return hp; }
-    int gethpRestant() const { return hpRestant; }
+    int getHpRestant() const { return hpRestant; }
     float getAttack() const { return attack; }
     float getSpecialAttack() const { return specialAttack; }
     float getDefense() const { return defense; }
