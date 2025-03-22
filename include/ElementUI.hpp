@@ -14,6 +14,4 @@ struct Button
     sf::Text text;
 };
 
-Button createButton(const std::string &fontKey, const std::string &buttonText,
-                    const sf::Vector2f &size, const sf::Vector2f &position,
-                    const sf::Color &buttonColor, const sf::Color &textColor);
+Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const int textSize, const sf::Color &buttonColor, const sf::Color &textColor);

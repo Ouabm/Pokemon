@@ -24,13 +24,13 @@ sf::RectangleShape createRectangle(const sf::Vector2f &size, const sf::Vector2f 
 }
 
 // Le 24 doit etre un param
-Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &buttonColor, const sf::Color &textColor)
+Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const int textSize, const sf::Color &buttonColor, const sf::Color &textColor)
 {
     Button button;
     button.shape = createRectangle(size, position, buttonColor);
 
     // Centrage du texte dans le bouton
-    button.text = createText(fontKey, buttonText, 24, textColor, position);
+    button.text = createText(fontKey, buttonText, textSize, textColor, position);
     sf::FloatRect textBounds = button.text.getLocalBounds();
     button.text.setPosition(
         position.x + (size.x - textBounds.width) / 2,

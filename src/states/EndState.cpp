@@ -24,8 +24,8 @@ EndState::EndState(GameStateManager *manager) : GameState(manager)
     sf::Vector2f startButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos);
     sf::Vector2f helpButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos));
 
-    replayButton = createButton("EndStateFont", "Replay", buttonSize, startButtonPos, sf::Color::Green, sf::Color::White);
-    quitButton = createButton("EndStateFont", "Quit", buttonSize, helpButtonPos, sf::Color::Red, sf::Color::White);
+    replayButton = createButton("EndStateFont", "Replay", buttonSize, startButtonPos, 24, sf::Color::Green, sf::Color::White);
+    quitButton = createButton("EndStateFont", "Quit", buttonSize, helpButtonPos, 24, sf::Color::Red, sf::Color::White);
 }
 
 void EndState::handleInput(sf::RenderWindow &window)

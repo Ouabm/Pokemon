@@ -6,7 +6,7 @@ MenuState::MenuState(GameStateManager *manager) : GameState(manager)
 {
     // Chargement et lecture de la musique de fond pour cet état
     ResourceManager::getInstance().playMusic("MenuStateMusic", 50.0f, true);
-    
+
     // Chargement de l'arrière-plan du menu
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("MenuStateBG"));
 
@@ -15,7 +15,7 @@ MenuState::MenuState(GameStateManager *manager) : GameState(manager)
     float mainMenuwindowHeight = 640.0; // Hauteur de la fenêtre (à ajuster plus tard)
 
     // Création des boutons du menu en fonction des dimensions de la fenêtre
-    sf::Vector2f buttonSize(200, 50); 
+    sf::Vector2f buttonSize(200, 50);
     createMenuButtons(mainMenuwindowWidth, mainMenuwindowHeight, buttonSize);
 }
 
@@ -26,7 +26,7 @@ void MenuState::handleInput(sf::RenderWindow &window)
     {
         if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
         {
-            window.close(); 
+            window.close();
         }
         if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) // Si l'utilisateur clique sur la souris
         {
@@ -36,7 +36,7 @@ void MenuState::handleInput(sf::RenderWindow &window)
     }
 }
 
-void MenuState::update() 
+void MenuState::update()
 {
     // Aucune mise à jour nécessaire pour le moment
 }
@@ -49,13 +49,12 @@ void MenuState::render(sf::RenderWindow &window)
     window.draw(backgroundSprite);
 
     // Affichage des boutons dans la fenêtre
-    drawButton(startButton, window); 
-    drawButton(helpButton, window);  
-    drawButton(quitButton, window); 
+    drawButton(startButton, window);
+    drawButton(helpButton, window);
+    drawButton(quitButton, window);
 
-    window.display(); 
+    window.display();
 }
-
 
 // Sous fonctions pour ne pas surcharger les fonctions principales
 
@@ -71,9 +70,9 @@ void MenuState::createMenuButtons(float mainMenuwindowWidth, float mainMenuwindo
     sf::Vector2f exitButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 2 / 3);
 
     // Création des boutons en spécifiant leur texte, taille, couleur, et position
-    startButton = createButton("MenuStateFont", "Start", buttonSize, startButtonPos, sf::Color::Green, sf::Color::White);
-    helpButton = createButton("MenuStateFont", "Help", buttonSize, helpButtonPos, sf::Color::Blue, sf::Color::White);
-    quitButton = createButton("MenuStateFont", "Quit", buttonSize, exitButtonPos, sf::Color::Red, sf::Color::White);
+    startButton = createButton("MenuStateFont", "Start", buttonSize, startButtonPos, 24, sf::Color::Green, sf::Color::White);
+    helpButton = createButton("MenuStateFont", "Help", buttonSize, helpButtonPos, 24, sf::Color::Blue, sf::Color::White);
+    quitButton = createButton("MenuStateFont", "Quit", buttonSize, exitButtonPos, 24, sf::Color::Red, sf::Color::White);
 }
 
 void MenuState::handleButtonClicks(const sf::Vector2f &mousePos, sf::RenderWindow &window)
