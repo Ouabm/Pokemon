@@ -10,7 +10,7 @@ std::string typeToString(Type t)
     case Type::Water: return "Water";
     case Type::Electric: return "Electric";
     case Type::Ice: return "Ice";
-    case Type::Fight: return "Fight";
+    case Type::Fighting: return "Fight";
     case Type::Poison: return "Poison";
     case Type::Ground: return "Ground";
     case Type::Flying: return "Flying";
@@ -37,7 +37,7 @@ int typeToInt(Type t)
     case Type::Water: return 3;
     case Type::Electric: return 4;
     case Type::Ice: return 5;
-    case Type::Fight: return 6;
+    case Type::Fighting: return 6;
     case Type::Poison: return 7;
     case Type::Ground: return 8;
     case Type::Flying: return 9;

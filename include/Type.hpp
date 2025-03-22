@@ -10,7 +10,7 @@ enum class Type
     Water,
     Electric,
     Ice,
-    Fight,
+    Fighting,
     Poison,
     Ground,
     Flying,

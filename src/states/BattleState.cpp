@@ -1,11 +1,10 @@
-#include "../../include/states/BattleState.hpp"
+#include "../../include/states/BattleState.hpp" // Etat actuel ou l'on se trouve
+#include "../../include/states/EndState.hpp"    // Sert uniquement pour la transition
+
 #include "../../include/GameStateManager.hpp"
-#include "EndState.hpp"
-#include "ElementUI.hpp"
 #include "../../include/PokemonManager.hpp"
 
-BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &redTeamNames, const std::vector<std::string> &blueTeamNames)
-    : GameState(manager)
+BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &redTeamNames, const std::vector<std::string> &blueTeamNames) : GameState(manager)
 {
     ResourceManager::getInstance().playMusic("BattleStateMusic", 50.0f, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));

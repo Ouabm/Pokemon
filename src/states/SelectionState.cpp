@@ -1,8 +1,10 @@
-#include "../../include/states/SelectionState.hpp"
-#include <iostream>
+#include "../../include/states/SelectionState.hpp" // Etat actuel ou l'on se trouve
+#include "../../include/states/BattleState.hpp"    // Sert uniquement pour la transition
 
-SelectionState::SelectionState(GameStateManager *manager)
-    : GameState(manager), selectedIndex(0), playerTurn(0)
+#include "../../include/GameStateManager.hpp"
+#include "../../include/PokemonManager.hpp"
+
+SelectionState::SelectionState(GameStateManager *manager) : GameState(manager), selectedIndex(0), playerTurn(0)
 {
     ResourceManager::getInstance().playMusic("SelectionStateMusic", 50.0f, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("SelectionStateBG"));
