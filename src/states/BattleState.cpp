@@ -14,7 +14,7 @@
 BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &blueTeamPokemonsNames, const std::vector<std::string> &redTeamPokemonsNames) : GameState(manager)
 {
     // Joue la musique de fond
-    ResourceManager::getInstance().playMusic(Battle::Music::BACKGROUND_MUSIC,Battle::Music::VOLUME, true);
+    ResourceManager::getInstance().playMusic(Battle::Music::BACKGROUND_MUSIC, Battle::Music::VOLUME, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
 
     std::vector<sf::Vector2f> blueTeamPokemonPositions = {{20.0, 290.0}, {300.0, 290.0}};
@@ -90,11 +90,11 @@ void BattleState::createHealthBars()
     // Positions et tailles pour les barres de fond
     sf::Vector2f blueBGBarsPos = {100, 30};
     sf::Vector2f redBGBarsPos = {695, 465};
-    sf::Vector2f bgSizes = {210, 50};
+    sf::Vector2f bgSizes = {210 + 50, 50};
 
     // Positions et tailles pour les barres de vie
-    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5, 30 + 5}, {100 + 5, 30 + 5 + 25}};
-    std::vector<sf::Vector2f> redBarsPos = {{700, 470}, {700, 500}};
+    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5 + 50, 30 + 5}, {100 + 5 + 50, 30 + 5 + 25}};
+    std::vector<sf::Vector2f> redBarsPos = {{695 + 5 + 50, 465 + 5}, {695 + 5 + 50, 465 + 5 + 25}};
     sf::Vector2f barSizes = {200, 15};
 
     // Initialisation des barres de fond et des barres de vie
@@ -106,6 +106,12 @@ void BattleState::createHealthBars()
     }
     blueTeamStruct.bgHealthBar = createRectangle(bgSizes, blueBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
     redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
+
+    // Ajouter dynamiquement les textes dans les structures avec push_back
+    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke1", 10, sf::Color::White, {blueBGBarsPos.x - 40, blueBGBarsPos.y + 5}));
+    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke2", 10, sf::Color::White, {blueBGBarsPos.x - 40, blueBGBarsPos.y + 35}));
+    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke3", 10, sf::Color::White, {redBGBarsPos.x - 40, redBGBarsPos.y + 5}));
+    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke4", 10, sf::Color::White, {redBGBarsPos.x - 40, redBGBarsPos.y + 35}));
 }
 
 void BattleState::createTargetIndicator()
@@ -329,12 +335,12 @@ void BattleState::update()
         std::cout << "Dammage1 : " << damage1 << std::endl;
         std::cout << "Dammage2 : " << damage2 << std::endl;
 
-        // Degat que l'on va infligé au Rouge
+        // Degat que l'on va infligé au Bleu
         int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
         int newHp = std::max(0, oldHp - damage2);
         blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->setHpRestant(newHp);
 
-        // Degat que l'on va infligé au Bleu
+        // Degat que l'on va infligé au Rouge
         int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
         int newHp1 = std::max(0, oldHp1 - damage1);
         redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
@@ -484,6 +490,7 @@ void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruc
     {
         // Dessiner les barres de vie
         window.draw(teamStruct.healthBars[i]);
+        window.draw(teamStruct.barsText[i]);
     }
 }
 
