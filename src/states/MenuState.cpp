@@ -9,13 +9,13 @@
 MenuState::MenuState(GameStateManager *manager) : GameState(manager)
 {
     // Chargement et lecture de la musique de fond pour cet état
-    ResourceManager::getInstance().playMusic("MenuStateMusic", Menu::MUSIC_VOLUME, true);
+    ResourceManager::getInstance().playMusic(Menu::Music::BACKGROUND_MUSIC, Menu::Music::VOLUME, true);
 
     // Chargement de l'arrière-plan du menu
-    backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("MenuStateBG"));
+    backgroundSprite.setTexture(ResourceManager::getInstance().getTexture(Menu::Background::TEXTURE));
 
     // Création des boutons du menu
-    sf::Vector2f buttonSize(Menu::BUTTON_WIDTH, Menu::BUTTON_HEIGHT);
+    sf::Vector2f buttonSize(Menu::Button::WIDTH, Menu::Button::HEIGHT);
     createMenuButtons(WINDOW_WIDTH, WINDOW_HEIGHT, buttonSize);
 }
 
@@ -23,18 +23,18 @@ MenuState::MenuState(GameStateManager *manager) : GameState(manager)
 void MenuState::createMenuButtons(float mainMenuwindowWidth, float mainMenuwindowHeight, const sf::Vector2f &buttonSize)
 {
     // Calcul des positions verticales des boutons
-    float startButtonsPos = Menu::START_BUTTON_POS_Y;
-    float endButtonsPos = Menu::END_BUTTON_POS_Y;
+    float startButtonsPos = Menu::Button::START_BUTTON_POS_Y;
+    float endButtonsPos = Menu::Button::QUIT_BUTTON_POS_Y; // Correction de la position du bouton Quit
 
     // Calcul des positions horizontales des boutons pour les centrer
     sf::Vector2f startButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos);
     sf::Vector2f helpButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 1 / 3);
-    sf::Vector2f exitButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 2 / 3);
+    sf::Vector2f quitButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos) * 2 / 3);
 
     // Création des boutons avec les paramètres du fichier GameParameters.hpp
-    startButton = createButton("MenuStateFont", "Start", buttonSize, startButtonPos, Menu::BUTTON_FONT_SIZE, Menu::BUTTON_START_COLOR, Menu::BUTTON_TEXT_COLOR);
-    helpButton = createButton("MenuStateFont", "Help", buttonSize, helpButtonPos, Menu::BUTTON_FONT_SIZE, Menu::BUTTON_HELP_COLOR, Menu::BUTTON_TEXT_COLOR);
-    quitButton = createButton("MenuStateFont", "Quit", buttonSize, exitButtonPos, Menu::BUTTON_FONT_SIZE, Menu::BUTTON_QUIT_COLOR, Menu::BUTTON_TEXT_COLOR);
+    startButton = createButton(Menu::Font::KEY, Menu::Button::START_BUTTON_TEXT, buttonSize, startButtonPos, Menu::Button::FONT_SIZE, Menu::Button::START_BUTTON_COLOR, Menu::Button::BUTTON_TEXT_COLOR);
+    helpButton = createButton(Menu::Font::KEY, Menu::Button::HELP_BUTTON_TEXT, buttonSize, helpButtonPos, Menu::Button::FONT_SIZE, Menu::Button::HELP_BUTTON_COLOR, Menu::Button::BUTTON_TEXT_COLOR);
+    quitButton = createButton(Menu::Font::KEY, Menu::Button::QUIT_BUTTON_TEXT, buttonSize, quitButtonPos, Menu::Button::FONT_SIZE, Menu::Button::QUIT_BUTTON_COLOR, Menu::Button::BUTTON_TEXT_COLOR);
 }
 
 /*==============================================================================
@@ -94,6 +94,7 @@ void MenuState::render(sf::RenderWindow &window)
 
     window.draw(backgroundSprite);
 
+    // Dessine les trois boutons du menu
     drawButton(startButton, window);
     drawButton(helpButton, window);
     drawButton(quitButton, window);
