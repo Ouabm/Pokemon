@@ -49,7 +49,7 @@ int typeToInt(Type t)
     case Type::Dark: return 15;
     case Type::Steel: return 16;
     case Type::Fairy: return 17;
-    case Type::None: return -1;
+    case Type::None: return 18;
     default: return -1;
     }
 }

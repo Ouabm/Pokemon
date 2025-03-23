@@ -330,6 +330,8 @@ void BattleState::update()
         std::cout << "PV du Pokémon 0: " << oldHp << " -> " << newHp << std::endl;
         std::cout << "PV du Pokémon 1: " << oldHp1 << " -> " << newHp1 << std::endl;
 
+        calculDamage(blueTeamStruct.pokemons[blueTeamStruct.activePokemon], redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], blueTeamStruct.currentMove);
+
         updateHealthBars(blueTeamStruct);
         updateHealthBars(redTeamStruct);
 
