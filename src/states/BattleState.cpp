@@ -59,7 +59,7 @@ void BattleState::handleInput(sf::RenderWindow &window)
 
                 if (handleMoveButtonClick(window, currentTeam))
                 {
-                    // On pourrait marquer ici si nécessaire, mais pour l'instant on garde la logique simple
+                    // Attention si on ne choisi pas de move et qu'on valide => erreur seg car move = nullptr // Ameliorer
                 }
             }
         }
@@ -153,7 +153,10 @@ void BattleState::handleInput(sf::RenderWindow &window)
                 if ((isBlueTeamTurn && blueTeamStruct.isMoveChosen && !blueTeamStruct.isTargetChosen) ||
                     (!isBlueTeamTurn && redTeamStruct.isMoveChosen && !redTeamStruct.isTargetChosen))
                 {
-                    std::cout << "Appel Target " << (isBlueTeamTurn ? "blue" : "red") << " switch" << std::endl;
+                    TeamStruct &currentTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
+
+                    currentTeam.pokemonTargeted = (currentTeam.pokemonTargeted + 1) % currentTeam.pokemons.size();
+                    std::cout << "Appel Target " << currentTeam.pokemonTargeted << " switch" << std::endl;
                 }
 
                 tabPressed = true; // On marque que la touche a été pressée pour ne pas répéter l'action
@@ -224,8 +227,40 @@ void BattleState::update()
     if (isTurnReady)
     {
         // executeTurn(blueTeamStruct, redTeamStruct); // Calcul les degats a infliger et recevoir sur chaque pokemons
+
+        int oldHp = blueTeamStruct.pokemons[0]->getHpRestant();
+        int newHp = std::max(0, oldHp - 100);
+        blueTeamStruct.pokemons[0]->setHpRestant(newHp);
+
+        int oldHp1 = blueTeamStruct.pokemons[1]->getHpRestant();
+        int newHp1 = std::max(0, oldHp1 - 100);
+        blueTeamStruct.pokemons[1]->setHpRestant(newHp1);
+
+        std::cout << "PV du Pokémon 0: " << oldHp << " -> " << newHp << std::endl;
+        std::cout << "PV du Pokémon 1: " << oldHp1 << " -> " << newHp1 << std::endl;
+
         updateHealthBars(blueTeamStruct);
         updateHealthBars(redTeamStruct);
+
+        isTurnReady = !isTurnReady;
+        blueTeamStruct.activePokemon = 0;
+        blueTeamStruct.currentMove = nullptr;
+        blueTeamStruct.isMoveChosen = false;
+        blueTeamStruct.isTargetChosen = false;
+        blueTeamStruct.pokemonTargeted = false;
+
+        redTeamStruct.activePokemon = 0;
+        redTeamStruct.activePokemon = 0;
+        redTeamStruct.currentMove = nullptr;
+        redTeamStruct.isMoveChosen = false;
+        redTeamStruct.isTargetChosen = false;
+        redTeamStruct.pokemonTargeted = false;
+
+        isBlueTeamTurn = true;
+
+        resetMoveButtonsOutline(blueTeamStruct);
+        resetMoveButtonsOutline(redTeamStruct);
+
     }
 }
 

@@ -28,9 +28,9 @@ int main()
 
 // A faire : 
 
-// creer une copie des pokemons pendant le jeu et la detruire a la fin 
-
 // Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update()
+
+// Proteger les parties du code sensible pour eviter seg fault
 
 
 // Note : 
