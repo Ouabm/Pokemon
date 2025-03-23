@@ -28,7 +28,7 @@ int main()
 
 // A faire : 
 
-// Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update()
+// Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update() (gdb)
 
 // Proteger les parties du code sensible pour eviter seg fault
 
@@ -37,4 +37,4 @@ int main()
 
 // 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
 
-// 2 Ajout d'un hpp GameParameters pour grouper toutes les positions des elements etc...
+// 2 Ajout d'un hpp GameParameters pour grouper toutes les positions des elements etc... (optionnel)

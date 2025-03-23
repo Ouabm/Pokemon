@@ -26,6 +26,19 @@ sf::RectangleShape createRectangle(const sf::Vector2f &size, const sf::Vector2f 
     return rectangle;
 }
 
+sf::CircleShape createCircle(float radius, const sf::Vector2f &position, const sf::Color &fillColor, float outlineThickness, const sf::Color &outlineColor)
+{
+    sf::CircleShape circle;
+    circle.setRadius(radius);                     // Définir le rayon du cercle
+    circle.setPosition(position);                 // Définir la position du cercle
+    circle.setFillColor(fillColor);               // Définir la couleur de remplissage
+    circle.setOutlineThickness(outlineThickness); // Définir l'épaisseur du contour
+    circle.setOutlineColor(outlineColor);         // Définir la couleur du contour
+    circle.setOrigin(radius, radius);             // Définir l'origine du cercle au centre
+
+    return circle;
+}
+
 Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const int textSize, const sf::Color &buttonColor, const sf::Color &textColor)
 {
     Button button;

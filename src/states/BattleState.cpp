@@ -4,7 +4,6 @@
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
 
-
 /*==============================================================================
 |                               CONSTRUCTEUR                                   |
 ==============================================================================*/
@@ -26,6 +25,7 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
     // Initialise les boutons et les sprites
     createMoveButtons(); // Il faudrait ajouter la thickness comme param a cette fonction
     createHealthBars();
+    createTargetIndicator();
 }
 
 // ==================== CHARGEMENT DES INFOS DES ÉQUIPES =====================//
@@ -105,7 +105,7 @@ void BattleState::createHealthBars()
 }
 
 /*==============================================================================
-|                        GESTION DES ENTRÉES UTILISATEUR                        |
+|                        GESTION DES ENTRÉES UTILISATEUR                       |
 ==============================================================================*/
 void BattleState::handleInput(sf::RenderWindow &window)
 {
@@ -433,6 +433,9 @@ void BattleState::render(sf::RenderWindow &window)
     drawHealthBars(window, blueTeamStruct);
     drawHealthBars(window, redTeamStruct);
 
+    drawTargetIndicator(window, blueTeamStruct);
+    drawTargetIndicator(window, redTeamStruct);
+
     window.display();
 }
 
@@ -467,4 +470,39 @@ void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruc
         // Dessiner les barres de vie
         window.draw(teamStruct.healthBars[i]);
     }
+}
+
+void BattleState::drawTargetIndicator(sf::RenderWindow &window, TeamStruct &teamStruct)
+{
+    // Vérifie si un Pokémon est ciblé et si un mouvement a été choisi
+
+    if (!teamStruct.isTargetChosen && teamStruct.isMoveChosen)
+    {
+        // Obtenez la position du Pokémon ciblé
+        TeamStruct &currentTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
+
+        sf::Vector2f targetPos = currentTeam.pokemonSprites[currentTeam.pokemonTargeted].getPosition();
+        targetPos.x += currentTeam.pokemonSprites[currentTeam.pokemonTargeted].getGlobalBounds().width / 2;
+        targetPos.y += currentTeam.pokemonSprites[currentTeam.pokemonTargeted].getGlobalBounds().height / 2;
+
+        // Positionne l'indicateur de ciblage
+        currentTeam.targetIndicator.setPosition(targetPos);
+        window.draw(currentTeam.targetIndicator);
+    }
+
+    // Ajouter un texte indiquant que le mode de ciblage est actif
+    sf::Text targetingText;
+    targetingText.setFont(font);
+    targetingText.setString("TARGETING MODE - Press Tab to cycle targets");
+    targetingText.setCharacterSize(16);
+    targetingText.setFillColor(sf::Color::Red);
+    targetingText.setPosition(320, 30);
+    window.draw(targetingText);
+}
+
+void BattleState::createTargetIndicator()
+{
+    // Initialisation du marqueur de ciblage
+    blueTeamStruct.targetIndicator = createCircle(25, {0, 0},sf::Color(255,0,0,80),5,sf::Color::Red);
+    redTeamStruct.targetIndicator = createCircle(25, {1000, 0},sf::Color(255,0,0,80),5,sf::Color::Red);
 }

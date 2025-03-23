@@ -13,6 +13,7 @@ struct TeamStruct
     sf::RectangleShape bgHealthBar;
     std::vector<Button> moveButtons; // Boutons des attaques
     Button switchButton;             // Bouton pour changer de Pokémon
+    sf::CircleShape targetIndicator;
 
     int activePokemon = 0; // Indice du Pokémon actif
     bool isMoveChosen = false;
@@ -73,6 +74,9 @@ private:
     void createHealthBars(); // Initialisation des barres de vie
     void updateHealthBars(TeamStruct &teamStruct);
     void drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct);
+    void drawTargetIndicator(sf::RenderWindow &window, TeamStruct &teamStruct);
+
+    void createTargetIndicator();
 
     /* ======================== Logique du jeu ======================== */
     void loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames);
