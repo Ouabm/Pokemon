@@ -4,9 +4,12 @@
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
 
+
+/*==============================================================================
+|                               CONSTRUCTEUR                                   |
+==============================================================================*/
 BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &blueTeamPokemonsNames, const std::vector<std::string> &redTeamPokemonsNames) : GameState(manager)
 {
-    // =================== GRAPHISMES ===================
     // Joue la musique de fond
     ResourceManager::getInstance().playMusic("BattleStateMusic", 50.0f, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
@@ -25,6 +28,85 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
     createHealthBars();
 }
 
+// ==================== CHARGEMENT DES INFOS DES ÉQUIPES =====================//
+void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPokemonsNames, TeamStruct &teamStruct, const std::vector<sf::Vector2f> &initPos, bool reverseTexture)
+{
+    teamStruct.pokemonSprites.clear(); // Nettoyer la liste des sprites avant d'ajouter les nouveaux
+
+    for (size_t i = 0; i < teamPokemonsNames.size(); i++)
+    {
+        sf::Sprite sprite;
+        std::string extension = reverseTexture ? "Back" : "";
+        sprite.setTexture(ResourceManager::getInstance().getTexture(teamPokemonsNames[i] + extension));
+
+        // Vérifier s'il y a une position fournie pour ce sprite
+        if (i < initPos.size())
+            sprite.setPosition(initPos[i]);
+        else
+            sprite.setPosition(0, 0); // Position par défaut si pas assez de positions
+
+        sprite.setScale(0.7f, 0.7f);
+        teamStruct.pokemonSprites.push_back(sprite); // Ajouter le sprite au vecteur
+    }
+}
+
+void BattleState::loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames)
+{
+    // Charger les Pokémon pour l'équipe bleue en créant des copies des objets Pokémon
+    blueTeamStruct.pokemons = {
+        PokemonManager::getInstance().getPokemonByName(blueTeamNames[0])->clone(),
+        PokemonManager::getInstance().getPokemonByName(blueTeamNames[1])->clone()};
+
+    // Charger les Pokémon pour l'équipe rouge en créant des copies des objets Pokémon
+    redTeamStruct.pokemons = {
+        PokemonManager::getInstance().getPokemonByName(redTeamNames[0])->clone(),
+        PokemonManager::getInstance().getPokemonByName(redTeamNames[1])->clone()};
+}
+
+// ====================== CRÉATION DES BOUTONS DE COMBAT ======================//
+void BattleState::createMoveButtons()
+{
+    const sf::Vector2f buttonSize(200, 40);
+    const std::vector<sf::Vector2f> blueMovePositions = {{40, 540}, {250, 540}, {40, 590}, {250, 590}};
+    const std::vector<sf::Vector2f> redMovePositions = {{600, 540}, {810, 540}, {600, 590}, {810, 590}};
+
+    for (size_t i = 0; i < 4; i++)
+    {
+        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 14, sf::Color::White, sf::Color::Black));
+        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 14, sf::Color::White, sf::Color::Black));
+    }
+
+    // Boutons pour changer de Pokémon
+    blueTeamStruct.switchButton = createButton("BattleStateFont", "SwitchBlue", buttonSize, {400, 300}, 14, sf::Color::Blue, sf::Color::Black);
+    redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 14, sf::Color::Red, sf::Color::Black);
+}
+
+void BattleState::createHealthBars()
+{
+    // Positions et tailles pour les barres de fond
+    sf::Vector2f blueBGBarsPos = {100, 30};
+    sf::Vector2f redBGBarsPos = {695, 465};
+    sf::Vector2f bgSizes = {210, 50};
+
+    // Positions et tailles pour les barres de vie
+    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5, 30 + 5}, {100 + 5, 30 + 5 + 25}};
+    std::vector<sf::Vector2f> redBarsPos = {{700, 470}, {700, 500}};
+    sf::Vector2f barSizes = {200, 15};
+
+    // Initialisation des barres de fond et des barres de vie
+    for (int i = 0; i < 2; i++)
+    {
+        // Initialisation des barres de fond
+        blueTeamStruct.healthBars.push_back(createRectangle(barSizes, blueBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
+        redTeamStruct.healthBars.push_back(createRectangle(barSizes, redBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
+    }
+    blueTeamStruct.bgHealthBar = createRectangle(bgSizes, blueBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
+    redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
+}
+
+/*==============================================================================
+|                        GESTION DES ENTRÉES UTILISATEUR                        |
+==============================================================================*/
 void BattleState::handleInput(sf::RenderWindow &window)
 {
     if (checkBattleOver())
@@ -179,7 +261,7 @@ void BattleState::handleInput(sf::RenderWindow &window)
     }
 }
 
-// =================== SOUS FONCTIONS DU HANDLEINPUT ===================
+// ================ SOUS-FONCTIONS POUR LA GESTION DES ENTRÉES ================//
 bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
 {
     if (currentTeam.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
@@ -219,6 +301,9 @@ void BattleState::resetMoveButtonsOutline(TeamStruct &currentTeam)
     }
 }
 
+/*==============================================================================
+|                            GESTION DES UPDATES                               |
+==============================================================================*/
 void BattleState::update()
 {
     // Exemple : vérifier si le combat est terminé
@@ -264,121 +349,24 @@ void BattleState::update()
     }
 }
 
-void BattleState::render(sf::RenderWindow &window)
+// ================ SOUS-FONCTIONS POUR LA GESTION DES UPDATE ================//
+bool BattleState::checkBattleOver()
 {
-    window.clear();
-    window.draw(backgroundSprite);
-
-    drawPokemonTeam(window, blueTeamStruct);
-    drawPokemonTeam(window, redTeamStruct);
-
-    drawMoveButtons(window, blueTeamStruct);
-    drawMoveButtons(window, redTeamStruct);
-
-    drawHealthBars(window, blueTeamStruct);
-    drawHealthBars(window, redTeamStruct);
-
-    window.display();
+    bool blueDefeated = checkFainted(blueTeamStruct);
+    bool redDefeated = checkFainted(redTeamStruct);
+    return redDefeated || blueDefeated;
 }
 
-// =================== SOUS FONCTIONS DU FICHIER =================== // A mettre au propre
-
-// =================== CHARGEMENT DES TEAMS ===================
-void BattleState::loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames)
+bool BattleState::checkFainted(TeamStruct &teamStruct)
 {
-    // Charger les Pokémon pour l'équipe bleue en créant des copies des objets Pokémon
-    blueTeamStruct.pokemons = {
-        PokemonManager::getInstance().getPokemonByName(blueTeamNames[0])->clone(),
-        PokemonManager::getInstance().getPokemonByName(blueTeamNames[1])->clone()};
-
-    // Charger les Pokémon pour l'équipe rouge en créant des copies des objets Pokémon
-    redTeamStruct.pokemons = {
-        PokemonManager::getInstance().getPokemonByName(redTeamNames[0])->clone(),
-        PokemonManager::getInstance().getPokemonByName(redTeamNames[1])->clone()};
-}
-
-void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPokemonsNames, TeamStruct &teamStruct, const std::vector<sf::Vector2f> &initPos, bool reverseTexture)
-{
-    teamStruct.pokemonSprites.clear(); // Nettoyer la liste des sprites avant d'ajouter les nouveaux
-
-    for (size_t i = 0; i < teamPokemonsNames.size(); i++)
+    if (teamStruct.pokemons[0]->getHpRestant() == 0 && teamStruct.pokemons[1]->getHpRestant() == 0)
     {
-        sf::Sprite sprite;
-        std::string extension = reverseTexture ? "Back" : "";
-        sprite.setTexture(ResourceManager::getInstance().getTexture(teamPokemonsNames[i] + extension));
+        std::cout << "Jeu fini" << std::endl;
 
-        // Vérifier s'il y a une position fournie pour ce sprite
-        if (i < initPos.size())
-            sprite.setPosition(initPos[i]);
-        else
-            sprite.setPosition(0, 0); // Position par défaut si pas assez de positions
-
-        sprite.setScale(0.7f, 0.7f);
-        teamStruct.pokemonSprites.push_back(sprite); // Ajouter le sprite au vecteur
+        return 1;
     }
-}
-
-void BattleState::drawPokemonTeam(sf::RenderWindow &window, TeamStruct &teamStruct)
-{
-    for (auto &sprite : teamStruct.pokemonSprites)
-    {
-        window.draw(sprite);
-    }
-}
-
-// =================== BOUTONS ===================
-void BattleState::createMoveButtons()
-{
-    const sf::Vector2f buttonSize(200, 40);
-    const std::vector<sf::Vector2f> blueMovePositions = {{40, 540}, {250, 540}, {40, 590}, {250, 590}};
-    const std::vector<sf::Vector2f> redMovePositions = {{600, 540}, {810, 540}, {600, 590}, {810, 590}};
-
-    for (size_t i = 0; i < 4; i++)
-    {
-        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 14, sf::Color::White, sf::Color::Black));
-        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 14, sf::Color::White, sf::Color::Black));
-    }
-
-    // Boutons pour changer de Pokémon
-    blueTeamStruct.switchButton = createButton("BattleStateFont", "SwitchBlue", buttonSize, {400, 300}, 14, sf::Color::Blue, sf::Color::Black);
-    redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 14, sf::Color::Red, sf::Color::Black);
-}
-
-void BattleState::drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct)
-{
-    for (size_t i = 0; i < 4; i++)
-    {
-        teamStruct.moveButtons[i].text.setString(teamStruct.pokemons[teamStruct.activePokemon]->getMoves()[i]->getName());
-        window.draw(teamStruct.moveButtons[i].shape);
-        window.draw(teamStruct.moveButtons[i].text);
-    }
-
-    window.draw(teamStruct.switchButton.shape);
-    window.draw(teamStruct.switchButton.text);
-}
-
-// =================== BARRE DE VIE ===================
-void BattleState::createHealthBars()
-{
-    // Positions et tailles pour les barres de fond
-    sf::Vector2f blueBGBarsPos = {100, 30};
-    sf::Vector2f redBGBarsPos = {695, 465};
-    sf::Vector2f bgSizes = {210, 50};
-
-    // Positions et tailles pour les barres de vie
-    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5, 30 + 5}, {100 + 5, 30 + 5 + 25}};
-    std::vector<sf::Vector2f> redBarsPos = {{700, 470}, {700, 500}};
-    sf::Vector2f barSizes = {200, 15};
-
-    // Initialisation des barres de fond et des barres de vie
-    for (int i = 0; i < 2; i++)
-    {
-        // Initialisation des barres de fond
-        blueTeamStruct.healthBars.push_back(createRectangle(barSizes, blueBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
-        redTeamStruct.healthBars.push_back(createRectangle(barSizes, redBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
-    }
-    blueTeamStruct.bgHealthBar = createRectangle(bgSizes, blueBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
-    redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
+    else
+        return 0;
 }
 
 void BattleState::updateHealthBars(TeamStruct &teamStruct)
@@ -427,6 +415,49 @@ void BattleState::updateHealthBars(TeamStruct &teamStruct)
     }
 }
 
+
+/*==============================================================================
+|                          GESTION DES GRAPHISMES                              |
+==============================================================================*/
+void BattleState::render(sf::RenderWindow &window)
+{
+    window.clear();
+    window.draw(backgroundSprite);
+
+    drawPokemonTeam(window, blueTeamStruct);
+    drawPokemonTeam(window, redTeamStruct);
+
+    drawMoveButtons(window, blueTeamStruct);
+    drawMoveButtons(window, redTeamStruct);
+
+    drawHealthBars(window, blueTeamStruct);
+    drawHealthBars(window, redTeamStruct);
+
+    window.display();
+}
+
+// ============== SOUS-FONCTIONS POUR LA GESTION DES GRAPHISMES ===============//
+void BattleState::drawPokemonTeam(sf::RenderWindow &window, TeamStruct &teamStruct)
+{
+    for (auto &sprite : teamStruct.pokemonSprites)
+    {
+        window.draw(sprite);
+    }
+}
+
+void BattleState::drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct)
+{
+    for (size_t i = 0; i < 4; i++)
+    {
+        teamStruct.moveButtons[i].text.setString(teamStruct.pokemons[teamStruct.activePokemon]->getMoves()[i]->getName());
+        window.draw(teamStruct.moveButtons[i].shape);
+        window.draw(teamStruct.moveButtons[i].text);
+    }
+
+    window.draw(teamStruct.switchButton.shape);
+    window.draw(teamStruct.switchButton.text);
+}
+
 void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct)
 {
     window.draw(teamStruct.bgHealthBar);
@@ -436,24 +467,4 @@ void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruc
         // Dessiner les barres de vie
         window.draw(teamStruct.healthBars[i]);
     }
-}
-
-// =================== LOGIQUE DU JEU ===================
-bool BattleState::checkBattleOver()
-{
-    bool blueDefeated = checkFainted(blueTeamStruct);
-    bool redDefeated = checkFainted(redTeamStruct);
-    return redDefeated || blueDefeated;
-}
-
-bool BattleState::checkFainted(TeamStruct &teamStruct)
-{
-    if (teamStruct.pokemons[0]->getHpRestant() == 0 && teamStruct.pokemons[1]->getHpRestant() == 0)
-    {
-        std::cout << "Jeu fini" << std::endl;
-
-        return 1;
-    }
-    else
-        return 0;
 }
