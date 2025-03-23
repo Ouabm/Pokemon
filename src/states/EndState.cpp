@@ -2,13 +2,14 @@
 #include "MenuState.hpp" // Sert uniquement pour la transition (si on rejoue)
 
 #include "GameStateManager.hpp"
+#include "GameParameters.hpp"
 
 /*==============================================================================
 |                               CONSTRUCTEUR                                   |
 ==============================================================================*/
 EndState::EndState(GameStateManager *manager) : GameState(manager)
 {
-    ResourceManager::getInstance().playMusic("MenuStateMusic", 100.0f, true);
+    ResourceManager::getInstance().playMusic(End::Music::BACKGROUND_MUSIC, End::Music::VOLUME, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("EndStateBG"));
 
     // Création du texte de fin de jeu

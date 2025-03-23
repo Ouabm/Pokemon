@@ -4,13 +4,15 @@
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
 
+#include "GameParameters.hpp"
+
 /*==============================================================================
 |                               CONSTRUCTEUR                                   |
 ==============================================================================*/
 SelectionState::SelectionState(GameStateManager *manager) : GameState(manager), selectedIndex(0), playerTurn(0)
 {
     // Joue la musique de fond pour l'état de sélection
-    ResourceManager::getInstance().playMusic("SelectionStateMusic", 50.0f, true);
+    ResourceManager::getInstance().playMusic(Selection::Music::BACKGROUND_MUSIC, Selection::Music::VOLUME, true);
 
     // Charge l'arrière-plan
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("SelectionStateBG"));
