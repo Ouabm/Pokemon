@@ -11,6 +11,8 @@ struct TeamStruct
     std::vector<Pokemon *> pokemons;            // Objets Pokémon
     std::vector<sf::RectangleShape> healthBars; // Barres de vie
     sf::RectangleShape bgHealthBar;
+    std::vector<sf::Text> barsText;
+
     std::vector<Button> moveButtons; // Boutons des attaques
     Button switchButton;             // Bouton pour changer de Pokémon
     sf::CircleShape targetIndicator;
