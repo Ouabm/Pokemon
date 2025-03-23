@@ -11,45 +11,170 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
     ResourceManager::getInstance().playMusic("BattleStateMusic", 50.0f, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
 
-    std::vector<sf::Vector2f> blueTeamPositions = {{100.0, 200.0}, {200.0, 200.0}};
-    std::vector<sf::Vector2f> redTeamPositions = {{100.0, 400.0}, {200.0, 400.0}};
+    std::vector<sf::Vector2f> blueTeamPokemonPositions = {{20.0, 290.0}, {300.0, 290.0}};
+    std::vector<sf::Vector2f> redTeamPokemonPositions = {{600.0, 150.0}, {750.0, 150.0}};
 
-    loadPokemonTeamSprites(blueTeamPokemonsNames, blueTeamStruct, blueTeamPositions, true);
-    loadPokemonTeamSprites(redTeamPokemonsNames, redTeamStruct, redTeamPositions, false);
+    loadPokemonTeamSprites(blueTeamPokemonsNames, blueTeamStruct, blueTeamPokemonPositions, true);
+    loadPokemonTeamSprites(redTeamPokemonsNames, redTeamStruct, redTeamPokemonPositions, false);
 
     // Charge les équipes
     loadPokemonTeamsInfos(blueTeamPokemonsNames, redTeamPokemonsNames);
 
     // Initialise les boutons et les sprites
-    createMoveButtons();
+    createMoveButtons(); // Il faudrait ajouter la thickness comme param a cette fonction
     createHealthBars();
 }
 
 void BattleState::handleInput(sf::RenderWindow &window)
 {
+    static bool enterPressed = false; // Variable pour savoir si la touche Enter a déjà été pressée
+    static bool tabPressed = false;   // Variable pour savoir si la touche Tab a déjà été pressée
+
     sf::Event event;
+
     while (window.pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
-            window.close();
-
-        if (checkBattleOver())
         {
-            gameManager->changeState(std::make_unique<EndState>(gameManager));
+            window.close();
         }
 
+        // Gestion des clics de souris
         if (event.type == sf::Event::MouseButtonPressed)
         {
-            // Vérifie si un bouton de changement de Pokémon a été cliqué
-            if (blueTeamStruct.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+            TeamStruct *currentTeam = (isBlueTeamTurn) ? &blueTeamStruct : &redTeamStruct;
+            if (!currentTeam->moveChosen)
             {
-                blueTeamStruct.activePokemon = (blueTeamStruct.activePokemon + 1) % blueTeamStruct.pokemons.size();
-            }
-            if (redTeamStruct.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
-            {
-                redTeamStruct.activePokemon = (redTeamStruct.activePokemon + 1) % redTeamStruct.pokemons.size();
+                if (handleSwitchButtonClick(window, *currentTeam))
+                {
+                    std::cout << "Pokemon switché (" << (isBlueTeamTurn ? "Equipe bleue" : "Equipe rouge") << "), Nouveau Pokémon: "
+                              << currentTeam->pokemons[currentTeam->activePokemon]->getName() << std::endl;
+                }
+
+                if (handleMoveButtonClick(window, *currentTeam))
+                {
+                    // On pourrait marquer ici si nécessaire, mais pour l'instant on garde la logique simple
+                }
             }
         }
+
+        // Gestion de la touche Enter
+        if (event.type == sf::Event::KeyPressed && !enterPressed)
+        {
+            if (event.key.code == sf::Keyboard::Enter)
+            {
+                TeamStruct *currentTeam = (isBlueTeamTurn) ? &blueTeamStruct : &redTeamStruct;
+                if (!currentTeam->moveChosen)
+                {
+                    std::cout << "Move de l'équipe " << (isBlueTeamTurn ? "bleue" : "rouge") << " validé." << std::endl;
+                    currentTeam->moveChosen = true;
+                }
+                else if (!currentTeam->targetChosen)
+                {
+                    currentTeam->targetChosen = true;
+                    if (isBlueTeamTurn)
+                    {
+                        isBlueTeamTurn = false;
+                        std::cout << "Debut tour des rouges maintenant." << std::endl;
+                    }
+                    else
+                    {
+                        isBlueTeamTurn = true;
+                        std::cout << "Fin de la sélection." << std::endl;
+
+                        // Test pour debug 
+                        std::cout << blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getName()
+                                  << " qui possède des types: "
+                                  << typeToString(blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getType1())
+                                  << "/"
+                                  << typeToString(blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getType2())
+                                  << " va attaquer ("
+                                  << redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getName()
+                                  << " qui possède des types: "
+                                  << typeToString(redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getType1())
+                                  << "/"
+                                  << typeToString(redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getType2())
+                                  << ") avec " 
+                                  << blueTeamStruct.currentMove->getName()
+                                  << " qui est un move de type: "
+                                  << typeToString(blueTeamStruct.currentMove->getType())
+                                  << "." << std::endl;
+                    }
+                }
+
+                enterPressed = true; // On marque que la touche a été pressée pour ne pas répéter l'action
+            }
+        }
+
+        // Gestion de la touche Tab
+        if (event.type == sf::Event::KeyPressed && !tabPressed)
+        {
+            if (event.key.code == sf::Keyboard::Tab)
+            {
+                if ((isBlueTeamTurn && blueTeamStruct.moveChosen && !blueTeamStruct.targetChosen) ||
+                    (!isBlueTeamTurn && redTeamStruct.moveChosen && !redTeamStruct.targetChosen))
+                {
+                    std::cout << "Appel Target " << (isBlueTeamTurn ? "blue" : "red") << " switch" << std::endl;
+                }
+
+                tabPressed = true; // On marque que la touche a été pressée pour ne pas répéter l'action
+            }
+        }
+
+        // Réinitialisation de la touche Enter et Tab une fois relâchée
+        if (event.type == sf::Event::KeyReleased)
+        {
+            if (event.key.code == sf::Keyboard::Enter)
+            {
+                enterPressed = false;
+            }
+
+            if (event.key.code == sf::Keyboard::Tab)
+            {
+                tabPressed = false;
+            }
+        }
+    }
+}
+
+// Fonction générique pour gérer les clics sur le bouton de changement de Pokémon
+bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
+{
+    if (currentTeam.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+    {
+        currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
+        resetMoveButtonsOutline(currentTeam);
+        return true; // Un switch a eu lieu
+    }
+    return false; // Aucun switch effectué
+}
+
+// Fonction générique pour gérer les clics sur les boutons de move
+bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
+{
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (currentTeam.moveButtons[i].shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+        {
+            currentTeam.currentMove = currentTeam.pokemons[currentTeam.activePokemon]->getMoves()[i];
+            //std::cout << "Move choisi pour l'équipe: " << currentTeam.currentMove << std::endl;
+
+            // Change l'outline pour le bouton du move choisi
+            resetMoveButtonsOutline(currentTeam);
+            currentTeam.moveButtons[i].shape.setOutlineColor(isBlueTeamTurn ? sf::Color::Blue : sf::Color::Red);
+            currentTeam.moveButtons[i].shape.setOutlineThickness(3);
+
+            return true; // Un move a été choisi
+        }
+    }
+    return false; // Aucun move sélectionné
+}
+
+void BattleState::resetMoveButtonsOutline(TeamStruct &currentTeam)
+{
+    for (size_t i = 0; i < 4; i++)
+    {
+        currentTeam.moveButtons[i].shape.setOutlineThickness(0); // Remet l'épaisseur de l'outline par défaut
     }
 }
 
@@ -91,7 +216,7 @@ void BattleState::loadPokemonTeamsInfos(const std::vector<std::string> &blueTeam
         PokemonManager::getInstance().getPokemonByName(redTeamNames[1])};
 }
 
-void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPokemonsNames, PokemonTeam &teamStruct, const std::vector<sf::Vector2f> &initPos, bool reverseTexture)
+void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPokemonsNames, TeamStruct &teamStruct, const std::vector<sf::Vector2f> &initPos, bool reverseTexture)
 {
     teamStruct.pokemonSprites.clear(); // Nettoyer la liste des sprites avant d'ajouter les nouveaux
 
@@ -112,7 +237,7 @@ void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPok
     }
 }
 
-void BattleState::drawPokemonTeam(sf::RenderWindow &window, PokemonTeam &teamStruct)
+void BattleState::drawPokemonTeam(sf::RenderWindow &window, TeamStruct &teamStruct)
 {
     for (auto &sprite : teamStruct.pokemonSprites)
     {
@@ -129,16 +254,16 @@ void BattleState::createMoveButtons()
 
     for (size_t i = 0; i < 4; i++)
     {
-        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 20, sf::Color::White, sf::Color::Black));
-        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 20, sf::Color::White, sf::Color::Black));
+        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 14, sf::Color::White, sf::Color::Black));
+        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 14, sf::Color::White, sf::Color::Black));
     }
 
     // Boutons pour changer de Pokémon
-    blueTeamStruct.switchButton = createButton("BattleStateFont", "SwitchBlue", buttonSize, {400, 300}, 20, sf::Color::Blue, sf::Color::Black);
-    redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 20, sf::Color::Red, sf::Color::Black);
+    blueTeamStruct.switchButton = createButton("BattleStateFont", "SwitchBlue", buttonSize, {400, 300}, 14, sf::Color::Blue, sf::Color::Black);
+    redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 14, sf::Color::Red, sf::Color::Black);
 }
 
-void BattleState::drawMoveButtons(sf::RenderWindow &window, PokemonTeam &teamStruct)
+void BattleState::drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct)
 {
     for (size_t i = 0; i < 4; i++)
     {
@@ -156,21 +281,23 @@ void BattleState::createHealthBars()
 {
     // Positions et tailles pour les barres de fond
     sf::Vector2f blueBGBarsPos = {100, 30};
-    sf::Vector2f redBGBarsPos = {700, 470};
-    sf::Vector2f bgBarSizes = {200, 50};
+    sf::Vector2f redBGBarsPos = {695, 465};
+    sf::Vector2f bgSizes = {210, 50};
 
     // Positions et tailles pour les barres de vie
-    std::vector<sf::Vector2f> blueBarsPos = {{100, 30}, {100, 60}};
+    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5, 30 + 5}, {100 + 5, 30 + 5 + 25}};
     std::vector<sf::Vector2f> redBarsPos = {{700, 470}, {700, 500}};
-    sf::Vector2f barSizes = {200, 10};
+    sf::Vector2f barSizes = {200, 15};
 
     // Initialisation des barres de fond et des barres de vie
     for (int i = 0; i < 2; i++)
     {
         // Initialisation des barres de fond
-        blueTeamStruct.healthBars.push_back(createRectangle(barSizes, blueBarsPos[i], sf::Color::Green, 0, sf::Color::Transparent));
-        redTeamStruct.healthBars.push_back(createRectangle(barSizes, redBarsPos[i], sf::Color::Green, 0, sf::Color::Transparent));
+        blueTeamStruct.healthBars.push_back(createRectangle(barSizes, blueBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
+        redTeamStruct.healthBars.push_back(createRectangle(barSizes, redBarsPos[i], sf::Color::Green, 1, sf::Color::Black));
     }
+    blueTeamStruct.bgHealthBar = createRectangle(bgSizes, blueBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
+    redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
 }
 
 void BattleState::updateHealthBars()
@@ -178,8 +305,9 @@ void BattleState::updateHealthBars()
     // Mise à jour des barres de vie
 }
 
-void BattleState::drawHealthBars(sf::RenderWindow &window, PokemonTeam &teamStruct)
+void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct)
 {
+    window.draw(teamStruct.bgHealthBar);
     // Dessiner les barres de vie pour chaque Pokémon
     for (size_t i = 0; i < 2; i++)
     {

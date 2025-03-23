@@ -30,3 +30,5 @@ int main()
 // Note : 
 
 // 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
+
+// 2 Ajout d'un hpp GameParameters pour grouper toutes les positions des elements etc...

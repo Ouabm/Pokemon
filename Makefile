@@ -16,7 +16,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Nom de l'exécutable
-EXEC = game
+EXEC = pokemon
 
 # Règle par défaut : construire l'exécutable
 all: $(EXEC)

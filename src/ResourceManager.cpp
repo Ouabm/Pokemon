@@ -88,10 +88,10 @@ void ResourceManager::stopMusic()
 void ResourceManager::loadAllResources()
 {
     // Chargement des polices
-    loadFont("MenuStateFont", "assets/fonts/arial.ttf");
-    loadFont("SelectionStateFont", "assets/fonts/arial.ttf");
-    loadFont("BattleStateFont", "assets/fonts/arial.ttf");
-    loadFont("EndStateFont", "assets/fonts/arial.ttf");
+    loadFont("MenuStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("SelectionStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("BattleStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("EndStateFont", "assets/fonts/prstartk.ttf");
 
     // Chargement des textures
     loadTexture("MenuStateBG", "assets/textures/menuBG.jpg");
