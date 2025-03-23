@@ -4,6 +4,8 @@
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
 
+#include "GameParameters.hpp"
+
 #include "DamageCalculator.hpp"
 
 /*==============================================================================
@@ -12,7 +14,7 @@
 BattleState::BattleState(GameStateManager *manager, const std::vector<std::string> &blueTeamPokemonsNames, const std::vector<std::string> &redTeamPokemonsNames) : GameState(manager)
 {
     // Joue la musique de fond
-    ResourceManager::getInstance().playMusic("BattleStateMusic", 50.0f, true);
+    ResourceManager::getInstance().playMusic(Battle::Music::BACKGROUND_MUSIC,Battle::Music::VOLUME, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
 
     std::vector<sf::Vector2f> blueTeamPokemonPositions = {{20.0, 290.0}, {300.0, 290.0}};

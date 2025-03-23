@@ -30,7 +30,7 @@ int main()
 
 // Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update() (gdb)
 
-// Proteger les parties du code sensible pour eviter seg fault
+// Proteger les parties du code sensible pour eviter seg fault (si on selectionne pas de move = seg fault)
 
 // Selectionner en meme temps les pokemons dans le menu selection (optionnel)
 
