@@ -23,6 +23,6 @@ private:
     std::vector<std::string> blueTeam;
     std::vector<std::string> redTeam;
 
-    void loadPokemonSprites();
+    void loadAllPokemonSprites();
     void handlePokemonSelection();
 };

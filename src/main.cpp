@@ -7,7 +7,7 @@ int main()
 {
     ResourceManager::getInstance().loadAllResources();
 
-    sf::RenderWindow window(sf::VideoMode(1024, 640), "Pokemon");
+    sf::RenderWindow window(sf::VideoMode(1024, 700), "Pokemon");
 
     // Création du GameStateManager
     GameStateManager manager;

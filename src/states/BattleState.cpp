@@ -267,7 +267,7 @@ void BattleState::handleInput(sf::RenderWindow &window)
     }
 }
 
-// ================ SOUS-FONCTIONS POUR LA GESTION DES ENTRÉES ================//
+/* ================ SOUS-FONCTIONS POUR LA GESTION DES ENTRÉES ================*/
 bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
 {
     if (currentTeam.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))

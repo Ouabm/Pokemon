@@ -3,6 +3,9 @@
 
 #include "GameStateManager.hpp"
 
+/*==============================================================================
+|                               CONSTRUCTEUR                                   |
+==============================================================================*/
 EndState::EndState(GameStateManager *manager) : GameState(manager)
 {
     ResourceManager::getInstance().playMusic("MenuStateMusic", 100.0f, true);
@@ -28,6 +31,9 @@ EndState::EndState(GameStateManager *manager) : GameState(manager)
     quitButton = createButton("EndStateFont", "Quit", buttonSize, helpButtonPos, 24, sf::Color::Red, sf::Color::White);
 }
 
+/*==============================================================================
+|                        GESTION DES ENTRÉES UTILISATEUR                       |
+==============================================================================*/
 void EndState::handleInput(sf::RenderWindow &window)
 {
     sf::Event event;
@@ -65,6 +71,9 @@ void EndState::handleInput(sf::RenderWindow &window)
     }
 }
 
+/*==============================================================================
+|                            GESTION DES UPDATES                               |
+==============================================================================*/
 void EndState::update()
 {
     // Temps écoulé depuis le dernier frame
@@ -86,6 +95,9 @@ void EndState::update()
     }
 }
 
+/*==============================================================================
+|                          GESTION DES GRAPHISMES                              |
+==============================================================================*/
 void EndState::render(sf::RenderWindow &window)
 {
     window.clear();
