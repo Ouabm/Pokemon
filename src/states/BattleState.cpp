@@ -90,11 +90,11 @@ void BattleState::createHealthBars()
     // Positions et tailles pour les barres de fond
     sf::Vector2f blueBGBarsPos = {100, 30};
     sf::Vector2f redBGBarsPos = {695, 465};
-    sf::Vector2f bgSizes = {210 + 50, 50};
+    sf::Vector2f bgSizes = {210 + 100, 50};
 
     // Positions et tailles pour les barres de vie
-    std::vector<sf::Vector2f> blueBarsPos = {{100 + 5 + 50, 30 + 5}, {100 + 5 + 50, 30 + 5 + 25}};
-    std::vector<sf::Vector2f> redBarsPos = {{695 + 5 + 50, 465 + 5}, {695 + 5 + 50, 465 + 5 + 25}};
+    std::vector<sf::Vector2f> blueBarsPos = {{blueBGBarsPos.x + 5 + 100, blueBGBarsPos.y + 5}, {blueBGBarsPos.x + 5 + 100, blueBGBarsPos.y + 5 + 25}};
+    std::vector<sf::Vector2f> redBarsPos = {{redBGBarsPos.x + 5 + 100, redBGBarsPos.y + 5}, {redBGBarsPos.x + 5 + 100, redBGBarsPos.y + 5 + 25}};
     sf::Vector2f barSizes = {200, 15};
 
     // Initialisation des barres de fond et des barres de vie
@@ -108,10 +108,10 @@ void BattleState::createHealthBars()
     redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
 
     // Ajouter dynamiquement les textes dans les structures avec push_back
-    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke1", 10, sf::Color::White, {blueBGBarsPos.x - 40, blueBGBarsPos.y + 5}));
-    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke2", 10, sf::Color::White, {blueBGBarsPos.x - 40, blueBGBarsPos.y + 35}));
-    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke3", 10, sf::Color::White, {redBGBarsPos.x - 40, redBGBarsPos.y + 5}));
-    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Poke4", 10, sf::Color::White, {redBGBarsPos.x - 40, redBGBarsPos.y + 35}));
+    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Charizard", 10, sf::Color::White, {blueBGBarsPos.x + 6, blueBGBarsPos.y + 6}));
+    blueTeamStruct.barsText.push_back(createText("BattleStateFont", "Charizard", 10, sf::Color::White, {blueBGBarsPos.x + 6, blueBGBarsPos.y + 32}));
+    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Pikachu", 10, sf::Color::White, {redBGBarsPos.x + 6, redBGBarsPos.y + 6}));
+    redTeamStruct.barsText.push_back(createText("BattleStateFont", "Kio", 10, sf::Color::White, {redBGBarsPos.x + 6, redBGBarsPos.y + 32}));
 }
 
 void BattleState::createTargetIndicator()
