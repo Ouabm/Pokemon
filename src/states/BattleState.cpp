@@ -321,18 +321,24 @@ void BattleState::update()
     {
         // executeTurn(blueTeamStruct, redTeamStruct); // Calcul les degats a infliger et recevoir sur chaque pokemons
 
-        int test = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
+        int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
+        int damage2 = calculDamage(*redTeamStruct.pokemons[redTeamStruct.activePokemon], *blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *redTeamStruct.currentMove);
 
-        int oldHp = blueTeamStruct.pokemons[0]->getHpRestant();
-        int newHp = std::max(0, oldHp - test);
-        blueTeamStruct.pokemons[0]->setHpRestant(newHp);
+        std::cout << "Dammage1 : " << damage1 << std::endl;
+        std::cout << "Dammage2 : " << damage2 << std::endl;
 
-        int oldHp1 = blueTeamStruct.pokemons[1]->getHpRestant();
-        int newHp1 = std::max(0, oldHp1 - test);
-        blueTeamStruct.pokemons[1]->setHpRestant(newHp1);
+        // Degat que l'on va infligé au Rouge
+        int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
+        int newHp = std::max(0, oldHp - damage2);
+        blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->setHpRestant(newHp);
 
-        std::cout << "PV du Pokémon 0: " << oldHp << " -> " << newHp << std::endl;
-        std::cout << "PV du Pokémon 1: " << oldHp1 << " -> " << newHp1 << std::endl;
+        // Degat que l'on va infligé au Bleu
+        int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
+        int newHp1 = std::max(0, oldHp1 - damage1);
+        redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
+
+        std::cout << "PV du Pokémon rouge attaqué: " << oldHp << " -> " << newHp << std::endl;
+        std::cout << "PV du Pokémon bleu attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
 
         updateHealthBars(blueTeamStruct);
         updateHealthBars(redTeamStruct);
