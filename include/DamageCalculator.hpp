@@ -27,7 +27,7 @@ constexpr float typeDamage(int attack, int def_1, int def_2) {
     return (def_2 != 18) ? tableType[attack][def_1] * tableType[attack][def_2] : tableType[attack][def_1];
 }
 
-int Calcul_dmg(Pokemon pokemon_atk, Pokemon pokemon_def, Move move){
+int calculDamage(Pokemon pokemon_atk, Pokemon pokemon_def, Move move){
     int min1 = 0 ,  max1 = 15;
     int min2 = 1 ,  max2 = 100;
 

@@ -4,6 +4,8 @@
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
 
+#include "DamageCalculator.hpp"
+
 /*==============================================================================
 |                               CONSTRUCTEUR                                   |
 ==============================================================================*/
@@ -319,18 +321,18 @@ void BattleState::update()
     {
         // executeTurn(blueTeamStruct, redTeamStruct); // Calcul les degats a infliger et recevoir sur chaque pokemons
 
+        int test = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
+
         int oldHp = blueTeamStruct.pokemons[0]->getHpRestant();
-        int newHp = std::max(0, oldHp - 100);
+        int newHp = std::max(0, oldHp - test);
         blueTeamStruct.pokemons[0]->setHpRestant(newHp);
 
         int oldHp1 = blueTeamStruct.pokemons[1]->getHpRestant();
-        int newHp1 = std::max(0, oldHp1 - 100);
+        int newHp1 = std::max(0, oldHp1 - test);
         blueTeamStruct.pokemons[1]->setHpRestant(newHp1);
 
         std::cout << "PV du Pokémon 0: " << oldHp << " -> " << newHp << std::endl;
         std::cout << "PV du Pokémon 1: " << oldHp1 << " -> " << newHp1 << std::endl;
-
-        calculDamage(blueTeamStruct.pokemons[blueTeamStruct.activePokemon], redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], blueTeamStruct.currentMove);
 
         updateHealthBars(blueTeamStruct);
         updateHealthBars(redTeamStruct);
