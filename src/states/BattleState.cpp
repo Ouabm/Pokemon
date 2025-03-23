@@ -82,7 +82,7 @@ void BattleState::handleInput(sf::RenderWindow &window)
                         isBlueTeamTurn = true;
                         std::cout << "Fin de la sélection." << std::endl;
 
-                        // Test pour debug 
+                        // Test pour debug
                         std::cout << blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getName()
                                   << " qui possède des types: "
                                   << typeToString(blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getType1())
@@ -94,10 +94,28 @@ void BattleState::handleInput(sf::RenderWindow &window)
                                   << typeToString(redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getType1())
                                   << "/"
                                   << typeToString(redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getType2())
-                                  << ") avec " 
+                                  << ") avec "
                                   << blueTeamStruct.currentMove->getName()
                                   << " qui est un move de type: "
                                   << typeToString(blueTeamStruct.currentMove->getType())
+                                  << "." << std::endl;
+
+                        // Test pour debug
+                        std::cout << redTeamStruct.pokemons[redTeamStruct.activePokemon]->getName()
+                                  << " qui possède des types: "
+                                  << typeToString(redTeamStruct.pokemons[redTeamStruct.activePokemon]->getType1())
+                                  << "/"
+                                  << typeToString(redTeamStruct.pokemons[redTeamStruct.activePokemon]->getType2())
+                                  << " va attaquer ("
+                                  << blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getName()
+                                  << " qui possède des types: "
+                                  << typeToString(blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getType1())
+                                  << "/"
+                                  << typeToString(blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getType2())
+                                  << ") avec "
+                                  << redTeamStruct.currentMove->getName()
+                                  << " qui est un move de type: "
+                                  << typeToString(redTeamStruct.currentMove->getType())
                                   << "." << std::endl;
                     }
                 }
@@ -137,7 +155,7 @@ void BattleState::handleInput(sf::RenderWindow &window)
     }
 }
 
-// Fonction générique pour gérer les clics sur le bouton de changement de Pokémon
+// =================== SOUS FONCTIONS DU HANDLEINPUT ===================
 bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
 {
     if (currentTeam.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
@@ -149,7 +167,6 @@ bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &
     return false; // Aucun switch effectué
 }
 
-// Fonction générique pour gérer les clics sur les boutons de move
 bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
 {
     for (size_t i = 0; i < 4; i++)
@@ -157,7 +174,7 @@ bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &cu
         if (currentTeam.moveButtons[i].shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
         {
             currentTeam.currentMove = currentTeam.pokemons[currentTeam.activePokemon]->getMoves()[i];
-            //std::cout << "Move choisi pour l'équipe: " << currentTeam.currentMove << std::endl;
+            // std::cout << "Move choisi pour l'équipe: " << currentTeam.currentMove << std::endl;
 
             // Change l'outline pour le bouton du move choisi
             resetMoveButtonsOutline(currentTeam);
@@ -203,6 +220,8 @@ void BattleState::render(sf::RenderWindow &window)
 
     window.display();
 }
+
+// =================== SOUS FONCTIONS DU FICHIER =================== // A mettre au propre
 
 // =================== CHARGEMENT DES TEAMS ===================
 void BattleState::loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames)

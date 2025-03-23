@@ -31,26 +31,15 @@ public:
     void render(sf::RenderWindow &window) override;
 
 private:
-    /* ======================== Graphismes & UI ======================== */
     sf::Sprite backgroundSprite; // Fond d'écran du combat
     sf::Font font;               // Police d'affichage des textes
 
     bool isBlueTeamTurn = true; // L'équipe bleue commence
 
-    // bool blueMoveChosen = false;
-    // bool redMoveChosen = false;
-
-    // bool blueTargetChosen = false;
-    // bool redTargetChosen = false;
-
     bool handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &team);
     bool handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &team);
 
     void resetMoveButtonsOutline(TeamStruct &team);
-
-    // Etat ou on choisi
-
-    // Target
 
     TeamStruct blueTeamStruct; // Équipe bleue
     TeamStruct redTeamStruct;  // Équipe rouge
