@@ -32,9 +32,11 @@ int main()
 
 // Proteger les parties du code sensible pour eviter seg fault
 
+// Selectionner en meme temps les pokemons dans le menu selection (optionnel)
+
 
 // Note : 
 
 // 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
 
-// 2 Ajout d'un hpp GameParameters pour grouper toutes les positions des elements etc... (optionnel)
+// 2 Ajout d'un hpp GameParameters pour centraliser toutes les positions des elements etc... (optionnel)

@@ -104,6 +104,12 @@ void BattleState::createHealthBars()
     redTeamStruct.bgHealthBar = createRectangle(bgSizes, redBGBarsPos, sf::Color(100, 100, 100), 3, sf::Color::Black);
 }
 
+void BattleState::createTargetIndicator()
+{
+    blueTeamStruct.targetIndicator = createCircle(25, {0, 0}, sf::Color(255, 0, 0, 80), 5, sf::Color::Red);
+    redTeamStruct.targetIndicator = createCircle(25, {1000, 0}, sf::Color(255, 0, 0, 80), 5, sf::Color::Red);
+}
+
 /*==============================================================================
 |                        GESTION DES ENTRÉES UTILISATEUR                       |
 ==============================================================================*/
@@ -345,7 +351,6 @@ void BattleState::update()
 
         resetMoveButtonsOutline(blueTeamStruct);
         resetMoveButtonsOutline(redTeamStruct);
-
     }
 }
 
@@ -415,7 +420,6 @@ void BattleState::updateHealthBars(TeamStruct &teamStruct)
     }
 }
 
-
 /*==============================================================================
 |                          GESTION DES GRAPHISMES                              |
 ==============================================================================*/
@@ -456,7 +460,6 @@ void BattleState::drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStru
         window.draw(teamStruct.moveButtons[i].shape);
         window.draw(teamStruct.moveButtons[i].text);
     }
-
     window.draw(teamStruct.switchButton.shape);
     window.draw(teamStruct.switchButton.text);
 }
@@ -488,21 +491,9 @@ void BattleState::drawTargetIndicator(sf::RenderWindow &window, TeamStruct &team
         // Positionne l'indicateur de ciblage
         currentTeam.targetIndicator.setPosition(targetPos);
         window.draw(currentTeam.targetIndicator);
+
+        // Ajouter un texte indiquant que le mode de ciblage est actif
+        sf::Text targetingText = createText("BattleStateFont", "TARGETING MODE - Press Tab to cycle targets", 16, sf::Color::Red, {320, 30});
+        window.draw(targetingText);
     }
-
-    // Ajouter un texte indiquant que le mode de ciblage est actif
-    sf::Text targetingText;
-    targetingText.setFont(font);
-    targetingText.setString("TARGETING MODE - Press Tab to cycle targets");
-    targetingText.setCharacterSize(16);
-    targetingText.setFillColor(sf::Color::Red);
-    targetingText.setPosition(320, 30);
-    window.draw(targetingText);
-}
-
-void BattleState::createTargetIndicator()
-{
-    // Initialisation du marqueur de ciblage
-    blueTeamStruct.targetIndicator = createCircle(25, {0, 0},sf::Color(255,0,0,80),5,sf::Color::Red);
-    redTeamStruct.targetIndicator = createCircle(25, {1000, 0},sf::Color(255,0,0,80),5,sf::Color::Red);
 }
