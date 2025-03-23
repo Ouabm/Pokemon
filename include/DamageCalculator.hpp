@@ -37,12 +37,12 @@ int calculDamage(Pokemon pokemon_atk, Pokemon pokemon_def, Move move){
         return 0;
     }
     int role = 85 + std::rand() % (max1 - min1 + 1);
-    int crit = randomInRange == 15 ? 1.5 : 1;
+    float crit = randomInRange == 15 ? 1.5 : 1;
     float STAB = ((move.getType() == pokemon_atk.getType1()) || (move.getType() == pokemon_atk.getType2())) ? 1.5 : 1;
     if (move.isPhysicalMove()){
-        return ((((50*0.4+2)*pokemon_atk.getAttack()*move.getPower())/(pokemon_def.getDefense()*50))*STAB*typeDamage(typeToInt(move.getType()),typeToInt(pokemon_def.getType1()),typeToInt(pokemon_def.getType2()))*crit*(role/100));
+        return ((((50*0.4+2)*pokemon_atk.getAttack()*move.getPower())/(pokemon_def.getDefense()*50))*STAB*typeDamage(typeToInt(move.getType()),typeToInt(pokemon_def.getType1()),typeToInt(pokemon_def.getType2()))*crit*(role/100.0));
     }
     else {
-        return ((((50*0.4+2)*pokemon_atk.getSpecialAttack()*move.getPower())/(pokemon_def.getSpecialDefense()*50))*STAB*typeDamage(typeToInt(move.getType()),typeToInt(pokemon_def.getType1()),typeToInt(pokemon_def.getType2()))*crit*(role/100));
+        return ((((50*0.4+2)*pokemon_atk.getSpecialAttack()*move.getPower())/(pokemon_def.getSpecialDefense()*50))*STAB*typeDamage(typeToInt(move.getType()),typeToInt(pokemon_def.getType1()),typeToInt(pokemon_def.getType2()))*crit*(role/100.0));
     }
 }
