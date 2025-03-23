@@ -15,8 +15,10 @@ struct TeamStruct
     Button switchButton;             // Bouton pour changer de Pokémon
 
     int activePokemon = 0; // Indice du Pokémon actif
-    bool moveChosen = false;
-    bool targetChosen = false;
+    bool isMoveChosen = false;
+    bool isTargetChosen = false;
+
+    // Valeur a stocker pour le calcul
     int pokemonTargeted = 0;
     const Move *currentMove = nullptr;
 };
@@ -30,11 +32,29 @@ public:
     void update() override;
     void render(sf::RenderWindow &window) override;
 
+    // Destructeur pour libérer la mémoire des clones de Pokémon
+    ~BattleState()
+    {
+        // Libération de la mémoire des clones de Pokémon pour les équipes
+        for (Pokemon* p : blueTeamStruct.pokemons)
+        {
+            delete p; // Libère la mémoire de chaque Pokémon cloné
+        }
+
+        for (Pokemon* p : redTeamStruct.pokemons)
+        {
+            delete p; // Libère la mémoire de chaque Pokémon cloné
+        }
+    }
+
 private:
     sf::Sprite backgroundSprite; // Fond d'écran du combat
     sf::Font font;               // Police d'affichage des textes
 
     bool isBlueTeamTurn = true; // L'équipe bleue commence
+    bool isTurnReady = false;
+
+    bool endBattle = false;
 
     bool handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &team);
     bool handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &team);
@@ -51,12 +71,12 @@ private:
     void drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct); // Affichage des boutons
 
     void createHealthBars(); // Initialisation des barres de vie
-    void updateHealthBars(); // Mise à jour des barres de vie
+    void updateHealthBars(TeamStruct &teamStruct);
     void drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct);
 
     /* ======================== Logique du jeu ======================== */
     void loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames);
 
     bool checkBattleOver();              // Vérifie si le combat est terminé
-    bool checkFainted(Pokemon *pokemon); // Vérifie si un Pokémon est KO
+    bool checkFainted(TeamStruct &teamStruct); // Vérifie si un Pokémon est KO
 };

@@ -52,6 +52,7 @@ public:
 
     // Setters
     void setHp(int p_hp) { hp = p_hp; }
+    void setHpRestant(int p_hpRestant) { hpRestant = p_hpRestant; }
     void setAttack(float p_attack) { attack = p_attack; }
     void setSpecialAttack(float p_specialAttack) { specialAttack = p_specialAttack; }
     void setDefense(float p_defense) { defense = p_defense; }
@@ -60,4 +61,11 @@ public:
 
     // Tests
     bool isKO() const { return hpRestant <= 0; }
+
+    // Clone function
+    Pokemon *clone() const
+    {
+        return new Pokemon(name, type1, type2, level, hp, hpRestant, attack, specialAttack, defense, specialDefense, speed,
+                           *moves[0], *moves[1], *moves[2], *moves[3]); // Crée une copie de l'objet
+    }
 };
