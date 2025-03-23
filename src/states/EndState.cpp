@@ -1,8 +1,11 @@
-#include "../../include/states/EndState.hpp"  // Etat actuel ou l'on se trouve
-#include "../../include/states/MenuState.hpp" // Sert uniquement pour la transition (si on rejoue)
+#include "EndState.hpp"  // Etat actuel ou l'on se trouve
+#include "MenuState.hpp" // Sert uniquement pour la transition (si on rejoue)
 
-#include "../../include/GameStateManager.hpp"
+#include "GameStateManager.hpp"
 
+/*==============================================================================
+|                               CONSTRUCTEUR                                   |
+==============================================================================*/
 EndState::EndState(GameStateManager *manager) : GameState(manager)
 {
     ResourceManager::getInstance().playMusic("MenuStateMusic", 100.0f, true);
@@ -24,10 +27,13 @@ EndState::EndState(GameStateManager *manager) : GameState(manager)
     sf::Vector2f startButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos);
     sf::Vector2f helpButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos));
 
-    replayButton = createButton("EndStateFont", "Replay", buttonSize, startButtonPos, sf::Color::Green, sf::Color::White);
-    quitButton = createButton("EndStateFont", "Quit", buttonSize, helpButtonPos, sf::Color::Red, sf::Color::White);
+    replayButton = createButton("EndStateFont", "Replay", buttonSize, startButtonPos, 24, sf::Color::Green, sf::Color::White);
+    quitButton = createButton("EndStateFont", "Quit", buttonSize, helpButtonPos, 24, sf::Color::Red, sf::Color::White);
 }
 
+/*==============================================================================
+|                        GESTION DES ENTRÉES UTILISATEUR                       |
+==============================================================================*/
 void EndState::handleInput(sf::RenderWindow &window)
 {
     sf::Event event;
@@ -65,6 +71,9 @@ void EndState::handleInput(sf::RenderWindow &window)
     }
 }
 
+/*==============================================================================
+|                            GESTION DES UPDATES                               |
+==============================================================================*/
 void EndState::update()
 {
     // Temps écoulé depuis le dernier frame
@@ -86,6 +95,9 @@ void EndState::update()
     }
 }
 
+/*==============================================================================
+|                          GESTION DES GRAPHISMES                              |
+==============================================================================*/
 void EndState::render(sf::RenderWindow &window)
 {
     window.clear();

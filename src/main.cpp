@@ -1,13 +1,13 @@
 #include "ResourceManager.hpp"
 #include "GameStateManager.hpp"
 
-#include "states/MenuState.hpp"
+#include "MenuState.hpp"
 
 int main()
 {
     ResourceManager::getInstance().loadAllResources();
-    
-    sf::RenderWindow window(sf::VideoMode(1024, 640), "Pokemon");
+
+    sf::RenderWindow window(sf::VideoMode(1024, 700), "Pokemon");
 
     // Création du GameStateManager
     GameStateManager manager;
@@ -24,3 +24,19 @@ int main()
 
     return 0;
 }
+
+
+// A faire : 
+
+// Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update() (gdb)
+
+// Proteger les parties du code sensible pour eviter seg fault
+
+// Selectionner en meme temps les pokemons dans le menu selection (optionnel)
+
+
+// Note : 
+
+// 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
+
+// 2 Ajout d'un hpp GameParameters pour centraliser toutes les positions des elements etc... (optionnel)

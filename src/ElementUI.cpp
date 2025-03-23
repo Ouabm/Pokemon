@@ -14,23 +14,38 @@ sf::Text createText(const std::string &fontKey, const std::string &text, unsigne
     return newText;
 }
 
-sf::RectangleShape createRectangle(const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &color)
+// Implémentation sans valeurs par défaut
+sf::RectangleShape createRectangle(const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &color, float outlineThickness, const sf::Color &outlineColor)
 {
     sf::RectangleShape rectangle;
     rectangle.setSize(size);
     rectangle.setPosition(position);
     rectangle.setFillColor(color);
+    rectangle.setOutlineThickness(outlineThickness);
+    rectangle.setOutlineColor(outlineColor);
     return rectangle;
 }
 
-// Le 24 doit etre un param
-Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &buttonColor, const sf::Color &textColor)
+sf::CircleShape createCircle(float radius, const sf::Vector2f &position, const sf::Color &fillColor, float outlineThickness, const sf::Color &outlineColor)
+{
+    sf::CircleShape circle;
+    circle.setRadius(radius);                     // Définir le rayon du cercle
+    circle.setPosition(position);                 // Définir la position du cercle
+    circle.setFillColor(fillColor);               // Définir la couleur de remplissage
+    circle.setOutlineThickness(outlineThickness); // Définir l'épaisseur du contour
+    circle.setOutlineColor(outlineColor);         // Définir la couleur du contour
+    circle.setOrigin(radius, radius);             // Définir l'origine du cercle au centre
+
+    return circle;
+}
+
+Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const int textSize, const sf::Color &buttonColor, const sf::Color &textColor)
 {
     Button button;
-    button.shape = createRectangle(size, position, buttonColor);
+    button.shape = createRectangle(size, position, buttonColor, 0, sf::Color::Transparent);
 
     // Centrage du texte dans le bouton
-    button.text = createText(fontKey, buttonText, 24, textColor, position);
+    button.text = createText(fontKey, buttonText, textSize, textColor, position);
     sf::FloatRect textBounds = button.text.getLocalBounds();
     button.text.setPosition(
         position.x + (size.x - textBounds.width) / 2,
@@ -38,5 +53,3 @@ Button createButton(const std::string &fontKey, const std::string &buttonText, c
 
     return button;
 }
-
-

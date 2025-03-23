@@ -88,35 +88,28 @@ extern const Move ironTail;
 extern const Move moonBlast;
 extern const Move playRough;
 
-
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Pourquoi "extern const" est bien utilisé ici :
 
 // 1. Déclaration sans définition dans l'en-tête (header) :
 //     "extern const" permet de déclarer une constante sans la définir dans le fichier d'en-tête.
 //     Cela signifie que les objets Move (comme judgment, slash, etc.) sont définis ailleurs dans le code source.
-//     Cette approche permet de séparer les déclarations (interface) des définitions (implémentation), 
+//     Cette approche permet de séparer les déclarations (interface) des définitions (implémentation),
 //     ce qui est une bonne pratique pour une meilleure organisation et un code plus lisible.
 
-
 // 2. Partage de constantes entre différents fichiers :
-//     Ces objets Move peuvent être utilisés dans plusieurs fichiers source différents. Grâce à "extern const", 
+//     Ces objets Move peuvent être utilisés dans plusieurs fichiers source différents. Grâce à "extern const",
 //     la même instance de chaque mouvement peut être partagée entre tous ces fichiers sans dupliquer leur définition.
 //     Cela permet d'éviter des redéfinitions et des conflits, et garantit que les mouvements restent cohérents dans tout le programme.
-
 
 // 3. Garantir l'immuabilité des objets :
 //     L'utilisation de "const" garantit que les valeurs des objets Move ne seront pas modifiées après leur initialisation.
 //     Cela améliore la sécurité du code en s'assurant que les mouvements définis dans le jeu (comme les dégâts, les types, etc.) ne changent pas par erreur.
 //     Cela optimise aussi le programme car les objets constants peuvent être plus facilement optimisés par le compilateur.
 
-
 // 4. Meilleure gestion de la mémoire :
-//     Étant donné que ces objets sont déclarés une seule fois (dans un fichier source), 
+//     Étant donné que ces objets sont déclarés une seule fois (dans un fichier source),
 //     cela permet d'éviter la duplication des données et de réduire la consommation mémoire.
 //     Ainsi, un objet Move n'est pas copié dans chaque fichier qui l'inclut, mais il est utilisé via une référence constante.
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-

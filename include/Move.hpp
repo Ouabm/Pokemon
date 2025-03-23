@@ -23,7 +23,6 @@ public:
     int getPower() const { return power; }
     int getAccuracy() const { return accuracy; }
     bool isPhysicalMove() const { return isPhysical; }
-    std::string MoveToString() const { return name; }
 
     // Pas besoin de Setters car constant
 

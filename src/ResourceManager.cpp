@@ -88,10 +88,10 @@ void ResourceManager::stopMusic()
 void ResourceManager::loadAllResources()
 {
     // Chargement des polices
-    loadFont("MenuStateFont", "assets/fonts/arial.ttf");
-    loadFont("SelectionStateFont", "assets/fonts/arial.ttf");
-    loadFont("BattleStateFont", "assets/fonts/arial.ttf");
-    loadFont("EndStateFont", "assets/fonts/arial.ttf");
+    loadFont("MenuStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("SelectionStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("BattleStateFont", "assets/fonts/prstartk.ttf");
+    loadFont("EndStateFont", "assets/fonts/prstartk.ttf");
 
     // Chargement des textures
     loadTexture("MenuStateBG", "assets/textures/menuBG.jpg");
@@ -113,7 +113,7 @@ void ResourceManager::loadAllResources()
 // Charger toutes les textures des Pokémons depuis le PokemonManager
 void ResourceManager::loadAllPokemonTextures()
 {
-    PokemonManager &pokemonManager = PokemonManager::getInstance(); // Utiliser l'instance unique de PokemonManager
+    PokemonManager &pokemonManager = PokemonManager::getInstance();              // Utiliser l'instance unique de PokemonManager
     std::vector<std::string> pokemonNames = pokemonManager.getAllPokemonNames(); // Récupère tous les noms de Pokémon
 
     for (const auto &name : pokemonNames)
@@ -122,10 +122,18 @@ void ResourceManager::loadAllPokemonTextures()
         Pokemon *pokemon = pokemonManager.getPokemonByName(name);
         if (pokemon) // Si le Pokémon existe
         {
-            std::string path = "assets/textures/pokemon/" + name + ".png";
-            if (!loadTexture(name, path)) // Charge la texture pour ce Pokémon
+            // Charger la texture du Pokémon de face
+            std::string frontPath = "assets/textures/pokemons/" + name + ".png";
+            if (!loadTexture(name, frontPath)) // Charge la texture pour ce Pokémon
             {
                 std::cerr << "Avertissement : Texture manquante pour " << name << std::endl;
+            }
+
+            // Charger la texture du Pokémon de dos
+            std::string backPath = "assets/textures/pokemons/" + name + "Back.png";
+            if (!loadTexture(name + "Back", backPath)) // Charge la texture pour le dos du Pokémon
+            {
+                std::cerr << "Avertissement : Texture manquante pour " << name << "Back" << std::endl;
             }
         }
         else
