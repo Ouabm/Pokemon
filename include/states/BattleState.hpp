@@ -76,7 +76,7 @@ private:
     void processTabKey();
     void displayMoveDetails();
 
-    bool isSingleTargetAvailable(TeamStruct &enemyTeam);
+    int countAlivePokemons(const TeamStruct &team);
 
     void resetMoveButtonsOutline(TeamStruct &team);
 

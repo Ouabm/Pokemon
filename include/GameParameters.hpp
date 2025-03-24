@@ -6,7 +6,7 @@
 constexpr float WINDOW_WIDTH = 1024.0f; // Largeur de la fenêtre du jeu
 constexpr float WINDOW_HEIGHT = 640.0f; // Hauteur de la fenêtre du jeu
 
-constexpr float MASTER_VOLUME = 30.0f;
+constexpr float MASTER_VOLUME = 10.0f;
 
 // ==================== PARAMÈTRES DU MENU ==================== //
 namespace Menu
@@ -39,7 +39,7 @@ namespace Menu
     // ==================== PARAMÈTRES DE LA MUSIQUE ==================== //
     namespace Music
     {
-        constexpr float VOLUME = 50.0f * MASTER_VOLUME;        // Volume de la musique
+        constexpr float VOLUME = 50.0f * MASTER_VOLUME/100.0f;        // Volume de la musique
         const std::string BACKGROUND_MUSIC = "MenuStateMusic"; // Musique de fond
     }
 
@@ -73,7 +73,7 @@ namespace Selection
 
     namespace Music
     {
-        constexpr float VOLUME = 50.0f * MASTER_VOLUME;             // Volume de la musique
+        constexpr float VOLUME = 50.0f * MASTER_VOLUME / 100.0f;    // Volume de la musique
         const std::string BACKGROUND_MUSIC = "SelectionStateMusic"; // Musique de fond
     }
 
@@ -85,7 +85,7 @@ namespace Battle
 
     namespace Music
     {
-        constexpr float VOLUME = 50.0f * MASTER_VOLUME;          // Volume de la musique
+        constexpr float VOLUME = 50.0f * MASTER_VOLUME / 100.0f; // Volume de la musique;          // Volume de la musique
         const std::string BACKGROUND_MUSIC = "BattleStateMusic"; // Musique de fond
     }
 }
@@ -96,7 +96,7 @@ namespace End
 
     namespace Music
     {
-        constexpr float VOLUME = 50.0f * MASTER_VOLUME;       // Volume de la musique
-        const std::string BACKGROUND_MUSIC = "EndStateMusic"; // Musique de fond
+        constexpr float VOLUME = 50.0f * MASTER_VOLUME / 100.0f; // Volume de la musique;       // Volume de la musique
+        const std::string BACKGROUND_MUSIC = "EndStateMusic";    // Musique de fond
     }
 }

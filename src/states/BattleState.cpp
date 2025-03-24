@@ -208,7 +208,11 @@ void BattleState::handleMouseClick(sf::RenderWindow &window)
                       << currentTeam.pokemons[currentTeam.activePokemon]->getName() << std::endl;
         }
 
-        handleMoveButtonClick(window, currentTeam);
+        if (handleMoveButtonClick(window, currentTeam))
+        {
+            std::cout << "Move switché (" << (isBlueTeamTurn ? "Equipe bleue" : "Equipe rouge") << "), Nouveau Move: "
+                      << currentTeam.currentMove << std::endl;
+        }
     }
 }
 
@@ -216,9 +220,12 @@ bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &
 {
     if (switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
     {
+        if(countAlivePokemons(currentTeam) == 2)
+        {
         currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
         resetMoveButtonsOutline(currentTeam);
         return true; // Un switch a eu lieu
+        }
     }
     return false; // Aucun switch effectué
 }
@@ -239,8 +246,8 @@ bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &cu
             currentTeam.moveButtons[i].shape.setFillColor(isBlueTeamTurn ? sf::Color(100, 100, 255, 230) : sf::Color(255, 100, 100, 230));
 
             // Vérifie si un seul Pokémon ennemi est vivant
-            TeamStruct &enemyTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
-            isSingleTargetAvailable(enemyTeam); // Définit automatiquement la cible si nécessaire
+            // TeamStruct &enemyTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
+            // isSingleTargetAvailable(enemyTeam); // Définit automatiquement la cible si nécessaire
 
             return true; // Un move a été choisi
         }
@@ -248,28 +255,12 @@ bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &cu
     return false; // Aucun move sélectionné
 }
 
-bool BattleState::isSingleTargetAvailable(TeamStruct &enemyTeam)
+int BattleState::countAlivePokemons(const TeamStruct &team)
 {
-    int count = 0;
-    int lastIndex = -1;
-
-    for (size_t i = 0; i < enemyTeam.pokemons.size(); i++)
-    {
-        if (enemyTeam.pokemons[i]->getHpRestant() > 0)
-        {
-            count++;
-            lastIndex = i;
-        }
-    }
-
-    if (count == 1)
-    {
-        enemyTeam.pokemonTargeted = lastIndex;
-        return true;
-    }
-    return false;
+    return std::count_if(team.pokemons.begin(), team.pokemons.end(),
+                         [](const auto &pokemon)
+                         { return pokemon->getHpRestant() > 0; });
 }
-
 
 void BattleState::resetMoveButtonsOutline(TeamStruct &currentTeam)
 {
@@ -342,6 +333,7 @@ void BattleState::processTabKey()
 
     if (currentTeam.isMoveChosen && !currentTeam.isTargetChosen)
     {
+        // et que les deux pokemons sont en vie
         TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
 
         // Vérifie si un seul Pokémon ennemi est vivant et le sélectionne automatiquement
@@ -361,7 +353,6 @@ void BattleState::processTabKey()
     }
 }
 
-
 /*==============================================================================
 |                            GESTION DES UPDATES                               |
 ==============================================================================*/
@@ -373,19 +364,23 @@ void BattleState::update()
     if (isTurnReady)
     {
         // executeTurn(blueTeamStruct, redTeamStruct); // Calcul les degats a infliger et recevoir sur chaque pokemons
-        int blueSpeed=blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getSpeed();
-        int redSpeed=redTeamStruct.pokemons[redTeamStruct.activePokemon]->getSpeed();
+        int blueSpeed = blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getSpeed();
+        int redSpeed = redTeamStruct.pokemons[redTeamStruct.activePokemon]->getSpeed();
 
-        if(blueSpeed==redSpeed){
-            if(rand()%2==1){
-                blueSpeed=blueSpeed+1;
+        if (blueSpeed == redSpeed)
+        {
+            if (rand() % 2 == 1)
+            {
+                blueSpeed = blueSpeed + 1;
             }
-            else{
-                redSpeed=redSpeed+1;
+            else
+            {
+                redSpeed = redSpeed + 1;
             }
         }
 
-        if(blueSpeed>redSpeed){
+        if (blueSpeed > redSpeed)
+        {
             int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
             std::cout << "Dammage1 : " << damage1 << std::endl;
             int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
@@ -393,7 +388,8 @@ void BattleState::update()
             redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
             std::cout << "PV du Pokémon rouge attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
             updateHealthBars(redTeamStruct);
-            if(newHp1>0){
+            if (newHp1 > 0)
+            {
                 int damage2 = calculDamage(*redTeamStruct.pokemons[redTeamStruct.activePokemon], *blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *redTeamStruct.currentMove);
                 std::cout << "Dammage2 : " << damage2 << std::endl;
                 int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
@@ -403,7 +399,8 @@ void BattleState::update()
                 updateHealthBars(blueTeamStruct);
             }
         }
-        else{
+        else
+        {
             int damage2 = calculDamage(*redTeamStruct.pokemons[redTeamStruct.activePokemon], *blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *redTeamStruct.currentMove);
             std::cout << "Dammage2 : " << damage2 << std::endl;
             int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
@@ -411,7 +408,8 @@ void BattleState::update()
             blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->setHpRestant(newHp);
             std::cout << "PV du Pokémon bleu attaqué: " << oldHp << " -> " << newHp << std::endl;
             updateHealthBars(blueTeamStruct);
-            if(newHp>0){
+            if (newHp > 0)
+            {
                 int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
                 std::cout << "Dammage1 : " << damage1 << std::endl;
                 int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
