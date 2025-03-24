@@ -220,11 +220,11 @@ bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &
 {
     if (switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
     {
-        if(countAlivePokemons(currentTeam) == 2)
+        if (countAlivePokemons(currentTeam) == 2)
         {
-        currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
-        resetMoveButtonsOutline(currentTeam);
-        return true; // Un switch a eu lieu
+            currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
+            resetMoveButtonsOutline(currentTeam);
+            return true; // Un switch a eu lieu
         }
     }
     return false; // Aucun switch effectué
@@ -333,22 +333,16 @@ void BattleState::processTabKey()
 
     if (currentTeam.isMoveChosen && !currentTeam.isTargetChosen)
     {
-        // et que les deux pokemons sont en vie
-        TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
-
-        // Vérifie si un seul Pokémon ennemi est vivant et le sélectionne automatiquement
-        if (!isSingleTargetAvailable(opponentTeam))
+        if (countAlivePokemons(currentTeam) == 2)
         {
-            size_t nextIndex = (opponentTeam.pokemonTargeted + 1) % opponentTeam.pokemons.size();
+            TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
 
-            if (opponentTeam.pokemons[nextIndex]->getHpRestant() > 0)
-            {
-                opponentTeam.pokemonTargeted = nextIndex;
-            }
-            else
-            {
-                std::cout << "Impossible: le Pokémon ciblé est KO." << std::endl;
-            }
+            size_t nextIndex = (opponentTeam.pokemonTargeted + 1) % opponentTeam.pokemons.size();
+            opponentTeam.pokemonTargeted = nextIndex;
+        }
+        else
+        {
+            std::cout << "Impossible: le Pokémon ciblé est KO." << std::endl;
         }
     }
 }
