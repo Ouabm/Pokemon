@@ -393,7 +393,7 @@ void BattleState::update()
             redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
             std::cout << "PV du Pokémon rouge attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
             updateHealthBars(redTeamStruct);
-            if(newHp1>0){
+            if(redTeamStruct.pokemons[redTeamStruct.activePokemon]->getHpRestant()>0){
                 int damage2 = calculDamage(*redTeamStruct.pokemons[redTeamStruct.activePokemon], *blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *redTeamStruct.currentMove);
                 std::cout << "Dammage2 : " << damage2 << std::endl;
                 int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
@@ -411,7 +411,7 @@ void BattleState::update()
             blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->setHpRestant(newHp);
             std::cout << "PV du Pokémon bleu attaqué: " << oldHp << " -> " << newHp << std::endl;
             updateHealthBars(blueTeamStruct);
-            if(newHp>0){
+            if(blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getHpRestant()>0){
                 int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
                 std::cout << "Dammage1 : " << damage1 << std::endl;
                 int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
@@ -429,7 +429,6 @@ void BattleState::update()
         blueTeamStruct.isTargetChosen = false;
         blueTeamStruct.pokemonTargeted = false;
 
-        redTeamStruct.activePokemon = 0;
         redTeamStruct.activePokemon = 0;
         redTeamStruct.currentMove = nullptr;
         redTeamStruct.isMoveChosen = false;
