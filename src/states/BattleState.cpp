@@ -238,11 +238,38 @@ bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &cu
             currentTeam.moveButtons[i].shape.setOutlineThickness(3);
             currentTeam.moveButtons[i].shape.setFillColor(isBlueTeamTurn ? sf::Color(100, 100, 255, 230) : sf::Color(255, 100, 100, 230));
 
+            // Vérifie si un seul Pokémon ennemi est vivant
+            TeamStruct &enemyTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
+            isSingleTargetAvailable(enemyTeam); // Définit automatiquement la cible si nécessaire
+
             return true; // Un move a été choisi
         }
     }
     return false; // Aucun move sélectionné
 }
+
+bool BattleState::isSingleTargetAvailable(TeamStruct &enemyTeam)
+{
+    int count = 0;
+    int lastIndex = -1;
+
+    for (size_t i = 0; i < enemyTeam.pokemons.size(); i++)
+    {
+        if (enemyTeam.pokemons[i]->getHpRestant() > 0)
+        {
+            count++;
+            lastIndex = i;
+        }
+    }
+
+    if (count == 1)
+    {
+        enemyTeam.pokemonTargeted = lastIndex;
+        return true;
+    }
+    return false;
+}
+
 
 void BattleState::resetMoveButtonsOutline(TeamStruct &currentTeam)
 {
@@ -311,13 +338,29 @@ void BattleState::processEnterKey()
 
 void BattleState::processTabKey()
 {
-    if ((isBlueTeamTurn && blueTeamStruct.isMoveChosen && !blueTeamStruct.isTargetChosen) ||
-        (!isBlueTeamTurn && redTeamStruct.isMoveChosen && !redTeamStruct.isTargetChosen))
+    TeamStruct &currentTeam = isBlueTeamTurn ? blueTeamStruct : redTeamStruct;
+
+    if (currentTeam.isMoveChosen && !currentTeam.isTargetChosen)
     {
-        TeamStruct &currentTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
-        currentTeam.pokemonTargeted = (currentTeam.pokemonTargeted + 1) % currentTeam.pokemons.size();
+        TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
+
+        // Vérifie si un seul Pokémon ennemi est vivant et le sélectionne automatiquement
+        if (!isSingleTargetAvailable(opponentTeam))
+        {
+            size_t nextIndex = (opponentTeam.pokemonTargeted + 1) % opponentTeam.pokemons.size();
+
+            if (opponentTeam.pokemons[nextIndex]->getHpRestant() > 0)
+            {
+                opponentTeam.pokemonTargeted = nextIndex;
+            }
+            else
+            {
+                std::cout << "Impossible: le Pokémon ciblé est KO." << std::endl;
+            }
+        }
     }
 }
+
 
 /*==============================================================================
 |                            GESTION DES UPDATES                               |
@@ -347,8 +390,8 @@ void BattleState::update()
         int newHp1 = std::max(0, oldHp1 - damage1);
         redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
 
-        std::cout << "PV du Pokémon rouge attaqué: " << oldHp << " -> " << newHp << std::endl;
-        std::cout << "PV du Pokémon bleu attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
+        std::cout << "PV du Pokémon bleu attaqué: " << oldHp << " -> " << newHp << std::endl;
+        std::cout << "PV du Pokémon rouge attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
 
         updateHealthBars(blueTeamStruct);
         updateHealthBars(redTeamStruct);

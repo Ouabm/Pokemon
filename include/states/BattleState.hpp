@@ -76,6 +76,8 @@ private:
     void processTabKey();
     void displayMoveDetails();
 
+    bool isSingleTargetAvailable(TeamStruct &enemyTeam);
+
     void resetMoveButtonsOutline(TeamStruct &team);
 
     TeamStruct blueTeamStruct; // Équipe bleue

@@ -28,11 +28,10 @@ int main()
 
 // A faire : 
 
-// Comprendre pourquoi checkbattleover ne fonction pas dans update a cause erreur seg sur un sf::Shape update() (gdb)
+// Comprendre pourquoi checkbattleover ne fonction pas uniquement dans update a cause erreur seg sur un sf::Shape update() (gdb)
 
 // Selectionner en meme temps les pokemons dans le menu selection (optionnel)
 
-// Target mode a gerer quand un des deux pokemons est mort 
 
 // AnimationAttack
 
