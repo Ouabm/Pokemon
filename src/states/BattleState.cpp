@@ -105,8 +105,8 @@ void BattleState::createMoveButtons()
         redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 11, sf::Color::White, sf::Color::Black));
     }
 
-    blueTeamStruct.bgMoveButtons = createRectangle(bgSize, blueBGMoveButtonPos, sf::Color(100, 100, 200, 230), 0, sf::Color::White);
-    redTeamStruct.bgMoveButtons = createRectangle(bgSize, redBGMoveButtonPos, sf::Color(200, 100, 100, 230), 0, sf::Color::White);
+    blueTeamStruct.bgMoveButtons = createRectangle(bgSize, blueBGMoveButtonPos, sf::Color(100, 100, 200, 230), 2, sf::Color::Blue);
+    redTeamStruct.bgMoveButtons = createRectangle(bgSize, redBGMoveButtonPos, sf::Color(200, 100, 100, 230), 2, sf::Color::Red);
 
     // Boutons pour changer de Pokémon
     sf::Vector2f switchButtonSize = {118, 109};

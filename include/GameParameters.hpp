@@ -6,7 +6,7 @@
 constexpr float WINDOW_WIDTH = 1024.0f; // Largeur de la fenêtre du jeu
 constexpr float WINDOW_HEIGHT = 640.0f; // Hauteur de la fenêtre du jeu
 
-constexpr float MASTER_VOLUME = 0.0f;
+constexpr float MASTER_VOLUME = 30.0f;
 
 // ==================== PARAMÈTRES DU MENU ==================== //
 namespace Menu

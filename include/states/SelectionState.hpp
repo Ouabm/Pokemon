@@ -3,6 +3,15 @@
 #include "GameState.hpp"
 #include "ElementUI.hpp"
 
+struct TeamSelectionStruct
+{
+    std::vector<sf::RectangleShape> selectedBoxes; // Boîtes de sélection des Pokémon
+    sf ::RectangleShape currentBox;
+    std::vector<std::string> pokemonNames; // Noms des Pokémon dans l'équipe
+    int selectionIndex = 0;                // Indice du Pokémon sélectionné
+    bool isReady = false;
+};
+
 class SelectionState : public GameState
 {
 public:
@@ -15,14 +24,9 @@ private:
     sf::Sprite backgroundSprite;
     std::vector<sf::Sprite> pokemonSprites;
 
-    sf::RectangleShape selectionBox;
-    int selectedIndex;
-
-    bool playerTurn;
-
-    std::vector<std::string> blueTeam;
-    std::vector<std::string> redTeam;
+    TeamSelectionStruct redTeamSelection;  // Struct pour l'équipe rouge
+    TeamSelectionStruct blueTeamSelection; // Struct pour l'équipe bleue
 
     void loadAllPokemonSprites();
-    void handlePokemonSelection();
+    void handlePokemonSelection(TeamSelectionStruct &teamSelection);
 };
