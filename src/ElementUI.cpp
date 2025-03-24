@@ -47,9 +47,7 @@ Button createButton(const std::string &fontKey, const std::string &buttonText, c
     // Centrage du texte dans le bouton
     button.text = createText(fontKey, buttonText, textSize, textColor, position);
     sf::FloatRect textBounds = button.text.getLocalBounds();
-    button.text.setPosition(
-        position.x + (size.x - textBounds.width) / 2,
-        position.y + (size.y - textBounds.height) / 2);
+    button.text.setPosition(position.x + (size.x - textBounds.width) / 2, position.y + (size.y - textBounds.height) / 2);
 
     return button;
 }

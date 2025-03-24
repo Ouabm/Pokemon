@@ -36,12 +36,8 @@ int main()
 
 // AnimationAttack
 
-// Switch button unique 
-
 // Note : 
 
 // 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
 
 // 2 Ajout d'un hpp GameParameters pour centraliser toutes les positions des elements etc... (en cours)
-
-// Ajuster taille des images pour fenetre coherente

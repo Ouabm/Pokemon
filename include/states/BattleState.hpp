@@ -9,12 +9,14 @@ struct TeamStruct
 {
     std::vector<sf::Sprite> pokemonSprites;     // Sprites des Pokémon
     std::vector<Pokemon *> pokemons;            // Objets Pokémon
+
     std::vector<sf::RectangleShape> healthBars; // Barres de vie
     sf::RectangleShape bgHealthBar;
     std::vector<sf::Text> barsText;
 
     std::vector<Button> moveButtons; // Boutons des attaques
-    Button switchButton;             // Bouton pour changer de Pokémon
+    sf::RectangleShape bgMoveButtons;
+
     sf::CircleShape targetIndicator;
 
     int activePokemon = 0; // Indice du Pokémon actif
@@ -53,6 +55,8 @@ public:
 private:
     sf::Sprite backgroundSprite; // Fond d'écran du combat
     sf::Font font;               // Police d'affichage des textes
+
+    Button switchButton;             // Bouton pour changer de Pokémon
 
     bool isBlueTeamTurn = true; // L'équipe bleue commence
     bool isTurnReady = false;

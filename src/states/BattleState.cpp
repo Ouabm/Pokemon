@@ -48,7 +48,7 @@ void BattleState::loadPokemonTeamSprites(const std::vector<std::string> &teamPok
         else
             sprite.setPosition(0, 0); // Position par défaut si pas assez de positions
 
-        sprite.setScale(0.7f, 0.7f);
+        sprite.setScale(1.f, 1.f);
         teamStruct.pokemonSprites.push_back(sprite); // Ajouter le sprite au vecteur
     }
 }
@@ -69,16 +69,21 @@ void BattleState::loadPokemonTeamsInfos(const std::vector<std::string> &blueTeam
 // ====================== CRÉATION DES BOUTONS DE COMBAT ======================//
 void BattleState::createMoveButtons()
 {
-    const sf::Vector2f buttonSize(200, 40);
     // Récupération des dimensions du fond
     float backgroundWidth = backgroundSprite.getLocalBounds().width;
     float backgroundHeight = backgroundSprite.getLocalBounds().height;
 
     // Décalage pour les positions des attaques
-    float moveOffsetX = 10;
+    float moveOffsetX = 19;
     float moveOffsetY = 19;
     float moveOffsetX2 = 10;
     float moveOffsetY2 = 10;
+
+    const sf::Vector2f buttonSize(200, 40);
+
+    sf::Vector2f blueBGMoveButtonPos = {moveOffsetX / 2, backgroundHeight + moveOffsetY / 2};
+    sf::Vector2f redBGMoveButtonPos = {backgroundWidth - 2 * buttonSize.x - (1.5f * moveOffsetX) - moveOffsetX2, backgroundHeight + moveOffsetY / 2};
+    sf::Vector2f bgSize = {2 * buttonSize.x + moveOffsetX + moveOffsetX2, 2 * buttonSize.y + moveOffsetY + moveOffsetY2};
 
     // Positions des attaques pour l'équipe bleue
     const std::vector<sf::Vector2f> blueMovePositions = {
@@ -96,13 +101,18 @@ void BattleState::createMoveButtons()
 
     for (size_t i = 0; i < 4; i++)
     {
-        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 14, sf::Color::White, sf::Color::Black));
-        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 14, sf::Color::White, sf::Color::Black));
+        blueTeamStruct.moveButtons.push_back(createButton("BattleStateFont", blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, blueMovePositions[i], 11, sf::Color::White, sf::Color::Black));
+        redTeamStruct.moveButtons.push_back(createButton("BattleStateFont", redTeamStruct.pokemons[redTeamStruct.activePokemon]->getMoves()[i]->getName(), buttonSize, redMovePositions[i], 11, sf::Color::White, sf::Color::Black));
     }
 
+    blueTeamStruct.bgMoveButtons = createRectangle(bgSize, blueBGMoveButtonPos, sf::Color(100, 100, 200, 230), 0, sf::Color::White);
+    redTeamStruct.bgMoveButtons = createRectangle(bgSize, redBGMoveButtonPos, sf::Color(200, 100, 100, 230), 0, sf::Color::White);
+
     // Boutons pour changer de Pokémon
-    blueTeamStruct.switchButton = createButton("BattleStateFont", "SwitchBlue", buttonSize, {400, 300}, 14, sf::Color::Blue, sf::Color::Black);
-    redTeamStruct.switchButton = createButton("BattleStateFont", "SwitchRed", buttonSize, {600, 300}, 14, sf::Color::Red, sf::Color::Black);
+    sf::Vector2f switchButtonSize = {118, 109};
+    sf::Vector2f switchButtonPos = {(backgroundSprite.getLocalBounds().width - switchButtonSize.x) / 2,
+                                    (backgroundSprite.getLocalBounds().height + moveOffsetY / 2)};
+    switchButton = createButton("BattleStateFont", "Switch", switchButtonSize, switchButtonPos, 14, sf::Color(128, 128, 128), sf::Color::Black);
 }
 
 void BattleState::createHealthBars()
@@ -204,7 +214,7 @@ void BattleState::handleMouseClick(sf::RenderWindow &window)
 
 bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &currentTeam)
 {
-    if (currentTeam.switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+    if (switchButton.shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
     {
         currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
         resetMoveButtonsOutline(currentTeam);
@@ -464,14 +474,26 @@ void BattleState::drawPokemonTeam(sf::RenderWindow &window, TeamStruct &teamStru
 
 void BattleState::drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct)
 {
+    window.draw(teamStruct.bgMoveButtons);
+
     for (size_t i = 0; i < 4; i++)
     {
+        // Met à jour le texte sur le bouton avec le nom du mouvement
+        teamStruct.moveButtons[i].text.setString(teamStruct.pokemons[teamStruct.activePokemon]->getMoves()[i]->getName());
+
+        sf::FloatRect textBounds = teamStruct.moveButtons[i].text.getLocalBounds();
+        sf::FloatRect buttonBounds = teamStruct.moveButtons[i].shape.getLocalBounds();
+
+        // Centre le texte par rapport au bouton
+        teamStruct.moveButtons[i].text.setPosition(
+            teamStruct.moveButtons[i].shape.getPosition().x + (buttonBounds.width - textBounds.width) / 2,
+            teamStruct.moveButtons[i].shape.getPosition().y + (buttonBounds.height - textBounds.height) / 2);
+
         window.draw(teamStruct.moveButtons[i].shape);
         window.draw(teamStruct.moveButtons[i].text);
-        teamStruct.moveButtons[i].text.setString(teamStruct.pokemons[teamStruct.activePokemon]->getMoves()[i]->getName());
     }
-    window.draw(teamStruct.switchButton.shape);
-    window.draw(teamStruct.switchButton.text);
+    window.draw(switchButton.shape);
+    window.draw(switchButton.text);
 }
 
 void BattleState::drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct)
