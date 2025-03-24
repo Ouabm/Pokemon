@@ -9,12 +9,14 @@ struct TeamStruct
 {
     std::vector<sf::Sprite> pokemonSprites;     // Sprites des Pokémon
     std::vector<Pokemon *> pokemons;            // Objets Pokémon
+
     std::vector<sf::RectangleShape> healthBars; // Barres de vie
     sf::RectangleShape bgHealthBar;
     std::vector<sf::Text> barsText;
 
     std::vector<Button> moveButtons; // Boutons des attaques
-    Button switchButton;             // Bouton pour changer de Pokémon
+    sf::RectangleShape bgMoveButtons;
+
     sf::CircleShape targetIndicator;
 
     int activePokemon = 0; // Indice du Pokémon actif
@@ -39,12 +41,12 @@ public:
     ~BattleState()
     {
         // Libération de la mémoire des clones de Pokémon pour les équipes
-        for (Pokemon* p : blueTeamStruct.pokemons)
+        for (Pokemon *p : blueTeamStruct.pokemons)
         {
             delete p; // Libère la mémoire de chaque Pokémon cloné
         }
 
-        for (Pokemon* p : redTeamStruct.pokemons)
+        for (Pokemon *p : redTeamStruct.pokemons)
         {
             delete p; // Libère la mémoire de chaque Pokémon cloné
         }
@@ -54,6 +56,8 @@ private:
     sf::Sprite backgroundSprite; // Fond d'écran du combat
     sf::Font font;               // Police d'affichage des textes
 
+    Button switchButton;             // Bouton pour changer de Pokémon
+
     bool isBlueTeamTurn = true; // L'équipe bleue commence
     bool isTurnReady = false;
 
@@ -61,6 +65,18 @@ private:
 
     bool handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &team);
     bool handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &team);
+
+    static bool enterPressed;
+    static bool tabPressed;
+
+    void handleMouseClick(sf::RenderWindow &window);
+    void handleKeyPress(const sf::Event &event, bool &enterPressed, bool &tabPressed);
+    void handleKeyRelease(const sf::Event &event, bool &enterPressed, bool &tabPressed);
+    void processEnterKey();
+    void processTabKey();
+    void displayMoveDetails();
+
+    bool isSingleTargetAvailable(TeamStruct &enemyTeam);
 
     void resetMoveButtonsOutline(TeamStruct &team);
 
@@ -74,6 +90,7 @@ private:
     void drawMoveButtons(sf::RenderWindow &window, TeamStruct &teamStruct); // Affichage des boutons
 
     void createHealthBars(); // Initialisation des barres de vie
+    void createTeamBars(TeamStruct &teamStruct, sf::Vector2f bgPos, sf::Vector2f barOffset);
     void updateHealthBars(TeamStruct &teamStruct);
     void drawHealthBars(sf::RenderWindow &window, TeamStruct &teamStruct);
     void drawTargetIndicator(sf::RenderWindow &window, TeamStruct &teamStruct);
@@ -83,6 +100,6 @@ private:
     /* ======================== Logique du jeu ======================== */
     void loadPokemonTeamsInfos(const std::vector<std::string> &blueTeamNames, const std::vector<std::string> &redTeamNames);
 
-    bool checkBattleOver();              // Vérifie si le combat est terminé
+    bool checkBattleOver();                    // Vérifie si le combat est terminé
     bool checkFainted(TeamStruct &teamStruct); // Vérifie si un Pokémon est KO
 };
