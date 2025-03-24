@@ -14,40 +14,41 @@ sf::Text createText(const std::string &fontKey, const std::string &text, unsigne
     return newText;
 }
 
-// Implémentation sans valeurs par défaut
 sf::RectangleShape createRectangle(const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &color, float outlineThickness, const sf::Color &outlineColor)
 {
-    sf::RectangleShape rectangle;
-    rectangle.setSize(size);
-    rectangle.setPosition(position);
-    rectangle.setFillColor(color);
-    rectangle.setOutlineThickness(outlineThickness);
-    rectangle.setOutlineColor(outlineColor);
-    return rectangle;
+    sf::RectangleShape newRectangle;
+    newRectangle.setSize(size);
+    newRectangle.setPosition(position);
+    newRectangle.setFillColor(color);
+    newRectangle.setOutlineThickness(outlineThickness);
+    newRectangle.setOutlineColor(outlineColor);
+    return newRectangle;
 }
 
 sf::CircleShape createCircle(float radius, const sf::Vector2f &position, const sf::Color &fillColor, float outlineThickness, const sf::Color &outlineColor)
 {
-    sf::CircleShape circle;
-    circle.setRadius(radius);                     // Définir le rayon du cercle
-    circle.setPosition(position);                 // Définir la position du cercle
-    circle.setFillColor(fillColor);               // Définir la couleur de remplissage
-    circle.setOutlineThickness(outlineThickness); // Définir l'épaisseur du contour
-    circle.setOutlineColor(outlineColor);         // Définir la couleur du contour
-    circle.setOrigin(radius, radius);             // Définir l'origine du cercle au centre
+    sf::CircleShape newCircle;
+    newCircle.setRadius(radius);                     // Définir le rayon du cercle
+    newCircle.setPosition(position);                 // Définir la position du cercle
+    newCircle.setFillColor(fillColor);               // Définir la couleur de remplissage
+    newCircle.setOutlineThickness(outlineThickness); // Définir l'épaisseur du contour
+    newCircle.setOutlineColor(outlineColor);         // Définir la couleur du contour
+    newCircle.setOrigin(radius, radius);             // Définir l'origine du cercle au centre
 
-    return circle;
+    return newCircle;
 }
 
-Button createButton(const std::string &fontKey, const std::string &buttonText, const sf::Vector2f &size, const sf::Vector2f &position, const int textSize, const sf::Color &buttonColor, const sf::Color &textColor)
+Button createButton(const sf::Vector2f &size, const sf::Vector2f &position, const sf::Color &buttonColor, float outLineThickness, const sf::Color &outlineColor,
+                    const std::string &fontKey, const std::string &buttonText, const int textSize, const sf::Color &textColor)
 {
-    Button button;
-    button.shape = createRectangle(size, position, buttonColor, 0, sf::Color::Transparent);
+    Button newButton;
+    newButton.shape = createRectangle(size, position, buttonColor, outLineThickness, outlineColor);
 
     // Centrage du texte dans le bouton
-    button.text = createText(fontKey, buttonText, textSize, textColor, position);
-    sf::FloatRect textBounds = button.text.getLocalBounds();
-    button.text.setPosition(position.x + (size.x - textBounds.width) / 2, position.y + (size.y - textBounds.height) / 2);
+    newButton.text = createText(fontKey, buttonText, textSize, textColor, position);
+    sf::FloatRect textBounds = newButton.text.getLocalBounds();
+    newButton.text.setPosition(position.x + (size.x - textBounds.width) / 2,
+                               position.y + (size.y - textBounds.height) / 2);
 
-    return button;
+    return newButton;
 }

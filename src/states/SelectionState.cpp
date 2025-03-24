@@ -15,14 +15,14 @@ SelectionState::SelectionState(GameStateManager *manager) : GameState(manager)
     ResourceManager::getInstance().playMusic(Selection::Music::BACKGROUND_MUSIC, Selection::Music::VOLUME, true);
 
     // Charge l'arrière-plan
-    backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("SelectionStateBG"));
+    backgroundSprite.setTexture(ResourceManager::getInstance().getTexture(Selection::Background::TEXTURE));
 
     // Charge les sprites des Pokémon
     loadAllPokemonSprites();
 
     // Initialisation des boîtes de sélection pour les deux équipes
-    blueTeamSelection.currentBox = createRectangle(sf::Vector2f(120, 120), sf::Vector2f(60, 30), sf::Color::Transparent, 3, sf::Color::Blue);
-    redTeamSelection.currentBox = createRectangle(sf::Vector2f(126, 126), sf::Vector2f(60 - 6, 30 - 6), sf::Color::Transparent, 3, sf::Color::Red);
+    blueTeamSelection.currentBox = createRectangle(Selection::Box::BLUE_BOX_SIZE, Selection::Box::BLUE_BOX_POS, Selection::Box::BLUE_BOX_COLOR, Selection::Box::BLUE_BOX_OUTLINE_THICKNESS, Selection::Box::BLUE_BOX_OUTLINE_COLOR);
+    redTeamSelection.currentBox = createRectangle(Selection::Box::RED_BOX_SIZE, Selection::Box::RED_BOX_POS, Selection::Box::RED_BOX_COLOR, Selection::Box::RED_BOX_OUTLINE_THICKNESS, Selection::Box::RED_BOX_OUTLINE_COLOR);
 }
 
 /* ================== CHARGEMENT DES SPRITES DES POKEMONS ==================== */

@@ -24,8 +24,8 @@ private:
     Button quitButton;
 
     // Méthodes internes pour gérer les boutons.
-    void createMenuButtons(float mainMenuwindowWidth, float mainMenuwindowHeight, const sf::Vector2f &buttonSize);
-    void handleButtonsClick(const sf::Vector2f &mousePos, sf::RenderWindow &window); // Détecte les clics sur les boutons.
+    void createMenuButtons();
+    void handleButtonClick(const sf::Vector2f &mousePos, sf::RenderWindow &window); // Détecte les clics sur les boutons.
 
     void drawButton(const Button &button, sf::RenderWindow &window); // Fonction à généraliser plus tard.
 };
