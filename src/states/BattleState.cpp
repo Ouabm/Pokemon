@@ -210,8 +210,8 @@ void BattleState::handleMouseClick(sf::RenderWindow &window)
 
         if (handleMoveButtonClick(window, currentTeam))
         {
-            std::cout << "Move switché (" << (isBlueTeamTurn ? "Equipe bleue" : "Equipe rouge") << "), Nouveau Move: "
-                      << currentTeam.currentMove << std::endl;
+            std::cout << "Move (" << (isBlueTeamTurn ? "Equipe bleue" : "Equipe rouge") << "), Move: "
+                      << currentTeam.currentMove->getName() << std::endl;
         }
     }
 }
@@ -222,6 +222,7 @@ bool BattleState::handleSwitchButtonClick(sf::RenderWindow &window, TeamStruct &
     {
         if (countAlivePokemons(currentTeam) == 2)
         {
+            currentTeam.currentMove = nullptr;
             currentTeam.activePokemon = (currentTeam.activePokemon + 1) % currentTeam.pokemons.size();
             resetMoveButtonsOutline(currentTeam);
             return true; // Un switch a eu lieu
@@ -237,17 +238,12 @@ bool BattleState::handleMoveButtonClick(sf::RenderWindow &window, TeamStruct &cu
         if (currentTeam.moveButtons[i].shape.getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
         {
             currentTeam.currentMove = currentTeam.pokemons[currentTeam.activePokemon]->getMoves()[i];
-            // std::cout << "Move choisi pour l'équipe: " << currentTeam.currentMove << std::endl;
 
             // Change l'outline pour le bouton du move choisi
             resetMoveButtonsOutline(currentTeam);
             currentTeam.moveButtons[i].shape.setOutlineColor(isBlueTeamTurn ? sf::Color::Blue : sf::Color::Red);
             currentTeam.moveButtons[i].shape.setOutlineThickness(3);
             currentTeam.moveButtons[i].shape.setFillColor(isBlueTeamTurn ? sf::Color(100, 100, 255, 230) : sf::Color(255, 100, 100, 230));
-
-            // Vérifie si un seul Pokémon ennemi est vivant
-            // TeamStruct &enemyTeam = (isBlueTeamTurn) ? redTeamStruct : blueTeamStruct;
-            // isSingleTargetAvailable(enemyTeam); // Définit automatiquement la cible si nécessaire
 
             return true; // Un move a été choisi
         }
@@ -333,10 +329,10 @@ void BattleState::processTabKey()
 
     if (currentTeam.isMoveChosen && !currentTeam.isTargetChosen)
     {
-        if (countAlivePokemons(currentTeam) == 2)
-        {
-            TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
+        TeamStruct &opponentTeam = isBlueTeamTurn ? redTeamStruct : blueTeamStruct;
 
+        if (countAlivePokemons(opponentTeam) == 2)
+        {
             size_t nextIndex = (opponentTeam.pokemonTargeted + 1) % opponentTeam.pokemons.size();
             opponentTeam.pokemonTargeted = nextIndex;
         }
@@ -382,7 +378,8 @@ void BattleState::update()
             redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->setHpRestant(newHp1);
             std::cout << "PV du Pokémon rouge attaqué: " << oldHp1 << " -> " << newHp1 << std::endl;
             updateHealthBars(redTeamStruct);
-            if(redTeamStruct.pokemons[redTeamStruct.activePokemon]->getHpRestant()>0){
+            if (redTeamStruct.pokemons[redTeamStruct.activePokemon]->getHpRestant() > 0)
+            {
                 int damage2 = calculDamage(*redTeamStruct.pokemons[redTeamStruct.activePokemon], *blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *redTeamStruct.currentMove);
                 std::cout << "Dammage2 : " << damage2 << std::endl;
                 int oldHp = blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant();
@@ -401,7 +398,8 @@ void BattleState::update()
             blueTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->setHpRestant(newHp);
             std::cout << "PV du Pokémon bleu attaqué: " << oldHp << " -> " << newHp << std::endl;
             updateHealthBars(blueTeamStruct);
-            if(blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getHpRestant()>0){
+            if (blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getHpRestant() > 0)
+            {
                 int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[redTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
                 std::cout << "Dammage1 : " << damage1 << std::endl;
                 int oldHp1 = redTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant();
@@ -411,19 +409,26 @@ void BattleState::update()
                 updateHealthBars(redTeamStruct);
             }
         }
+        if (blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getHpRestant() == 0)
+        {
+            blueTeamStruct.activePokemon = blueTeamStruct.activePokemon == 0 ? 1 : 0;
+            blueTeamStruct.pokemonTargeted = blueTeamStruct.pokemonTargeted == 0 ? 1 : 0;
+        }
+        if (redTeamStruct.pokemons[redTeamStruct.activePokemon]->getHpRestant() == 0)
+        {
+            redTeamStruct.activePokemon = redTeamStruct.activePokemon == 0 ? 1 : 0;
+            redTeamStruct.pokemonTargeted = redTeamStruct.pokemonTargeted == 0 ? 1 : 0;
+        }
 
         isTurnReady = !isTurnReady;
-        blueTeamStruct.activePokemon = 0;
+
         blueTeamStruct.currentMove = nullptr;
         blueTeamStruct.isMoveChosen = false;
         blueTeamStruct.isTargetChosen = false;
-        blueTeamStruct.pokemonTargeted = false;
 
-        redTeamStruct.activePokemon = 0;
         redTeamStruct.currentMove = nullptr;
         redTeamStruct.isMoveChosen = false;
         redTeamStruct.isTargetChosen = false;
-        redTeamStruct.pokemonTargeted = false;
 
         isBlueTeamTurn = true;
 
@@ -431,7 +436,6 @@ void BattleState::update()
         resetMoveButtonsOutline(redTeamStruct);
     }
 }
-
 // ================ SOUS-FONCTIONS POUR LA GESTION DES UPDATE ================//
 bool BattleState::checkBattleOver()
 {
