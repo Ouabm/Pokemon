@@ -142,3 +142,19 @@ void ResourceManager::loadAllPokemonTextures()
         }
     }
 }
+
+ResourceManager::~ResourceManager()
+{
+    // Nettoyage explicite des ressources
+    textures.clear(); // Efface toutes les textures chargées
+    fonts.clear();    // Efface toutes les polices
+
+    // Arrête la musique en cours avant de nettoyer
+    stopMusic();
+    music.clear(); // Supprime toutes les musiques chargées
+
+    // Réinitialisation du pointeur de la musique en cours
+    currentMusic = nullptr;
+
+    std::cout << "[INFO] ResourceManager nettoyé avec succès." << std::endl;
+}

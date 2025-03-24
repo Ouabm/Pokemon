@@ -37,7 +37,7 @@ private:
     ResourceManager(const ResourceManager&) = delete;            // Empêche la copie
     ResourceManager& operator=(const ResourceManager&) = delete; // Empêche l'affectation
 
-    ~ResourceManager() = default;
+    ~ResourceManager();
 
     std::unordered_map<std::string, sf::Font> fonts;
     std::unordered_map<std::string, sf::Texture> textures;

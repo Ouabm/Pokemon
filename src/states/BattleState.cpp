@@ -1,10 +1,9 @@
 #include "BattleState.hpp"
 #include "EndState.hpp"
 
+#include "GameParameters.hpp"
 #include "GameStateManager.hpp"
 #include "PokemonManager.hpp"
-
-#include "GameParameters.hpp"
 
 #include "DamageCalculator.hpp"
 
@@ -373,7 +372,7 @@ void BattleState::update()
 
     if (blueTeamStruct.isReady && redTeamStruct.isReady)
     {
-       
+
         int blueSpeed = blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getSpeed();
         int redSpeed = redTeamStruct.pokemons[redTeamStruct.activePokemon]->getSpeed();
 
@@ -445,7 +444,6 @@ void BattleState::update()
             blueTeamStruct.pokemonTargeted = blueTeamStruct.pokemonTargeted == 0 ? 1 : 0;
         }
 
-
         blueTeamStruct.currentMove = nullptr;
         blueTeamStruct.isMoveChosen = false;
         blueTeamStruct.isTargetChosen = false;
@@ -455,7 +453,6 @@ void BattleState::update()
         redTeamStruct.isMoveChosen = false;
         redTeamStruct.isTargetChosen = false;
         redTeamStruct.isReady = false;
-
 
         resetMoveButtonsOutline(blueTeamStruct);
         resetMoveButtonsOutline(redTeamStruct);
