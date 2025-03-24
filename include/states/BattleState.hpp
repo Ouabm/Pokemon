@@ -24,7 +24,7 @@ struct BattleTeamStruct
     bool isTargetChosen = false;
 
     // Valeur a stocker pour le calcul
-    int pokemonTargeted = 0;
+    int pokemonTargeted = 0; // Pokemon enemi que l'on veut target
     const Move *currentMove = nullptr;
 };
 
@@ -102,4 +102,7 @@ private:
 
     bool checkBattleOver();                    // Vérifie si le combat est terminé
     bool checkFainted(BattleTeamStruct &teamStruct); // Vérifie si un Pokémon est KO
+
+
+    void renderN(sf::RenderWindow &window, sf::Font &font);
 };
