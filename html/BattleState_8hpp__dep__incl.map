@@ -1,0 +1,7 @@
+<map id="include/states/BattleState.hpp" name="include/states/BattleState.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="103,5,321,31"/>
+<area shape="rect" id="Node000002" href="$BattleState_8cpp.html" title=" " alt="" coords="5,79,195,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,40,120,81,117,76,181,36"/>
+<area shape="rect" id="Node000003" href="$SelectionState_8cpp.html" title=" " alt="" coords="219,79,429,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,36,307,76,304,81,240,40"/>
+</map>

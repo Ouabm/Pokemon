@@ -1,0 +1,160 @@
+\doxysection{End\+State Class Reference}
+\hypertarget{classEndState}{}\label{classEndState}\index{EndState@{EndState}}
+
+
+État de fin de jeu, affichant l\textquotesingle{}écran de conclusion et les options disponibles.  
+
+
+
+
+{\ttfamily \#include $<$End\+State.\+hpp$>$}
+
+
+
+Inheritance diagram for End\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classEndState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for End\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classEndState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEndState_af71cfde8cf2e4aa707a49a74445fe85d}{End\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager, const std\+::string winner)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{classEndState}{End\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEndState_af94659f62be0e72eb7210e90a5701fad}{handle\+Input}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Gère les entrées utilisateur (souris/clavier) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEndState_ad9052d02d2e2f3524cb30a8c1b001c24}{update}} () override
+\begin{DoxyCompactList}\small\item\em Met à jour la logique de l\textquotesingle{}état à chaque frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEndState_a231ff858e57ba9fd03356c93c0d74165}{render}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Dessine tous les éléments de l\textquotesingle{}écran de fin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{Game\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur protégé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{game\+Manager}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+État de fin de jeu, affichant l\textquotesingle{}écran de conclusion et les options disponibles. 
+
+Cette classe gère l\textquotesingle{}écran de fin du jeu qui s\textquotesingle{}affiche lorsqu\textquotesingle{}une partie est terminée. Elle permet au joueur de choisir entre rejouer ou quitter l\textquotesingle{}application. Hérite de \doxylink{classGameState}{Game\+State} pour s\textquotesingle{}intégrer dans le système d\textquotesingle{}états du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEndState_af71cfde8cf2e4aa707a49a74445fe85d}\label{classEndState_af71cfde8cf2e4aa707a49a74445fe85d} 
+\index{EndState@{EndState}!EndState@{EndState}}
+\index{EndState@{EndState}!EndState@{EndState}}
+\doxysubsubsection{\texorpdfstring{EndState()}{EndState()}}
+{\footnotesize\ttfamily End\+State\+::\+End\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{manager,  }\item[{const std\+::string}]{winner }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{classEndState}{End\+State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointeur vers le gestionnaire d\textquotesingle{}états du jeu \\
+\hline
+{\em winner} & Chaîne de caractères indiquant le gagnant (pour l\textquotesingle{}affichage) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEndState_af71cfde8cf2e4aa707a49a74445fe85d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEndState_af94659f62be0e72eb7210e90a5701fad}\label{classEndState_af94659f62be0e72eb7210e90a5701fad} 
+\index{EndState@{EndState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!EndState@{EndState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void End\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées utilisateur (souris/clavier) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour la capture des événements \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{Game\+State}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEndState_af94659f62be0e72eb7210e90a5701fad_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classEndState_a231ff858e57ba9fd03356c93c0d74165}\label{classEndState_a231ff858e57ba9fd03356c93c0d74165} 
+\index{EndState@{EndState}!render@{render}}
+\index{render@{render}!EndState@{EndState}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void End\+State\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine tous les éléments de l\textquotesingle{}écran de fin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour le rendu graphique \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{Game\+State}}.
+
+\Hypertarget{classEndState_ad9052d02d2e2f3524cb30a8c1b001c24}\label{classEndState_ad9052d02d2e2f3524cb30a8c1b001c24} 
+\index{EndState@{EndState}!update@{update}}
+\index{update@{update}!EndState@{EndState}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void End\+State\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Met à jour la logique de l\textquotesingle{}état à chaque frame. 
+
+Gère les animations, transitions et vérifie les interactions avec les boutons 
+
+Implements \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{Game\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{EndState_8hpp}{End\+State.\+hpp}}\item 
+src/states/\mbox{\hyperlink{EndState_8cpp}{End\+State.\+cpp}}\end{DoxyCompactItemize}

@@ -4,26 +4,55 @@
 #include "ElementUI.hpp"
 
 // ============================== CLASSE ENDSTATE ============================== //
-// Gère l'écran de fin du jeu, permettant au joueur de rejouer ou de quitter
+
+/**
+ * @class EndState
+ * @brief État de fin de jeu, affichant l'écran de conclusion et les options disponibles
+ * 
+ * Cette classe gère l'écran de fin du jeu qui s'affiche lorsqu'une partie est terminée.
+ * Elle permet au joueur de choisir entre rejouer ou quitter l'application.
+ * Hérite de GameState pour s'intégrer dans le système d'états du jeu.
+ */
 class EndState : public GameState
 {
 public:
-    EndState(GameStateManager *manager,const std::string winner); // Constructeur
+    /**
+     * @brief Constructeur de la classe EndState
+     * @param manager Pointeur vers le gestionnaire d'états du jeu
+     * @param winner Chaîne de caractères indiquant le gagnant (pour l'affichage)
+     */
+    EndState(GameStateManager *manager, const std::string winner);
 
     // ========================== MÉTHODES PRINCIPALES ========================== //
-    void handleInput(sf::RenderWindow &window) override; // Gestion des entrées utilisateur
-    void update() override;                              // Mise à jour de l'état de fin
-    void render(sf::RenderWindow &window) override;      // Affichage de l'écran de fin
+    
+    /**
+     * @brief Gère les entrées utilisateur (souris/clavier)
+     * @param window Fenêtre SFML pour la capture des événements
+     */
+    void handleInput(sf::RenderWindow &window) override;
+    
+    /**
+     * @brief Met à jour la logique de l'état à chaque frame
+     * 
+     * Gère les animations, transitions et vérifie les interactions avec les boutons
+     */
+    void update() override;
+    
+    /**
+     * @brief Dessine tous les éléments de l'écran de fin
+     * @param window Fenêtre SFML pour le rendu graphique
+     */
+    void render(sf::RenderWindow &window) override;
 
 private:
     // ============================== ÉLÉMENTS GRAPHIQUES ============================== //
-    sf::Sprite backgroundSprite; // Fond d'écran de l'écran de fin
-    sf::Text endText;            // Texte affichant "Fin du jeu"
+    sf::Sprite backgroundSprite; ///< Sprite pour l'arrière-plan de l'écran de fin
+    sf::Text endText;            ///< Texte affichant le message de fin (victoire/défaite)
 
     // ============================== BOUTONS ============================== //
-    Button replayButton; // Bouton permettant de rejouer
-    Button quitButton;   // Bouton permettant de quitter le jeu
+    Button replayButton; ///< Bouton "Rejouer" pour relancer une nouvelle partie
+    Button quitButton;   ///< Bouton "Quitter" pour fermer l'application
 
     // ============================== GESTION DU TEMPS ============================== //
-    sf::Clock clock; // Chronomètre pour gérer les transitions ou effets de fin
+    sf::Clock clock; ///< Chronomètre pour gérer les animations et effets temporels
 };

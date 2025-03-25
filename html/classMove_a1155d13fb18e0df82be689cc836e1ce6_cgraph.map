@@ -1,0 +1,5 @@
+<map id="Move::displayMoveInfo" name="Move::displayMoveInfo">
+<area shape="rect" id="Node000001" title="Affiche les informations du mouvement dans la console." alt="" coords="5,5,180,31"/>
+<area shape="rect" id="Node000002" href="$Type_8cpp.html#ab78d2956191d224de9b0e15932cb882a" title=" " alt="" coords="228,5,331,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,15,214,15,214,21,180,21"/>
+</map>

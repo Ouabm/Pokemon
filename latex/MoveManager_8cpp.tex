@@ -1,0 +1,401 @@
+\doxysection{src/\+Move\+Manager.cpp File Reference}
+\hypertarget{MoveManager_8cpp}{}\label{MoveManager_8cpp}\index{src/MoveManager.cpp@{src/MoveManager.cpp}}
+{\ttfamily \#include "{}Move\+Manager.\+hpp"{}}\newline
+Include dependency graph for Move\+Manager.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{MoveManager_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aed3a2ed843e58be722c1f2a254c4edd2}{judgment}} ("{}Judgment"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}, 100, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ac21185e531667fa0cb52c4f93c11c6fe}{slash}} ("{}Slash"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}, 70, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a84c2406150424a8938b2320b92ed9694}{energy\+Ball}} ("{}Energy Ball"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a5067f41d72d66878689cfce11afcf50b}{leaf\+Blade}} ("{}Leaf Blade"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}, 90, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a4e8055a47bd8fe92d10b4208e2594375}{flame\+Thrower}} ("{}Flamethrower"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a43ae7477ed8cefdb441c70c951ed8679}{fire\+Blast}} ("{}Fire Blast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 110, 85, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aa311b043f004d79e198977d6e54358aa}{fusion\+Flare}} ("{}Fusion Flare"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 100, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a0ff8ea81ead589961fd66d1d584d00ec}{sacred\+Fire}} ("{}Sacred Fire"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 100, 95, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a4c4ff834777b189a3234a20e51e417d3}{fire\+Punch}} ("{}Fire Punch"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 75, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad2bbffefda03ecd7e6031fb1b3ed0e35}{scald}} ("{}Scald"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 80, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a8173155ce2a5b3fdc43108a8c32b5a3a}{origin\+Pulse}} ("{}Origin Pulse"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 110, 85, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_afd803828fb6727b610e0878acbcd997e}{liquidation}} ("{}Liquidation"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 85, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a91fc8e1218ab04acbe417ecb383f59f7}{thunder\+Bolt}} ("{}Thunderbolt"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aab8c4a6a254fdf60aebe215d55b9a76e}{thunder}} ("{}Thunder"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 110, 70, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a85bd8412019f5ddcac06db73c94c578b}{wild\+Charge}} ("{}Wild Charge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 90, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad68d2c816175d38c7ca69b6525c161bf}{fusion\+Bolt}} ("{}Fusion Bolt"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 100, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad4c7d54618eb1d256402d3f64bfa44a6}{ice\+Beam}} ("{}Ice Beam"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ac61431a20b4e63e6371a09e3c83a8e04}{ice\+Spinner}} ("{}Ice Spinner"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}, 80, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a81b424461bc25b38c72e5b821bc029e6}{aura\+Sphere}} ("{}Aura Sphere"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 80, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ac29013974a0d735ec47a170202f78c21}{sacred\+Sword}} ("{}Sacred Sword"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 90, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a8008e08828ca07f52c4453909420e979}{focus\+Blast}} ("{}Focus Blast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 120, 70, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a9b9c6f5f2f3afb8bfa1166313f56c206}{sludge\+Bomb}} ("{}Sludge Bomb"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a616dfaacbf957d33df42293d4069df4a}{poison\+Jab}} ("{}Poison Jab"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 80, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a507a8266f8e6e87144ee7e858e135eee}{gunk\+Shot}} ("{}Gunk Shot"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 120, 80, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a06d507d65533cc2b7110731c885d1afa}{earth\+Power}} ("{}Earth Power"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_abecc5daf1867895b05984f3bb8e85a3d}{lands\+Wrath}} ("{}Land\textquotesingle{}s Wrath"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 90, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a497e0e403c3b631342f934f31192b988}{precipice\+Blades}} ("{}Precipice Blades"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 120, 85, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a15d4de08f1200ad05328faf20235df4c}{hurricane}} ("{}Hurricane"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 110, 70, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a320dbcde9d5c5aaa8a99c0b1329bf42f}{aero\+Blast}} ("{}Aeroblast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 100, 95, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aa2c52fd13e6cc49c6ca1780dfd5948f0}{fly}} ("{}Fly"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 90, 95, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a639dcd7f4790fcc425c1d06a443c6f3b}{psychic}} ("{}Psychic"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_add7a21dba4cf70c6a8457352dc3ced23}{psy\+Blade}} ("{}Psyblade"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}, 80, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad3fab3bf9f91246e3c0d4a5552c7868c}{bug\+Buzz}} ("{}Bug Buzz"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad2afd9671ed574a68abce55f14095f92}{lunge}} ("{}Lunge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}, 80, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_afda27602c3b7118c77eadae5812f28ea}{power\+Gem}} ("{}Power Gem"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}, 80, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aab16b54d50178de88d425df190ba0ebd}{stone\+Edge}} ("{}Stone Edge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}, 100, 90, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a0df7fb6d6e778c17d21be044165d2935}{shadow\+Ball}} ("{}Shadow Ball"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}, 80, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad204056e7c427d4bb75a055f8b86ef51}{poltergeist}} ("{}Poltergeist"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}, 110, 90, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a2cb9da9fa8e287e8f7e3028e7a200409}{draco\+Meteor}} ("{}Draco Meteor"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 130, 70, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a87207dda7144ae759fae08f3b6e8938a}{dragon\+Pulse}} ("{}Dragon Pulse"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 85, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a5bc0eff54af2f24da5a2d09c76e2009e}{dragon\+Claw}} ("{}Dragon Claw"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 80, 95, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a4f054b73b55066858076638299d19ee4}{fiery\+Wrath}} ("{}Fiery Wrath"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}, 90, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_ad140eeb0033f1bc681a739e877812c6a}{foul\+Play}} ("{}Foul Play"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}, 95, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aea8f951e430f91cfa4a350a63ab05c3b}{flash\+Cannon}} ("{}Flash Cannon"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 80, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_aec55fe147527b192bbb3cf00d070248d}{iron\+Head}} ("{}Iron Head"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 80, 100, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_afe8d6f6498b7df4aabfe5fa062b8a782}{iron\+Tail}} ("{}Iron Tail"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 100, 75, true)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_a2c7d93db72ac6f7ebe802078f65aa17e}{moon\+Blast}} ("{}Moonblast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}, 95, 100, false)
+\item 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{MoveManager_8cpp_af3699e714313fde7dab89264ffca388b}{play\+Rough}} ("{}Play Rough"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}, 90, 90, true)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{MoveManager_8cpp_a320dbcde9d5c5aaa8a99c0b1329bf42f}\label{MoveManager_8cpp_a320dbcde9d5c5aaa8a99c0b1329bf42f} 
+\index{MoveManager.cpp@{MoveManager.cpp}!aeroBlast@{aeroBlast}}
+\index{aeroBlast@{aeroBlast}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{aeroBlast}{aeroBlast}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} aero\+Blast("{}Aeroblast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 100, 95, false) (\begin{DoxyParamCaption}\item[{"{}Aeroblast"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}}]{,  }\item[{100}]{,  }\item[{95}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a81b424461bc25b38c72e5b821bc029e6}\label{MoveManager_8cpp_a81b424461bc25b38c72e5b821bc029e6} 
+\index{MoveManager.cpp@{MoveManager.cpp}!auraSphere@{auraSphere}}
+\index{auraSphere@{auraSphere}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{auraSphere}{auraSphere}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} aura\+Sphere("{}Aura Sphere"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 80, 100, false) (\begin{DoxyParamCaption}\item[{"{}Aura Sphere"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad3fab3bf9f91246e3c0d4a5552c7868c}\label{MoveManager_8cpp_ad3fab3bf9f91246e3c0d4a5552c7868c} 
+\index{MoveManager.cpp@{MoveManager.cpp}!bugBuzz@{bugBuzz}}
+\index{bugBuzz@{bugBuzz}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{bugBuzz}{bugBuzz}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} bug\+Buzz("{}Bug Buzz"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Bug Buzz"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a2cb9da9fa8e287e8f7e3028e7a200409}\label{MoveManager_8cpp_a2cb9da9fa8e287e8f7e3028e7a200409} 
+\index{MoveManager.cpp@{MoveManager.cpp}!dracoMeteor@{dracoMeteor}}
+\index{dracoMeteor@{dracoMeteor}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{dracoMeteor}{dracoMeteor}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} draco\+Meteor("{}Draco Meteor"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 130, 70, false) (\begin{DoxyParamCaption}\item[{"{}Draco Meteor"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}}]{,  }\item[{130}]{,  }\item[{70}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a5bc0eff54af2f24da5a2d09c76e2009e}\label{MoveManager_8cpp_a5bc0eff54af2f24da5a2d09c76e2009e} 
+\index{MoveManager.cpp@{MoveManager.cpp}!dragonClaw@{dragonClaw}}
+\index{dragonClaw@{dragonClaw}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{dragonClaw}{dragonClaw}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} dragon\+Claw("{}Dragon Claw"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 80, 95, true) (\begin{DoxyParamCaption}\item[{"{}Dragon Claw"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}}]{,  }\item[{80}]{,  }\item[{95}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a87207dda7144ae759fae08f3b6e8938a}\label{MoveManager_8cpp_a87207dda7144ae759fae08f3b6e8938a} 
+\index{MoveManager.cpp@{MoveManager.cpp}!dragonPulse@{dragonPulse}}
+\index{dragonPulse@{dragonPulse}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{dragonPulse}{dragonPulse}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} dragon\+Pulse("{}Dragon Pulse"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}, 85, 100, false) (\begin{DoxyParamCaption}\item[{"{}Dragon Pulse"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583f4be146b6127f9e4f3f036ce7df43}{Type\+::\+Dragon}}}]{,  }\item[{85}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a06d507d65533cc2b7110731c885d1afa}\label{MoveManager_8cpp_a06d507d65533cc2b7110731c885d1afa} 
+\index{MoveManager.cpp@{MoveManager.cpp}!earthPower@{earthPower}}
+\index{earthPower@{earthPower}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{earthPower}{earthPower}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} earth\+Power("{}Earth Power"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Earth Power"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a84c2406150424a8938b2320b92ed9694}\label{MoveManager_8cpp_a84c2406150424a8938b2320b92ed9694} 
+\index{MoveManager.cpp@{MoveManager.cpp}!energyBall@{energyBall}}
+\index{energyBall@{energyBall}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{energyBall}{energyBall}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} energy\+Ball("{}Energy Ball"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Energy Ball"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a4f054b73b55066858076638299d19ee4}\label{MoveManager_8cpp_a4f054b73b55066858076638299d19ee4} 
+\index{MoveManager.cpp@{MoveManager.cpp}!fieryWrath@{fieryWrath}}
+\index{fieryWrath@{fieryWrath}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{fieryWrath}{fieryWrath}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fiery\+Wrath("{}Fiery Wrath"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Fiery Wrath"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a43ae7477ed8cefdb441c70c951ed8679}\label{MoveManager_8cpp_a43ae7477ed8cefdb441c70c951ed8679} 
+\index{MoveManager.cpp@{MoveManager.cpp}!fireBlast@{fireBlast}}
+\index{fireBlast@{fireBlast}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{fireBlast}{fireBlast}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fire\+Blast("{}Fire Blast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 110, 85, false) (\begin{DoxyParamCaption}\item[{"{}Fire Blast"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}}]{,  }\item[{110}]{,  }\item[{85}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a4c4ff834777b189a3234a20e51e417d3}\label{MoveManager_8cpp_a4c4ff834777b189a3234a20e51e417d3} 
+\index{MoveManager.cpp@{MoveManager.cpp}!firePunch@{firePunch}}
+\index{firePunch@{firePunch}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{firePunch}{firePunch}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fire\+Punch("{}Fire Punch"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 75, 100, true) (\begin{DoxyParamCaption}\item[{"{}Fire Punch"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}}]{,  }\item[{75}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a4e8055a47bd8fe92d10b4208e2594375}\label{MoveManager_8cpp_a4e8055a47bd8fe92d10b4208e2594375} 
+\index{MoveManager.cpp@{MoveManager.cpp}!flameThrower@{flameThrower}}
+\index{flameThrower@{flameThrower}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{flameThrower}{flameThrower}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} flame\+Thrower("{}Flamethrower"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Flamethrower"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aea8f951e430f91cfa4a350a63ab05c3b}\label{MoveManager_8cpp_aea8f951e430f91cfa4a350a63ab05c3b} 
+\index{MoveManager.cpp@{MoveManager.cpp}!flashCannon@{flashCannon}}
+\index{flashCannon@{flashCannon}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{flashCannon}{flashCannon}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} flash\+Cannon("{}Flash Cannon"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 80, 100, false) (\begin{DoxyParamCaption}\item[{"{}Flash Cannon"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aa2c52fd13e6cc49c6ca1780dfd5948f0}\label{MoveManager_8cpp_aa2c52fd13e6cc49c6ca1780dfd5948f0} 
+\index{MoveManager.cpp@{MoveManager.cpp}!fly@{fly}}
+\index{fly@{fly}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{fly}{fly}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fly("{}Fly"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 90, 95, true) (\begin{DoxyParamCaption}\item[{"{}Fly"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}}]{,  }\item[{90}]{,  }\item[{95}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a8008e08828ca07f52c4453909420e979}\label{MoveManager_8cpp_a8008e08828ca07f52c4453909420e979} 
+\index{MoveManager.cpp@{MoveManager.cpp}!focusBlast@{focusBlast}}
+\index{focusBlast@{focusBlast}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{focusBlast}{focusBlast}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} focus\+Blast("{}Focus Blast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 120, 70, true) (\begin{DoxyParamCaption}\item[{"{}Focus Blast"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}}]{,  }\item[{120}]{,  }\item[{70}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad140eeb0033f1bc681a739e877812c6a}\label{MoveManager_8cpp_ad140eeb0033f1bc681a739e877812c6a} 
+\index{MoveManager.cpp@{MoveManager.cpp}!foulPlay@{foulPlay}}
+\index{foulPlay@{foulPlay}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{foulPlay}{foulPlay}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} foul\+Play("{}Foul Play"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}, 95, 100, true) (\begin{DoxyParamCaption}\item[{"{}Foul Play"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa18366b217ebf811ad1886e4f4f865b2}{Type\+::\+Dark}}}]{,  }\item[{95}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad68d2c816175d38c7ca69b6525c161bf}\label{MoveManager_8cpp_ad68d2c816175d38c7ca69b6525c161bf} 
+\index{MoveManager.cpp@{MoveManager.cpp}!fusionBolt@{fusionBolt}}
+\index{fusionBolt@{fusionBolt}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{fusionBolt}{fusionBolt}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fusion\+Bolt("{}Fusion Bolt"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 100, 100, true) (\begin{DoxyParamCaption}\item[{"{}Fusion Bolt"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}}]{,  }\item[{100}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aa311b043f004d79e198977d6e54358aa}\label{MoveManager_8cpp_aa311b043f004d79e198977d6e54358aa} 
+\index{MoveManager.cpp@{MoveManager.cpp}!fusionFlare@{fusionFlare}}
+\index{fusionFlare@{fusionFlare}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{fusionFlare}{fusionFlare}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} fusion\+Flare("{}Fusion Flare"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 100, 100, false) (\begin{DoxyParamCaption}\item[{"{}Fusion Flare"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}}]{,  }\item[{100}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a507a8266f8e6e87144ee7e858e135eee}\label{MoveManager_8cpp_a507a8266f8e6e87144ee7e858e135eee} 
+\index{MoveManager.cpp@{MoveManager.cpp}!gunkShot@{gunkShot}}
+\index{gunkShot@{gunkShot}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{gunkShot}{gunkShot}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} gunk\+Shot("{}Gunk Shot"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 120, 80, true) (\begin{DoxyParamCaption}\item[{"{}Gunk Shot"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}}]{,  }\item[{120}]{,  }\item[{80}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a15d4de08f1200ad05328faf20235df4c}\label{MoveManager_8cpp_a15d4de08f1200ad05328faf20235df4c} 
+\index{MoveManager.cpp@{MoveManager.cpp}!hurricane@{hurricane}}
+\index{hurricane@{hurricane}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{hurricane}{hurricane}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} hurricane("{}Hurricane"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}, 110, 70, false) (\begin{DoxyParamCaption}\item[{"{}Hurricane"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a444733081a578880ba8a563d3c59d22d}{Type\+::\+Flying}}}]{,  }\item[{110}]{,  }\item[{70}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad4c7d54618eb1d256402d3f64bfa44a6}\label{MoveManager_8cpp_ad4c7d54618eb1d256402d3f64bfa44a6} 
+\index{MoveManager.cpp@{MoveManager.cpp}!iceBeam@{iceBeam}}
+\index{iceBeam@{iceBeam}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{iceBeam}{iceBeam}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} ice\+Beam("{}Ice Beam"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Ice Beam"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ac61431a20b4e63e6371a09e3c83a8e04}\label{MoveManager_8cpp_ac61431a20b4e63e6371a09e3c83a8e04} 
+\index{MoveManager.cpp@{MoveManager.cpp}!iceSpinner@{iceSpinner}}
+\index{iceSpinner@{iceSpinner}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{iceSpinner}{iceSpinner}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} ice\+Spinner("{}Ice Spinner"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}, 80, 100, true) (\begin{DoxyParamCaption}\item[{"{}Ice Spinner"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a583d6a9fe10d672474e2cdca476113b7}{Type\+::\+Ice}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aec55fe147527b192bbb3cf00d070248d}\label{MoveManager_8cpp_aec55fe147527b192bbb3cf00d070248d} 
+\index{MoveManager.cpp@{MoveManager.cpp}!ironHead@{ironHead}}
+\index{ironHead@{ironHead}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{ironHead}{ironHead}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} iron\+Head("{}Iron Head"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 80, 100, true) (\begin{DoxyParamCaption}\item[{"{}Iron Head"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_afe8d6f6498b7df4aabfe5fa062b8a782}\label{MoveManager_8cpp_afe8d6f6498b7df4aabfe5fa062b8a782} 
+\index{MoveManager.cpp@{MoveManager.cpp}!ironTail@{ironTail}}
+\index{ironTail@{ironTail}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{ironTail}{ironTail}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} iron\+Tail("{}Iron Tail"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}, 100, 75, true) (\begin{DoxyParamCaption}\item[{"{}Iron Tail"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4668112d7c5f80a73a826dd8150989df}{Type\+::\+Steel}}}]{,  }\item[{100}]{,  }\item[{75}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aed3a2ed843e58be722c1f2a254c4edd2}\label{MoveManager_8cpp_aed3a2ed843e58be722c1f2a254c4edd2} 
+\index{MoveManager.cpp@{MoveManager.cpp}!judgment@{judgment}}
+\index{judgment@{judgment}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{judgment}{judgment}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} judgment("{}Judgment"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}, 100, 100, false) (\begin{DoxyParamCaption}\item[{"{}Judgment"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}}]{,  }\item[{100}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_abecc5daf1867895b05984f3bb8e85a3d}\label{MoveManager_8cpp_abecc5daf1867895b05984f3bb8e85a3d} 
+\index{MoveManager.cpp@{MoveManager.cpp}!landsWrath@{landsWrath}}
+\index{landsWrath@{landsWrath}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{landsWrath}{landsWrath}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} lands\+Wrath("{}Land\textquotesingle{}s Wrath"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 90, 100, true) (\begin{DoxyParamCaption}\item[{"{}Land\textquotesingle{}s Wrath"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a5067f41d72d66878689cfce11afcf50b}\label{MoveManager_8cpp_a5067f41d72d66878689cfce11afcf50b} 
+\index{MoveManager.cpp@{MoveManager.cpp}!leafBlade@{leafBlade}}
+\index{leafBlade@{leafBlade}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{leafBlade}{leafBlade}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} leaf\+Blade("{}Leaf Blade"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}, 90, 100, true) (\begin{DoxyParamCaption}\item[{"{}Leaf Blade"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aaac9a63596f76a62bb9f61a5dd7c0d25}{Type\+::\+Grass}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_afd803828fb6727b610e0878acbcd997e}\label{MoveManager_8cpp_afd803828fb6727b610e0878acbcd997e} 
+\index{MoveManager.cpp@{MoveManager.cpp}!liquidation@{liquidation}}
+\index{liquidation@{liquidation}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{liquidation}{liquidation}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} liquidation("{}Liquidation"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 85, 100, true) (\begin{DoxyParamCaption}\item[{"{}Liquidation"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}}]{,  }\item[{85}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad2afd9671ed574a68abce55f14095f92}\label{MoveManager_8cpp_ad2afd9671ed574a68abce55f14095f92} 
+\index{MoveManager.cpp@{MoveManager.cpp}!lunge@{lunge}}
+\index{lunge@{lunge}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{lunge}{lunge}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} lunge("{}Lunge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}, 80, 100, true) (\begin{DoxyParamCaption}\item[{"{}Lunge"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7ac83640c604dd5e0eacbf3de0a1181101}{Type\+::\+Bug}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a2c7d93db72ac6f7ebe802078f65aa17e}\label{MoveManager_8cpp_a2c7d93db72ac6f7ebe802078f65aa17e} 
+\index{MoveManager.cpp@{MoveManager.cpp}!moonBlast@{moonBlast}}
+\index{moonBlast@{moonBlast}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{moonBlast}{moonBlast}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} moon\+Blast("{}Moonblast"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}, 95, 100, false) (\begin{DoxyParamCaption}\item[{"{}Moonblast"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}}]{,  }\item[{95}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a8173155ce2a5b3fdc43108a8c32b5a3a}\label{MoveManager_8cpp_a8173155ce2a5b3fdc43108a8c32b5a3a} 
+\index{MoveManager.cpp@{MoveManager.cpp}!originPulse@{originPulse}}
+\index{originPulse@{originPulse}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{originPulse}{originPulse}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} origin\+Pulse("{}Origin Pulse"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 110, 85, false) (\begin{DoxyParamCaption}\item[{"{}Origin Pulse"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}}]{,  }\item[{110}]{,  }\item[{85}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_af3699e714313fde7dab89264ffca388b}\label{MoveManager_8cpp_af3699e714313fde7dab89264ffca388b} 
+\index{MoveManager.cpp@{MoveManager.cpp}!playRough@{playRough}}
+\index{playRough@{playRough}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{playRough}{playRough}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} play\+Rough("{}Play Rough"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}, 90, 90, true) (\begin{DoxyParamCaption}\item[{"{}Play Rough"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a436db107774b95e069c62fd0bacab134}{Type\+::\+Fairy}}}]{,  }\item[{90}]{,  }\item[{90}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a616dfaacbf957d33df42293d4069df4a}\label{MoveManager_8cpp_a616dfaacbf957d33df42293d4069df4a} 
+\index{MoveManager.cpp@{MoveManager.cpp}!poisonJab@{poisonJab}}
+\index{poisonJab@{poisonJab}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{poisonJab}{poisonJab}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} poison\+Jab("{}Poison Jab"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 80, 100, true) (\begin{DoxyParamCaption}\item[{"{}Poison Jab"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad204056e7c427d4bb75a055f8b86ef51}\label{MoveManager_8cpp_ad204056e7c427d4bb75a055f8b86ef51} 
+\index{MoveManager.cpp@{MoveManager.cpp}!poltergeist@{poltergeist}}
+\index{poltergeist@{poltergeist}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{poltergeist}{poltergeist}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} poltergeist("{}Poltergeist"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}, 110, 90, true) (\begin{DoxyParamCaption}\item[{"{}Poltergeist"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}}]{,  }\item[{110}]{,  }\item[{90}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_afda27602c3b7118c77eadae5812f28ea}\label{MoveManager_8cpp_afda27602c3b7118c77eadae5812f28ea} 
+\index{MoveManager.cpp@{MoveManager.cpp}!powerGem@{powerGem}}
+\index{powerGem@{powerGem}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{powerGem}{powerGem}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} power\+Gem("{}Power Gem"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}, 80, 100, false) (\begin{DoxyParamCaption}\item[{"{}Power Gem"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a497e0e403c3b631342f934f31192b988}\label{MoveManager_8cpp_a497e0e403c3b631342f934f31192b988} 
+\index{MoveManager.cpp@{MoveManager.cpp}!precipiceBlades@{precipiceBlades}}
+\index{precipiceBlades@{precipiceBlades}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{precipiceBlades}{precipiceBlades}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} precipice\+Blades("{}Precipice Blades"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}, 120, 85, true) (\begin{DoxyParamCaption}\item[{"{}Precipice Blades"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3519d51443d41746a097cd54cd5c11cf}{Type\+::\+Ground}}}]{,  }\item[{120}]{,  }\item[{85}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_add7a21dba4cf70c6a8457352dc3ced23}\label{MoveManager_8cpp_add7a21dba4cf70c6a8457352dc3ced23} 
+\index{MoveManager.cpp@{MoveManager.cpp}!psyBlade@{psyBlade}}
+\index{psyBlade@{psyBlade}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{psyBlade}{psyBlade}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} psy\+Blade("{}Psyblade"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}, 80, 100, true) (\begin{DoxyParamCaption}\item[{"{}Psyblade"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a639dcd7f4790fcc425c1d06a443c6f3b}\label{MoveManager_8cpp_a639dcd7f4790fcc425c1d06a443c6f3b} 
+\index{MoveManager.cpp@{MoveManager.cpp}!psychic@{psychic}}
+\index{psychic@{psychic}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{psychic}{psychic}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} psychic("{}Psychic"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Psychic"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a1a0d4dfdb97302cb8ac802fd459ea37a}{Type\+::\+Psychic}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a0ff8ea81ead589961fd66d1d584d00ec}\label{MoveManager_8cpp_a0ff8ea81ead589961fd66d1d584d00ec} 
+\index{MoveManager.cpp@{MoveManager.cpp}!sacredFire@{sacredFire}}
+\index{sacredFire@{sacredFire}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{sacredFire}{sacredFire}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} sacred\+Fire("{}Sacred Fire"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}, 100, 95, true) (\begin{DoxyParamCaption}\item[{"{}Sacred Fire"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7abd2b7e5f85a6ea65065c4ebc6d7c95bb}{Type\+::\+Fire}}}]{,  }\item[{100}]{,  }\item[{95}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ac29013974a0d735ec47a170202f78c21}\label{MoveManager_8cpp_ac29013974a0d735ec47a170202f78c21} 
+\index{MoveManager.cpp@{MoveManager.cpp}!sacredSword@{sacredSword}}
+\index{sacredSword@{sacredSword}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{sacredSword}{sacredSword}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} sacred\+Sword("{}Sacred Sword"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}, 90, 100, true) (\begin{DoxyParamCaption}\item[{"{}Sacred Sword"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aef492f571a74192b637adada68fdd94a}{Type\+::\+Fighting}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ad2bbffefda03ecd7e6031fb1b3ed0e35}\label{MoveManager_8cpp_ad2bbffefda03ecd7e6031fb1b3ed0e35} 
+\index{MoveManager.cpp@{MoveManager.cpp}!scald@{scald}}
+\index{scald@{scald}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{scald}{scald}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} scald("{}Scald"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}, 80, 100, false) (\begin{DoxyParamCaption}\item[{"{}Scald"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a27634ff8002b12e75d98e07ccd005d18}{Type\+::\+Water}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a0df7fb6d6e778c17d21be044165d2935}\label{MoveManager_8cpp_a0df7fb6d6e778c17d21be044165d2935} 
+\index{MoveManager.cpp@{MoveManager.cpp}!shadowBall@{shadowBall}}
+\index{shadowBall@{shadowBall}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{shadowBall}{shadowBall}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} shadow\+Ball("{}Shadow Ball"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}, 80, 100, false) (\begin{DoxyParamCaption}\item[{"{}Shadow Ball"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a401357e57c765967393ba391a338e89b}{Type\+::\+Ghost}}}]{,  }\item[{80}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_ac21185e531667fa0cb52c4f93c11c6fe}\label{MoveManager_8cpp_ac21185e531667fa0cb52c4f93c11c6fe} 
+\index{MoveManager.cpp@{MoveManager.cpp}!slash@{slash}}
+\index{slash@{slash}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{slash}{slash}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} slash("{}Slash"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}, 70, 100, true) (\begin{DoxyParamCaption}\item[{"{}Slash"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a960b44c579bc2f6818d2daaf9e4c16f0}{Type\+::\+Normal}}}]{,  }\item[{70}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a9b9c6f5f2f3afb8bfa1166313f56c206}\label{MoveManager_8cpp_a9b9c6f5f2f3afb8bfa1166313f56c206} 
+\index{MoveManager.cpp@{MoveManager.cpp}!sludgeBomb@{sludgeBomb}}
+\index{sludgeBomb@{sludgeBomb}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{sludgeBomb}{sludgeBomb}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} sludge\+Bomb("{}Sludge Bomb"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Sludge Bomb"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a3a9d1818d0d7f5646e63465baf7d366f}{Type\+::\+Poison}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aab16b54d50178de88d425df190ba0ebd}\label{MoveManager_8cpp_aab16b54d50178de88d425df190ba0ebd} 
+\index{MoveManager.cpp@{MoveManager.cpp}!stoneEdge@{stoneEdge}}
+\index{stoneEdge@{stoneEdge}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{stoneEdge}{stoneEdge}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} stone\+Edge("{}Stone Edge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}, 100, 90, true) (\begin{DoxyParamCaption}\item[{"{}Stone Edge"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a4cfbb125e9878528bab91d12421134d8}{Type\+::\+Rock}}}]{,  }\item[{100}]{,  }\item[{90}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_aab8c4a6a254fdf60aebe215d55b9a76e}\label{MoveManager_8cpp_aab8c4a6a254fdf60aebe215d55b9a76e} 
+\index{MoveManager.cpp@{MoveManager.cpp}!thunder@{thunder}}
+\index{thunder@{thunder}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{thunder}{thunder}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} thunder("{}Thunder"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 110, 70, false) (\begin{DoxyParamCaption}\item[{"{}Thunder"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}}]{,  }\item[{110}]{,  }\item[{70}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a91fc8e1218ab04acbe417ecb383f59f7}\label{MoveManager_8cpp_a91fc8e1218ab04acbe417ecb383f59f7} 
+\index{MoveManager.cpp@{MoveManager.cpp}!thunderBolt@{thunderBolt}}
+\index{thunderBolt@{thunderBolt}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{thunderBolt}{thunderBolt}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} thunder\+Bolt("{}Thunderbolt"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 90, 100, false) (\begin{DoxyParamCaption}\item[{"{}Thunderbolt"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{false}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{MoveManager_8cpp_a85bd8412019f5ddcac06db73c94c578b}\label{MoveManager_8cpp_a85bd8412019f5ddcac06db73c94c578b} 
+\index{MoveManager.cpp@{MoveManager.cpp}!wildCharge@{wildCharge}}
+\index{wildCharge@{wildCharge}!MoveManager.cpp@{MoveManager.cpp}}
+\doxysubsubsection{\texorpdfstring{wildCharge}{wildCharge}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}} wild\+Charge("{}Wild Charge"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}, 90, 100, true) (\begin{DoxyParamCaption}\item[{"{}Wild Charge"{}}]{,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7aa74711a0a27d5306d53f17771c2161cb}{Type\+::\+Electric}}}]{,  }\item[{90}]{,  }\item[{100}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+

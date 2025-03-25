@@ -1,0 +1,5 @@
+<map id="BattleState" name="BattleState">
+<area shape="rect" id="Node000001" title="Classe gérant l&#39;état de combat du jeu, héritant de GameState." alt="" coords="5,79,100,104"/>
+<area shape="rect" id="Node000002" href="$classGameState.html" title="Classe de base abstraite pour tous les états du jeu." alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,44,55,79,50,79,50,44"/>
+</map>

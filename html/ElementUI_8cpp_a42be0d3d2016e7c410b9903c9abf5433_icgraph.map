@@ -1,0 +1,5 @@
+<map id="createButton" name="createButton">
+<area shape="rect" id="Node000001" title="Crée un bouton configuré" alt="" coords="200,5,307,31"/>
+<area shape="rect" id="Node000002" href="$classEndState.html#af71cfde8cf2e4aa707a49a74445fe85d" title="Constructeur de la classe EndState." alt="" coords="5,5,152,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,21,152,21,152,15,187,15"/>
+</map>

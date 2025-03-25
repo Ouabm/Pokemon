@@ -1,0 +1,30 @@
+\doxysection{Game\+State.\+hpp}
+\hypertarget{GameState_8hpp_source}{}\label{GameState_8hpp_source}\index{include/GameState.hpp@{include/GameState.hpp}}
+\mbox{\hyperlink{GameState_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once\ }\textcolor{comment}{//\ Version\ plus\ moderne\ des\ guardians\ \#ifndef\ et\ \#endif}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}\ \textcolor{comment}{//\ Pour\ std::unique\_ptr}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Forward\ declaration\ pour\ éviter\ les\ dépendances\ circulaires}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameStateManager}{GameStateManager}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameState}{GameState}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\string~GameState}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{handleInput}}(sf::RenderWindow\ \&window)\ =\ 0;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{update}}()\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{render}}(sf::RenderWindow\ \&window)\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{GameState}}(\mbox{\hyperlink{classGameStateManager}{GameStateManager}}\ *manager)\ :\ \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{gameManager}}(manager)\ \{\}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classGameStateManager}{GameStateManager}}\ *\mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{gameManager}};}
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

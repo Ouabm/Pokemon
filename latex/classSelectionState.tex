@@ -1,0 +1,158 @@
+\doxysection{Selection\+State Class Reference}
+\hypertarget{classSelectionState}{}\label{classSelectionState}\index{SelectionState@{SelectionState}}
+
+
+État de sélection des équipes Pokémon avant le combat.  
+
+
+
+
+{\ttfamily \#include $<$Selection\+State.\+hpp$>$}
+
+
+
+Inheritance diagram for Selection\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=167pt]{classSelectionState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Selection\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classSelectionState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSelectionState_aca3f51d494867f03d3f83ba88980f975}{Selection\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur de \doxylink{classSelectionState}{Selection\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSelectionState_afc0c00543f2c8b80f14bff7cd1d54020}{handle\+Input}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Gère les entrées utilisateur (sélection, navigation, validation) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04}{update}} () override
+\begin{DoxyCompactList}\small\item\em Met à jour la logique de sélection à chaque frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSelectionState_a0777cbd47bd4a0c297a93e087e17195f}{render}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface de sélection des Pokémon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{Game\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur protégé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{game\+Manager}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+État de sélection des équipes Pokémon avant le combat. 
+
+Cet état permet aux joueurs de choisir leurs Pokémon pour former leurs équipes avant de lancer un combat. Gère l\textquotesingle{}interface de sélection pour deux équipes (rouge et bleue). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSelectionState_aca3f51d494867f03d3f83ba88980f975}\label{classSelectionState_aca3f51d494867f03d3f83ba88980f975} 
+\index{SelectionState@{SelectionState}!SelectionState@{SelectionState}}
+\index{SelectionState@{SelectionState}!SelectionState@{SelectionState}}
+\doxysubsubsection{\texorpdfstring{SelectionState()}{SelectionState()}}
+{\footnotesize\ttfamily Selection\+State\+::\+Selection\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+Constructeur de \doxylink{classSelectionState}{Selection\+State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointeur vers le gestionnaire d\textquotesingle{}états du jeu\\
+\hline
+\end{DoxyParams}
+Initialise l\textquotesingle{}état de sélection et charge les ressources nécessaires. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSelectionState_aca3f51d494867f03d3f83ba88980f975_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSelectionState_afc0c00543f2c8b80f14bff7cd1d54020}\label{classSelectionState_afc0c00543f2c8b80f14bff7cd1d54020} 
+\index{SelectionState@{SelectionState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!SelectionState@{SelectionState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Selection\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées utilisateur (sélection, navigation, validation) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour la capture des événements \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{Game\+State}}.
+
+\Hypertarget{classSelectionState_a0777cbd47bd4a0c297a93e087e17195f}\label{classSelectionState_a0777cbd47bd4a0c297a93e087e17195f} 
+\index{SelectionState@{SelectionState}!render@{render}}
+\index{render@{render}!SelectionState@{SelectionState}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Selection\+State\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Affiche l\textquotesingle{}interface de sélection des Pokémon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour le rendu graphique \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{Game\+State}}.
+
+\Hypertarget{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04}\label{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04} 
+\index{SelectionState@{SelectionState}!update@{update}}
+\index{update@{update}!SelectionState@{SelectionState}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Selection\+State\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Met à jour la logique de sélection à chaque frame. 
+
+Gère les animations et les transitions entre états de sélection. 
+
+Implements \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{Game\+State}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{SelectionState_8hpp}{Selection\+State.\+hpp}}\item 
+src/states/\mbox{\hyperlink{SelectionState_8cpp}{Selection\+State.\+cpp}}\end{DoxyCompactItemize}

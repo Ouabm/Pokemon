@@ -1,112 +1,559 @@
-\hypertarget{classPokemon}{}\doxysection{Pokemon Class Reference}
-\label{classPokemon}\index{Pokemon@{Pokemon}}
-\doxysubsection*{Public Member Functions}
+\doxysection{Pokemon Class Reference}
+\hypertarget{classPokemon}{}\label{classPokemon}\index{Pokemon@{Pokemon}}
+
+
+Représente un Pokémon avec toutes ses caractéristiques de combat.  
+
+
+
+
+{\ttfamily \#include $<$Pokemon.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPokemon_a1558533f8351d2668dee028dc3509c80}\label{classPokemon_a1558533f8351d2668dee028dc3509c80}} 
-{\bfseries Pokemon} (const std\+::string \&p\+\_\+name, Type p\+\_\+type1, Type p\+\_\+type2, int p\+\_\+level, int p\+\_\+hp, int p\+\_\+hp\+Restant, float p\+\_\+attack, float p\+\_\+special\+Attack, float p\+\_\+defense, float p\+\_\+special\+Defense, float p\+\_\+speed, const \mbox{\hyperlink{classMove}{Move}} \&m1, const \mbox{\hyperlink{classMove}{Move}} \&m2, const \mbox{\hyperlink{classMove}{Move}} \&m3, const \mbox{\hyperlink{classMove}{Move}} \&m4)
+\mbox{\hyperlink{classPokemon_a059e2fca08b08cd218c262f937399ed9}{Pokemon}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPokemon_a1558533f8351d2668dee028dc3509c80}{Pokemon}} (const std\+::string \&p\+\_\+name, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} p\+\_\+type1, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} p\+\_\+type2, int p\+\_\+level, int p\+\_\+hp, int p\+\_\+hp\+Restant, float p\+\_\+attack, float p\+\_\+special\+Attack, float p\+\_\+defense, float p\+\_\+special\+Defense, float p\+\_\+speed, const \mbox{\hyperlink{classMove}{Move}} \&m1, const \mbox{\hyperlink{classMove}{Move}} \&m2, const \mbox{\hyperlink{classMove}{Move}} \&m3, const \mbox{\hyperlink{classMove}{Move}} \&m4)
+\begin{DoxyCompactList}\small\item\em Constructeur complet. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPokemon_a5931993256753cd7bede31950b4b6d33}{get\+Name}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a5931993256753cd7bede31950b4b6d33}\label{classPokemon_a5931993256753cd7bede31950b4b6d33}} 
-std\+::string {\bfseries get\+Name} () const
+\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{classPokemon_a15b0b2f817224ee86a32d615b73041eb}{get\+Type1}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a15b0b2f817224ee86a32d615b73041eb}\label{classPokemon_a15b0b2f817224ee86a32d615b73041eb}} 
-Type {\bfseries get\+Type1} () const
+\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}{get\+Type2}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}\label{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}} 
-Type {\bfseries get\+Type2} () const
+int \mbox{\hyperlink{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5}{get\+Hp}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5}\label{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5}} 
-int {\bfseries get\+Hp} () const
+int \mbox{\hyperlink{classPokemon_a2b65eaa0243c24320ba3c72a65612550}{get\+Hp\+Restant}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a2b65eaa0243c24320ba3c72a65612550}\label{classPokemon_a2b65eaa0243c24320ba3c72a65612550}} 
-int {\bfseries get\+Hp\+Restant} () const
+float \mbox{\hyperlink{classPokemon_add33fc610f4ed2de555f42a91cff4595}{get\+Attack}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_add33fc610f4ed2de555f42a91cff4595}\label{classPokemon_add33fc610f4ed2de555f42a91cff4595}} 
-float {\bfseries get\+Attack} () const
+float \mbox{\hyperlink{classPokemon_a04250b51ca27e86d3670faa52b8c3894}{get\+Special\+Attack}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_a04250b51ca27e86d3670faa52b8c3894}\label{classPokemon_a04250b51ca27e86d3670faa52b8c3894}} 
-float {\bfseries get\+Special\+Attack} () const
+float \mbox{\hyperlink{classPokemon_acbbd9a9010651cb655c30183d12add51}{get\+Defense}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_acbbd9a9010651cb655c30183d12add51}\label{classPokemon_acbbd9a9010651cb655c30183d12add51}} 
-float {\bfseries get\+Defense} () const
+float \mbox{\hyperlink{classPokemon_aa80b0b1109450ca2860f110bcf39578c}{get\+Special\+Defense}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_aa80b0b1109450ca2860f110bcf39578c}\label{classPokemon_aa80b0b1109450ca2860f110bcf39578c}} 
-float {\bfseries get\+Special\+Defense} () const
+float \mbox{\hyperlink{classPokemon_abe3b88983fd53b02e5a11e59202d4270}{get\+Speed}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_abe3b88983fd53b02e5a11e59202d4270}\label{classPokemon_abe3b88983fd53b02e5a11e59202d4270}} 
-float {\bfseries get\+Speed} () const
+std\+::vector$<$ const \mbox{\hyperlink{classMove}{Move}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classPokemon_a35faa5b0c1503386bab6cc25988cd169}{get\+Moves}} () const
 \item 
-\mbox{\Hypertarget{classPokemon_ad607b00503e2d9d348414150b60b9e42}\label{classPokemon_ad607b00503e2d9d348414150b60b9e42}} 
-std\+::vector$<$ const \mbox{\hyperlink{classMove}{Move}} $\ast$ $>$ {\bfseries get\+Moves} () const
+void \mbox{\hyperlink{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f}{set\+Hp}} (int p\+\_\+hp)
 \item 
-\mbox{\Hypertarget{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f}\label{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f}} 
-void {\bfseries set\+Hp} (int p\+\_\+hp)
+void \mbox{\hyperlink{classPokemon_af317d7446c95b483edb04aba79a321b5}{set\+Hp\+Restant}} (int p\+\_\+hp\+Restant)
 \item 
-\mbox{\Hypertarget{classPokemon_af317d7446c95b483edb04aba79a321b5}\label{classPokemon_af317d7446c95b483edb04aba79a321b5}} 
-void {\bfseries set\+Hp\+Restant} (int p\+\_\+hp\+Restant)
+void \mbox{\hyperlink{classPokemon_a13da41d8c0b808515b89f0f6d59293be}{set\+Attack}} (float p\+\_\+attack)
 \item 
-\mbox{\Hypertarget{classPokemon_a13da41d8c0b808515b89f0f6d59293be}\label{classPokemon_a13da41d8c0b808515b89f0f6d59293be}} 
-void {\bfseries set\+Attack} (float p\+\_\+attack)
+void \mbox{\hyperlink{classPokemon_a72db79be6d3180b1e538a930225d9595}{set\+Special\+Attack}} (float p\+\_\+special\+Attack)
 \item 
-\mbox{\Hypertarget{classPokemon_a72db79be6d3180b1e538a930225d9595}\label{classPokemon_a72db79be6d3180b1e538a930225d9595}} 
-void {\bfseries set\+Special\+Attack} (float p\+\_\+special\+Attack)
+void \mbox{\hyperlink{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d}{set\+Defense}} (float p\+\_\+defense)
 \item 
-\mbox{\Hypertarget{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d}\label{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d}} 
-void {\bfseries set\+Defense} (float p\+\_\+defense)
+void \mbox{\hyperlink{classPokemon_acd2b238223b6b183063aaf6eb5cef21c}{set\+Special\+Defense}} (float p\+\_\+special\+Defense)
 \item 
-\mbox{\Hypertarget{classPokemon_acd2b238223b6b183063aaf6eb5cef21c}\label{classPokemon_acd2b238223b6b183063aaf6eb5cef21c}} 
-void {\bfseries set\+Special\+Defense} (float p\+\_\+special\+Defense)
+void \mbox{\hyperlink{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34}{set\+Speed}} (float p\+\_\+speed)
 \item 
-\mbox{\Hypertarget{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34}\label{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34}} 
-void {\bfseries set\+Speed} (float p\+\_\+speed)
-\item 
-\mbox{\Hypertarget{classPokemon_ae548068335e31309add9fbe3c6c84553}\label{classPokemon_ae548068335e31309add9fbe3c6c84553}} 
-bool {\bfseries is\+KO} () const
-\item 
-\mbox{\Hypertarget{classPokemon_abd9514ff3b422050f1e6ae086babdc66}\label{classPokemon_abd9514ff3b422050f1e6ae086babdc66}} 
-\mbox{\hyperlink{classPokemon}{Pokemon}} $\ast$ {\bfseries clone} () const
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+bool \mbox{\hyperlink{classPokemon_ae548068335e31309add9fbe3c6c84553}{is\+KO}} () const
+\begin{DoxyCompactList}\small\item\em Vérifie si le Pokémon est K.\+O. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPokemon_acd45fd88773e1738c89872c6cb7cd5b3}{clone}} () const
+\begin{DoxyCompactList}\small\item\em Crée une copie profonde du Pokémon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPokemon_acc4312e4350fe5e22408294becb77c2b}\label{classPokemon_acc4312e4350fe5e22408294becb77c2b}} 
-std\+::string {\bfseries name}
-\item 
-\mbox{\Hypertarget{classPokemon_aed9b198fda4935bc509a15b895cfd45f}\label{classPokemon_aed9b198fda4935bc509a15b895cfd45f}} 
-Type {\bfseries type1}
-\item 
-\mbox{\Hypertarget{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}\label{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}} 
-Type {\bfseries type2}
-\item 
-\mbox{\Hypertarget{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}\label{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}} 
-int {\bfseries level}
-\item 
-\mbox{\Hypertarget{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}\label{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}} 
-int {\bfseries hp}
-\item 
-\mbox{\Hypertarget{classPokemon_a570f6adc357180cadcc73041e090c15d}\label{classPokemon_a570f6adc357180cadcc73041e090c15d}} 
-int {\bfseries hp\+Restant}
-\item 
-\mbox{\Hypertarget{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}\label{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}} 
-float {\bfseries attack}
-\item 
-\mbox{\Hypertarget{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}\label{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}} 
-float {\bfseries special\+Attack}
-\item 
-\mbox{\Hypertarget{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}\label{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}} 
-float {\bfseries defense}
-\item 
-\mbox{\Hypertarget{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}\label{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}} 
-float {\bfseries special\+Defense}
-\item 
-\mbox{\Hypertarget{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}\label{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}} 
-float {\bfseries speed}
-\item 
-\mbox{\Hypertarget{classPokemon_a63ddff69a81623a4ca8d808f807380b9}\label{classPokemon_a63ddff69a81623a4ca8d808f807380b9}} 
-std\+::vector$<$ const \mbox{\hyperlink{classMove}{Move}} $\ast$ $>$ {\bfseries moves}
-\end{DoxyCompactItemize}
+std\+::string \mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}}
+\begin{DoxyCompactList}\small\item\em Nom du Pokémon. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}}
+\begin{DoxyCompactList}\small\item\em Type primaire (ex\+: Fire, Water) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}}
+\begin{DoxyCompactList}\small\item\em Type secondaire (\doxylink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None} si absent) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}{level}}
+\begin{DoxyCompactList}\small\item\em Niveau (1-\/100) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}}
+\begin{DoxyCompactList}\small\item\em Points de vie maximum. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hp\+Restant}}
+\begin{DoxyCompactList}\small\item\em Points de vie actuels. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}}
+\begin{DoxyCompactList}\small\item\em Attaque physique. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{special\+Attack}}
+\begin{DoxyCompactList}\small\item\em Attaque spéciale. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}}
+\begin{DoxyCompactList}\small\item\em Défense physique. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{special\+Defense}}
+\begin{DoxyCompactList}\small\item\em Défense spéciale. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}}
+\begin{DoxyCompactList}\small\item\em Vitesse (détermine l\textquotesingle{}ordre d\textquotesingle{}attaque) \end{DoxyCompactList}\item 
+std\+::vector$<$ const \mbox{\hyperlink{classMove}{Move}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}
+\begin{DoxyCompactList}\small\item\em Liste des 4 capacités connues. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente un Pokémon avec toutes ses caractéristiques de combat. 
+
+Cette classe encapsule les données et comportements d\textquotesingle{}un Pokémon \+:
+\begin{DoxyItemize}
+\item Ses attributs de base (nom, types, niveau)
+\item Ses statistiques de combat (PV, attaque, défense...)
+\item Ses capacités (moves)
+\item Son état actuel (PV restants) 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPokemon_a059e2fca08b08cd218c262f937399ed9}\label{classPokemon_a059e2fca08b08cd218c262f937399ed9} 
+\index{Pokemon@{Pokemon}!Pokemon@{Pokemon}}
+\index{Pokemon@{Pokemon}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{Pokemon()}{Pokemon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pokemon\+::\+Pokemon (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructeur par défaut. 
+
+Crée un Pokémon "{}vide"{} avec \+:
+\begin{DoxyItemize}
+\item Nom "{}\+Unknown"{}
+\item Aucun type
+\item Niveau 0
+\item Toutes stats à 0
+\item Aucune capacité 
+\end{DoxyItemize}Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classPokemon_a059e2fca08b08cd218c262f937399ed9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_a1558533f8351d2668dee028dc3509c80}\label{classPokemon_a1558533f8351d2668dee028dc3509c80} 
+\index{Pokemon@{Pokemon}!Pokemon@{Pokemon}}
+\index{Pokemon@{Pokemon}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{Pokemon()}{Pokemon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pokemon\+::\+Pokemon (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+name,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}}]{p\+\_\+type1,  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}}]{p\+\_\+type2,  }\item[{int}]{p\+\_\+level,  }\item[{int}]{p\+\_\+hp,  }\item[{int}]{p\+\_\+hp\+Restant,  }\item[{float}]{p\+\_\+attack,  }\item[{float}]{p\+\_\+special\+Attack,  }\item[{float}]{p\+\_\+defense,  }\item[{float}]{p\+\_\+special\+Defense,  }\item[{float}]{p\+\_\+speed,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{m1,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{m2,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{m3,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{m4 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructeur complet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+name} & Nom du Pokémon \\
+\hline
+{\em p\+\_\+type1} & Type primaire \\
+\hline
+{\em p\+\_\+type2} & Type secondaire (\doxylink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None} si absent) \\
+\hline
+{\em p\+\_\+level} & Niveau (1-\/100) \\
+\hline
+{\em p\+\_\+hp} & Points de vie maximum \\
+\hline
+{\em p\+\_\+hp\+Restant} & Points de vie actuels \\
+\hline
+{\em p\+\_\+attack} & Attaque physique \\
+\hline
+{\em p\+\_\+special\+Attack} & Attaque spéciale \\
+\hline
+{\em p\+\_\+defense} & Défense physique \\
+\hline
+{\em p\+\_\+special\+Defense} & Défense spéciale \\
+\hline
+{\em p\+\_\+speed} & Vitesse \\
+\hline
+{\em m1} & Première capacité \\
+\hline
+{\em m2} & Deuxième capacité \\
+\hline
+{\em m3} & Troisième capacité \\
+\hline
+{\em m4} & Quatrième capacité\\
+\hline
+\end{DoxyParams}
+Crée un Pokémon avec toutes ses caractéristiques initialisées. Les PV restants sont généralement égaux aux PV max au départ. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPokemon_acd45fd88773e1738c89872c6cb7cd5b3}\label{classPokemon_acd45fd88773e1738c89872c6cb7cd5b3} 
+\index{Pokemon@{Pokemon}!clone@{clone}}
+\index{clone@{clone}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*} Pokemon\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Crée une copie profonde du Pokémon. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur vers une nouvelle instance identique
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La responsabilité de la destruction revient à l\textquotesingle{}appelant 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classPokemon_acd45fd88773e1738c89872c6cb7cd5b3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_add33fc610f4ed2de555f42a91cff4595}\label{classPokemon_add33fc610f4ed2de555f42a91cff4595} 
+\index{Pokemon@{Pokemon}!getAttack@{getAttack}}
+\index{getAttack@{getAttack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getAttack()}{getAttack()}}
+{\footnotesize\ttfamily float Pokemon\+::get\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Attaque physique 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{classPokemon_add33fc610f4ed2de555f42a91cff4595_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_acbbd9a9010651cb655c30183d12add51}\label{classPokemon_acbbd9a9010651cb655c30183d12add51} 
+\index{Pokemon@{Pokemon}!getDefense@{getDefense}}
+\index{getDefense@{getDefense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getDefense()}{getDefense()}}
+{\footnotesize\ttfamily float Pokemon\+::get\+Defense (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Défense physique 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classPokemon_acbbd9a9010651cb655c30183d12add51_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5}\label{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5} 
+\index{Pokemon@{Pokemon}!getHp@{getHp}}
+\index{getHp@{getHp}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getHp()}{getHp()}}
+{\footnotesize\ttfamily int Pokemon\+::get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+PV maximum 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a2b65eaa0243c24320ba3c72a65612550}\label{classPokemon_a2b65eaa0243c24320ba3c72a65612550} 
+\index{Pokemon@{Pokemon}!getHpRestant@{getHpRestant}}
+\index{getHpRestant@{getHpRestant}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getHpRestant()}{getHpRestant()}}
+{\footnotesize\ttfamily int Pokemon\+::get\+Hp\+Restant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+PV actuels 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a35faa5b0c1503386bab6cc25988cd169}\label{classPokemon_a35faa5b0c1503386bab6cc25988cd169} 
+\index{Pokemon@{Pokemon}!getMoves@{getMoves}}
+\index{getMoves@{getMoves}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getMoves()}{getMoves()}}
+{\footnotesize\ttfamily std\+::vector$<$ const \mbox{\hyperlink{classMove}{Move}} \texorpdfstring{$\ast$}{*} $>$ Pokemon\+::get\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Liste des capacités 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a5931993256753cd7bede31950b4b6d33}\label{classPokemon_a5931993256753cd7bede31950b4b6d33} 
+\index{Pokemon@{Pokemon}!getName@{getName}}
+\index{getName@{getName}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Pokemon\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Nom du Pokémon 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a04250b51ca27e86d3670faa52b8c3894}\label{classPokemon_a04250b51ca27e86d3670faa52b8c3894} 
+\index{Pokemon@{Pokemon}!getSpecialAttack@{getSpecialAttack}}
+\index{getSpecialAttack@{getSpecialAttack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getSpecialAttack()}{getSpecialAttack()}}
+{\footnotesize\ttfamily float Pokemon\+::get\+Special\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Attaque spéciale 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPokemon_a04250b51ca27e86d3670faa52b8c3894_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_aa80b0b1109450ca2860f110bcf39578c}\label{classPokemon_aa80b0b1109450ca2860f110bcf39578c} 
+\index{Pokemon@{Pokemon}!getSpecialDefense@{getSpecialDefense}}
+\index{getSpecialDefense@{getSpecialDefense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getSpecialDefense()}{getSpecialDefense()}}
+{\footnotesize\ttfamily float Pokemon\+::get\+Special\+Defense (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Défense spéciale 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPokemon_aa80b0b1109450ca2860f110bcf39578c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_abe3b88983fd53b02e5a11e59202d4270}\label{classPokemon_abe3b88983fd53b02e5a11e59202d4270} 
+\index{Pokemon@{Pokemon}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily float Pokemon\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Vitesse 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a15b0b2f817224ee86a32d615b73041eb}\label{classPokemon_a15b0b2f817224ee86a32d615b73041eb} 
+\index{Pokemon@{Pokemon}!getType1@{getType1}}
+\index{getType1@{getType1}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getType1()}{getType1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Pokemon\+::get\+Type1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Type primaire 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{classPokemon_a15b0b2f817224ee86a32d615b73041eb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}\label{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a} 
+\index{Pokemon@{Pokemon}!getType2@{getType2}}
+\index{getType2@{getType2}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{getType2()}{getType2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Pokemon\+::get\+Type2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Type secondaire 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemon_ae548068335e31309add9fbe3c6c84553}\label{classPokemon_ae548068335e31309add9fbe3c6c84553} 
+\index{Pokemon@{Pokemon}!isKO@{isKO}}
+\index{isKO@{isKO}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{isKO()}{isKO()}}
+{\footnotesize\ttfamily bool Pokemon\+::is\+KO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Vérifie si le Pokémon est K.\+O. 
+
+\begin{DoxyReturn}{Returns}
+true si les PV sont \texorpdfstring{$<$}{<}= 0, false sinon 
+\end{DoxyReturn}
+\Hypertarget{classPokemon_a13da41d8c0b808515b89f0f6d59293be}\label{classPokemon_a13da41d8c0b808515b89f0f6d59293be} 
+\index{Pokemon@{Pokemon}!setAttack@{setAttack}}
+\index{setAttack@{setAttack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setAttack()}{setAttack()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Attack (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+attack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+attack} & Nouvelle attaque \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d}\label{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d} 
+\index{Pokemon@{Pokemon}!setDefense@{setDefense}}
+\index{setDefense@{setDefense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setDefense()}{setDefense()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Defense (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+defense }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+defense} & Nouvelle défense \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f}\label{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f} 
+\index{Pokemon@{Pokemon}!setHp@{setHp}}
+\index{setHp@{setHp}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setHp()}{setHp()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Hp (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+hp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+hp} & Nouveaux PV maximum \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_af317d7446c95b483edb04aba79a321b5}\label{classPokemon_af317d7446c95b483edb04aba79a321b5} 
+\index{Pokemon@{Pokemon}!setHpRestant@{setHpRestant}}
+\index{setHpRestant@{setHpRestant}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setHpRestant()}{setHpRestant()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Hp\+Restant (\begin{DoxyParamCaption}\item[{int}]{p\+\_\+hp\+Restant }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+hp\+Restant} & PV actuels \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_a72db79be6d3180b1e538a930225d9595}\label{classPokemon_a72db79be6d3180b1e538a930225d9595} 
+\index{Pokemon@{Pokemon}!setSpecialAttack@{setSpecialAttack}}
+\index{setSpecialAttack@{setSpecialAttack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setSpecialAttack()}{setSpecialAttack()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Special\+Attack (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+special\+Attack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+special\+Attack} & Nouvelle attaque spéciale \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_acd2b238223b6b183063aaf6eb5cef21c}\label{classPokemon_acd2b238223b6b183063aaf6eb5cef21c} 
+\index{Pokemon@{Pokemon}!setSpecialDefense@{setSpecialDefense}}
+\index{setSpecialDefense@{setSpecialDefense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setSpecialDefense()}{setSpecialDefense()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Special\+Defense (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+special\+Defense }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+special\+Defense} & Nouvelle défense spéciale \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34}\label{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34} 
+\index{Pokemon@{Pokemon}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Pokemon\+::set\+Speed (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+speed} & Nouvelle vitesse \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}\label{classPokemon_a5cafafa91dff761685e36c2d820dc8ef} 
+\index{Pokemon@{Pokemon}!attack@{attack}}
+\index{attack@{attack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{attack}{attack}}
+{\footnotesize\ttfamily float Pokemon\+::attack\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Attaque physique. 
+
+\Hypertarget{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}\label{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd} 
+\index{Pokemon@{Pokemon}!defense@{defense}}
+\index{defense@{defense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{defense}{defense}}
+{\footnotesize\ttfamily float Pokemon\+::defense\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Défense physique. 
+
+\Hypertarget{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}\label{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b} 
+\index{Pokemon@{Pokemon}!hp@{hp}}
+\index{hp@{hp}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{hp}{hp}}
+{\footnotesize\ttfamily int Pokemon\+::hp\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Points de vie maximum. 
+
+\Hypertarget{classPokemon_a570f6adc357180cadcc73041e090c15d}\label{classPokemon_a570f6adc357180cadcc73041e090c15d} 
+\index{Pokemon@{Pokemon}!hpRestant@{hpRestant}}
+\index{hpRestant@{hpRestant}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{hpRestant}{hpRestant}}
+{\footnotesize\ttfamily int Pokemon\+::hp\+Restant\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Points de vie actuels. 
+
+\Hypertarget{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}\label{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8} 
+\index{Pokemon@{Pokemon}!level@{level}}
+\index{level@{level}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily int Pokemon\+::level\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Niveau (1-\/100) 
+
+\Hypertarget{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}\label{classPokemon_a0790b1adfbf8fc591701ed60307b0f67} 
+\index{Pokemon@{Pokemon}!moves@{moves}}
+\index{moves@{moves}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{moves}{moves}}
+{\footnotesize\ttfamily std\+::vector$<$const \mbox{\hyperlink{classMove}{Move}}\texorpdfstring{$\ast$}{*}$>$ Pokemon\+::moves\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Liste des 4 capacités connues. 
+
+\Hypertarget{classPokemon_acc4312e4350fe5e22408294becb77c2b}\label{classPokemon_acc4312e4350fe5e22408294becb77c2b} 
+\index{Pokemon@{Pokemon}!name@{name}}
+\index{name@{name}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Pokemon\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Nom du Pokémon. 
+
+\Hypertarget{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}\label{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e} 
+\index{Pokemon@{Pokemon}!specialAttack@{specialAttack}}
+\index{specialAttack@{specialAttack}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{specialAttack}{specialAttack}}
+{\footnotesize\ttfamily float Pokemon\+::special\+Attack\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Attaque spéciale. 
+
+\Hypertarget{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}\label{classPokemon_a061ddb99e272eaabdeeedbc4c125b226} 
+\index{Pokemon@{Pokemon}!specialDefense@{specialDefense}}
+\index{specialDefense@{specialDefense}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{specialDefense}{specialDefense}}
+{\footnotesize\ttfamily float Pokemon\+::special\+Defense\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Défense spéciale. 
+
+\Hypertarget{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}\label{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c} 
+\index{Pokemon@{Pokemon}!speed@{speed}}
+\index{speed@{speed}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Pokemon\+::speed\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Vitesse (détermine l\textquotesingle{}ordre d\textquotesingle{}attaque) 
+
+\Hypertarget{classPokemon_aed9b198fda4935bc509a15b895cfd45f}\label{classPokemon_aed9b198fda4935bc509a15b895cfd45f} 
+\index{Pokemon@{Pokemon}!type1@{type1}}
+\index{type1@{type1}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{type1}{type1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Pokemon\+::type1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Type primaire (ex\+: Fire, Water) 
+
+\Hypertarget{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}\label{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94} 
+\index{Pokemon@{Pokemon}!type2@{type2}}
+\index{type2@{type2}!Pokemon@{Pokemon}}
+\doxysubsubsection{\texorpdfstring{type2}{type2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Pokemon\+::type2\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Type secondaire (\doxylink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None} si absent) 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/Pokemon.\+hpp\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{Pokemon_8hpp}{Pokemon.\+hpp}}\end{DoxyCompactItemize}

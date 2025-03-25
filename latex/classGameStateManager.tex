@@ -1,5 +1,5 @@
-\hypertarget{classGameStateManager}{}\doxysection{Game\+State\+Manager Class Reference}
-\label{classGameStateManager}\index{GameStateManager@{GameStateManager}}
+\doxysection{Game\+State\+Manager Class Reference}
+\hypertarget{classGameStateManager}{}\label{classGameStateManager}\index{GameStateManager@{GameStateManager}}
 
 
 Classe permettant de gérer les différents états du jeu via une pile.  
@@ -9,7 +9,7 @@ Classe permettant de gérer les différents états du jeu via une pile.
 
 {\ttfamily \#include $<$Game\+State\+Manager.\+hpp$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classGameStateManager_a54870e7edea7078aa18a10b00b097231}{change\+State}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classGameState}{Game\+State}} $>$ new\+State)
@@ -26,7 +26,7 @@ void \mbox{\hyperlink{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}{r
 Classe permettant de gérer les différents états du jeu via une pile. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classGameStateManager_a54870e7edea7078aa18a10b00b097231}\label{classGameStateManager_a54870e7edea7078aa18a10b00b097231}} 
+\Hypertarget{classGameStateManager_a54870e7edea7078aa18a10b00b097231}\label{classGameStateManager_a54870e7edea7078aa18a10b00b097231} 
 \index{GameStateManager@{GameStateManager}!changeState@{changeState}}
 \index{changeState@{changeState}!GameStateManager@{GameStateManager}}
 \doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
@@ -43,7 +43,15 @@ Cette fonction remplace l\textquotesingle{}état actuel par un nouvel état en u
 {\em new\+State} & Pointeur unique vers le nouvel état du jeu. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}\label{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameStateManager_a54870e7edea7078aa18a10b00b097231_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}\label{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343} 
 \index{GameStateManager@{GameStateManager}!handleInput@{handleInput}}
 \index{handleInput@{handleInput}!GameStateManager@{GameStateManager}}
 \doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
@@ -57,10 +65,18 @@ Cette fonction détecte et traite les interactions du joueur.
 
 
 \begin{DoxyParams}{Parameters}
-{\em window} & Référence vers la fenêtre S\+F\+ML où les entrées sont captées. \\
+{\em window} & Référence vers la fenêtre SFML où les entrées sont captées. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}\label{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}\label{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f} 
 \index{GameStateManager@{GameStateManager}!render@{render}}
 \index{render@{render}!GameStateManager@{GameStateManager}}
 \doxysubsubsection{\texorpdfstring{render()}{render()}}
@@ -70,14 +86,22 @@ Cette fonction détecte et traite les interactions du joueur.
 
 Affiche l\textquotesingle{}état actuel du jeu. 
 
-Cette fonction dessine l\textquotesingle{}état en haut de la pile sur la fenêtre S\+F\+ML.
+Cette fonction dessine l\textquotesingle{}état en haut de la pile sur la fenêtre SFML.
 
 
 \begin{DoxyParams}{Parameters}
-{\em window} & Référence vers la fenêtre S\+F\+ML où l\textquotesingle{}affichage est effectué. \\
+{\em window} & Référence vers la fenêtre SFML où l\textquotesingle{}affichage est effectué. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}\label{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}\label{classGameStateManager_afe49135ce3ef43fce33588c58460fd32} 
 \index{GameStateManager@{GameStateManager}!update@{update}}
 \index{update@{update}!GameStateManager@{GameStateManager}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
@@ -87,9 +111,17 @@ Cette fonction dessine l\textquotesingle{}état en haut de la pile sur la fenêt
 
 Met à jour l\textquotesingle{}état actuel du jeu. 
 
-Cette fonction appelle la mise à jour de l\textquotesingle{}état en haut de la pile. 
+Cette fonction appelle la mise à jour de l\textquotesingle{}état en haut de la pile. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{classGameStateManager_afe49135ce3ef43fce33588c58460fd32_icgraph}
+\end{center}
+\end{figure}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{GameStateManager_8hpp}{Game\+State\+Manager.\+hpp}}\item 
-src/Game\+State\+Manager.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{GameStateManager_8cpp}{Game\+State\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,29 +1,145 @@
-\hypertarget{classPokemonManager}{}\doxysection{Pokemon\+Manager Class Reference}
-\label{classPokemonManager}\index{PokemonManager@{PokemonManager}}
-\doxysubsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classPokemonManager_abf44235119b22791839bfe576f926fa5}\label{classPokemonManager_abf44235119b22791839bfe576f926fa5}} 
-\mbox{\hyperlink{classPokemon}{Pokemon}} $\ast$ {\bfseries get\+Pokemon\+By\+Name} (const std\+::string \&name)
-\item 
-\mbox{\Hypertarget{classPokemonManager_a077232395b717b3209d8ec89a35038cf}\label{classPokemonManager_a077232395b717b3209d8ec89a35038cf}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries get\+All\+Pokemon\+Names} () const
-\item 
-\mbox{\Hypertarget{classPokemonManager_a1afab021d48e7faef53864d0ac594903}\label{classPokemonManager_a1afab021d48e7faef53864d0ac594903}} 
-{\bfseries Pokemon\+Manager} (const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&)=delete
-\item 
-\mbox{\Hypertarget{classPokemonManager_a75154de4d31928ef3d1e31febc1fe603}\label{classPokemonManager_a75154de4d31928ef3d1e31febc1fe603}} 
-\mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& {\bfseries operator=} (const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&)=delete
-\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63}\label{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63}} 
-static \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& {\bfseries get\+Instance} ()
-\end{DoxyCompactItemize}
+\doxysection{Pokemon\+Manager Class Reference}
+\hypertarget{classPokemonManager}{}\label{classPokemonManager}\index{PokemonManager@{PokemonManager}}
 
+
+Gestionnaire centralisé des données Pokémon (Singleton)  
+
+
+
+
+{\ttfamily \#include $<$Pokemon\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classPokemonManager_abf44235119b22791839bfe576f926fa5}{get\+Pokemon\+By\+Name}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Récupère un Pokémon par son nom. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classPokemonManager_a077232395b717b3209d8ec89a35038cf}{get\+All\+Pokemon\+Names}} () const
+\begin{DoxyCompactList}\small\item\em Obtient la liste de tous les noms de Pokémon disponibles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPokemonManager_a1afab021d48e7faef53864d0ac594903}{Pokemon\+Manager}} (const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Supprime le constructeur de copie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& \mbox{\hyperlink{classPokemonManager_a011bce0d816beab34a85f10c2e707cd9}{operator=}} (const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Supprime l\textquotesingle{}opérateur d\textquotesingle{}affectation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& \mbox{\hyperlink{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Obtient l\textquotesingle{}instance unique du gestionnaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestionnaire centralisé des données Pokémon (Singleton) 
+
+Cette classe implémente le pattern Singleton pour fournir un accès global et unique à l\textquotesingle{}ensemble des données Pokémon. Elle permet \+:
+\begin{DoxyItemize}
+\item Le chargement centralisé des données
+\item L\textquotesingle{}accès aux Pokémon par nom
+\item La récupération de la liste complète
+\end{DoxyItemize}
+
+@designpattern Singleton -\/ Garantit une seule instance globale 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPokemonManager_a1afab021d48e7faef53864d0ac594903}\label{classPokemonManager_a1afab021d48e7faef53864d0ac594903} 
+\index{PokemonManager@{PokemonManager}!PokemonManager@{PokemonManager}}
+\index{PokemonManager@{PokemonManager}!PokemonManager@{PokemonManager}}
+\doxysubsubsection{\texorpdfstring{PokemonManager()}{PokemonManager()}}
+{\footnotesize\ttfamily Pokemon\+Manager\+::\+Pokemon\+Manager (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Supprime le constructeur de copie. 
+
+Partie essentielle du pattern Singleton -\/ empêche la duplication 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPokemonManager_a077232395b717b3209d8ec89a35038cf}\label{classPokemonManager_a077232395b717b3209d8ec89a35038cf} 
+\index{PokemonManager@{PokemonManager}!getAllPokemonNames@{getAllPokemonNames}}
+\index{getAllPokemonNames@{getAllPokemonNames}!PokemonManager@{PokemonManager}}
+\doxysubsubsection{\texorpdfstring{getAllPokemonNames()}{getAllPokemonNames()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Pokemon\+Manager\+::get\+All\+Pokemon\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtient la liste de tous les noms de Pokémon disponibles. 
+
+\begin{DoxyReturn}{Returns}
+Vecteur des noms de Pokémon (triés alphabétiquement) 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPokemonManager_a077232395b717b3209d8ec89a35038cf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63}\label{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63} 
+\index{PokemonManager@{PokemonManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!PokemonManager@{PokemonManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& Pokemon\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtient l\textquotesingle{}instance unique du gestionnaire. 
+
+\begin{DoxyReturn}{Returns}
+Référence à l\textquotesingle{}instance unique de \doxylink{classPokemonManager}{Pokemon\+Manager}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Premier appel initialise l\textquotesingle{}instance (initialisation paresseuse) 
+\end{DoxyNote}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemonManager_abf44235119b22791839bfe576f926fa5}\label{classPokemonManager_abf44235119b22791839bfe576f926fa5} 
+\index{PokemonManager@{PokemonManager}!getPokemonByName@{getPokemonByName}}
+\index{getPokemonByName@{getPokemonByName}!PokemonManager@{PokemonManager}}
+\doxysubsubsection{\texorpdfstring{getPokemonByName()}{getPokemonByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*} Pokemon\+Manager\+::get\+Pokemon\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Récupère un Pokémon par son nom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nom du Pokémon recherché \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointeur vers le Pokémon ou nullptr si non trouvé
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Le pointeur reste valide tant que le manager existe 
+\end{DoxyWarning}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPokemonManager_abf44235119b22791839bfe576f926fa5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classPokemonManager_a011bce0d816beab34a85f10c2e707cd9}\label{classPokemonManager_a011bce0d816beab34a85f10c2e707cd9} 
+\index{PokemonManager@{PokemonManager}!operator=@{operator=}}
+\index{operator=@{operator=}!PokemonManager@{PokemonManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \& Pokemon\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPokemonManager}{Pokemon\+Manager}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Supprime l\textquotesingle{}opérateur d\textquotesingle{}affectation. 
+
+Partie essentielle du pattern Singleton -\/ empêche la duplication 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/Pokemon\+Manager.\+hpp\item 
-src/Pokemon\+Manager.\+cpp\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{PokemonManager_8hpp}{Pokemon\+Manager.\+hpp}}\item 
+src/\mbox{\hyperlink{PokemonManager_8cpp}{Pokemon\+Manager.\+cpp}}\end{DoxyCompactItemize}

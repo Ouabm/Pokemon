@@ -1,0 +1,52 @@
+\doxysection{Selection\+State.\+hpp}
+\hypertarget{SelectionState_8hpp_source}{}\label{SelectionState_8hpp_source}\index{include/states/SelectionState.hpp@{include/states/SelectionState.hpp}}
+\mbox{\hyperlink{SelectionState_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameState_8hpp}{GameState.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ElementUI_8hpp}{ElementUI.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ ==========================\ STRUCTURE\ DE\ SÉLECTION\ D'ÉQUIPE\ ==========================\ //}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTeamSelectionStruct}{TeamSelectionStruct}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<sf::RectangleShape>\ \mbox{\hyperlink{structTeamSelectionStruct_aeba87d14fccb6c22b4645ca7b349ba79}{selectedBoxes}};\ }
+\DoxyCodeLine{00018\ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{structTeamSelectionStruct_a7faac597399e04693246bc16ed89eecc}{currentBox}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{structTeamSelectionStruct_abd99eab1361e9fa714390ec3332682c8}{pokemonNames}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structTeamSelectionStruct_a51af150e7ab65ddf16ee1daa455348d8}{selectionIndex}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structTeamSelectionStruct_a5bed55fdd9991e0bba7f265b2ab6257d}{isReady}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ ================================\ CLASSE\ SELECTIONSTATE\ ================================\ //}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSelectionState}{SelectionState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameState}{GameState}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classSelectionState}{SelectionState}}(\mbox{\hyperlink{classGameStateManager}{GameStateManager}}\ *manager);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ ==========================\ MÉTHODES\ PRINCIPALES\ ==========================\ //}}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSelectionState_afc0c00543f2c8b80f14bff7cd1d54020}{handleInput}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSelectionState_a0777cbd47bd4a0c297a93e087e17195f}{render}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ ==============================\ ÉLÉMENTS\ GRAPHIQUES\ ==============================\ //}}
+\DoxyCodeLine{00068\ \ \ \ \ sf::Sprite\ backgroundSprite;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<sf::Sprite>\ pokemonSprites;\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ ==============================\ STRUCTURES\ DE\ SÉLECTION\ ==============================\ //}}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{structTeamSelectionStruct}{TeamSelectionStruct}}\ redTeamSelection;\ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{structTeamSelectionStruct}{TeamSelectionStruct}}\ blueTeamSelection;\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ ==============================\ MÉTHODES\ UTILES\ ==============================\ //}}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ loadAllPokemonSprites();}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ handlePokemonSelection(\mbox{\hyperlink{structTeamSelectionStruct}{TeamSelectionStruct}}\ \&teamSelection);}
+\DoxyCodeLine{00091\ \};}
+
+\end{DoxyCode}

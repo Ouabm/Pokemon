@@ -1,0 +1,46 @@
+\doxysection{Element\+UI.\+hpp}
+\hypertarget{ElementUI_8hpp_source}{}\label{ElementUI_8hpp_source}\index{include/ElementUI.hpp@{include/ElementUI.hpp}}
+\mbox{\hyperlink{ElementUI_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ResourceManager_8hpp}{ResourceManager.hpp}}"{}}\ \textcolor{comment}{//\ Pour\ récupérer\ les\ polices}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00026\ sf::Text\ \mbox{\hyperlink{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad}{createText}}(\textcolor{keyword}{const}\ std::string\ \&fontKey\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&text\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ =\ 0,\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ \textcolor{keyword}{const}\ \&color\ =\ sf::Color::Transparent,\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ \textcolor{keyword}{const}\ \&position\ =\ sf::Vector2f(0,\ 0));}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00041\ sf::RectangleShape\ \mbox{\hyperlink{ElementUI_8hpp_a76d815a0e87ca0456ca15b732d4d8c50}{createRectangle}}(\textcolor{keyword}{const}\ sf::Vector2f\ \&size\ =\ sf::Vector2f(0,\ 0),\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\ \&position\ =\ sf::Vector2f(0,\ 0),\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&color\ =\ sf::Color::Transparent,\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ outlineThickness\ =\ 0.0f,\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&outlineColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00056\ sf::CircleShape\ \mbox{\hyperlink{ElementUI_8hpp_a68564a786ba1c22261497071f480a309}{createCircle}}(\textcolor{keywordtype}{float}\ radius\ =\ 0.0f,\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\ \&position\ =\ sf::Vector2f(0,\ 0),\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&fillColor\ =\ sf::Color::Transparent,\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ outlineThickness\ =\ 0.0f,\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&outlineColor\ =\ sf::Color::Transparent);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structButton}{Button}}}
+\DoxyCodeLine{00069\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{structButton_ab86193fd8a7d8930880ddd5890adcd5f}{shape}};\ }
+\DoxyCodeLine{00071\ \ \ \ \ sf::Text\ \mbox{\hyperlink{structButton_aadf908b0777f2ae5c28d949fda3384c1}{text}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00089\ \mbox{\hyperlink{structButton}{Button}}\ \mbox{\hyperlink{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa}{createButton}}(\textcolor{keyword}{const}\ sf::Vector2f\ \&size\ =\ sf::Vector2f(0,\ 0),\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\ \&position\ =\ sf::Vector2f(0,\ 0),\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&buttonColor\ =\ sf::Color::Transparent,\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ outlineThickness\ =\ 0.0f,\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&outlineColor\ =\ sf::Color::Transparent,\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fontKey\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&buttonText\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ textSize\ =\ 0,\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ sf::Color\ \&textColor\ =\ sf::Color::Transparent);}
+
+\end{DoxyCode}

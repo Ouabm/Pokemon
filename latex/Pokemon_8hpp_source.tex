@@ -1,0 +1,82 @@
+\doxysection{Pokemon.\+hpp}
+\hypertarget{Pokemon_8hpp_source}{}\label{Pokemon_8hpp_source}\index{include/Pokemon.hpp@{include/Pokemon.hpp}}
+\mbox{\hyperlink{Pokemon_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Move_8hpp}{Move.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}\ \textcolor{comment}{//\ Pour\ std::vector}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPokemon}{Pokemon}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}{level}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}};\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}};\ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<const\ Move*>\ \mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}};\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ ==========================\ CONSTRUCTEURS\ ==========================\ //}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classPokemon_a059e2fca08b08cd218c262f937399ed9}{Pokemon}}()}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}}(\textcolor{stringliteral}{"{}Unknown"{}}),\ \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}}(\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}::\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{None}}),\ \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}}(\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}::\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{None}}),\ \mbox{\hyperlink{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}{level}}(0),\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}}(0),\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}}(0),}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}}(0),\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}}(0),\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}}(0),\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}}(0),\ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}}(0)}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}\ =\ \{\textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classPokemon_a1558533f8351d2668dee028dc3509c80}{Pokemon}}(\textcolor{keyword}{const}\ std::string\ \&p\_name,\ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ p\_type1,\ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ p\_type2,\ \textcolor{keywordtype}{int}\ p\_level,\ \textcolor{keywordtype}{int}\ p\_hp,\ \textcolor{keywordtype}{int}\ p\_hpRestant,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ p\_attack,\ \textcolor{keywordtype}{float}\ p\_specialAttack,\ \textcolor{keywordtype}{float}\ p\_defense,\ \textcolor{keywordtype}{float}\ p\_specialDefense,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ p\_speed,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \&m1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \&m2,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \&m3,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \&m4)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}}(p\_name),\ \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}}(p\_type1),\ \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}}(p\_type2),\ \mbox{\hyperlink{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}{level}}(p\_level),\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}}(p\_hp),\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}}(p\_hpRestant),}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}}(p\_attack),\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}}(p\_specialAttack),\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}}(p\_defense),\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}}(p\_specialDefense),}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}}(p\_speed)}
+\DoxyCodeLine{00079\ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}\ =\ \{\&m1,\ \&m2,\ \&m3,\ \&m4\};}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ ==========================\ GETTERS\ ==========================\ //}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::string\ \mbox{\hyperlink{classPokemon_a5931993256753cd7bede31950b4b6d33}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}};\ \}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ \mbox{\hyperlink{classPokemon_a15b0b2f817224ee86a32d615b73041eb}{getType1}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}};\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ \mbox{\hyperlink{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}{getType2}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}};\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPokemon_a4f05ea5b017bab609fc62a27fcbdb8f5}{getHp}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}};\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classPokemon_a2b65eaa0243c24320ba3c72a65612550}{getHpRestant}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}};\ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_add33fc610f4ed2de555f42a91cff4595}{getAttack}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}};\ \}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_a04250b51ca27e86d3670faa52b8c3894}{getSpecialAttack}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}};\ \}\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_acbbd9a9010651cb655c30183d12add51}{getDefense}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}};\ \}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_aa80b0b1109450ca2860f110bcf39578c}{getSpecialDefense}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}};\ \}\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPokemon_abe3b88983fd53b02e5a11e59202d4270}{getSpeed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}};\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ std::vector<const\ Move*>\ \mbox{\hyperlink{classPokemon_a35faa5b0c1503386bab6cc25988cd169}{getMoves}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}};\ \}\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ ==========================\ SETTERS\ ==========================\ //}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_a2563e29d58f09f95a6f0d6b31242b21f}{setHp}}(\textcolor{keywordtype}{int}\ p\_hp)\ \{\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}}\ =\ p\_hp;\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_af317d7446c95b483edb04aba79a321b5}{setHpRestant}}(\textcolor{keywordtype}{int}\ p\_hpRestant)\ \{\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}}\ =\ p\_hpRestant;\ \}\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_a13da41d8c0b808515b89f0f6d59293be}{setAttack}}(\textcolor{keywordtype}{float}\ p\_attack)\ \{\ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}}\ =\ p\_attack;\ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_a72db79be6d3180b1e538a930225d9595}{setSpecialAttack}}(\textcolor{keywordtype}{float}\ p\_specialAttack)\ \{\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}}\ =\ p\_specialAttack;\ \}\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_ac1457bf4bfd3b37fc355c9a18612cb7d}{setDefense}}(\textcolor{keywordtype}{float}\ p\_defense)\ \{\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}}\ =\ p\_defense;\ \}\ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_acd2b238223b6b183063aaf6eb5cef21c}{setSpecialDefense}}(\textcolor{keywordtype}{float}\ p\_specialDefense)\ \{\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}}\ =\ p\_specialDefense;\ \}\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPokemon_a0eeac5acbcb999b3f4eae52a087ccc34}{setSpeed}}(\textcolor{keywordtype}{float}\ p\_speed)\ \{\ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}}\ =\ p\_speed;\ \}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ ==========================\ METHODES\ ==========================\ //}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPokemon_ae548068335e31309add9fbe3c6c84553}{isKO}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}}\ <=\ 0;\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{classPokemon}{Pokemon}}*\ \mbox{\hyperlink{classPokemon_acd45fd88773e1738c89872c6cb7cd5b3}{clone}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00122\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classPokemon_a059e2fca08b08cd218c262f937399ed9}{Pokemon}}(\mbox{\hyperlink{classPokemon_acc4312e4350fe5e22408294becb77c2b}{name}},\ \mbox{\hyperlink{classPokemon_aed9b198fda4935bc509a15b895cfd45f}{type1}},\ \mbox{\hyperlink{classPokemon_a6f5ee06fe17cf096f08cb65e485ded94}{type2}},\ \mbox{\hyperlink{classPokemon_a9d568cb03ac0fe26fc7145ba5116f5f8}{level}},\ \mbox{\hyperlink{classPokemon_ace8a2e5f7361ded7cdb1e9c884f0847b}{hp}},\ \mbox{\hyperlink{classPokemon_a570f6adc357180cadcc73041e090c15d}{hpRestant}},\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPokemon_a5cafafa91dff761685e36c2d820dc8ef}{attack}},\ \mbox{\hyperlink{classPokemon_a6f0bd2d14c59936650b8ec3640cd693e}{specialAttack}},\ \mbox{\hyperlink{classPokemon_a9fe9154ce252d0ed7520c980cd4c08fd}{defense}},\ \mbox{\hyperlink{classPokemon_a061ddb99e272eaabdeeedbc4c125b226}{specialDefense}},\ \mbox{\hyperlink{classPokemon_ad9af1296da02452bc7482ecd41a3ff9c}{speed}},}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}[0],\ *\mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}[1],\ *\mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}[2],\ *\mbox{\hyperlink{classPokemon_a0790b1adfbf8fc591701ed60307b0f67}{moves}}[3]);}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \};}
+
+\end{DoxyCode}

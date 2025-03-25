@@ -1,0 +1,54 @@
+\doxysection{Damage\+Calculator.\+hpp}
+\hypertarget{DamageCalculator_8hpp_source}{}\label{DamageCalculator_8hpp_source}\index{include/DamageCalculator.hpp@{include/DamageCalculator.hpp}}
+\mbox{\hyperlink{DamageCalculator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once\ }}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pokemon_8hpp}{Pokemon.hpp}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{constexpr}\ std::array<std::array<float,\ 18>,\ 18>\ \mbox{\hyperlink{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}{tableType}}\ =\ \{\{}
+\DoxyCodeLine{00006\ \ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00007\ \ \ \ \ \{1.0,\ 0.5,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00008\ \ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 0.5,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 1.0\},}
+\DoxyCodeLine{00009\ \ \ \ \ \{1.0,\ 0.5,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{00010\ \ \ \ \ \{1.0,\ 0.5,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{00011\ \ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 0.5,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00012\ \ \ \ \ \{2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5,\ 0.5,\ 0.5,\ 2.0,\ 0.0,\ 1.0,\ 2.0,\ 2.0,\ 0.5\},}
+\DoxyCodeLine{00013\ \ \ \ \ \{1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 1.0,\ 0.0,\ 2.0\},}
+\DoxyCodeLine{00014\ \ \ \ \ \{1.0,\ 0.5,\ 2.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.0,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0\},}
+\DoxyCodeLine{00015\ \ \ \ \ \{1.0,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00016\ \ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00017\ \ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 0.5,\ 0.5\},}
+\DoxyCodeLine{00018\ \ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{00019\ \ \ \ \ \{0.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{00020\ \ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 0.0\},}
+\DoxyCodeLine{00021\ \ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5\},}
+\DoxyCodeLine{00022\ \ \ \ \ \{1.0,\ 1.0,\ 0.5,\ 0.5,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 2.0\},}
+\DoxyCodeLine{00023\ \ \ \ \ \{1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 0.5,\ 1.0\}}
+\DoxyCodeLine{00024\ \}\};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41}{typeDamage}}(\textcolor{keywordtype}{int}\ attack,\ \textcolor{keywordtype}{int}\ def\_1,\ \textcolor{keywordtype}{int}\ def\_2)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ (def\_2\ !=\ 18)\ ?\ \mbox{\hyperlink{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}{tableType}}[attack][def\_1]\ *\ \mbox{\hyperlink{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}{tableType}}[attack][def\_2]\ :\ \mbox{\hyperlink{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}{tableType}}[attack][def\_1];}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{DamageCalculator_8hpp_abd9a66e6dad03b9a6e1f8bad920c257f}{calculDamage}}(\mbox{\hyperlink{classPokemon}{Pokemon}}\ pokemon\_atk,\ \mbox{\hyperlink{classPokemon}{Pokemon}}\ pokemon\_def,\ \mbox{\hyperlink{classMove}{Move}}\ move)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ min1\ =\ 0\ ,\ \ max1\ =\ 15;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ min2\ =\ 1\ ,\ \ max2\ =\ 100;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ randomInRange\ =\ min1\ +\ std::rand()\ \%\ (max1\ -\/\ min1\ +\ 1);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ accuracy\ =\ min2\ +\ std::rand()\ \%\ (max2\ -\/\ min2\ +\ 1);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (accuracy>move.\mbox{\hyperlink{classMove_a32aec31f56308db2b03396d9c26600ab}{getAccuracy}}())\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ role\ =\ 85\ +\ std::rand()\ \%\ (max1\ -\/\ min1\ +\ 1);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ crit\ =\ randomInRange\ ==\ 15\ ?\ 1.5\ :\ 1;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ STAB\ =\ ((move.\mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{getType}}()\ ==\ pokemon\_atk.\mbox{\hyperlink{classPokemon_a15b0b2f817224ee86a32d615b73041eb}{getType1}}())\ ||\ (move.\mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{getType}}()\ ==\ pokemon\_atk.\mbox{\hyperlink{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}{getType2}}()))\ ?\ 1.5\ :\ 1;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (move.\mbox{\hyperlink{classMove_a29b5dc65848e5b57f19464cf901aa440}{isPhysicalMove}}())\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((((50*0.4+2)*pokemon\_atk.\mbox{\hyperlink{classPokemon_add33fc610f4ed2de555f42a91cff4595}{getAttack}}()*move.\mbox{\hyperlink{classMove_aa12ce33e684d55ef192b72a43faa7902}{getPower}}())/(pokemon\_def.\mbox{\hyperlink{classPokemon_acbbd9a9010651cb655c30183d12add51}{getDefense}}()*50))*STAB*\mbox{\hyperlink{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41}{typeDamage}}(\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(move.\mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{getType}}()),\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(pokemon\_def.\mbox{\hyperlink{classPokemon_a15b0b2f817224ee86a32d615b73041eb}{getType1}}()),\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(pokemon\_def.\mbox{\hyperlink{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}{getType2}}()))*crit*(role/100.0));}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((((50*0.4+2)*pokemon\_atk.\mbox{\hyperlink{classPokemon_a04250b51ca27e86d3670faa52b8c3894}{getSpecialAttack}}()*move.\mbox{\hyperlink{classMove_aa12ce33e684d55ef192b72a43faa7902}{getPower}}())/(pokemon\_def.\mbox{\hyperlink{classPokemon_aa80b0b1109450ca2860f110bcf39578c}{getSpecialDefense}}()*50))*STAB*\mbox{\hyperlink{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41}{typeDamage}}(\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(move.\mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{getType}}()),\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(pokemon\_def.\mbox{\hyperlink{classPokemon_a15b0b2f817224ee86a32d615b73041eb}{getType1}}()),\mbox{\hyperlink{Type_8hpp_a01ebf1e68d612fa0fbc4d591c6d7ee1d}{typeToInt}}(pokemon\_def.\mbox{\hyperlink{classPokemon_a88bbdc73ea0a7ff2fbee6d3c547e345a}{getType2}}()))*crit*(role/100.0));}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}

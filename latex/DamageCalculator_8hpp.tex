@@ -1,0 +1,96 @@
+\doxysection{include/\+Damage\+Calculator.hpp File Reference}
+\hypertarget{DamageCalculator_8hpp}{}\label{DamageCalculator_8hpp}\index{include/DamageCalculator.hpp@{include/DamageCalculator.hpp}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include "{}Pokemon.\+hpp"{}}\newline
+Include dependency graph for Damage\+Calculator.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{DamageCalculator_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{DamageCalculator_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr float \mbox{\hyperlink{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41}{type\+Damage}} (int attack, int def\+\_\+1, int def\+\_\+2)
+\item 
+int \mbox{\hyperlink{DamageCalculator_8hpp_abd9a66e6dad03b9a6e1f8bad920c257f}{calcul\+Damage}} (\mbox{\hyperlink{classPokemon}{Pokemon}} pokemon\+\_\+atk, \mbox{\hyperlink{classPokemon}{Pokemon}} pokemon\+\_\+def, \mbox{\hyperlink{classMove}{Move}} move)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::array$<$ std\+::array$<$ float, 18 $>$, 18 $>$ \mbox{\hyperlink{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}{table\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{DamageCalculator_8hpp_abd9a66e6dad03b9a6e1f8bad920c257f}\label{DamageCalculator_8hpp_abd9a66e6dad03b9a6e1f8bad920c257f} 
+\index{DamageCalculator.hpp@{DamageCalculator.hpp}!calculDamage@{calculDamage}}
+\index{calculDamage@{calculDamage}!DamageCalculator.hpp@{DamageCalculator.hpp}}
+\doxysubsubsection{\texorpdfstring{calculDamage()}{calculDamage()}}
+{\footnotesize\ttfamily int calcul\+Damage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPokemon}{Pokemon}}}]{pokemon\+\_\+atk,  }\item[{\mbox{\hyperlink{classPokemon}{Pokemon}}}]{pokemon\+\_\+def,  }\item[{\mbox{\hyperlink{classMove}{Move}}}]{move }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{DamageCalculator_8hpp_abd9a66e6dad03b9a6e1f8bad920c257f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41}\label{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41} 
+\index{DamageCalculator.hpp@{DamageCalculator.hpp}!typeDamage@{typeDamage}}
+\index{typeDamage@{typeDamage}!DamageCalculator.hpp@{DamageCalculator.hpp}}
+\doxysubsubsection{\texorpdfstring{typeDamage()}{typeDamage()}}
+{\footnotesize\ttfamily constexpr float type\+Damage (\begin{DoxyParamCaption}\item[{int}]{attack,  }\item[{int}]{def\+\_\+1,  }\item[{int}]{def\+\_\+2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{DamageCalculator_8hpp_a39bd3603758327d4443b5404551aad41_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d}\label{DamageCalculator_8hpp_a65efd2dd168c77c3a479bbd1ae117e0d} 
+\index{DamageCalculator.hpp@{DamageCalculator.hpp}!tableType@{tableType}}
+\index{tableType@{tableType}!DamageCalculator.hpp@{DamageCalculator.hpp}}
+\doxysubsubsection{\texorpdfstring{tableType}{tableType}}
+{\footnotesize\ttfamily constexpr std\+::array$<$std\+::array$<$float, 18$>$, 18$>$ table\+Type\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\{}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 0.5,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 0.5,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 0.5,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 0.5,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 0.5,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5,\ 0.5,\ 0.5,\ 2.0,\ 0.0,\ 1.0,\ 2.0,\ 2.0,\ 0.5\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 1.0,\ 0.0,\ 2.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 0.5,\ 2.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.0,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 2.0,\ 0.5,\ 0.5\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 0.5,\ 2.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{0.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 0.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 0.5,\ 1.0,\ 0.5\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 0.5,\ 0.5,\ 0.5,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 1.0,\ 1.0,\ 1.0,\ 0.5,\ 2.0\},}
+\DoxyCodeLine{\ \ \ \ \{1.0,\ 1.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 0.5,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 1.0,\ 2.0,\ 2.0,\ 0.5,\ 1.0\}}
+\DoxyCodeLine{\}\}}
+
+\end{DoxyCode}

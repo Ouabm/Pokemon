@@ -1,47 +1,347 @@
-\hypertarget{classResourceManager}{}\doxysection{Resource\+Manager Class Reference}
-\label{classResourceManager}\index{ResourceManager@{ResourceManager}}
-\doxysubsection*{Public Member Functions}
+\doxysection{Resource\+Manager Class Reference}
+\hypertarget{classResourceManager}{}\label{classResourceManager}\index{ResourceManager@{ResourceManager}}
+
+
+Gestionnaire centralisé des ressources (Singleton)  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classResourceManager_a57285e89c925984706910fccda54ed42}\label{classResourceManager_a57285e89c925984706910fccda54ed42}} 
-bool {\bfseries load\+Font} (const std\+::string \&name, const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac}\label{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac}} 
-bool {\bfseries load\+Texture} (const std\+::string \&name, const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5}\label{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5}} 
-bool {\bfseries load\+Music\+Resource} (const std\+::string \&name, const std\+::string \&filename)
-\item 
-\mbox{\Hypertarget{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6}\label{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6}} 
-const sf\+::\+Font \& {\bfseries get\+Font} (const std\+::string \&name) const
-\item 
-\mbox{\Hypertarget{classResourceManager_a825af42e3c91262ebfd098ab986d92a9}\label{classResourceManager_a825af42e3c91262ebfd098ab986d92a9}} 
-const sf\+::\+Texture \& {\bfseries get\+Texture} (const std\+::string \&name) const
-\item 
-\mbox{\Hypertarget{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c}\label{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c}} 
-sf\+::\+Music \& {\bfseries get\+Music} (const std\+::string \&music\+Key) const
-\item 
-\mbox{\Hypertarget{classResourceManager_a71a01f351acfeea9b2bb309a43a75882}\label{classResourceManager_a71a01f351acfeea9b2bb309a43a75882}} 
-void {\bfseries load\+All\+Resources} ()
-\item 
-\mbox{\Hypertarget{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54}\label{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54}} 
-void {\bfseries load\+All\+Pokemon\+Textures} ()
-\item 
-\mbox{\Hypertarget{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148}\label{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148}} 
-void {\bfseries play\+Music} (const std\+::string \&music\+Key, float volume=50.\+0f, bool loop=true)
-\item 
-\mbox{\Hypertarget{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4}\label{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4}} 
-void {\bfseries stop\+Music} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
+bool \mbox{\hyperlink{classResourceManager_a57285e89c925984706910fccda54ed42}{load\+Font}} (const std\+::string \&name, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Charge une police depuis un fichier. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac}{load\+Texture}} (const std\+::string \&name, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Charge une texture depuis un fichier. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5}{load\+Music\+Resource}} (const std\+::string \&name, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Charge une musique depuis un fichier. \end{DoxyCompactList}\item 
+const sf\+::\+Font \& \mbox{\hyperlink{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6}{get\+Font}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em Récupère une police chargée. \end{DoxyCompactList}\item 
+const sf\+::\+Texture \& \mbox{\hyperlink{classResourceManager_a825af42e3c91262ebfd098ab986d92a9}{get\+Texture}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em Récupère une texture chargée. \end{DoxyCompactList}\item 
+sf\+::\+Music \& \mbox{\hyperlink{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c}{get\+Music}} (const std\+::string \&music\+Key) const
+\begin{DoxyCompactList}\small\item\em Récupère une musique chargée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResourceManager_a71a01f351acfeea9b2bb309a43a75882}{load\+All\+Resources}} ()
+\begin{DoxyCompactList}\small\item\em Charge toutes les ressources globales du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54}{load\+All\+Pokemon\+Textures}} ()
+\begin{DoxyCompactList}\small\item\em Charge toutes les textures des Pokémon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148}{play\+Music}} (const std\+::string \&music\+Key, float volume=50.\+0f, bool loop=true)
+\begin{DoxyCompactList}\small\item\em Joue une musique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4}{stop\+Music}} ()
+\begin{DoxyCompactList}\small\item\em Arrête la musique en cours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classResourceManager_a37d0e97686c031cef9b22725ba4a6005}\label{classResourceManager_a37d0e97686c031cef9b22725ba4a6005}} 
-static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& {\bfseries get\+Instance} ()
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& \mbox{\hyperlink{classResourceManager_a37d0e97686c031cef9b22725ba4a6005}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Obtient l\textquotesingle{}instance unique du gestionnaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestionnaire centralisé des ressources (Singleton) 
+
+Cette classe implémente le pattern Singleton pour fournir un accès global aux ressources du jeu (textures, polices, musiques). Elle permet \+:
+\begin{DoxyItemize}
+\item Le chargement et le stockage des ressources
+\item L\textquotesingle{}accès sécurisé aux ressources
+\item La gestion de la musique en cours
+\end{DoxyItemize}
+
+@designpattern Singleton -\/ Garantit une seule instance globale 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6}\label{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6} 
+\index{ResourceManager@{ResourceManager}!getFont@{getFont}}
+\index{getFont@{getFont}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getFont()}{getFont()}}
+{\footnotesize\ttfamily const sf\+::\+Font \& Resource\+Manager\+::get\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Récupère une police chargée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Clé de la police \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Référence constante à la police 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & si la clé n\textquotesingle{}existe pas \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classResourceManager_a37d0e97686c031cef9b22725ba4a6005}\label{classResourceManager_a37d0e97686c031cef9b22725ba4a6005} 
+\index{ResourceManager@{ResourceManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classResourceManager}{Resource\+Manager}} \& Resource\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtient l\textquotesingle{}instance unique du gestionnaire. 
+
+\begin{DoxyReturn}{Returns}
+Référence à l\textquotesingle{}instance unique de \doxylink{classResourceManager}{Resource\+Manager} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_a37d0e97686c031cef9b22725ba4a6005_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c}\label{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c} 
+\index{ResourceManager@{ResourceManager}!getMusic@{getMusic}}
+\index{getMusic@{getMusic}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getMusic()}{getMusic()}}
+{\footnotesize\ttfamily sf\+::\+Music \& Resource\+Manager\+::get\+Music (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{music\+Key }\end{DoxyParamCaption}) const}
+
+
+
+Récupère une musique chargée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em music\+Key} & Clé de la musique \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Référence à la musique (pour contrôle playback) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & si la clé n\textquotesingle{}existe pas \\
+\hline
+\end{DoxyExceptions}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_a825af42e3c91262ebfd098ab986d92a9}\label{classResourceManager_a825af42e3c91262ebfd098ab986d92a9} 
+\index{ResourceManager@{ResourceManager}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily const sf\+::\+Texture \& Resource\+Manager\+::get\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+Récupère une texture chargée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Clé de la texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Référence constante à la texture 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & si la clé n\textquotesingle{}existe pas \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54}\label{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54} 
+\index{ResourceManager@{ResourceManager}!loadAllPokemonTextures@{loadAllPokemonTextures}}
+\index{loadAllPokemonTextures@{loadAllPokemonTextures}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{loadAllPokemonTextures()}{loadAllPokemonTextures()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::load\+All\+Pokemon\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Charge toutes les textures des Pokémon. 
+
+Charge les sprites de tous les Pokémon disponibles dans le jeu. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_a71a01f351acfeea9b2bb309a43a75882}\label{classResourceManager_a71a01f351acfeea9b2bb309a43a75882} 
+\index{ResourceManager@{ResourceManager}!loadAllResources@{loadAllResources}}
+\index{loadAllResources@{loadAllResources}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{loadAllResources()}{loadAllResources()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::load\+All\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Charge toutes les ressources globales du jeu. 
+
+Méthode centrale qui charge l\textquotesingle{}ensemble des ressources nécessaires au fonctionnement de base du jeu. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_a71a01f351acfeea9b2bb309a43a75882_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{classResourceManager_a71a01f351acfeea9b2bb309a43a75882_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_a57285e89c925984706910fccda54ed42}\label{classResourceManager_a57285e89c925984706910fccda54ed42} 
+\index{ResourceManager@{ResourceManager}!loadFont@{loadFont}}
+\index{loadFont@{loadFont}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{loadFont()}{loadFont()}}
+{\footnotesize\ttfamily bool Resource\+Manager\+::load\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Charge une police depuis un fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Clé d\textquotesingle{}accès pour la police \\
+\hline
+{\em filename} & Chemin du fichier .ttf/.otf \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si chargement réussi, false sinon 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_a57285e89c925984706910fccda54ed42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5}\label{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5} 
+\index{ResourceManager@{ResourceManager}!loadMusicResource@{loadMusicResource}}
+\index{loadMusicResource@{loadMusicResource}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{loadMusicResource()}{loadMusicResource()}}
+{\footnotesize\ttfamily bool Resource\+Manager\+::load\+Music\+Resource (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Charge une musique depuis un fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Clé d\textquotesingle{}accès pour la musique \\
+\hline
+{\em filename} & Chemin du fichier audio \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si chargement réussi, false sinon 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac}\label{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac} 
+\index{ResourceManager@{ResourceManager}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily bool Resource\+Manager\+::load\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Charge une texture depuis un fichier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Clé d\textquotesingle{}accès pour la texture \\
+\hline
+{\em filename} & Chemin du fichier image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si chargement réussi, false sinon 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148}\label{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148} 
+\index{ResourceManager@{ResourceManager}!playMusic@{playMusic}}
+\index{playMusic@{playMusic}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{playMusic()}{playMusic()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::play\+Music (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{music\+Key,  }\item[{float}]{volume = {\ttfamily 50.0f},  }\item[{bool}]{loop = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Joue une musique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em music\+Key} & Clé de la musique à jouer \\
+\hline
+{\em volume} & Volume (0-\/100) \\
+\hline
+{\em loop} & true pour lecture en boucle \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4}\label{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4} 
+\index{ResourceManager@{ResourceManager}!stopMusic@{stopMusic}}
+\index{stopMusic@{stopMusic}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{stopMusic()}{stopMusic()}}
+{\footnotesize\ttfamily void Resource\+Manager\+::stop\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Arrête la musique en cours. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/Resource\+Manager.\+hpp\item 
-src/Resource\+Manager.\+cpp\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{ResourceManager_8hpp}{Resource\+Manager.\+hpp}}\item 
+src/\mbox{\hyperlink{ResourceManager_8cpp}{Resource\+Manager.\+cpp}}\end{DoxyCompactItemize}

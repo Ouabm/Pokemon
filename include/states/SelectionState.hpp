@@ -4,38 +4,88 @@
 #include "ElementUI.hpp"
 
 // ========================== STRUCTURE DE SÉLECTION D'ÉQUIPE ========================== //
-// Gère la sélection des Pokémon pour chaque équipe
+
+/**
+ * @struct TeamSelectionStruct
+ * @brief Structure gérant l'état de sélection d'une équipe de Pokémon
+ *
+ * Contient tous les éléments nécessaires pour la sélection interactive
+ * des Pokémon par un joueur.
+ */
 struct TeamSelectionStruct
 {
-    std::vector<sf::RectangleShape> selectedBoxes; // Boîtes de sélection des Pokémon
-    sf::RectangleShape currentBox;                 // Boîte de sélection active
-    std::vector<std::string> pokemonNames;         // Noms des Pokémon sélectionnés
-    int selectionIndex = 0;                        // Indice du Pokémon actuellement sélectionné
-    bool isReady = false;                          // Indique si l'équipe est prête
+    std::vector<sf::RectangleShape> selectedBoxes; ///< Conteneurs visuels pour les Pokémon sélectionnés
+    sf::RectangleShape currentBox;                 ///< Cadre de sélection actif (mise en évidence)
+    std::vector<std::string> pokemonNames;         ///< Noms des Pokémon actuellement sélectionnés
+    int selectionIndex = 0;                        ///< Index de la sélection courante (0-based)
+    bool isReady = false;                          ///< Flag indiquant si la sélection est complétée
 };
 
 // ================================ CLASSE SELECTIONSTATE ================================ //
-// État du jeu permettant aux joueurs de sélectionner leurs équipes
+
+/**
+ * @class SelectionState
+ * @brief État de sélection des équipes Pokémon avant le combat
+ *
+ * Cet état permet aux joueurs de choisir leurs Pokémon pour former
+ * leurs équipes avant de lancer un combat. Gère l'interface de
+ * sélection pour deux équipes (rouge et bleue).
+ */
 class SelectionState : public GameState
 {
 public:
-    SelectionState(GameStateManager *manager); // Constructeur
+    /**
+     * @brief Constructeur de SelectionState
+     * @param manager Pointeur vers le gestionnaire d'états du jeu
+     *
+     * Initialise l'état de sélection et charge les ressources nécessaires.
+     */
+    SelectionState(GameStateManager *manager);
 
     // ========================== MÉTHODES PRINCIPALES ========================== //
-    void handleInput(sf::RenderWindow &window) override; // Gestion des entrées utilisateur
-    void update() override;                              // Mise à jour de l'état de sélection
-    void render(sf::RenderWindow &window) override;      // Affichage de l'écran de sélection
+    
+    /**
+     * @brief Gère les entrées utilisateur (sélection, navigation, validation)
+     * @param window Fenêtre SFML pour la capture des événements
+     */
+    void handleInput(sf::RenderWindow &window) override;
+    
+    /**
+     * @brief Met à jour la logique de sélection à chaque frame
+     *
+     * Gère les animations et les transitions entre états de sélection.
+     */
+    void update() override;
+    
+    /**
+     * @brief Affiche l'interface de sélection des Pokémon
+     * @param window Fenêtre SFML pour le rendu graphique
+     */
+    void render(sf::RenderWindow &window) override;
 
 private:
     // ============================== ÉLÉMENTS GRAPHIQUES ============================== //
-    sf::Sprite backgroundSprite;            // Fond d'écran de l'écran de sélection
-    std::vector<sf::Sprite> pokemonSprites; // Sprites de tous les Pokémon disponibles
+    sf::Sprite backgroundSprite;            ///< Arrière-plan de l'écran de sélection
+    std::vector<sf::Sprite> pokemonSprites; ///< Collection de tous les sprites Pokémon disponibles
 
     // ============================== STRUCTURES DE SÉLECTION ============================== //
-    TeamSelectionStruct redTeamSelection;  // Sélection de l'équipe rouge
-    TeamSelectionStruct blueTeamSelection; // Sélection de l'équipe bleue
+    TeamSelectionStruct redTeamSelection;  ///< État de sélection pour l'équipe rouge
+    TeamSelectionStruct blueTeamSelection; ///< État de sélection pour l'équipe bleue
 
     // ============================== MÉTHODES UTILES ============================== //
-    void loadAllPokemonSprites();                                    // Charge tous les sprites de Pokémon disponibles
-    void handlePokemonSelection(TeamSelectionStruct &teamSelection); // Gère la sélection des Pokémon
+    
+    /**
+     * @brief Charge tous les sprites Pokémon disponibles pour la sélection
+     *
+     * Initialise le vecteur pokemonSprites avec les textures chargées.
+     */
+    void loadAllPokemonSprites();
+    
+    /**
+     * @brief Gère la logique de sélection d'un Pokémon
+     * @param teamSelection Référence à la structure de sélection à modifier
+     *
+     * Ajoute le Pokémon sélectionné à l'équipe et met à jour l'interface.
+     */
+    void handlePokemonSelection(TeamSelectionStruct &teamSelection);
 };

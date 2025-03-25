@@ -1,0 +1,5 @@
+<map id="BattleTeamStruct" name="BattleTeamStruct">
+<area shape="rect" id="Node000001" title="Structure contenant tous les éléments visuels et logiques d&#39;une équipe de Pokémon pendant un combat." alt="" coords="5,93,140,119"/>
+<area shape="rect" id="Node000002" href="$classMove.html" title="Représente une attaque/technique que peut utiliser un Pokémon." alt="" coords="43,5,102,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,45,75,93,70,93,70,45"/>
+</map>

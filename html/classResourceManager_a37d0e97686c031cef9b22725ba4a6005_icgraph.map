@@ -1,0 +1,19 @@
+<map id="ResourceManager::getInstance" name="ResourceManager::getInstance">
+<area shape="rect" id="Node000001" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="587,132,809,157"/>
+<area shape="rect" id="Node000002" href="$classBattleState.html#a7f0a431be97a74e25ca0de243d71df65" title="Constructeur de la classe BattleState." alt="" coords="359,7,535,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="668,126,609,86,538,47,503,35,504,30,540,42,612,82,671,121"/>
+<area shape="rect" id="Node000003" href="$ElementUI_8cpp.html#aa86535bc9abc69539be8acf19452d3a3" title="Crée un objet texte SFML configuré" alt="" coords="401,56,492,81"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="641,131,489,84,491,79,643,125"/>
+<area shape="rect" id="Node000005" href="$classEndState.html#af71cfde8cf2e4aa707a49a74445fe85d" title="Constructeur de la classe EndState." alt="" coords="5,56,152,81"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="580,133,152,80,153,75,581,128"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="419,157,474,183"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="573,160,475,170,474,165,573,155"/>
+<area shape="rect" id="Node000007" href="$classMenuState.html#a88ab9a34c0abe6b832062933a8f5d56f" title="Constructeur de MenuState." alt="" coords="361,207,532,232"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="646,164,539,198,499,209,497,204,538,193,645,159"/>
+<area shape="rect" id="Node000008" href="$classSelectionState.html#aca3f51d494867f03d3f83ba88980f975" title="Constructeur de SelectionState." alt="" coords="355,257,539,297"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="670,168,611,207,540,247,512,259,510,254,537,242,608,202,667,163"/>
+<area shape="rect" id="Node000004" href="$ElementUI_8cpp.html#a42be0d3d2016e7c410b9903c9abf5433" title="Crée un bouton configuré" alt="" coords="200,5,307,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="387,56,354,47,302,33,303,28,355,42,389,51"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="388,71,152,71,152,66,388,66"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="196,37,124,58,123,53,195,32"/>
+</map>

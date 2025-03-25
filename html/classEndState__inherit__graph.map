@@ -1,0 +1,5 @@
+<map id="EndState" name="EndState">
+<area shape="rect" id="Node000001" title="État de fin de jeu, affichant l&#39;écran de conclusion et les options disponibles." alt="" coords="13,79,93,104"/>
+<area shape="rect" id="Node000002" href="$classGameState.html" title="Classe de base abstraite pour tous les états du jeu." alt="" coords="5,5,100,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,44,55,79,50,79,50,44"/>
+</map>

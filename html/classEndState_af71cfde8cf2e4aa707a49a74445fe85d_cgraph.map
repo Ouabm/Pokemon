@@ -1,0 +1,19 @@
+<map id="EndState::EndState" name="EndState::EndState">
+<area shape="rect" id="Node000001" title="Constructeur de la classe EndState." alt="" coords="5,81,152,107"/>
+<area shape="rect" id="Node000002" href="$ElementUI_8cpp.html#a42be0d3d2016e7c410b9903c9abf5433" title="Crée un bouton configuré" alt="" coords="253,5,360,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,79,199,47,248,32,249,37,201,53,114,84"/>
+<area shape="rect" id="Node000004" href="$ElementUI_8cpp.html#aa86535bc9abc69539be8acf19452d3a3" title="Crée un objet texte SFML configuré" alt="" coords="523,56,613,81"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="152,88,509,69,509,74,152,93"/>
+<area shape="rect" id="Node000005" href="$classResourceManager.html#a37d0e97686c031cef9b22725ba4a6005" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="723,81,945,107"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="152,91,708,91,708,97,152,97"/>
+<area shape="rect" id="Node000006" href="$classResourceManager.html#ac2b5f2226b62e7cba713ba4dfbd3f148" title="Joue une musique." alt="" coords="200,157,413,183"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="114,104,201,135,249,151,248,156,199,141,113,109"/>
+<area shape="rect" id="Node000003" href="$ElementUI_8cpp.html#a224ac794c376ba3d07d3b1f09202a7d7" title="Crée un rectangle SFML configuré" alt="" coords="504,5,632,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="360,15,490,15,490,21,360,21"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="361,26,510,55,509,60,360,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="614,70,709,79,709,85,613,76"/>
+<area shape="rect" id="Node000007" href="$classResourceManager.html#a8f828b232016cfe029d9cb7fa49bd46c" title="Récupère une musique chargée." alt="" coords="465,157,671,183"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="414,167,451,167,451,173,414,173"/>
+<area shape="rect" id="Node000008" href="$classResourceManager.html#ad4b41e029864aef0e63af2238efbf4d4" title="Arrête la musique en cours." alt="" coords="461,207,675,232"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="375,180,487,201,486,207,374,185"/>
+</map>

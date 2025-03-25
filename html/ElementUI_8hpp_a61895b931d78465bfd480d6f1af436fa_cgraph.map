@@ -1,0 +1,9 @@
+<map id="createButton" name="createButton">
+<area shape="rect" id="Node000001" title="Crée un bouton configuré" alt="" coords="5,31,112,56"/>
+<area shape="rect" id="Node000002" href="$ElementUI_8cpp.html#a224ac794c376ba3d07d3b1f09202a7d7" title="Crée un rectangle SFML configuré" alt="" coords="160,5,288,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,33,146,27,147,33,113,38"/>
+<area shape="rect" id="Node000003" href="$ElementUI_8cpp.html#aa86535bc9abc69539be8acf19452d3a3" title="Crée un objet texte SFML configuré" alt="" coords="179,55,269,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,48,166,56,165,61,112,54"/>
+<area shape="rect" id="Node000004" href="$classResourceManager.html#a37d0e97686c031cef9b22725ba4a6005" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="336,55,559,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="269,65,322,65,322,70,269,70"/>
+</map>

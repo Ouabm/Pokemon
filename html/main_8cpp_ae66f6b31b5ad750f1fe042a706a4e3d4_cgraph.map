@@ -1,0 +1,30 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,178,60,203"/>
+<area shape="rect" id="Node000002" href="$classGameStateManager.html#a54870e7edea7078aa18a10b00b097231" title="Change l&#39;état actuel du jeu." alt="" coords="116,24,323,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,177,61,127,81,98,106,74,115,68,118,73,110,78,85,102,66,130,41,179"/>
+<area shape="rect" id="Node000003" href="$classResourceManager.html#a37d0e97686c031cef9b22725ba4a6005" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="108,89,331,114"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="43,176,70,150,107,124,126,116,129,121,109,129,74,154,47,180"/>
+<area shape="rect" id="Node000004" href="$classGameStateManager.html#a70b6f9f4c19becb3d8b1552b392b9343" title="Gère les entrées de l&#39;utilisateur." alt="" coords="117,139,321,179"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="60,183,103,176,104,181,61,189"/>
+<area shape="rect" id="Node000005" href="$classResourceManager.html#a71a01f351acfeea9b2bb309a43a75882" title="Charge toutes les ressources globales du jeu." alt="" coords="123,203,315,243"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="61,193,110,201,109,206,60,198"/>
+<area shape="rect" id="Node000013" href="$classGameStateManager.html#a3223d303fa63acef52f185d4ec0cac5f" title="Affiche l&#39;état actuel du jeu." alt="" coords="118,267,321,293"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="47,202,74,228,109,252,129,261,126,265,107,257,70,232,43,205"/>
+<area shape="rect" id="Node000014" href="$classGameStateManager.html#afe49135ce3ef43fce33588c58460fd32" title="Met à jour l&#39;état actuel du jeu." alt="" coords="117,317,322,342"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="41,202,65,252,85,280,110,303,119,309,116,313,106,307,81,284,60,255,36,205"/>
+<area shape="rect" id="Node000006" href="$classResourceManager.html#af91d4dbc0061ea389cb3f44d8ed9aa54" title="Charge toutes les textures des Pokémon." alt="" coords="389,120,581,160"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="290,200,330,188,411,162,413,167,331,193,292,205"/>
+<area shape="rect" id="Node000010" href="$classResourceManager.html#a25c02ad5d527db70d8a36c2511c7c6ac" title="Charge une texture depuis un fichier." alt="" coords="651,185,874,210"/>
+<area shape="poly" id="edge12_Node000005_Node000010" title=" " alt="" coords="315,216,638,200,638,206,316,221"/>
+<area shape="rect" id="Node000011" href="$classResourceManager.html#a57285e89c925984706910fccda54ed42" title="Charge une police depuis un fichier." alt="" coords="384,235,587,261"/>
+<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="316,229,371,234,370,240,315,234"/>
+<area shape="rect" id="Node000012" href="$classResourceManager.html#abeb0549536bc0dca7a6a6f19ec0134e5" title="Charge une musique depuis un fichier." alt="" coords="379,285,592,325"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="290,240,332,253,380,271,404,279,402,284,378,276,330,259,288,245"/>
+<area shape="rect" id="Node000007" href="$classPokemonManager.html#a077232395b717b3209d8ec89a35038cf" title="Obtient la liste de tous les noms de Pokémon disponibles." alt="" coords="640,5,885,45"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="517,118,573,86,639,55,661,47,663,52,641,60,575,91,520,122"/>
+<area shape="rect" id="Node000008" href="$classPokemonManager.html#a231b8f60d0458d3121cf8d59ebc04c63" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="651,70,874,95"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="581,118,687,96,688,101,582,123"/>
+<area shape="rect" id="Node000009" href="$classPokemonManager.html#abf44235119b22791839bfe576f926fa5" title="Récupère un Pokémon par son nom." alt="" coords="649,120,877,160"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="582,137,635,137,635,143,582,143"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="582,157,688,179,687,184,581,162"/>
+</map>

@@ -1,0 +1,205 @@
+\doxysection{Battle\+Team\+Struct Struct Reference}
+\hypertarget{structBattleTeamStruct}{}\label{structBattleTeamStruct}\index{BattleTeamStruct@{BattleTeamStruct}}
+
+
+Structure contenant tous les éléments visuels et logiques d\textquotesingle{}une équipe de Pokémon pendant un combat.  
+
+
+
+
+{\ttfamily \#include $<$Battle\+State.\+hpp$>$}
+
+
+
+Collaboration diagram for Battle\+Team\+Struct\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{structBattleTeamStruct__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ sf\+::\+Sprite $>$ \mbox{\hyperlink{structBattleTeamStruct_a74c6f92b2d759f4ad9594594d273bb0b}{pokemon\+Sprites}}
+\begin{DoxyCompactList}\small\item\em Sprites graphiques des Pokémon de l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6}{pokemons}}
+\begin{DoxyCompactList}\small\item\em Pointeurs vers les objets Pokémon de l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \mbox{\hyperlink{structBattleTeamStruct_aea7aede634f6382323481d49ea739cf3}{health\+Bars}}
+\begin{DoxyCompactList}\small\item\em Barres de vie pour chaque Pokémon. \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{structBattleTeamStruct_af1797633e6168e95716376e830555fc3}{bg\+Health\+Bar}}
+\begin{DoxyCompactList}\small\item\em Arrière-\/plan des barres de vie. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Text $>$ \mbox{\hyperlink{structBattleTeamStruct_a78acd82efa1f25883d2b9093af14eb84}{bars\+Text}}
+\begin{DoxyCompactList}\small\item\em Textes affichant les points de vie actuels. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structButton}{Button}} $>$ \mbox{\hyperlink{structBattleTeamStruct_ac697aea9753022bdb16d6b12cc5d60a2}{move\+Buttons}}
+\begin{DoxyCompactList}\small\item\em Boutons pour sélectionner les attaques. \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{structBattleTeamStruct_abc12df8ac46230255f4ced381a5aed18}{bg\+Move\+Buttons}}
+\begin{DoxyCompactList}\small\item\em Arrière-\/plan des boutons d\textquotesingle{}attaques. \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{structBattleTeamStruct_a0762390852528d14781d61941a5259d4}{target\+Indicator}}
+\begin{DoxyCompactList}\small\item\em Indicateur visuel de la cible sélectionnée. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structBattleTeamStruct_ac1812f11efdcc86308cacd83984f6e5c}{active\+Pokemon}} = 0
+\begin{DoxyCompactList}\small\item\em Index du Pokémon actuellement actif dans l\textquotesingle{}équipe. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structBattleTeamStruct_a80545427e91b2961c534c93744426e9a}{pokemon\+Targeted}} = 0
+\begin{DoxyCompactList}\small\item\em Index du Pokémon ennemi ciblé \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classMove}{Move}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structBattleTeamStruct_a35411a3ef593832fcfb6498ee9f751c2}{current\+Move}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointeur vers l\textquotesingle{}attaque actuellement sélectionnée. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structBattleTeamStruct_a287090295daad929de5a718f6979a5d7}{is\+Move\+Chosen}} = false
+\begin{DoxyCompactList}\small\item\em Flag indiquant si un mouvement a été choisi. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structBattleTeamStruct_aab824708a01aa523f2013e4bb6826fc5}{is\+Target\+Chosen}} = false
+\begin{DoxyCompactList}\small\item\em Flag indiquant si une cible a été sélectionnée. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structBattleTeamStruct_a81cf83bb2b33c7e85deb4a28bc2732e2}{is\+Ready}} = false
+\begin{DoxyCompactList}\small\item\em Flag indiquant si l\textquotesingle{}équipe est prête à attaquer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure contenant tous les éléments visuels et logiques d\textquotesingle{}une équipe de Pokémon pendant un combat. 
+
+Cette structure regroupe les sprites, les données des Pokémon, les éléments d\textquotesingle{}interface utilisateur et les états relatifs à une équipe pendant un combat. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structBattleTeamStruct_ac1812f11efdcc86308cacd83984f6e5c}\label{structBattleTeamStruct_ac1812f11efdcc86308cacd83984f6e5c} 
+\index{BattleTeamStruct@{BattleTeamStruct}!activePokemon@{activePokemon}}
+\index{activePokemon@{activePokemon}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{activePokemon}{activePokemon}}
+{\footnotesize\ttfamily int Battle\+Team\+Struct\+::active\+Pokemon = 0}
+
+
+
+Index du Pokémon actuellement actif dans l\textquotesingle{}équipe. 
+
+\Hypertarget{structBattleTeamStruct_a78acd82efa1f25883d2b9093af14eb84}\label{structBattleTeamStruct_a78acd82efa1f25883d2b9093af14eb84} 
+\index{BattleTeamStruct@{BattleTeamStruct}!barsText@{barsText}}
+\index{barsText@{barsText}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{barsText}{barsText}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Text$>$ Battle\+Team\+Struct\+::bars\+Text}
+
+
+
+Textes affichant les points de vie actuels. 
+
+\Hypertarget{structBattleTeamStruct_af1797633e6168e95716376e830555fc3}\label{structBattleTeamStruct_af1797633e6168e95716376e830555fc3} 
+\index{BattleTeamStruct@{BattleTeamStruct}!bgHealthBar@{bgHealthBar}}
+\index{bgHealthBar@{bgHealthBar}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{bgHealthBar}{bgHealthBar}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Battle\+Team\+Struct\+::bg\+Health\+Bar}
+
+
+
+Arrière-\/plan des barres de vie. 
+
+\Hypertarget{structBattleTeamStruct_abc12df8ac46230255f4ced381a5aed18}\label{structBattleTeamStruct_abc12df8ac46230255f4ced381a5aed18} 
+\index{BattleTeamStruct@{BattleTeamStruct}!bgMoveButtons@{bgMoveButtons}}
+\index{bgMoveButtons@{bgMoveButtons}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{bgMoveButtons}{bgMoveButtons}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Battle\+Team\+Struct\+::bg\+Move\+Buttons}
+
+
+
+Arrière-\/plan des boutons d\textquotesingle{}attaques. 
+
+\Hypertarget{structBattleTeamStruct_a35411a3ef593832fcfb6498ee9f751c2}\label{structBattleTeamStruct_a35411a3ef593832fcfb6498ee9f751c2} 
+\index{BattleTeamStruct@{BattleTeamStruct}!currentMove@{currentMove}}
+\index{currentMove@{currentMove}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{currentMove}{currentMove}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classMove}{Move}}\texorpdfstring{$\ast$}{*} Battle\+Team\+Struct\+::current\+Move = nullptr}
+
+
+
+Pointeur vers l\textquotesingle{}attaque actuellement sélectionnée. 
+
+\Hypertarget{structBattleTeamStruct_aea7aede634f6382323481d49ea739cf3}\label{structBattleTeamStruct_aea7aede634f6382323481d49ea739cf3} 
+\index{BattleTeamStruct@{BattleTeamStruct}!healthBars@{healthBars}}
+\index{healthBars@{healthBars}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{healthBars}{healthBars}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Battle\+Team\+Struct\+::health\+Bars}
+
+
+
+Barres de vie pour chaque Pokémon. 
+
+\Hypertarget{structBattleTeamStruct_a287090295daad929de5a718f6979a5d7}\label{structBattleTeamStruct_a287090295daad929de5a718f6979a5d7} 
+\index{BattleTeamStruct@{BattleTeamStruct}!isMoveChosen@{isMoveChosen}}
+\index{isMoveChosen@{isMoveChosen}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{isMoveChosen}{isMoveChosen}}
+{\footnotesize\ttfamily bool Battle\+Team\+Struct\+::is\+Move\+Chosen = false}
+
+
+
+Flag indiquant si un mouvement a été choisi. 
+
+\Hypertarget{structBattleTeamStruct_a81cf83bb2b33c7e85deb4a28bc2732e2}\label{structBattleTeamStruct_a81cf83bb2b33c7e85deb4a28bc2732e2} 
+\index{BattleTeamStruct@{BattleTeamStruct}!isReady@{isReady}}
+\index{isReady@{isReady}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{isReady}{isReady}}
+{\footnotesize\ttfamily bool Battle\+Team\+Struct\+::is\+Ready = false}
+
+
+
+Flag indiquant si l\textquotesingle{}équipe est prête à attaquer. 
+
+\Hypertarget{structBattleTeamStruct_aab824708a01aa523f2013e4bb6826fc5}\label{structBattleTeamStruct_aab824708a01aa523f2013e4bb6826fc5} 
+\index{BattleTeamStruct@{BattleTeamStruct}!isTargetChosen@{isTargetChosen}}
+\index{isTargetChosen@{isTargetChosen}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{isTargetChosen}{isTargetChosen}}
+{\footnotesize\ttfamily bool Battle\+Team\+Struct\+::is\+Target\+Chosen = false}
+
+
+
+Flag indiquant si une cible a été sélectionnée. 
+
+\Hypertarget{structBattleTeamStruct_ac697aea9753022bdb16d6b12cc5d60a2}\label{structBattleTeamStruct_ac697aea9753022bdb16d6b12cc5d60a2} 
+\index{BattleTeamStruct@{BattleTeamStruct}!moveButtons@{moveButtons}}
+\index{moveButtons@{moveButtons}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{moveButtons}{moveButtons}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structButton}{Button}}$>$ Battle\+Team\+Struct\+::move\+Buttons}
+
+
+
+Boutons pour sélectionner les attaques. 
+
+\Hypertarget{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6}\label{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6} 
+\index{BattleTeamStruct@{BattleTeamStruct}!pokemons@{pokemons}}
+\index{pokemons@{pokemons}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{pokemons}{pokemons}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classPokemon}{Pokemon}} \texorpdfstring{$\ast$}{*}$>$ Battle\+Team\+Struct\+::pokemons}
+
+
+
+Pointeurs vers les objets Pokémon de l\textquotesingle{}équipe. 
+
+\Hypertarget{structBattleTeamStruct_a74c6f92b2d759f4ad9594594d273bb0b}\label{structBattleTeamStruct_a74c6f92b2d759f4ad9594594d273bb0b} 
+\index{BattleTeamStruct@{BattleTeamStruct}!pokemonSprites@{pokemonSprites}}
+\index{pokemonSprites@{pokemonSprites}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{pokemonSprites}{pokemonSprites}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$>$ Battle\+Team\+Struct\+::pokemon\+Sprites}
+
+
+
+Sprites graphiques des Pokémon de l\textquotesingle{}équipe. 
+
+\Hypertarget{structBattleTeamStruct_a80545427e91b2961c534c93744426e9a}\label{structBattleTeamStruct_a80545427e91b2961c534c93744426e9a} 
+\index{BattleTeamStruct@{BattleTeamStruct}!pokemonTargeted@{pokemonTargeted}}
+\index{pokemonTargeted@{pokemonTargeted}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{pokemonTargeted}{pokemonTargeted}}
+{\footnotesize\ttfamily int Battle\+Team\+Struct\+::pokemon\+Targeted = 0}
+
+
+
+Index du Pokémon ennemi ciblé 
+
+\Hypertarget{structBattleTeamStruct_a0762390852528d14781d61941a5259d4}\label{structBattleTeamStruct_a0762390852528d14781d61941a5259d4} 
+\index{BattleTeamStruct@{BattleTeamStruct}!targetIndicator@{targetIndicator}}
+\index{targetIndicator@{targetIndicator}!BattleTeamStruct@{BattleTeamStruct}}
+\doxysubsubsection{\texorpdfstring{targetIndicator}{targetIndicator}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Battle\+Team\+Struct\+::target\+Indicator}
+
+
+
+Indicateur visuel de la cible sélectionnée. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{BattleState_8hpp}{Battle\+State.\+hpp}}\end{DoxyCompactItemize}

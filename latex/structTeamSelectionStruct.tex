@@ -1,0 +1,87 @@
+\doxysection{Team\+Selection\+Struct Struct Reference}
+\hypertarget{structTeamSelectionStruct}{}\label{structTeamSelectionStruct}\index{TeamSelectionStruct@{TeamSelectionStruct}}
+
+
+Structure gérant l\textquotesingle{}état de sélection d\textquotesingle{}une équipe de Pokémon.  
+
+
+
+
+{\ttfamily \#include $<$Selection\+State.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \mbox{\hyperlink{structTeamSelectionStruct_aeba87d14fccb6c22b4645ca7b349ba79}{selected\+Boxes}}
+\begin{DoxyCompactList}\small\item\em Conteneurs visuels pour les Pokémon sélectionnés. \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{structTeamSelectionStruct_a7faac597399e04693246bc16ed89eecc}{current\+Box}}
+\begin{DoxyCompactList}\small\item\em Cadre de sélection actif (mise en évidence) \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structTeamSelectionStruct_abd99eab1361e9fa714390ec3332682c8}{pokemon\+Names}}
+\begin{DoxyCompactList}\small\item\em Noms des Pokémon actuellement sélectionnés. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structTeamSelectionStruct_a51af150e7ab65ddf16ee1daa455348d8}{selection\+Index}} = 0
+\begin{DoxyCompactList}\small\item\em Index de la sélection courante (0-\/based) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structTeamSelectionStruct_a5bed55fdd9991e0bba7f265b2ab6257d}{is\+Ready}} = false
+\begin{DoxyCompactList}\small\item\em Flag indiquant si la sélection est complétée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure gérant l\textquotesingle{}état de sélection d\textquotesingle{}une équipe de Pokémon. 
+
+Contient tous les éléments nécessaires pour la sélection interactive des Pokémon par un joueur. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structTeamSelectionStruct_a7faac597399e04693246bc16ed89eecc}\label{structTeamSelectionStruct_a7faac597399e04693246bc16ed89eecc} 
+\index{TeamSelectionStruct@{TeamSelectionStruct}!currentBox@{currentBox}}
+\index{currentBox@{currentBox}!TeamSelectionStruct@{TeamSelectionStruct}}
+\doxysubsubsection{\texorpdfstring{currentBox}{currentBox}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Team\+Selection\+Struct\+::current\+Box}
+
+
+
+Cadre de sélection actif (mise en évidence) 
+
+\Hypertarget{structTeamSelectionStruct_a5bed55fdd9991e0bba7f265b2ab6257d}\label{structTeamSelectionStruct_a5bed55fdd9991e0bba7f265b2ab6257d} 
+\index{TeamSelectionStruct@{TeamSelectionStruct}!isReady@{isReady}}
+\index{isReady@{isReady}!TeamSelectionStruct@{TeamSelectionStruct}}
+\doxysubsubsection{\texorpdfstring{isReady}{isReady}}
+{\footnotesize\ttfamily bool Team\+Selection\+Struct\+::is\+Ready = false}
+
+
+
+Flag indiquant si la sélection est complétée. 
+
+\Hypertarget{structTeamSelectionStruct_abd99eab1361e9fa714390ec3332682c8}\label{structTeamSelectionStruct_abd99eab1361e9fa714390ec3332682c8} 
+\index{TeamSelectionStruct@{TeamSelectionStruct}!pokemonNames@{pokemonNames}}
+\index{pokemonNames@{pokemonNames}!TeamSelectionStruct@{TeamSelectionStruct}}
+\doxysubsubsection{\texorpdfstring{pokemonNames}{pokemonNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Team\+Selection\+Struct\+::pokemon\+Names}
+
+
+
+Noms des Pokémon actuellement sélectionnés. 
+
+\Hypertarget{structTeamSelectionStruct_aeba87d14fccb6c22b4645ca7b349ba79}\label{structTeamSelectionStruct_aeba87d14fccb6c22b4645ca7b349ba79} 
+\index{TeamSelectionStruct@{TeamSelectionStruct}!selectedBoxes@{selectedBoxes}}
+\index{selectedBoxes@{selectedBoxes}!TeamSelectionStruct@{TeamSelectionStruct}}
+\doxysubsubsection{\texorpdfstring{selectedBoxes}{selectedBoxes}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Team\+Selection\+Struct\+::selected\+Boxes}
+
+
+
+Conteneurs visuels pour les Pokémon sélectionnés. 
+
+\Hypertarget{structTeamSelectionStruct_a51af150e7ab65ddf16ee1daa455348d8}\label{structTeamSelectionStruct_a51af150e7ab65ddf16ee1daa455348d8} 
+\index{TeamSelectionStruct@{TeamSelectionStruct}!selectionIndex@{selectionIndex}}
+\index{selectionIndex@{selectionIndex}!TeamSelectionStruct@{TeamSelectionStruct}}
+\doxysubsubsection{\texorpdfstring{selectionIndex}{selectionIndex}}
+{\footnotesize\ttfamily int Team\+Selection\+Struct\+::selection\+Index = 0}
+
+
+
+Index de la sélection courante (0-\/based) 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{SelectionState_8hpp}{Selection\+State.\+hpp}}\end{DoxyCompactItemize}

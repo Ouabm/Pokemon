@@ -1,0 +1,5 @@
+<map id="SelectionState::update" name="SelectionState::update">
+<area shape="rect" id="Node000001" title="Met à jour la logique de sélection à chaque frame." alt="" coords="5,13,175,38"/>
+<area shape="rect" id="Node000002" href="$classGameStateManager.html#a54870e7edea7078aa18a10b00b097231" title="Change l&#39;état actuel du jeu." alt="" coords="223,5,429,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,23,209,23,209,28,175,28"/>
+</map>

@@ -1,0 +1,38 @@
+\doxysection{End\+State.\+hpp}
+\hypertarget{EndState_8hpp_source}{}\label{EndState_8hpp_source}\index{include/states/EndState.hpp@{include/states/EndState.hpp}}
+\mbox{\hyperlink{EndState_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameState_8hpp}{GameState.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ElementUI_8hpp}{ElementUI.hpp}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ ==============================\ CLASSE\ ENDSTATE\ ==============================\ //}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEndState}{EndState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameState}{GameState}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classEndState}{EndState}}(\mbox{\hyperlink{classGameStateManager}{GameStateManager}}\ *manager,\ \textcolor{keyword}{const}\ std::string\ winner);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ==========================\ MÉTHODES\ PRINCIPALES\ ==========================\ //}}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEndState_af94659f62be0e72eb7210e90a5701fad}{handleInput}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEndState_ad9052d02d2e2f3524cb30a8c1b001c24}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEndState_a231ff858e57ba9fd03356c93c0d74165}{render}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ ==============================\ ÉLÉMENTS\ GRAPHIQUES\ ==============================\ //}}
+\DoxyCodeLine{00049\ \ \ \ \ sf::Sprite\ backgroundSprite;\ }
+\DoxyCodeLine{00050\ \ \ \ \ sf::Text\ endText;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ ==============================\ BOUTONS\ ==============================\ //}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{structButton}{Button}}\ replayButton;\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{structButton}{Button}}\ quitButton;\ \ \ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ ==============================\ GESTION\ DU\ TEMPS\ ==============================\ //}}
+\DoxyCodeLine{00057\ \ \ \ \ sf::Clock\ clock;\ }
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}

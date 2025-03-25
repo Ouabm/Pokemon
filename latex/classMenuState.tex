@@ -1,0 +1,150 @@
+\doxysection{Menu\+State Class Reference}
+\hypertarget{classMenuState}{}\label{classMenuState}\index{MenuState@{MenuState}}
+
+
+État du menu principal du jeu, gérant la navigation entre les différents états.  
+
+
+
+
+{\ttfamily \#include $<$Menu\+State.\+hpp$>$}
+
+
+
+Inheritance diagram for Menu\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classMenuState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Menu\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classMenuState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMenuState_a88ab9a34c0abe6b832062933a8f5d56f}{Menu\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur de \doxylink{classMenuState}{Menu\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenuState_a3309d5f54802bc638411fd9d10786a50}{handle\+Input}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Gère les entrées utilisateur (clavier/souris) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenuState_a97112c5ce679c35ed37e476187b5e60f}{update}} () override
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du menu à chaque frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenuState_a9e0736decefa352d043d624bdbe0e8fa}{render}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Dessine tous les éléments du menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{Game\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur protégé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{game\+Manager}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+État du menu principal du jeu, gérant la navigation entre les différents états. 
+
+Cette classe représente l\textquotesingle{}écran principal du jeu avec les options de démarrage, d\textquotesingle{}aide et de sortie. Elle hérite de \doxylink{classGameState}{Game\+State} pour s\textquotesingle{}intégrer dans le système de gestion des états du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMenuState_a88ab9a34c0abe6b832062933a8f5d56f}\label{classMenuState_a88ab9a34c0abe6b832062933a8f5d56f} 
+\index{MenuState@{MenuState}!MenuState@{MenuState}}
+\index{MenuState@{MenuState}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{MenuState()}{MenuState()}}
+{\footnotesize\ttfamily Menu\+State\+::\+Menu\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})}
+
+
+
+Constructeur de \doxylink{classMenuState}{Menu\+State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointeur vers le gestionnaire d\textquotesingle{}états du jeu\\
+\hline
+\end{DoxyParams}
+Initialise l\textquotesingle{}état du menu et crée tous les éléments d\textquotesingle{}interface nécessaires. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMenuState_a88ab9a34c0abe6b832062933a8f5d56f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMenuState_a3309d5f54802bc638411fd9d10786a50}\label{classMenuState_a3309d5f54802bc638411fd9d10786a50} 
+\index{MenuState@{MenuState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Menu\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées utilisateur (clavier/souris) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour la capture des événements \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{Game\+State}}.
+
+\Hypertarget{classMenuState_a9e0736decefa352d043d624bdbe0e8fa}\label{classMenuState_a9e0736decefa352d043d624bdbe0e8fa} 
+\index{MenuState@{MenuState}!render@{render}}
+\index{render@{render}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Menu\+State\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine tous les éléments du menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour le rendu graphique \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{Game\+State}}.
+
+\Hypertarget{classMenuState_a97112c5ce679c35ed37e476187b5e60f}\label{classMenuState_a97112c5ce679c35ed37e476187b5e60f} 
+\index{MenuState@{MenuState}!update@{update}}
+\index{update@{update}!MenuState@{MenuState}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Menu\+State\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Met à jour la logique du menu à chaque frame. 
+
+Gère les animations, effets visuels et vérifie l\textquotesingle{}état des boutons 
+
+Implements \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{Game\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{MenuState_8hpp}{Menu\+State.\+hpp}}\item 
+src/states/\mbox{\hyperlink{MenuState_8cpp}{Menu\+State.\+cpp}}\end{DoxyCompactItemize}

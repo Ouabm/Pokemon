@@ -1,0 +1,62 @@
+\doxysection{Resource\+Manager.\+hpp}
+\hypertarget{ResourceManager_8hpp_source}{}\label{ResourceManager_8hpp_source}\index{include/ResourceManager.hpp@{include/ResourceManager.hpp}}
+\mbox{\hyperlink{ResourceManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classResourceManager}{ResourceManager}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classResourceManager}{ResourceManager}}\&\ \mbox{\hyperlink{classResourceManager_a37d0e97686c031cef9b22725ba4a6005}{getInstance}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ ==========================\ CHARGEMENT\ DES\ RESSOURCES\ ==========================\ //}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classResourceManager_a57285e89c925984706910fccda54ed42}{loadFont}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classResourceManager_a25c02ad5d527db70d8a36c2511c7c6ac}{loadTexture}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classResourceManager_abeb0549536bc0dca7a6a6f19ec0134e5}{loadMusicResource}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ ==========================\ ACCES\ AUX\ RESSOURCES\ ==========================\ //}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{const}\ sf::Font\&\ \mbox{\hyperlink{classResourceManager_a1317625f36bd9bcac74c192fd70dd9f6}{getFont}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ sf::Texture\&\ \mbox{\hyperlink{classResourceManager_a825af42e3c91262ebfd098ab986d92a9}{getTexture}}(\textcolor{keyword}{const}\ std::string\&\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \ \ \ \ sf::Music\&\ \mbox{\hyperlink{classResourceManager_a8f828b232016cfe029d9cb7fa49bd46c}{getMusic}}(\textcolor{keyword}{const}\ std::string\&\ musicKey)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ ==========================\ CHARGEMENT\ GROUPÉ\ ==========================\ //}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classResourceManager_a71a01f351acfeea9b2bb309a43a75882}{loadAllResources}}();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classResourceManager_af91d4dbc0061ea389cb3f44d8ed9aa54}{loadAllPokemonTextures}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ ==========================\ GESTION\ MUSICALE\ ==========================\ //}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classResourceManager_ac2b5f2226b62e7cba713ba4dfbd3f148}{playMusic}}(\textcolor{keyword}{const}\ std::string\&\ musicKey,\ \textcolor{keywordtype}{float}\ volume\ =\ 50.0f,\ \textcolor{keywordtype}{bool}\ loop\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classResourceManager_ad4b41e029864aef0e63af2238efbf4d4}{stopMusic}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{classResourceManager}{ResourceManager}}()\ =\ \textcolor{keywordflow}{default};\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ Désactivation\ de\ la\ copie}}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{classResourceManager}{ResourceManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classResourceManager}{ResourceManager}}\&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{classResourceManager}{ResourceManager}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classResourceManager}{ResourceManager}}\&)\ =\ \textcolor{keyword}{delete};\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{classResourceManager}{\string~ResourceManager}}();\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Stockage\ des\ ressources}}
+\DoxyCodeLine{00125\ \ \ \ \ std::unordered\_map<std::string,\ sf::Font>\ fonts;\ }
+\DoxyCodeLine{00126\ \ \ \ \ std::unordered\_map<std::string,\ sf::Texture>\ textures;\ }
+\DoxyCodeLine{00127\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<sf::Music>>\ music;\ }
+\DoxyCodeLine{00128\ \ \ \ \ sf::Music*\ currentMusic\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00129\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+<map id="include/Type.hpp" name="include/Type.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="271,5,402,31"/>
+<area shape="rect" id="Node000002" href="$Move_8hpp.html" title=" " alt="" coords="196,79,333,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="317,43,278,80,274,77,313,39"/>
+<area shape="rect" id="Node000013" href="$Type_8cpp.html" title=" " alt="" coords="357,79,460,104"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="360,39,399,77,395,80,357,43"/>
+<area shape="rect" id="Node000003" href="$MoveManager_8hpp.html" title=" " alt="" coords="61,152,255,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,114,177,154,174,150,235,109"/>
+<area shape="rect" id="Node000006" href="$Pokemon_8hpp.html" title=" " alt="" coords="413,152,575,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="316,106,458,149,456,154,314,111"/>
+<area shape="rect" id="Node000004" href="$MoveManager_8cpp.html" title=" " alt="" coords="76,225,240,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="161,191,161,225,155,225,155,191"/>
+<area shape="rect" id="Node000005" href="$PokemonManager_8cpp.html" title=" " alt="" coords="5,299,193,324"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="113,186,86,203,66,227,62,245,67,264,90,297,85,300,62,266,57,245,61,224,83,199,110,181"/>
+<area shape="rect" id="Node000007" href="$DamageCalculator_8hpp.html" title=" " alt="" coords="749,225,970,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="566,177,801,223,800,228,565,183"/>
+<area shape="rect" id="Node000009" href="$PokemonManager_8hpp.html" title=" " alt="" coords="264,225,481,251"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="464,187,394,227,391,223,461,182"/>
+<area shape="rect" id="Node000012" href="$BattleState_8hpp.html" title=" " alt="" coords="506,225,725,251"/>
+<area shape="poly" id="edge13_Node000006_Node000012" title=" " alt="" coords="527,182,597,223,594,227,524,187"/>
+<area shape="rect" id="Node000008" href="$BattleState_8cpp.html" title=" " alt="" coords="695,299,885,324"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="840,263,803,300,799,297,837,259"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="316,257,144,301,143,296,315,252"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="453,250,723,296,722,301,452,256"/>
+<area shape="rect" id="Node000010" href="$ResourceManager_8cpp.html" title=" " alt="" coords="248,299,436,324"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="365,264,349,300,345,297,360,262"/>
+<area shape="rect" id="Node000011" href="$SelectionState_8cpp.html" title=" " alt="" coords="461,299,671,324"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="417,253,535,296,533,301,415,258"/>
+<area shape="poly" id="edge14_Node000012_Node000008" title=" " alt="" coords="657,253,762,296,760,301,655,258"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="602,264,576,300,572,297,597,261"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="ResourceManager::loadAllResources" name="ResourceManager::loadAllResources">
+<area shape="rect" id="Node000001" title="Charge toutes les ressources globales du jeu." alt="" coords="5,203,197,243"/>
+<area shape="rect" id="Node000002" href="$classResourceManager.html#af91d4dbc0061ea389cb3f44d8ed9aa54" title="Charge toutes les textures des Pokémon." alt="" coords="256,120,448,160"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,200,276,162,278,167,164,205"/>
+<area shape="rect" id="Node000006" href="$classResourceManager.html#a25c02ad5d527db70d8a36c2511c7c6ac" title="Charge une texture depuis un fichier." alt="" coords="518,185,741,210"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="198,215,504,201,504,206,198,221"/>
+<area shape="rect" id="Node000007" href="$classResourceManager.html#a57285e89c925984706910fccda54ed42" title="Charge une police depuis un fichier." alt="" coords="251,235,453,261"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="198,230,237,234,237,239,197,235"/>
+<area shape="rect" id="Node000008" href="$classResourceManager.html#abeb0549536bc0dca7a6a6f19ec0134e5" title="Charge une musique depuis un fichier." alt="" coords="245,285,459,325"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="158,240,246,271,271,279,269,284,244,276,156,245"/>
+<area shape="rect" id="Node000003" href="$classPokemonManager.html#a077232395b717b3209d8ec89a35038cf" title="Obtient la liste de tous les noms de Pokémon disponibles." alt="" coords="507,5,752,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="384,118,440,86,506,55,528,47,530,52,508,60,442,91,386,122"/>
+<area shape="rect" id="Node000004" href="$classPokemonManager.html#a231b8f60d0458d3121cf8d59ebc04c63" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="518,70,741,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="448,118,553,96,555,101,449,123"/>
+<area shape="rect" id="Node000005" href="$classPokemonManager.html#abf44235119b22791839bfe576f926fa5" title="Récupère un Pokémon par son nom." alt="" coords="515,120,743,160"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="448,137,501,137,501,143,448,143"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="449,157,555,179,553,184,448,162"/>
+</map>

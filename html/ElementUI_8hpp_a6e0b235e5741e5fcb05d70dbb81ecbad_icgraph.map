@@ -1,0 +1,8 @@
+<map id="createText" name="createText">
+<area shape="rect" id="Node000001" title="Crée un objet texte SFML configuré" alt="" coords="355,31,445,56"/>
+<area shape="rect" id="Node000002" href="$ElementUI_8cpp.html#a42be0d3d2016e7c410b9903c9abf5433" title="Crée un bouton configuré" alt="" coords="200,5,307,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="340,36,306,30,307,25,341,31"/>
+<area shape="rect" id="Node000003" href="$classEndState.html#af71cfde8cf2e4aa707a49a74445fe85d" title="Constructeur de la classe EndState." alt="" coords="5,31,152,56"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="341,46,152,46,152,41,341,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,30,153,35,152,30,186,25"/>
+</map>

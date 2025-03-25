@@ -1,0 +1,174 @@
+\doxysection{Battle\+State Class Reference}
+\hypertarget{classBattleState}{}\label{classBattleState}\index{BattleState@{BattleState}}
+
+
+Classe gérant l\textquotesingle{}état de combat du jeu, héritant de \doxylink{classGameState}{Game\+State}.  
+
+
+
+
+{\ttfamily \#include $<$Battle\+State.\+hpp$>$}
+
+
+
+Inheritance diagram for Battle\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classBattleState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Battle\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classBattleState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBattleState_a7f0a431be97a74e25ca0de243d71df65}{Battle\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager, const std\+::vector$<$ std\+::string $>$ \&blue\+Team\+Names, const std\+::vector$<$ std\+::string $>$ \&red\+Team\+Names)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{classBattleState}{Battle\+State}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattleState_a56cb36abacbef0bb7b08136dd0839446}{handle\+Input}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Gère les entrées utilisateur pendant le combat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattleState_af05d953c7d6ed49d2e96894211c8d300}{update}} () override
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du combat à chaque frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBattleState_aac62c88071249638dcc5fd38c96ea232}{render}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Dessine tous les éléments du combat dans la fenêtre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBattleState_aefa456879780fd7114fd7691917adc0a}{\texorpdfstring{$\sim$}{\string~}\+Battle\+State}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur libérant la mémoire des Pokémon alloués. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{Game\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur protégé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classGameState}{Game\+State}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{game\+Manager}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe gérant l\textquotesingle{}état de combat du jeu, héritant de \doxylink{classGameState}{Game\+State}. 
+
+Cette classe gère toute la logique et l\textquotesingle{}affichage d\textquotesingle{}un combat Pokémon entre deux équipes. Elle hérite de la classe de base \doxylink{classGameState}{Game\+State} pour s\textquotesingle{}intégrer dans le système d\textquotesingle{}états du jeu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBattleState_a7f0a431be97a74e25ca0de243d71df65}\label{classBattleState_a7f0a431be97a74e25ca0de243d71df65} 
+\index{BattleState@{BattleState}!BattleState@{BattleState}}
+\index{BattleState@{BattleState}!BattleState@{BattleState}}
+\doxysubsubsection{\texorpdfstring{BattleState()}{BattleState()}}
+{\footnotesize\ttfamily Battle\+State\+::\+Battle\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{manager,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{blue\+Team\+Names,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{red\+Team\+Names }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{classBattleState}{Battle\+State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointeur vers le gestionnaire d\textquotesingle{}états du jeu \\
+\hline
+{\em blue\+Team\+Names} & Vecteur des noms des Pokémon de l\textquotesingle{}équipe bleue \\
+\hline
+{\em red\+Team\+Names} & Vecteur des noms des Pokémon de l\textquotesingle{}équipe rouge \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBattleState_a7f0a431be97a74e25ca0de243d71df65_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBattleState_aefa456879780fd7114fd7691917adc0a}\label{classBattleState_aefa456879780fd7114fd7691917adc0a} 
+\index{BattleState@{BattleState}!````~BattleState@{\texorpdfstring{$\sim$}{\string~}BattleState}}
+\index{````~BattleState@{\texorpdfstring{$\sim$}{\string~}BattleState}!BattleState@{BattleState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BattleState()}{\string~BattleState()}}
+{\footnotesize\ttfamily Battle\+State\+::\texorpdfstring{$\sim$}{\string~}\+Battle\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructeur libérant la mémoire des Pokémon alloués. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBattleState_a56cb36abacbef0bb7b08136dd0839446}\label{classBattleState_a56cb36abacbef0bb7b08136dd0839446} 
+\index{BattleState@{BattleState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!BattleState@{BattleState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Battle\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gère les entrées utilisateur pendant le combat. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour la capture des événements \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{Game\+State}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBattleState_a56cb36abacbef0bb7b08136dd0839446_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classBattleState_aac62c88071249638dcc5fd38c96ea232}\label{classBattleState_aac62c88071249638dcc5fd38c96ea232} 
+\index{BattleState@{BattleState}!render@{render}}
+\index{render@{render}!BattleState@{BattleState}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Battle\+State\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine tous les éléments du combat dans la fenêtre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Fenêtre SFML pour le rendu \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{Game\+State}}.
+
+\Hypertarget{classBattleState_af05d953c7d6ed49d2e96894211c8d300}\label{classBattleState_af05d953c7d6ed49d2e96894211c8d300} 
+\index{BattleState@{BattleState}!update@{update}}
+\index{update@{update}!BattleState@{BattleState}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Battle\+State\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Met à jour la logique du combat à chaque frame. 
+
+
+
+Implements \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{Game\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/states/\mbox{\hyperlink{BattleState_8hpp}{Battle\+State.\+hpp}}\item 
+src/states/\mbox{\hyperlink{BattleState_8cpp}{Battle\+State.\+cpp}}\end{DoxyCompactItemize}

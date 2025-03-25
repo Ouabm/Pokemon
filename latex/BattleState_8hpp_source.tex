@@ -1,0 +1,118 @@
+\doxysection{Battle\+State.\+hpp}
+\hypertarget{BattleState_8hpp_source}{}\label{BattleState_8hpp_source}\index{include/states/BattleState.hpp@{include/states/BattleState.hpp}}
+\mbox{\hyperlink{BattleState_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameState_8hpp}{GameState.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ElementUI_8hpp}{ElementUI.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pokemon_8hpp}{Pokemon.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ElementUI_8hpp}{ElementUI.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ =================================\ STRUCTURE\ DE\ L'ÉQUIPE\ ===============================\ //}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<sf::Sprite>\ \mbox{\hyperlink{structBattleTeamStruct_a74c6f92b2d759f4ad9594594d273bb0b}{pokemonSprites}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<Pokemon\ *>\ \mbox{\hyperlink{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6}{pokemons}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<sf::RectangleShape>\ \mbox{\hyperlink{structBattleTeamStruct_aea7aede634f6382323481d49ea739cf3}{healthBars}};\ }
+\DoxyCodeLine{00023\ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{structBattleTeamStruct_af1797633e6168e95716376e830555fc3}{bgHealthBar}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<sf::Text>\ \mbox{\hyperlink{structBattleTeamStruct_a78acd82efa1f25883d2b9093af14eb84}{barsText}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<Button>\ \mbox{\hyperlink{structBattleTeamStruct_ac697aea9753022bdb16d6b12cc5d60a2}{moveButtons}};\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{structBattleTeamStruct_abc12df8ac46230255f4ced381a5aed18}{bgMoveButtons}};\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ sf::CircleShape\ \mbox{\hyperlink{structBattleTeamStruct_a0762390852528d14781d61941a5259d4}{targetIndicator}};\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structBattleTeamStruct_ac1812f11efdcc86308cacd83984f6e5c}{activePokemon}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structBattleTeamStruct_a80545427e91b2961c534c93744426e9a}{pokemonTargeted}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ *\mbox{\hyperlink{structBattleTeamStruct_a35411a3ef593832fcfb6498ee9f751c2}{currentMove}}\ =\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBattleTeamStruct_a287090295daad929de5a718f6979a5d7}{isMoveChosen}}\ =\ \textcolor{keyword}{false};\ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBattleTeamStruct_aab824708a01aa523f2013e4bb6826fc5}{isTargetChosen}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structBattleTeamStruct_a81cf83bb2b33c7e85deb4a28bc2732e2}{isReady}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ ======================================\ CLASSE\ BATTLESTATE\ ======================================\ //}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBattleState}{BattleState}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGameState}{GameState}}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classBattleState}{BattleState}}(\mbox{\hyperlink{classGameStateManager}{GameStateManager}}\ *manager,\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&blueTeamNames,\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&redTeamNames);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ ==========================\ MÉTHODES\ PRINCIPALES\ ==========================\ //}}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBattleState_a56cb36abacbef0bb7b08136dd0839446}{handleInput}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBattleState_af05d953c7d6ed49d2e96894211c8d300}{update}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBattleState_aac62c88071249638dcc5fd38c96ea232}{render}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classBattleState_aefa456879780fd7114fd7691917adc0a}{\string~BattleState}}()}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Libération\ des\ Pokémon\ de\ l'équipe\ bleue}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPokemon}{Pokemon}}\ *p\ :\ blueTeamStruct.\mbox{\hyperlink{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6}{pokemons}})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ p;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Libération\ des\ Pokémon\ de\ l'équipe\ rouge}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPokemon}{Pokemon}}\ *p\ :\ redTeamStruct.\mbox{\hyperlink{structBattleTeamStruct_a8a66360587902ff9f5c04b35ff5fd1b6}{pokemons}})}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ p;}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ sf::Sprite\ backgroundSprite;\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{structButton}{Button}}\ switchButton;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ enterPressed;\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ tabPressed;\ \ \ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ blueTeamStruct;\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ redTeamStruct;\ \ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ =======================\ CHARGEMENT\ DES\ INFORMATIONS\ DES\ POKÉMONS\ =======================\ //}}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ loadPokemonTeamSprites(\textcolor{keyword}{const}\ std::vector<std::string>\ \&teamNames,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct,\ \textcolor{keyword}{const}\ std::vector<sf::Vector2f>\ \&initPos,\ \textcolor{keywordtype}{bool}\ reverseTexture);}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ loadPokemonTeamsInfos(\textcolor{keyword}{const}\ std::vector<std::string>\ \&blueTeamNames,\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&redTeamNames);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ ==============================\ CRÉATION\ DES\ ÉLÉMENTS\ DU\ COMBAT\ ==============================\ //}}
+\DoxyCodeLine{00122\ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ createMoveButtons();}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ createHealthBars();}
+\DoxyCodeLine{00132\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ createTeamBars(\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct,\ sf::Vector2f\ bgPos,\ sf::Vector2f\ barOffset);}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ createTargetIndicator();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ ==============================\ GESTION\ DES\ ENTRÉES\ UTILISATEUR\ ==============================\ //}}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ handleKeyPress(\textcolor{keyword}{const}\ sf::Event\ \&event);}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ processEnterKey(\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&currentTeam);}
+\DoxyCodeLine{00159\ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ countAlivePokemons(\textcolor{keyword}{const}\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&team);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//\ ==============================\ LOGIQUE\ DU\ COMBAT\ ==============================\ //}}
+\DoxyCodeLine{00168\ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ updateHealthBars(\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct);}
+\DoxyCodeLine{00174\ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ turnHandeler(\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&blueTeamStruct,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&redTeamStruct);}
+\DoxyCodeLine{00181\ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkBattleOver();}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//\ ==============================\ AFFICHAGE\ DES\ ÉLÉMENTS\ ==============================\ //}}
+\DoxyCodeLine{00189\ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ drawMoveButtons(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct);}
+\DoxyCodeLine{00196\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{void}\ drawHealthBars(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct);}
+\DoxyCodeLine{00203\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{void}\ drawTargetIndicator(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct);}
+\DoxyCodeLine{00210\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ drawPokemonTeam(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&teamStruct);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{void}\ resetMoveButtonsOutline(\mbox{\hyperlink{structBattleTeamStruct}{BattleTeamStruct}}\ \&team);}
+\DoxyCodeLine{00223\ \};}
+
+\end{DoxyCode}

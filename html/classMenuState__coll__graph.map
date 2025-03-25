@@ -1,0 +1,7 @@
+<map id="MenuState" name="MenuState">
+<area shape="rect" id="Node000001" title="État du menu principal du jeu, gérant la navigation entre les différents états." alt="" coords="35,168,127,193"/>
+<area shape="rect" id="Node000002" href="$classGameState.html" title="Classe de base abstraite pour tous les états du jeu." alt="" coords="34,93,129,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,133,84,168,79,168,79,133"/>
+<area shape="rect" id="Node000003" href="$classGameStateManager.html" title="Classe permettant de gérer les différents états du jeu via une pile." alt="" coords="5,5,157,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="84,45,84,93,79,93,79,45"/>
+</map>

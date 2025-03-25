@@ -1,28 +1,73 @@
-#pragma once // Version plus moderne des guardians #indef et #endif
+#pragma once // Version plus moderne des guardians #ifndef et #endif
 
 #include <SFML/Graphics.hpp>
-#include <memory> // Permet l'utilisation de pointeurs intelligents (comme std::unique_ptr) pour une gestion automatique de la mémoire.
+#include <memory> // Pour std::unique_ptr
 
-class GameStateManager; // Déclaration avant usage : on déclare la classe GameStateManager ici sans l'inclure pour éviter les dépendances circulaires.
+// Forward declaration pour éviter les dépendances circulaires
+class GameStateManager;
 
+/**
+ * @class GameState
+ * @brief Classe de base abstraite pour tous les états du jeu
+ *
+ * Cette classe définit l'interface commune que tous les états du jeu doivent implémenter.
+ * Elle suit le pattern State pour gérer les différents états du jeu (menu, combat, etc.).
+ * Utilise un GameStateManager pour les transitions entre états.
+ */
 class GameState
 {
 public:
-    // Le destructeur virtuel permet de s'assurer que les ressources des classes dérivées seront libérées correctement
-    // lors de la destruction de l'objet, en respectant le principe du polymorphisme.
+    /**
+     * @brief Destructeur virtuel
+     *
+     * Garantit une destruction correcte des classes dérivées.
+     * Marqué comme default car aucune ressource à libérer dans la classe de base.
+     */
     virtual ~GameState() = default;
 
-    // Fonction virtuelle pure : chaque état du jeu (MenuState, BattleState, etc.) doit implémenter ces méthodes
-    // pour gérer les entrées utilisateur, les mises à jour de l'état, et le rendu graphique.
+    /**
+     * @brief Gère les entrées utilisateur pour cet état
+     * @param window Référence à la fenêtre de rendu SFML
+     *
+     * Méthode virtuelle pure à implémenter par les états concrets.
+     * Doit traiter tous les événements clavier/souris spécifiques à l'état.
+     */
     virtual void handleInput(sf::RenderWindow &window) = 0;
+
+    /**
+     * @brief Met à jour la logique de l'état
+     *
+     * Méthode virtuelle pure à implémenter par les états concrets.
+     * Contient la logique de mise à jour propre à chaque état.
+     */
     virtual void update() = 0;
+
+    /**
+     * @brief Dessine l'état dans la fenêtre
+     * @param window Référence à la fenêtre de rendu SFML
+     *
+     * Méthode virtuelle pure à implémenter par les états concrets.
+     * Doit effectuer tout le rendu graphique spécifique à l'état.
+     */
     virtual void render(sf::RenderWindow &window) = 0;
 
 protected:
-    // Constructeur protégé, de sorte que seuls les états du jeu peuvent l'utiliser pour initialiser un GameState.
-    // Cela permet de garantir que chaque état a une référence au GameStateManager pour gérer la transition entre les états.
+    /**
+     * @brief Constructeur protégé
+     * @param manager Pointeur vers le gestionnaire d'états
+     *
+     * Seules les classes dérivées peuvent instancier un GameState.
+     * Initialise la référence vers le GameStateManager pour les transitions.
+     */
     GameState(GameStateManager *manager) : gameManager(manager) {}
 
-    // Pointeur vers le GameStateManager, nécessaire pour interagir avec d'autres états (par exemple, changer d'état).
+    /**
+     * @protected
+     * @var gameManager
+     * @brief Pointeur vers le gestionnaire d'états du jeu
+     *
+     * Permet aux états concrets d'effectuer des transitions entre états.
+     * Ne doit pas être null (la validité est garantie par le constructeur).
+     */
     GameStateManager *gameManager;
 };

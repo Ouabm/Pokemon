@@ -1,0 +1,198 @@
+\doxysection{include/\+Element\+UI.hpp File Reference}
+\hypertarget{ElementUI_8hpp}{}\label{ElementUI_8hpp}\index{include/ElementUI.hpp@{include/ElementUI.hpp}}
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}Resource\+Manager.\+hpp"{}}\newline
+Include dependency graph for Element\+UI.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structButton}{Button}}
+\begin{DoxyCompactList}\small\item\em Structure représentant un bouton UI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Text \mbox{\hyperlink{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad}{create\+Text}} (const std\+::string \&font\+Key="{}"{}, const std\+::string \&text="{}"{}, unsigned int size=0, sf\+::\+Color const \&color=sf\+::\+Color\+::\+Transparent, sf\+::\+Vector2f const \&position=sf\+::\+Vector2f(0, 0))
+\begin{DoxyCompactList}\small\item\em Crée un objet texte SFML configuré \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{ElementUI_8hpp_a76d815a0e87ca0456ca15b732d4d8c50}{create\+Rectangle}} (const sf\+::\+Vector2f \&size=sf\+::\+Vector2f(0, 0), const sf\+::\+Vector2f \&position=sf\+::\+Vector2f(0, 0), const sf\+::\+Color \&color=sf\+::\+Color\+::\+Transparent, float outline\+Thickness=0.\+0f, const sf\+::\+Color \&outline\+Color=sf\+::\+Color\+::\+Transparent)
+\begin{DoxyCompactList}\small\item\em Crée un rectangle SFML configuré \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{ElementUI_8hpp_a68564a786ba1c22261497071f480a309}{create\+Circle}} (float radius=0.\+0f, const sf\+::\+Vector2f \&position=sf\+::\+Vector2f(0, 0), const sf\+::\+Color \&fill\+Color=sf\+::\+Color\+::\+Transparent, float outline\+Thickness=0.\+0f, const sf\+::\+Color \&outline\+Color=sf\+::\+Color\+::\+Transparent)
+\begin{DoxyCompactList}\small\item\em Crée un cercle SFML configuré \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structButton}{Button}} \mbox{\hyperlink{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa}{create\+Button}} (const sf\+::\+Vector2f \&size=sf\+::\+Vector2f(0, 0), const sf\+::\+Vector2f \&position=sf\+::\+Vector2f(0, 0), const sf\+::\+Color \&button\+Color=sf\+::\+Color\+::\+Transparent, float outline\+Thickness=0.\+0f, const sf\+::\+Color \&outline\+Color=sf\+::\+Color\+::\+Transparent, const std\+::string \&font\+Key="{}"{}, const std\+::string \&button\+Text="{}"{}, const int text\+Size=0, const sf\+::\+Color \&text\+Color=sf\+::\+Color\+::\+Transparent)
+\begin{DoxyCompactList}\small\item\em Crée un bouton configuré \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa}\label{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa} 
+\index{ElementUI.hpp@{ElementUI.hpp}!createButton@{createButton}}
+\index{createButton@{createButton}!ElementUI.hpp@{ElementUI.hpp}}
+\doxysubsubsection{\texorpdfstring{createButton()}{createButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structButton}{Button}} create\+Button (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{size = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{button\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{const std\+::string \&}]{font\+Key = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{button\+Text = {\ttfamily "{}"{}},  }\item[{const int}]{text\+Size = {\ttfamily 0},  }\item[{const sf\+::\+Color \&}]{text\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un bouton configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Dimensions du bouton (0,0 par défaut) \\
+\hline
+{\em position} & Position du bouton (0,0 par défaut) \\
+\hline
+{\em button\+Color} & Couleur du bouton (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+{\em font\+Key} & Clé de la police pour le texte ("{}"{} par défaut) \\
+\hline
+{\em button\+Text} & Texte du bouton (vide par défaut) \\
+\hline
+{\em text\+Size} & Taille du texte (0 par défaut) \\
+\hline
+{\em text\+Color} & Couleur du texte (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Structure \doxylink{structButton}{Button} configurée
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Le texte est automatiquement centré dans le bouton 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{ElementUI_8hpp_a61895b931d78465bfd480d6f1af436fa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ElementUI_8hpp_a68564a786ba1c22261497071f480a309}\label{ElementUI_8hpp_a68564a786ba1c22261497071f480a309} 
+\index{ElementUI.hpp@{ElementUI.hpp}!createCircle@{createCircle}}
+\index{createCircle@{createCircle}!ElementUI.hpp@{ElementUI.hpp}}
+\doxysubsubsection{\texorpdfstring{createCircle()}{createCircle()}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape create\+Circle (\begin{DoxyParamCaption}\item[{float}]{radius = {\ttfamily 0.0f},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{fill\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un cercle SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & Rayon du cercle (0 par défaut) \\
+\hline
+{\em position} & Position du cercle (0,0 par défaut) \\
+\hline
+{\em fill\+Color} & Couleur de remplissage (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Circle\+Shape configuré 
+\end{DoxyReturn}
+\Hypertarget{ElementUI_8hpp_a76d815a0e87ca0456ca15b732d4d8c50}\label{ElementUI_8hpp_a76d815a0e87ca0456ca15b732d4d8c50} 
+\index{ElementUI.hpp@{ElementUI.hpp}!createRectangle@{createRectangle}}
+\index{createRectangle@{createRectangle}!ElementUI.hpp@{ElementUI.hpp}}
+\doxysubsubsection{\texorpdfstring{createRectangle()}{createRectangle()}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape create\+Rectangle (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{size = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un rectangle SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Dimensions du rectangle (0,0 par défaut) \\
+\hline
+{\em position} & Position du rectangle (0,0 par défaut) \\
+\hline
+{\em color} & Couleur de remplissage (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Rectangle\+Shape configuré 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp_a76d815a0e87ca0456ca15b732d4d8c50_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad}\label{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad} 
+\index{ElementUI.hpp@{ElementUI.hpp}!createText@{createText}}
+\index{createText@{createText}!ElementUI.hpp@{ElementUI.hpp}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily sf\+::\+Text create\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Key = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{text = {\ttfamily "{}"{}},  }\item[{unsigned int}]{size = {\ttfamily 0},  }\item[{sf\+::\+Color const \&}]{color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{sf\+::\+Vector2f const \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)} }\end{DoxyParamCaption})}
+
+
+
+Crée un objet texte SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font\+Key} & Clé de la police dans le \doxylink{classResourceManager}{Resource\+Manager} ("{}"{} pour police par défaut) \\
+\hline
+{\em text} & Contenu du texte (vide par défaut) \\
+\hline
+{\em size} & Taille de la police (0 par défaut) \\
+\hline
+{\em color} & Couleur du texte (Transparent par défaut) \\
+\hline
+{\em position} & Position du texte (0,0 par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Text configuré
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Si font\+Key est vide, utilise la police par défaut de SFML 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8hpp_a6e0b235e5741e5fcb05d70dbb81ecbad_icgraph}
+\end{center}
+\end{figure}

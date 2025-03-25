@@ -1,0 +1,183 @@
+\doxysection{src/\+Element\+UI.cpp File Reference}
+\hypertarget{ElementUI_8cpp}{}\label{ElementUI_8cpp}\index{src/ElementUI.cpp@{src/ElementUI.cpp}}
+{\ttfamily \#include "{}Element\+UI.\+hpp"{}}\newline
+Include dependency graph for Element\+UI.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Text \mbox{\hyperlink{ElementUI_8cpp_aa86535bc9abc69539be8acf19452d3a3}{create\+Text}} (const std\+::string \&font\+Key, const std\+::string \&text, unsigned int char\+Size, const sf\+::\+Color \&color, const sf\+::\+Vector2f \&position)
+\begin{DoxyCompactList}\small\item\em Crée un objet texte SFML configuré \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{ElementUI_8cpp_a224ac794c376ba3d07d3b1f09202a7d7}{create\+Rectangle}} (const sf\+::\+Vector2f \&size, const sf\+::\+Vector2f \&position, const sf\+::\+Color \&color, float outline\+Thickness, const sf\+::\+Color \&outline\+Color)
+\begin{DoxyCompactList}\small\item\em Crée un rectangle SFML configuré \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{ElementUI_8cpp_a1d7ab43c2c3958ecfe852dccdede389e}{create\+Circle}} (float radius, const sf\+::\+Vector2f \&position, const sf\+::\+Color \&fill\+Color, float outline\+Thickness, const sf\+::\+Color \&outline\+Color)
+\begin{DoxyCompactList}\small\item\em Crée un cercle SFML configuré \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structButton}{Button}} \mbox{\hyperlink{ElementUI_8cpp_a42be0d3d2016e7c410b9903c9abf5433}{create\+Button}} (const sf\+::\+Vector2f \&size, const sf\+::\+Vector2f \&position, const sf\+::\+Color \&button\+Color, float out\+Line\+Thickness, const sf\+::\+Color \&outline\+Color, const std\+::string \&font\+Key, const std\+::string \&button\+Text, const int text\+Size, const sf\+::\+Color \&text\+Color)
+\begin{DoxyCompactList}\small\item\em Crée un bouton configuré \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ElementUI_8cpp_a42be0d3d2016e7c410b9903c9abf5433}\label{ElementUI_8cpp_a42be0d3d2016e7c410b9903c9abf5433} 
+\index{ElementUI.cpp@{ElementUI.cpp}!createButton@{createButton}}
+\index{createButton@{createButton}!ElementUI.cpp@{ElementUI.cpp}}
+\doxysubsubsection{\texorpdfstring{createButton()}{createButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structButton}{Button}} create\+Button (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{size = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{button\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{const std\+::string \&}]{font\+Key = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{button\+Text = {\ttfamily "{}"{}},  }\item[{const int}]{text\+Size = {\ttfamily 0},  }\item[{const sf\+::\+Color \&}]{text\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un bouton configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Dimensions du bouton (0,0 par défaut) \\
+\hline
+{\em position} & Position du bouton (0,0 par défaut) \\
+\hline
+{\em button\+Color} & Couleur du bouton (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+{\em font\+Key} & Clé de la police pour le texte ("{}"{} par défaut) \\
+\hline
+{\em button\+Text} & Texte du bouton (vide par défaut) \\
+\hline
+{\em text\+Size} & Taille du texte (0 par défaut) \\
+\hline
+{\em text\+Color} & Couleur du texte (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Structure \doxylink{structButton}{Button} configurée
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Le texte est automatiquement centré dans le bouton 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8cpp_a42be0d3d2016e7c410b9903c9abf5433_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{ElementUI_8cpp_a42be0d3d2016e7c410b9903c9abf5433_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ElementUI_8cpp_a1d7ab43c2c3958ecfe852dccdede389e}\label{ElementUI_8cpp_a1d7ab43c2c3958ecfe852dccdede389e} 
+\index{ElementUI.cpp@{ElementUI.cpp}!createCircle@{createCircle}}
+\index{createCircle@{createCircle}!ElementUI.cpp@{ElementUI.cpp}}
+\doxysubsubsection{\texorpdfstring{createCircle()}{createCircle()}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape create\+Circle (\begin{DoxyParamCaption}\item[{float}]{radius = {\ttfamily 0.0f},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{fill\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un cercle SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & Rayon du cercle (0 par défaut) \\
+\hline
+{\em position} & Position du cercle (0,0 par défaut) \\
+\hline
+{\em fill\+Color} & Couleur de remplissage (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Circle\+Shape configuré 
+\end{DoxyReturn}
+\Hypertarget{ElementUI_8cpp_a224ac794c376ba3d07d3b1f09202a7d7}\label{ElementUI_8cpp_a224ac794c376ba3d07d3b1f09202a7d7} 
+\index{ElementUI.cpp@{ElementUI.cpp}!createRectangle@{createRectangle}}
+\index{createRectangle@{createRectangle}!ElementUI.cpp@{ElementUI.cpp}}
+\doxysubsubsection{\texorpdfstring{createRectangle()}{createRectangle()}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape create\+Rectangle (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{size = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Vector2f \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)},  }\item[{const sf\+::\+Color \&}]{color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{float}]{outline\+Thickness = {\ttfamily 0.0f},  }\item[{const sf\+::\+Color \&}]{outline\+Color = {\ttfamily sf\+:\+:Color\+:\+:Transparent} }\end{DoxyParamCaption})}
+
+
+
+Crée un rectangle SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Dimensions du rectangle (0,0 par défaut) \\
+\hline
+{\em position} & Position du rectangle (0,0 par défaut) \\
+\hline
+{\em color} & Couleur de remplissage (Transparent par défaut) \\
+\hline
+{\em outline\+Thickness} & Épaisseur du contour (0 par défaut) \\
+\hline
+{\em outline\+Color} & Couleur du contour (Transparent par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Rectangle\+Shape configuré 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8cpp_a224ac794c376ba3d07d3b1f09202a7d7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{ElementUI_8cpp_aa86535bc9abc69539be8acf19452d3a3}\label{ElementUI_8cpp_aa86535bc9abc69539be8acf19452d3a3} 
+\index{ElementUI.cpp@{ElementUI.cpp}!createText@{createText}}
+\index{createText@{createText}!ElementUI.cpp@{ElementUI.cpp}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily sf\+::\+Text create\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{font\+Key = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{text = {\ttfamily "{}"{}},  }\item[{unsigned int}]{size = {\ttfamily 0},  }\item[{sf\+::\+Color const \&}]{color = {\ttfamily sf\+:\+:Color\+:\+:Transparent},  }\item[{sf\+::\+Vector2f const \&}]{position = {\ttfamily sf\+:\+:Vector2f(0,~0)} }\end{DoxyParamCaption})}
+
+
+
+Crée un objet texte SFML configuré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font\+Key} & Clé de la police dans le \doxylink{classResourceManager}{Resource\+Manager} ("{}"{} pour police par défaut) \\
+\hline
+{\em text} & Contenu du texte (vide par défaut) \\
+\hline
+{\em size} & Taille de la police (0 par défaut) \\
+\hline
+{\em color} & Couleur du texte (Transparent par défaut) \\
+\hline
+{\em position} & Position du texte (0,0 par défaut) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Objet sf\+::\+Text configuré
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Si font\+Key est vide, utilise la police par défaut de SFML 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8cpp_aa86535bc9abc69539be8acf19452d3a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ElementUI_8cpp_aa86535bc9abc69539be8acf19452d3a3_icgraph}
+\end{center}
+\end{figure}

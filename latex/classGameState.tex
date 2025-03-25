@@ -1,5 +1,24 @@
-\hypertarget{classGameState}{}\doxysection{Game\+State Class Reference}
-\label{classGameState}\index{GameState@{GameState}}
+\doxysection{Game\+State Class Reference}
+\hypertarget{classGameState}{}\label{classGameState}\index{GameState@{GameState}}
+
+
+Classe de base abstraite pour tous les états du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State.\+hpp$>$}
+
+
+
+Inheritance diagram for Game\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameState__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Game\+State\+:
@@ -10,32 +29,130 @@ Collaboration diagram for Game\+State\+:
 \includegraphics[width=211pt]{classGameState__coll__graph}
 \end{center}
 \end{figure}
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameState_a12138e08d02622f409d40b2337413cc6}\label{classGameState_a12138e08d02622f409d40b2337413cc6}} 
-virtual void {\bfseries handle\+Input} (sf\+::\+Render\+Window \&window)=0
-\item 
-\mbox{\Hypertarget{classGameState_ab2864bfa04f92f6966861a1f2883bda0}\label{classGameState_ab2864bfa04f92f6966861a1f2883bda0}} 
-virtual void {\bfseries update} ()=0
-\item 
-\mbox{\Hypertarget{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}\label{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}} 
-virtual void {\bfseries render} (sf\+::\+Render\+Window \&window)=0
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+virtual \mbox{\hyperlink{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}{\texorpdfstring{$\sim$}{\string~}\+Game\+State}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGameState_a12138e08d02622f409d40b2337413cc6}{handle\+Input}} (sf\+::\+Render\+Window \&window)=0
+\begin{DoxyCompactList}\small\item\em Gère les entrées utilisateur pour cet état. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGameState_ab2864bfa04f92f6966861a1f2883bda0}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Met à jour la logique de l\textquotesingle{}état. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}{render}} (sf\+::\+Render\+Window \&window)=0
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}état dans la fenêtre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameState_a78b148f6146520c818eac896403db229}\label{classGameState_a78b148f6146520c818eac896403db229}} 
-{\bfseries Game\+State} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} $\ast$manager)
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\mbox{\hyperlink{classGameState_a78b148f6146520c818eac896403db229}{Game\+State}} (\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}manager)
+\begin{DoxyCompactList}\small\item\em Constructeur protégé \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGameState_acdb5c026ac2041612f4ab0460d71f906}\label{classGameState_acdb5c026ac2041612f4ab0460d71f906}} 
-\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} $\ast$ {\bfseries game\+Manager}
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameState_ae7214ae964958c682f2422c4780517c5}{game\+Manager}}
+\begin{DoxyCompactList}\small\item\em Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Classe de base abstraite pour tous les états du jeu. 
+
+Cette classe définit l\textquotesingle{}interface commune que tous les états du jeu doivent implémenter. Elle suit le pattern State pour gérer les différents états du jeu (menu, combat, etc.). Utilise un \doxylink{classGameStateManager}{Game\+State\+Manager} pour les transitions entre états. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3}\label{classGameState_adc1bfdf7ee7c1f48e4841995db4e16c3} 
+\index{GameState@{GameState}!````~GameState@{\texorpdfstring{$\sim$}{\string~}GameState}}
+\index{````~GameState@{\texorpdfstring{$\sim$}{\string~}GameState}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameState()}{\string~GameState()}}
+{\footnotesize\ttfamily virtual Game\+State\+::\texorpdfstring{$\sim$}{\string~}\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destructeur virtuel. 
+
+Garantit une destruction correcte des classes dérivées. Marqué comme default car aucune ressource à libérer dans la classe de base. \Hypertarget{classGameState_a78b148f6146520c818eac896403db229}\label{classGameState_a78b148f6146520c818eac896403db229} 
+\index{GameState@{GameState}!GameState@{GameState}}
+\index{GameState@{GameState}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{GameState()}{GameState()}}
+{\footnotesize\ttfamily Game\+State\+::\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGameStateManager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Constructeur protégé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointeur vers le gestionnaire d\textquotesingle{}états\\
+\hline
+\end{DoxyParams}
+Seules les classes dérivées peuvent instancier un \doxylink{classGameState}{Game\+State}. Initialise la référence vers le \doxylink{classGameStateManager}{Game\+State\+Manager} pour les transitions. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameState_a12138e08d02622f409d40b2337413cc6}\label{classGameState_a12138e08d02622f409d40b2337413cc6} 
+\index{GameState@{GameState}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily virtual void Game\+State\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gère les entrées utilisateur pour cet état. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Référence à la fenêtre de rendu SFML\\
+\hline
+\end{DoxyParams}
+Méthode virtuelle pure à implémenter par les états concrets. Doit traiter tous les événements clavier/souris spécifiques à l\textquotesingle{}état. 
+
+Implemented in \mbox{\hyperlink{classBattleState_a56cb36abacbef0bb7b08136dd0839446}{Battle\+State}}, \mbox{\hyperlink{classEndState_af94659f62be0e72eb7210e90a5701fad}{End\+State}}, \mbox{\hyperlink{classMenuState_a3309d5f54802bc638411fd9d10786a50}{Menu\+State}}, and \mbox{\hyperlink{classSelectionState_afc0c00543f2c8b80f14bff7cd1d54020}{Selection\+State}}.
+
+\Hypertarget{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4}\label{classGameState_af6ef9b8e6fa5c045105f28e7296dd5d4} 
+\index{GameState@{GameState}!render@{render}}
+\index{render@{render}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily virtual void Game\+State\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Dessine l\textquotesingle{}état dans la fenêtre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Référence à la fenêtre de rendu SFML\\
+\hline
+\end{DoxyParams}
+Méthode virtuelle pure à implémenter par les états concrets. Doit effectuer tout le rendu graphique spécifique à l\textquotesingle{}état. 
+
+Implemented in \mbox{\hyperlink{classBattleState_aac62c88071249638dcc5fd38c96ea232}{Battle\+State}}, \mbox{\hyperlink{classEndState_a231ff858e57ba9fd03356c93c0d74165}{End\+State}}, \mbox{\hyperlink{classMenuState_a9e0736decefa352d043d624bdbe0e8fa}{Menu\+State}}, and \mbox{\hyperlink{classSelectionState_a0777cbd47bd4a0c297a93e087e17195f}{Selection\+State}}.
+
+\Hypertarget{classGameState_ab2864bfa04f92f6966861a1f2883bda0}\label{classGameState_ab2864bfa04f92f6966861a1f2883bda0} 
+\index{GameState@{GameState}!update@{update}}
+\index{update@{update}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Game\+State\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Met à jour la logique de l\textquotesingle{}état. 
+
+Méthode virtuelle pure à implémenter par les états concrets. Contient la logique de mise à jour propre à chaque état. 
+
+Implemented in \mbox{\hyperlink{classBattleState_af05d953c7d6ed49d2e96894211c8d300}{Battle\+State}}, \mbox{\hyperlink{classEndState_ad9052d02d2e2f3524cb30a8c1b001c24}{End\+State}}, \mbox{\hyperlink{classMenuState_a97112c5ce679c35ed37e476187b5e60f}{Menu\+State}}, and \mbox{\hyperlink{classSelectionState_a614ed0043cf18a2ffcf57482eb0d1e04}{Selection\+State}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameState_ae7214ae964958c682f2422c4780517c5}\label{classGameState_ae7214ae964958c682f2422c4780517c5} 
+\index{GameState@{GameState}!gameManager@{gameManager}}
+\index{gameManager@{gameManager}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{gameManager}{gameManager}}
+{\footnotesize\ttfamily Game\+State\+::game\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointeur vers le gestionnaire d\textquotesingle{}états du jeu. 
+
+Permet aux états concrets d\textquotesingle{}effectuer des transitions entre états. Ne doit pas être null (la validité est garantie par le constructeur). 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/Game\+State.\+hpp\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{GameState_8hpp}{Game\+State.\+hpp}}\end{DoxyCompactItemize}

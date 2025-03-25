@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['changestate_1',['changeState',['../classGameStateManager.html#a54870e7edea7078aa18a10b00b097231',1,'GameStateManager']]]
+  ['2_20installation_0',['1.2 Installation',['../md_README.html#autotoc_md4',1,'']]],
+  ['2_20strong_20sélection_20des_20pokémon_20strong_1',['2. &lt;strong&gt;Sélection des Pokémon&lt;/strong&gt;',['../md_README.html#autotoc_md10',1,'']]]
 ];

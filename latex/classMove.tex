@@ -1,31 +1,187 @@
-\hypertarget{classMove}{}\doxysection{Move Class Reference}
-\label{classMove}\index{Move@{Move}}
-\doxysubsection*{Public Member Functions}
+\doxysection{Move Class Reference}
+\hypertarget{classMove}{}\label{classMove}\index{Move@{Move}}
+
+
+Représente une attaque/technique que peut utiliser un Pokémon.  
+
+
+
+
+{\ttfamily \#include $<$Move.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMove_a6f9338758d1e743c5a4dfc964534f82d}\label{classMove_a6f9338758d1e743c5a4dfc964534f82d}} 
-{\bfseries Move} (const std\+::string \&p\+\_\+name=\char`\"{}Unnamed \mbox{\hyperlink{classMove}{Move}}\char`\"{}, Type p\+\_\+type=Type\+::\+None, int p\+\_\+power=0, int p\+\_\+accuracy=0, bool p\+\_\+is\+Physical=false)
-\item 
-\mbox{\Hypertarget{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1}\label{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1}} 
-std\+::string {\bfseries get\+Name} () const
-\item 
-\mbox{\Hypertarget{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}\label{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}} 
-Type {\bfseries get\+Type} () const
-\item 
-\mbox{\Hypertarget{classMove_aa12ce33e684d55ef192b72a43faa7902}\label{classMove_aa12ce33e684d55ef192b72a43faa7902}} 
-int {\bfseries get\+Power} () const
-\item 
-\mbox{\Hypertarget{classMove_a32aec31f56308db2b03396d9c26600ab}\label{classMove_a32aec31f56308db2b03396d9c26600ab}} 
-int {\bfseries get\+Accuracy} () const
-\item 
-\mbox{\Hypertarget{classMove_a29b5dc65848e5b57f19464cf901aa440}\label{classMove_a29b5dc65848e5b57f19464cf901aa440}} 
-bool {\bfseries is\+Physical\+Move} () const
-\item 
-\mbox{\Hypertarget{classMove_a1155d13fb18e0df82be689cc836e1ce6}\label{classMove_a1155d13fb18e0df82be689cc836e1ce6}} 
-void {\bfseries display\+Move\+Info} () const
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classMove_a6f9338758d1e743c5a4dfc964534f82d}{Move}} (const std\+::string \&p\+\_\+name="{}Unnamed Move"{}, \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} p\+\_\+type=\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None}}, int p\+\_\+power=0, int p\+\_\+accuracy=0, bool p\+\_\+is\+Physical=false)
+\begin{DoxyCompactList}\small\item\em Constructeur complet. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Getter pour le nom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} \mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Getter pour le type. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMove_aa12ce33e684d55ef192b72a43faa7902}{get\+Power}} () const
+\begin{DoxyCompactList}\small\item\em Getter pour la puissance. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMove_a32aec31f56308db2b03396d9c26600ab}{get\+Accuracy}} () const
+\begin{DoxyCompactList}\small\item\em Getter pour la précision. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMove_a29b5dc65848e5b57f19464cf901aa440}{is\+Physical\+Move}} () const
+\begin{DoxyCompactList}\small\item\em Détermine si le mouvement est physique. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMove_a1155d13fb18e0df82be689cc836e1ce6}{display\+Move\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Affiche les informations du mouvement dans la console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Représente une attaque/technique que peut utiliser un Pokémon. 
+
+Cette classe encapsule toutes les caractéristiques d\textquotesingle{}un mouvement Pokémon \+:
+\begin{DoxyItemize}
+\item Son nom et son type
+\item Ses caractéristiques de combat (puissance, précision)
+\item Sa catégorie (physique/spécial) 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMove_a6f9338758d1e743c5a4dfc964534f82d}\label{classMove_a6f9338758d1e743c5a4dfc964534f82d} 
+\index{Move@{Move}!Move@{Move}}
+\index{Move@{Move}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily Move\+::\+Move (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{p\+\_\+name = {\ttfamily "{}Unnamed~Move"{}},  }\item[{\mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}}]{p\+\_\+type = {\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None}}},  }\item[{int}]{p\+\_\+power = {\ttfamily 0},  }\item[{int}]{p\+\_\+accuracy = {\ttfamily 0},  }\item[{bool}]{p\+\_\+is\+Physical = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructeur complet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+name} & Nom du mouvement ("{}\+Unnamed Move"{} par défaut) \\
+\hline
+{\em p\+\_\+type} & Type élémentaire (\doxylink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type\+::\+None} par défaut) \\
+\hline
+{\em p\+\_\+power} & Puissance (0 par défaut) \\
+\hline
+{\em p\+\_\+accuracy} & Précision (0-\/100, 0 par défaut) \\
+\hline
+{\em p\+\_\+is\+Physical} & Catégorie physique (false par défaut)\\
+\hline
+\end{DoxyParams}
+Crée un mouvement avec toutes ses caractéristiques de combat. Un mouvement avec puissance 0 est considéré comme un mouvement de statut. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMove_a1155d13fb18e0df82be689cc836e1ce6}\label{classMove_a1155d13fb18e0df82be689cc836e1ce6} 
+\index{Move@{Move}!displayMoveInfo@{displayMoveInfo}}
+\index{displayMoveInfo@{displayMoveInfo}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{displayMoveInfo()}{displayMoveInfo()}}
+{\footnotesize\ttfamily void Move\+::display\+Move\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Affiche les informations du mouvement dans la console. 
+
+Format d\textquotesingle{}affichage \+: \doxylink{classMove}{Move}\+: \mbox{[}name\mbox{]} Type\+: \mbox{[}type\mbox{]} Power\+: \mbox{[}power\mbox{]} Accuracy\+: \mbox{[}accuracy\mbox{]}\% Physical\+: Yes/\+No Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classMove_a1155d13fb18e0df82be689cc836e1ce6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMove_a32aec31f56308db2b03396d9c26600ab}\label{classMove_a32aec31f56308db2b03396d9c26600ab} 
+\index{Move@{Move}!getAccuracy@{getAccuracy}}
+\index{getAccuracy@{getAccuracy}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{getAccuracy()}{getAccuracy()}}
+{\footnotesize\ttfamily int Move\+::get\+Accuracy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter pour la précision. 
+
+\begin{DoxyReturn}{Returns}
+Valeur de précision (0-\/100) 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classMove_a32aec31f56308db2b03396d9c26600ab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1}\label{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1} 
+\index{Move@{Move}!getName@{getName}}
+\index{getName@{getName}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Move\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter pour le nom. 
+
+\begin{DoxyReturn}{Returns}
+Nom du mouvement 
+\end{DoxyReturn}
+\Hypertarget{classMove_aa12ce33e684d55ef192b72a43faa7902}\label{classMove_aa12ce33e684d55ef192b72a43faa7902} 
+\index{Move@{Move}!getPower@{getPower}}
+\index{getPower@{getPower}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{getPower()}{getPower()}}
+{\footnotesize\ttfamily int Move\+::get\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter pour la puissance. 
+
+\begin{DoxyReturn}{Returns}
+Puissance de base du mouvement 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classMove_aa12ce33e684d55ef192b72a43faa7902_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}\label{classMove_a5a1932b0011ddb5cdc62920874f5f7cf} 
+\index{Move@{Move}!getType@{getType}}
+\index{getType@{getType}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}} Move\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter pour le type. 
+
+\begin{DoxyReturn}{Returns}
+Type élémentaire du mouvement 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{classMove_a5a1932b0011ddb5cdc62920874f5f7cf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classMove_a29b5dc65848e5b57f19464cf901aa440}\label{classMove_a29b5dc65848e5b57f19464cf901aa440} 
+\index{Move@{Move}!isPhysicalMove@{isPhysicalMove}}
+\index{isPhysicalMove@{isPhysicalMove}!Move@{Move}}
+\doxysubsubsection{\texorpdfstring{isPhysicalMove()}{isPhysicalMove()}}
+{\footnotesize\ttfamily bool Move\+::is\+Physical\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Détermine si le mouvement est physique. 
+
+\begin{DoxyReturn}{Returns}
+true si mouvement physique, false si spécial 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classMove_a29b5dc65848e5b57f19464cf901aa440_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/Move.\+hpp\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{Move_8hpp}{Move.\+hpp}}\end{DoxyCompactItemize}

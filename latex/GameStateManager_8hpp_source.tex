@@ -1,0 +1,27 @@
+\doxysection{Game\+State\+Manager.\+hpp}
+\hypertarget{GameStateManager_8hpp_source}{}\label{GameStateManager_8hpp_source}\index{include/GameStateManager.hpp@{include/GameStateManager.hpp}}
+\mbox{\hyperlink{GameStateManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once\ \ }\textcolor{comment}{//\ Version\ plus\ moderne\ des\ include\ guards}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameState_8hpp}{GameState.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}\ \ \textcolor{comment}{//\ Pour\ std::unique\_ptr}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameStateManager}{GameStateManager}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameStateManager_a54870e7edea7078aa18a10b00b097231}{changeState}}(std::unique\_ptr<GameState>\ newState);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}{handleInput}}(sf::RenderWindow\ \&window);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}{update}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}{render}}(sf::RenderWindow\ \&window);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ std::stack<std::unique\_ptr<GameState>>\ states;}
+\DoxyCodeLine{00063\ \};}
+
+\end{DoxyCode}

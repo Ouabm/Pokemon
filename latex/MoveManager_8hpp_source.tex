@@ -1,0 +1,121 @@
+\doxysection{Move\+Manager.\+hpp}
+\hypertarget{MoveManager_8hpp_source}{}\label{MoveManager_8hpp_source}\index{include/MoveManager.hpp@{include/MoveManager.hpp}}
+\mbox{\hyperlink{MoveManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Move_8hpp}{Move.hpp}}"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Déclaration\ des\ mouvements}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Normal}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a574ab479dbbc292ae36a7b641f92281a}{judgment}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aad14fdd98ffab499a75ec570da180a00}{slash}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Plante}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_afb18f60327ababdc59b711642129fe53}{energyBall}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aacc63678fd44486baaaa93228a3212fb}{leafBlade}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Feu}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_acad9b4a7cc85a1f24a85d2faf25baa86}{flameThrower}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a57a29c49adf9d9eb28f0061b8ab8a1bf}{fireBlast}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a644716142adf7ba134b14c6541734f82}{fusionFlare}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a5803fc84865212d5bd77715187a69e11}{sacredFire}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a5a9602ca544f2e1f0f557974c4fa806e}{firePunch}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Eau}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a25fcdc6316ebdbe0e8b18b971e863dc0}{scald}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a5aa8de3e5c1228541f774c68bd61a00c}{originPulse}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a21bf2ad03e68390a44726fe77b65ff63}{liquidation}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Électrique}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_adea6329adf3341815eff4c175839f9d5}{thunderBolt}};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a1fa9bd5a2156dd812b8e4776b86798ec}{thunder}};}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a3affec4748c307a8903f8f6631268ca6}{wildCharge}};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a592d7f935c400ce48855510556a28991}{fusionBolt}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Glace}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ac9702aa6f5bd6f6d752228894748199a}{iceBeam}};}
+\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aefc6f8bbff52260cb7ad317285c160fe}{iceSpinner}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Combat}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ada594cbcb9b8f84094d965de6b8a702c}{auraSphere}};}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a7224aac6c267e796ada43a60b15dfbd5}{sacredSword}};}
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a6262661e8585d40eccc9272838f15399}{focusBlast}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Poison}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_adc285dc16d3f9e53ea37e39e05f7e3d4}{sludgeBomb}};}
+\DoxyCodeLine{00044\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ad162a8ef5e71dada2a96f6edb7cf9f56}{poisonJab}};}
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aecd2f7c1b76d1733e710376eae76f8d6}{gunkShot}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ Sol}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ae8ea6f2d4ad9fe6bc97c9a9012f9c2b0}{earthPower}};}
+\DoxyCodeLine{00049\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aa4e09f06715973e51382720fde590c70}{landsWrath}};}
+\DoxyCodeLine{00050\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ad20c1b190a021a21fdbcc98930eeb049}{precipiceBlades}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Vol}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a545b872e75a676888b57d825d67e74a1}{hurricane}};}
+\DoxyCodeLine{00054\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_af025fc040f4e9ad3d74c65cc3926eaf0}{aeroBlast}};}
+\DoxyCodeLine{00055\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a84bc5dab9d8578d4f001734d64f0e522}{fly}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Psy}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a2342473b0627ab4cbf9d218de887bc2c}{psychic}};}
+\DoxyCodeLine{00059\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_accb83031ef11298c02e0d5f5d2c17c0a}{psyBlade}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ Insecte}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a6b5d03720c36329dba34d85284cb5d99}{bugBuzz}};}
+\DoxyCodeLine{00063\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ac7810e7eaf8867295c33cfb4d51edbd7}{lunge}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ Roche}}
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_acd2884ba451eb29078d18a32d8fc7d05}{powerGem}};}
+\DoxyCodeLine{00067\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a6494bbc182c93ff9fe2d9ffbbe5de352}{stoneEdge}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Spectre}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a951051c04bec20a71a437f30a617b6cf}{shadowBall}};}
+\DoxyCodeLine{00071\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_afad389d281a1b562a64da20e1ae9910e}{poltergeist}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ Dragon}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a5f919e1c8575945faa26933fcdaed73a}{dracoMeteor}};}
+\DoxyCodeLine{00075\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ad9d0f0b49b50802761105053a1cecd06}{dragonPulse}};}
+\DoxyCodeLine{00076\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ad5d6206dd72bce2357d08b71c955ffb2}{dragonClaw}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ Ténèbres}}
+\DoxyCodeLine{00079\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_aadba11f1cb9dfe2f062ddef986c43412}{fieryWrath}};}
+\DoxyCodeLine{00080\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a6a35aa4ff7094dc9caacb0e8d141bc01}{foulPlay}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ Acier}}
+\DoxyCodeLine{00083\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ac9830ed3e8192bb7c5feeba4157631d8}{flashCannon}};}
+\DoxyCodeLine{00084\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a006ee0ad70fddd6a7244fdfadc1b008b}{ironHead}};}
+\DoxyCodeLine{00085\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a8bf7cfe22bb4face63045fd146011cf7}{ironTail}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ Fée}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_a413915bcc59f950ea4f818e52de6948c}{moonBlast}};}
+\DoxyCodeLine{00089\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMove}{Move}}\ \mbox{\hyperlink{MoveManager_8hpp_ab43e5914566d3d57b3115584bc97b21c}{playRough}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ Pourquoi\ "{}extern\ const"{}\ est\ bien\ utilisé\ ici\ :}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ 1.\ Déclaration\ sans\ définition\ dans\ l'en-\/tête\ (header)\ :}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \ \ \ \ "{}extern\ const"{}\ permet\ de\ déclarer\ une\ constante\ sans\ la\ définir\ dans\ le\ fichier\ d'en-\/tête.}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ \ \ \ \ Cela\ signifie\ que\ les\ objets\ Move\ (comme\ judgment,\ slash,\ etc.)\ sont\ définis\ ailleurs\ dans\ le\ code\ source.}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ \ \ \ \ Cette\ approche\ permet\ de\ séparer\ les\ déclarations\ (interface)\ des\ définitions\ (implémentation),}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ \ \ \ \ ce\ qui\ est\ une\ bonne\ pratique\ pour\ une\ meilleure\ organisation\ et\ un\ code\ plus\ lisible.}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ 2.\ Partage\ de\ constantes\ entre\ différents\ fichiers\ :}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//\ \ \ \ \ Ces\ objets\ Move\ peuvent\ être\ utilisés\ dans\ plusieurs\ fichiers\ source\ différents.\ Grâce\ à\ "{}extern\ const"{},}}
+\DoxyCodeLine{00102\ \textcolor{comment}{//\ \ \ \ \ la\ même\ instance\ de\ chaque\ mouvement\ peut\ être\ partagée\ entre\ tous\ ces\ fichiers\ sans\ dupliquer\ leur\ définition.}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ \ \ \ \ Cela\ permet\ d'éviter\ des\ redéfinitions\ et\ des\ conflits,\ et\ garantit\ que\ les\ mouvements\ restent\ cohérents\ dans\ tout\ le\ programme.}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ 3.\ Garantir\ l'immuabilité\ des\ objets\ :}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ \ \ \ \ L'utilisation\ de\ "{}const"{}\ garantit\ que\ les\ valeurs\ des\ objets\ Move\ ne\ seront\ pas\ modifiées\ après\ leur\ initialisation.}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ \ \ \ \ Cela\ améliore\ la\ sécurité\ du\ code\ en\ s'assurant\ que\ les\ mouvements\ définis\ dans\ le\ jeu\ (comme\ les\ dégâts,\ les\ types,\ etc.)\ ne\ changent\ pas\ par\ erreur.}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ \ \ \ \ Cela\ optimise\ aussi\ le\ programme\ car\ les\ objets\ constants\ peuvent\ être\ plus\ facilement\ optimisés\ par\ le\ compilateur.}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ 4.\ Meilleure\ gestion\ de\ la\ mémoire\ :}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ \ \ \ \ Étant\ donné\ que\ ces\ objets\ sont\ déclarés\ une\ seule\ fois\ (dans\ un\ fichier\ source),}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ \ \ \ \ cela\ permet\ d'éviter\ la\ duplication\ des\ données\ et\ de\ réduire\ la\ consommation\ mémoire.}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ \ \ \ \ Ainsi,\ un\ objet\ Move\ n'est\ pas\ copié\ dans\ chaque\ fichier\ qui\ l'inclut,\ mais\ il\ est\ utilisé\ via\ une\ référence\ constante.}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+
+\end{DoxyCode}

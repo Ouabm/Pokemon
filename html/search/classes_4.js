@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['resourcemanager_18',['ResourceManager',['../classResourceManager.html',1,'']]]
+  ['pokemon_0',['Pokemon',['../classPokemon.html',1,'']]],
+  ['pokemonmanager_1',['PokemonManager',['../classPokemonManager.html',1,'']]]
 ];

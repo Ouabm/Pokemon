@@ -1,0 +1,5 @@
+<map id="EndState::handleInput" name="EndState::handleInput">
+<area shape="rect" id="Node000001" title="Gère les entrées utilisateur (souris/clavier)" alt="" coords="5,13,171,38"/>
+<area shape="rect" id="Node000002" href="$classGameStateManager.html#a54870e7edea7078aa18a10b00b097231" title="Change l&#39;état actuel du jeu." alt="" coords="219,5,425,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,23,205,23,205,28,171,28"/>
+</map>

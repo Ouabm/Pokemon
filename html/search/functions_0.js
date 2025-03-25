@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['changestate_20',['changeState',['../classGameStateManager.html#a54870e7edea7078aa18a10b00b097231',1,'GameStateManager']]]
+  ['battlestate_0',['BattleState',['../classBattleState.html#a7f0a431be97a74e25ca0de243d71df65',1,'BattleState']]]
 ];

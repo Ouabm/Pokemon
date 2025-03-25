@@ -1,0 +1,17 @@
+<map id="src/GameStateManager.cpp" name="src/GameStateManager.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,373,31"/>
+<area shape="rect" id="Node000002" href="$GameStateManager_8hpp.html" title="Gère la pile des états du jeu et leur transition." alt="" coords="107,79,285,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,33,220,71,217,67,258,29"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="309,79,389,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="286,29,328,67,325,71,283,33"/>
+<area shape="rect" id="Node000003" href="$GameState_8hpp.html" title=" " alt="" coords="85,152,208,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,106,165,142,160,139,186,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,225,152,251"/>
+<area shape="poly" id="edge7_Node000002_Node000004" title=" " alt="" coords="145,107,106,124,89,137,76,153,70,167,68,182,73,212,67,213,63,182,65,166,71,151,85,133,103,120,142,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="191,225,268,251"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="204,103,223,151,231,211,226,212,217,153,199,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="283,152,341,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="216,102,283,142,280,147,213,106"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="137,180,101,217,97,213,134,176"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="162,175,207,214,204,218,158,179"/>
+</map>

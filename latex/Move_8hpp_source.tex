@@ -1,0 +1,53 @@
+\doxysection{Move.\+hpp}
+\hypertarget{Move_8hpp_source}{}\label{Move_8hpp_source}\index{include/Move.hpp@{include/Move.hpp}}
+\mbox{\hyperlink{Move_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Type_8hpp}{Type.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}\ \textcolor{comment}{//\ Pour\ std::cout\ dans\ displayMoveInfo}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMove}{Move}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ name;\ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ type;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ power;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ accuracy;\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ isPhysical;\ \ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classMove_a6f9338758d1e743c5a4dfc964534f82d}{Move}}(\textcolor{keyword}{const}\ std::string\ \&p\_name\ =\ \textcolor{stringliteral}{"{}Unnamed\ Move"{}},\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ p\_type\ =\ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7a6adf97f83acf6453d4a6a4b1070f3754}{Type::None}},\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\_power\ =\ 0,\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\_accuracy\ =\ 0,\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ p\_isPhysical\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ :\ name(p\_name),\ type(p\_type),\ power(p\_power),\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ accuracy(p\_accuracy),\ isPhysical(p\_isPhysical)\ \{\}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ ==========================\ GETTERS\ ==========================\ //}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \mbox{\hyperlink{classMove_a4b90d0a84e02a2cda311bf6ffc525cd1}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ name;\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{Type_8hpp_a1d1cfd8ffb84e947f82999c682b666a7}{Type}}\ \mbox{\hyperlink{classMove_a5a1932b0011ddb5cdc62920874f5f7cf}{getType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ type;\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMove_aa12ce33e684d55ef192b72a43faa7902}{getPower}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ power;\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMove_a32aec31f56308db2b03396d9c26600ab}{getAccuracy}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ accuracy;\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMove_a29b5dc65848e5b57f19464cf901aa440}{isPhysicalMove}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ isPhysical;\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ ==========================\ METHODES\ UTILITAIRES\ ==========================\ //}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMove_a1155d13fb18e0df82be689cc836e1ce6}{displayMoveInfo}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Move:\ "{}}\ <<\ name\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Type:\ "{}}\ <<\ \mbox{\hyperlink{Type_8hpp_ab78d2956191d224de9b0e15932cb882a}{typeToString}}(type)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Power:\ "{}}\ <<\ power\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Accuracy:\ "{}}\ <<\ accuracy\ <<\ \textcolor{stringliteral}{"{}\%\(\backslash\)n"{}}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Physical:\ "{}}\ <<\ (isPhysical\ ?\ \textcolor{stringliteral}{"{}Yes"{}}\ :\ \textcolor{stringliteral}{"{}No"{}})\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \};}
+
+\end{DoxyCode}

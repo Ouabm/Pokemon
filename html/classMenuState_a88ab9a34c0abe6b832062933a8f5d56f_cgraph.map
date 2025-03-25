@@ -1,0 +1,11 @@
+<map id="MenuState::MenuState" name="MenuState::MenuState">
+<area shape="rect" id="Node000001" title="Constructeur de MenuState." alt="" coords="5,31,176,56"/>
+<area shape="rect" id="Node000002" href="$classResourceManager.html#a37d0e97686c031cef9b22725ba4a6005" title="Obtient l&#39;instance unique du gestionnaire." alt="" coords="224,5,447,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,32,210,28,210,34,177,37"/>
+<area shape="rect" id="Node000003" href="$classResourceManager.html#ac2b5f2226b62e7cba713ba4dfbd3f148" title="Joue une musique." alt="" coords="229,55,442,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,49,215,53,215,58,176,54"/>
+<area shape="rect" id="Node000004" href="$classResourceManager.html#a8f828b232016cfe029d9cb7fa49bd46c" title="Récupère une musique chargée." alt="" coords="498,29,705,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="442,55,484,50,485,56,443,60"/>
+<area shape="rect" id="Node000005" href="$classResourceManager.html#ad4b41e029864aef0e63af2238efbf4d4" title="Arrête la musique en cours." alt="" coords="495,79,708,104"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="442,74,481,78,481,83,442,80"/>
+</map>

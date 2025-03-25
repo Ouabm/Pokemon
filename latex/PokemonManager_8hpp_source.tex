@@ -1,0 +1,40 @@
+\doxysection{Pokemon\+Manager.\+hpp}
+\hypertarget{PokemonManager_8hpp_source}{}\label{PokemonManager_8hpp_source}\index{include/PokemonManager.hpp@{include/PokemonManager.hpp}}
+\mbox{\hyperlink{PokemonManager_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pokemon_8hpp}{Pokemon.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}\ \textcolor{comment}{//\ Pour\ std::map}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPokemonManager}{PokemonManager}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ std::map<std::string,\ Pokemon>\ pokemonList;\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ loadPokemonData();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classPokemonManager}{PokemonManager}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ ==========================\ INTERFACE\ SINGLETON\ ==========================\ //}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classPokemonManager}{PokemonManager}}\&\ \mbox{\hyperlink{classPokemonManager_a231b8f60d0458d3121cf8d59ebc04c63}{getInstance}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ ==========================\ ACCES\ AUX\ DONNEES\ ==========================\ //}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classPokemon}{Pokemon}}*\ \mbox{\hyperlink{classPokemonManager_abf44235119b22791839bfe576f926fa5}{getPokemonByName}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classPokemonManager_a077232395b717b3209d8ec89a35038cf}{getAllPokemonNames}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ ==========================\ CONTROLE\ D'INSTANCE\ ==========================\ //}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classPokemonManager_a1afab021d48e7faef53864d0ac594903}{PokemonManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPokemonManager}{PokemonManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{classPokemonManager}{PokemonManager}}\&\ \mbox{\hyperlink{classPokemonManager_a011bce0d816beab34a85f10c2e707cd9}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classPokemonManager}{PokemonManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00103\ \};}
+
+\end{DoxyCode}
