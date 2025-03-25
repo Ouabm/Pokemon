@@ -1,0 +1,4 @@
+<map id="GameState" name="GameState">
+<area shape="rect" id="node1" title=" " alt="" coords="34,95,129,121"/>
+<area shape="rect" id="node2" href="$classGameStateManager.html" title="Classe permettant de gérer les différents états du jeu via une pile." alt="" coords="5,5,157,32"/>
+</map>

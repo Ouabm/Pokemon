@@ -95,6 +95,7 @@ void ResourceManager::loadAllResources()
 
     // Chargement des textures
     loadTexture("MenuStateBG", "assets/textures/menuBG.jpg");
+    loadTexture("HelpBG", "assets/textures/helpBG.png");
     loadTexture("SelectionStateBG", "assets/textures/selectionBG.jpg");
     loadTexture("BattleStateBG", "assets/textures/battleBG.jpg");
     loadTexture("EndStateBG", "assets/textures/endBG.jpg");

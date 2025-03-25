@@ -17,7 +17,7 @@ BattleState::BattleState(GameStateManager *manager, const std::vector<std::strin
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("BattleStateBG"));
 
     std::vector<sf::Vector2f> blueTeamPokemonPositions = {{20.0, 290.0}, {300.0, 290.0}};
-    std::vector<sf::Vector2f> redTeamPokemonPositions = {{600.0, 150.0}, {750.0, 150.0}};
+    std::vector<sf::Vector2f> redTeamPokemonPositions = {{600.0, 170.0}, {750.0, 170.0}};
 
     loadPokemonTeamSprites(blueTeamPokemonsNames, blueTeamStruct, blueTeamPokemonPositions, true);
     loadPokemonTeamSprites(redTeamPokemonsNames, redTeamStruct, redTeamPokemonPositions, false);
