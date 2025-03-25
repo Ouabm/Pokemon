@@ -487,11 +487,17 @@ void BattleState::turnHandeler(BattleTeamStruct &blueTeamStruct, BattleTeamStruc
     if (blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getHpRestant() == 0)
     {
         blueTeamStruct.activePokemon = blueTeamStruct.activePokemon == 0 ? 1 : 0;
+    }
+    if (blueTeamStruct.pokemons[redTeamStruct.pokemonTargeted]->getHpRestant() == 0)
+    {
         redTeamStruct.pokemonTargeted = redTeamStruct.pokemonTargeted == 0 ? 1 : 0;
     }
     if (redTeamStruct.pokemons[redTeamStruct.activePokemon]->getHpRestant() == 0)
     {
         redTeamStruct.activePokemon = redTeamStruct.activePokemon == 0 ? 1 : 0;
+    }
+    if (redTeamStruct.pokemons[blueTeamStruct.pokemonTargeted]->getHpRestant() == 0)
+    {
         blueTeamStruct.pokemonTargeted = blueTeamStruct.pokemonTargeted == 0 ? 1 : 0;
     }
 
