@@ -10,16 +10,27 @@
  Avant de commencer, vous devez installer les bibliothèques suivantes :
 
  - **[ SFML ]( https://www.sfml-dev.org/download.php )** : Une bibliothèque multimédia qui permet de gérer les fenêtres, les graphiques, les entrées/sorties et les sons.
+ 
  - **Compilateur C++** : Ce projet nécessite un compilateur C++ compatible avec C++11 ou supérieur (comme `g++` ou `clang` ).
 
  ### 1.2 Installation
 
  1. **Téléchargez et installez SFML** à partir du [ site officiel de SFML ]( https://www.sfml-dev.org/download.php ).
+ ```bash
+sudo apt-get install libsfml-dev
+```
  2. **Clonez ce dépôt** sur votre machine :
  ```bash
  git clone https://github.com/Ouabm/Pokemon.git
  cd Pokémon
 ```
+ ### 1.3 Compilation 
+ Pour compiler et executer le code effectuer les lignes de code ci-dessous : 
+ ```bash
+ make
+./pokemon
+```
+ 
 
  ## II - Structure du Projet
 
@@ -104,46 +115,6 @@
 ### 6. **Fin de Partie**
 - La partie se termine lorsque **une équipe n'a plus de Pokémon en vie**. Un écran de fin affiche les résultats et permet au joueur de retourner au **menu principal** s'il appuie sur **Rejouer** ou quitter le jeu s'il appuie sur **Quit**.
 
-
-
-
-
-
- ## Fonctionnalités
- Sélection de Pokémon : Les joueurs peuvent choisir deux Pokémon chacun parmi une liste prédéfinie.
-
- Combat tour par tour : Les joueurs sélectionnent des attaques pour leurs Pokémon, et le jeu calcule les dégâts en fonction des types et des statistiques.
-
- - *Animations : Des animations sont présentes pour les attaques et les changements de Pokémon.
-
- - *Gestion des types : Les attaques ont des types qui influencent leur efficacité contre certains types de Pokémon.
-
- - *Interface graphique : Une interface utilisateur graphique est fournie pour sélectionner les attaques et voir l'état du combat.
-
- ## Explication des fichiers
- Game_master.cpp / Game_master.hpp
-
- - GameMaster : Classe principale qui gère la logique du combat. Elle gère les tours, les attaques, les dégâts, et vérifie si un Pokémon est KO
-
- - BattleState : Énumération qui représente les différents états du combat (attente d'entrée, exécution du tour, animation, etc.).
-
- - TurnAction : Structure qui représente une action de tour (attaque, cible, priorité).
-
- ## Graphique.cpp / Graphique.hpp
-
- - Fenêtre : Classe qui gère l'interface graphique. Elle affiche les Pokémon, les barres de vie, les boutons d'attaque et gère les animations.
-
- - Animation : Gère les animations des attaques et des changements de Pokémon.
-
- - Targeting System : Système de sélection de cible pour les attaques.
-
- ## Pokemon.cpp / Pokemon.hpp
- - Pokémon : Classe de base pour les Pokémon. Chaque Pokémon a un nom, un type, des statistiques (HP, attaque, défense, vitesse) et une liste d'attaques.
-
- - Sous-classes : Chaque type de Pokémon (eau, feu, électrique, etc.) a une sous-classe qui initialise ses attaques spécifiques.
-
- ## PokemonDB.cpp / PokemonDB.hpp
- - PokemonDB : Classe qui gère une base de données de Pokémon. Elle permet de charger des Pokémon par leur nom et de récupérer leurs informations.
 
  ## Améliorations possibles
 
