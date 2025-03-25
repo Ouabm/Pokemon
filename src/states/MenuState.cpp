@@ -125,25 +125,33 @@ void MenuState::showHelpWindow()
     }
 
     // Créer la fenêtre après avoir chargé les ressources
-    sf::RenderWindow helpWindow(sf::VideoMode(1024, 600), "Help", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow helpWindow(sf::VideoMode(1400, 786), "Help", sf::Style::Titlebar | sf::Style::Close);
 
     sf::Sprite bgSprite(bgTexture);
     std::string helpText =
         " Regles du combat Pokemon \n\n"
         "  Deroulement :\n"
-        "- Chaque joueur choisit 2 Pokemon.\n"
+        "- Chaque joueur choisit 2 Pokemons avec zqsd et espace, les fleche et entrer .\n"
         "- Les combats se deroulent au tour par tour.\n"
-        "- A chaque tour, vous pouvez attaquer ou changer de Pokemon.\n\n"
-        "  Attaques & Degets :\n"
+        "- A chaque tour, vous choisissez avec quel pokemon attaquer et quel pokemon attaquer.\n"
+        "- La premier equipe avec tous ces pokemons K.O a perdue"
+        "  Attaques & Degats :\n"
         "- Chaque Pokemon a 4 attaques.\n"
         "- Les degats sont influences par le type (feu, eau, plante...).\n"
         "- Un coup critique inflige 1,5x les degats normaux.\n"
         "- Une attaque est 'super efficace' si elle cible une faiblesse.\n"
         "- Une attaque est 'peu efficace' si elle cible une resistance.\n\n"
         "  Strategies :\n"
-        "- Changer de Pokemon peut etre utile pour eviter une faiblesse.\n"
-        "- Utilisez les attaques de statut pour prendre l'avantage.\n"
-        "- Gerez vos PV et attaques pour maximiser vos chances de victoire !";
+        "- Changer de Pokemon peut etre utile pour utiliser une faiblesse adverse.\n"
+        "- Gerez vos PV et attaques pour maximiser vos chances de victoire !\n\n"
+        "- Le joueur Bleu joue avec les touches\n"
+        "- z: Pour l'attaque 1 q: pour l'attaque 2 s:pour l'attaque 3 et d:pour l'attaque 4\n"
+        "- Espace pour valider\n"
+        "- Tab pour switch le pokemon qui attaque ou changer le pokemon cible par l'attaque\n"
+        "- Le joueur rouge joue avec les touches\n"
+        "- haut:Pour l'attaque 1 gauche:pour l'attaque 2 bas:pour l'attaque 3 et droite:pour l'attaque 4\n"
+        "- Enter pour valider\n"
+        "- p pour switch le pokemon qui attaque ou changer le pokemon cible par l'attaque\n";
 
     sf::Text helpWindowText;
     helpWindowText.setFont(font);
@@ -153,7 +161,7 @@ void MenuState::showHelpWindow()
     helpWindowText.setFillColor(sf::Color::Black);
 
     sf::FloatRect textBounds = helpWindowText.getLocalBounds();
-    helpWindowText.setPosition(500 - textBounds.width / 2, 40); // Centrer le texte en haut
+    helpWindowText.setPosition(680 - textBounds.width / 2, 40); // Centrer le texte en haut
 
     // Boucle d'affichage
     sf::Clock clock; // Pour limiter le taux de rafraîchissement

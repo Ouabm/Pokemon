@@ -53,57 +53,57 @@ void SelectionState::handleInput(sf::RenderWindow &window)
         if (event.type == sf::Event::KeyPressed)
         {
             // Gérer les touches uniquement pour les équipes non prêtes
-            if (!blueTeamSelection.isReady)
+            if (!redTeamSelection.isReady)
             {
                 switch (event.key.code)
                 {
                 case sf::Keyboard::Enter:
-                    handlePokemonSelection(blueTeamSelection);
+                    handlePokemonSelection(redTeamSelection);
                     break;
 
                 case sf::Keyboard::Right:
-                    if (blueTeamSelection.selectionIndex % 5 < 4)
-                        blueTeamSelection.selectionIndex++;
+                    if (redTeamSelection.selectionIndex % 5 < 4)
+                        redTeamSelection.selectionIndex++;
                     break;
                 case sf::Keyboard::Left:
-                    if (blueTeamSelection.selectionIndex % 5 > 0)
-                        blueTeamSelection.selectionIndex--;
+                    if (redTeamSelection.selectionIndex % 5 > 0)
+                        redTeamSelection.selectionIndex--;
                     break;
                 case sf::Keyboard::Down:
-                    if (blueTeamSelection.selectionIndex + 5 < pokemonSprites.size())
-                        blueTeamSelection.selectionIndex += 5;
+                    if (redTeamSelection.selectionIndex + 5 < pokemonSprites.size())
+                        redTeamSelection.selectionIndex += 5;
                     break;
                 case sf::Keyboard::Up:
-                    if (blueTeamSelection.selectionIndex >= 5)
-                        blueTeamSelection.selectionIndex -= 5;
+                    if (redTeamSelection.selectionIndex >= 5)
+                        redTeamSelection.selectionIndex -= 5;
                     break;
                 default:
                     break;
                 }
             }
 
-            if (!redTeamSelection.isReady)
+            if (!blueTeamSelection.isReady)
             {
                 switch (event.key.code)
                 {
                 case sf::Keyboard::Space:
-                    handlePokemonSelection(redTeamSelection);
+                    handlePokemonSelection(blueTeamSelection);
                     break;
                 case sf::Keyboard::Z: // Haut (Rouge)
-                    if (redTeamSelection.selectionIndex >= 5)
-                        redTeamSelection.selectionIndex -= 5;
+                    if (blueTeamSelection.selectionIndex >= 5)
+                        blueTeamSelection.selectionIndex -= 5;
                     break;
                 case sf::Keyboard::Q: // Gauche (Rouge)
-                    if (redTeamSelection.selectionIndex % 5 > 0)
-                        redTeamSelection.selectionIndex--;
+                    if (blueTeamSelection.selectionIndex % 5 > 0)
+                        blueTeamSelection.selectionIndex--;
                     break;
                 case sf::Keyboard::S: // Bas (Rouge)
-                    if (redTeamSelection.selectionIndex + 5 < pokemonSprites.size())
-                        redTeamSelection.selectionIndex += 5;
+                    if (blueTeamSelection.selectionIndex + 5 < pokemonSprites.size())
+                        blueTeamSelection.selectionIndex += 5;
                     break;
                 case sf::Keyboard::D: // Droite (Rouge)
-                    if (redTeamSelection.selectionIndex % 5 < 4)
-                        redTeamSelection.selectionIndex++;
+                    if (blueTeamSelection.selectionIndex % 5 < 4)
+                        blueTeamSelection.selectionIndex++;
                     break;
                 default:
                     break;
