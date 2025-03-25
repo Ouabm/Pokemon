@@ -7,13 +7,13 @@
 /*==============================================================================
 |                               CONSTRUCTEUR                                   |
 ==============================================================================*/
-EndState::EndState(GameStateManager *manager) : GameState(manager)
+EndState::EndState(GameStateManager *manager,const std::string winner) : GameState(manager)
 {
     ResourceManager::getInstance().playMusic(End::Music::BACKGROUND_MUSIC, End::Music::VOLUME, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("EndStateBG"));
 
     // Création du texte de fin de jeu
-    endText.setString("");
+    
 
     // Taille de la fenêtre
     float mainMenuwindowWidth = 1024.0; // Faudrait avoir acces a window ici; A modifier plus tard ??
@@ -27,9 +27,11 @@ EndState::EndState(GameStateManager *manager) : GameState(manager)
     // Calcul des positions pour centrer les boutons
     sf::Vector2f startButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos);
     sf::Vector2f helpButtonPos((mainMenuwindowWidth - buttonSize.x) / 2, startButtonsPos + (endButtonsPos - startButtonsPos));
+    sf::Vector2f endTextPos((mainMenuwindowWidth)/2-75,(mainMenuwindowHeight/2)-100);
 
     replayButton = createButton(buttonSize, startButtonPos, sf::Color::Green, 0.0f, sf::Color::Transparent, "EndStateFont", "Replay", 24, sf::Color::White);
     quitButton = createButton(buttonSize, helpButtonPos, sf::Color::Red, 0.0f, sf::Color::Transparent, "EndStateFont", "Quit", 24, sf::Color::White);
+    endText=createText("EndStateFont",winner,20,sf::Color::Black,endTextPos);
 }
 
 /*==============================================================================
@@ -83,7 +85,7 @@ void EndState::update()
     // Si le temps écoulé est supérieur à un délai, ajouter un caractère
     const float delay = 0.1f; // Temps entre chaque ajout de caractère
 
-    std::string fullText = "Fin du jeu. Appuyez sur ESC pour quitter.";
+    std::string fullText = "";
     std::string currentText = endText.getString();
 
     if (elapsedTime > delay && currentText.size() < fullText.size())
@@ -105,9 +107,8 @@ void EndState::render(sf::RenderWindow &window)
 
     // Affichage de l'arrière-plan
     window.draw(backgroundSprite);
-
+    
     window.draw(endText); // Affichage du texte de fin
-
     // Affichage des boutons
     window.draw(replayButton.shape);
     window.draw(replayButton.text);

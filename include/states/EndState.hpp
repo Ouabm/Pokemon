@@ -8,7 +8,7 @@
 class EndState : public GameState
 {
 public:
-    EndState(GameStateManager *manager); // Constructeur
+    EndState(GameStateManager *manager,const std::string winner); // Constructeur
 
     // ========================== MÉTHODES PRINCIPALES ========================== //
     void handleInput(sf::RenderWindow &window) override; // Gestion des entrées utilisateur
