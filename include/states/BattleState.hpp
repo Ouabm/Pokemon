@@ -79,6 +79,7 @@ private:
 
     // ============================== LOGIQUE DU COMBAT ============================== //
     void updateHealthBars(BattleTeamStruct &teamStruct); // Mise à jour des barres de vie
+    void turnHandeler(BattleTeamStruct &blueTeamStruct,BattleTeamStruct &redTeamStruct);
     bool checkBattleOver();                              // Vérifie si le combat est terminé
 
     // ============================== AFFICHAGE DES ÉLÉMENTS ============================== //
