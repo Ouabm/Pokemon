@@ -1,0 +1,1208 @@
+desc: --massif-out-file=massif.out
+cmd: ./pokemon
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=604988865
+mem_heap_B=18639495
+mem_heap_extra_B=143449
+mem_stacks_B=0
+heap_tree=peak
+n6: 18639495 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8294401 0x48A6AD7: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+  n1: 8294401 0x48A9C45: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+   n1: 8294401 0x48A9DBF: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+    n1: 8294401 0x48A9E5F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+     n1: 8294401 0x48ADBC9: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+      n1: 8294401 0x48B840D: sf::Texture::loadFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sf::Rect<int> const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+       n2: 8294401 0x117852: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+        n1: 8294401 0x11819B: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n0: 8294401 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+        n0: 0 in 4 places, all below massif's threshold (1.00%)
+ n1: 8294400 0x4895302: std::vector<unsigned char, std::allocator<unsigned char> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+  n1: 8294400 0x48ADD6A: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+   n1: 8294400 0x48B840D: sf::Texture::loadFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sf::Rect<int> const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+    n2: 8294400 0x117852: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 8294400 0x11819B: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 8294400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n0: 0 in 5 places, all below massif's threshold (1.00%)
+ n0: 1120998 in 473 places, all below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+ n1: 307328 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 307328 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 307328 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 307328 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 307328 0x5CCAACE: ???
+      n1: 307328 0x5CB4DF5: ???
+       n1: 307328 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n1: 307328 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 210336 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 210336 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 210336 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 210336 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 210336 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 210336 0x5CCAACE: ???
+       n1: 210336 0x5CB4DF5: ???
+        n1: 210336 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n1: 210336 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+#-----------
+snapshot=2
+#-----------
+time=1025097776
+mem_heap_B=12392080
+mem_heap_extra_B=153136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=1311177586
+mem_heap_B=13889182
+mem_heap_extra_B=219874
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1707304491
+mem_heap_B=13888254
+mem_heap_extra_B=219786
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=2005386842
+mem_heap_B=13887078
+mem_heap_extra_B=219626
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=2372679906
+mem_heap_B=13887326
+mem_heap_extra_B=219634
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=2694732410
+mem_heap_B=13887246
+mem_heap_extra_B=219626
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=3181158824
+mem_heap_B=13891429
+mem_heap_extra_B=219659
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=3644701687
+mem_heap_B=15122726
+mem_heap_extra_B=270450
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=4185931490
+mem_heap_B=13899569
+mem_heap_extra_B=220327
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=4677154634
+mem_heap_B=13898009
+mem_heap_extra_B=220183
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=4932043695
+mem_heap_B=13897961
+mem_heap_extra_B=220191
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=5348785706
+mem_heap_B=14001839
+mem_heap_extra_B=225185
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=5722276846
+mem_heap_B=14001871
+mem_heap_extra_B=225169
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14001871 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2127727 in 778 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514624 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366160 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366160 in 137 places, all below massif's threshold (1.00%)
+  n0: 148464 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=6361520886
+mem_heap_B=14017323
+mem_heap_extra_B=225925
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14017323 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2143259 in 788 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514544 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366160 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366160 in 137 places, all below massif's threshold (1.00%)
+  n0: 148384 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=6937887796
+mem_heap_B=14191019
+mem_heap_extra_B=232269
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=7565522609
+mem_heap_B=14191795
+mem_heap_extra_B=232293
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=8067620753
+mem_heap_B=14191019
+mem_heap_extra_B=232221
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=8519736129
+mem_heap_B=14202695
+mem_heap_extra_B=232641
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=8829116260
+mem_heap_B=14202527
+mem_heap_extra_B=232633
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=9288701303
+mem_heap_B=14202575
+mem_heap_extra_B=232641
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=9748174435
+mem_heap_B=14202047
+mem_heap_extra_B=232617
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=10300344308
+mem_heap_B=14202023
+mem_heap_extra_B=232601
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=10668033945
+mem_heap_B=14202039
+mem_heap_extra_B=232601
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=11035536792
+mem_heap_B=14202319
+mem_heap_extra_B=232649
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=11403535101
+mem_heap_B=14202071
+mem_heap_extra_B=232625
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=12047116735
+mem_heap_B=14203327
+mem_heap_extra_B=232785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=12506859024
+mem_heap_B=14203295
+mem_heap_extra_B=232761
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=13058247978
+mem_heap_B=14203543
+mem_heap_extra_B=232769
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=13408553300
+mem_heap_B=14203295
+mem_heap_extra_B=232729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=13740916750
+mem_heap_B=14202871
+mem_heap_extra_B=232689
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=14239706768
+mem_heap_B=14202575
+mem_heap_extra_B=232625
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=14572271651
+mem_heap_B=14202623
+mem_heap_extra_B=232649
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=14904643193
+mem_heap_B=14202607
+mem_heap_extra_B=232633
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=15403326708
+mem_heap_B=14202623
+mem_heap_extra_B=232649
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=15916980666
+mem_heap_B=14188193
+mem_heap_extra_B=237231
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=16254947251
+mem_heap_B=14312007
+mem_heap_extra_B=236865
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=16587308367
+mem_heap_B=14310559
+mem_heap_extra_B=236785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=16927937028
+mem_heap_B=14316531
+mem_heap_extra_B=236709
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=17260296379
+mem_heap_B=14316843
+mem_heap_extra_B=236781
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14316843 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2442491 in 797 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514832 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366448 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366448 in 137 places, all below massif's threshold (1.00%)
+  n0: 148384 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=17758877884
+mem_heap_B=14317987
+mem_heap_extra_B=236853
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=18091288614
+mem_heap_B=14318019
+mem_heap_extra_B=236885
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=18589866967
+mem_heap_B=14345527
+mem_heap_extra_B=237665
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=19254795395
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=19587290731
+mem_heap_B=14345895
+mem_heap_extra_B=237737
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=20086058125
+mem_heap_B=14345895
+mem_heap_extra_B=237737
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=20418438132
+mem_heap_B=14345927
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=20917178906
+mem_heap_B=14345943
+mem_heap_extra_B=237761
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=21582102334
+mem_heap_B=14346191
+mem_heap_extra_B=237753
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=21836992997
+mem_heap_B=14345927
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=22091884970
+mem_heap_B=14345927
+mem_heap_extra_B=237761
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=22346926996
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=22601937782
+mem_heap_B=14345943
+mem_heap_extra_B=237745
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14345943 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2471591 in 797 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514832 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366448 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366448 in 137 places, all below massif's threshold (1.00%)
+  n0: 148384 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=54
+#-----------
+time=22856969308
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=23111883724
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=23366787763
+mem_heap_B=14345927
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=23621684568
+mem_heap_B=14346191
+mem_heap_extra_B=237753
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=23876579825
+mem_heap_B=14346191
+mem_heap_extra_B=237785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=24131469316
+mem_heap_B=14345927
+mem_heap_extra_B=237713
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=24386497593
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=24641456660
+mem_heap_B=14345943
+mem_heap_extra_B=237713
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=24896380083
+mem_heap_B=14345943
+mem_heap_extra_B=237761
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=25151277808
+mem_heap_B=14346191
+mem_heap_extra_B=237753
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14346191 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2471839 in 797 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514832 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366448 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366448 in 137 places, all below massif's threshold (1.00%)
+  n0: 148384 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=64
+#-----------
+time=25406170806
+mem_heap_B=14345927
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=25661306041
+mem_heap_B=14345943
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=25916476605
+mem_heap_B=14345895
+mem_heap_extra_B=237689
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=26171467650
+mem_heap_B=14345943
+mem_heap_extra_B=237713
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=26426358522
+mem_heap_B=14345927
+mem_heap_extra_B=237713
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=26681270551
+mem_heap_B=14345943
+mem_heap_extra_B=237697
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=26936160284
+mem_heap_B=14345927
+mem_heap_extra_B=237697
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=27191049459
+mem_heap_B=14346159
+mem_heap_extra_B=237729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=27445949659
+mem_heap_B=14311827
+mem_heap_extra_B=236837
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=27700869589
+mem_heap_B=14311491
+mem_heap_extra_B=236821
+mem_stacks_B=0
+heap_tree=detailed
+n8: 14311491 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8677360 0x51A7AA6: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 8546304 0x51732B5: ??? (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+   n1: 8546304 0x5175A67: alcCreateContext (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+    n1: 8546304 0x491A02B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 8546304 0x4919F0C: sf::AlResource::AlResource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+      n1: 8546304 0x491E552: sf::SoundSource::SoundSource() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+       n1: 8546304 0x491EF72: sf::SoundStream::SoundStream() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+        n1: 8546304 0x491AD03: sf::Music::Music() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+         n1: 8546304 0x119642: std::_MakeUniq<sf::Music>::__single_object std::make_unique<sf::Music>() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 8546304 0x117913: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 8546304 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 8546304 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 131056 in 16 places, all below massif's threshold (1.00%)
+ n0: 2437139 in 798 places, all below massif's threshold (1.00%)
+ n1: 705600 0x491B33F: std::vector<short, std::allocator<short> >::_M_default_append(unsigned long) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+  n1: 705600 0x491B1C1: sf::Music::initialize() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 705600 0x491B201: sf::Music::openFromFile(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n4: 705600 0x117931: ResourceManager::loadMusicResource(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118228: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1182B5: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x118342: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+     n1: 176400 0x1183CF: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+      n0: 176400 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+ n1: 614656 0x61DD2A6: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 614656 0x61C3C3C: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 614656 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 614656 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 614656 0x5CCAACE: ???
+      n1: 614656 0x5CB4DF5: ???
+       n1: 614656 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+        n2: 614656 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 307328 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+            n1: 307328 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n1: 307328 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 307328 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+         n1: 307328 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 307328 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 307328 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n2: 307328 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n0: 307328 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 529200 0x515DDD0: alBufferStorageSOFT (in /usr/lib/x86_64-linux-gnu/libopenal.so.1.19.1)
+  n1: 529200 0x491F4B5: sf::SoundStream::fillAndPushBuffer(unsigned int, bool) (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+   n1: 529200 0x491F572: sf::SoundStream::fillQueue() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+    n1: 529200 0x491F759: sf::SoundStream::streamData() (in /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.5.1)
+     n1: 529200 0x4909D9B: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1)
+      n1: 529200 0x5135608: start_thread (pthread_create.c:477)
+       n0: 529200 0x4C4B352: clone (clone.S:95)
+ n2: 514832 0x6170174: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 366448 0x617023D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 366448 in 137 places, all below massif's threshold (1.00%)
+  n0: 148384 in 158 places, all below massif's threshold (1.00%)
+ n1: 420672 0x67A5646: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 420672 0x6E43731: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 420672 0x61C3BEC: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 420672 0x61675BF: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n1: 420672 0x6745FC4: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+      n1: 420672 0x5CCAACE: ???
+       n1: 420672 0x5CB4DF5: ???
+        n1: 420672 0x54264FB: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0)
+         n2: 420672 0x48F29A1: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+          n1: 210336 0x48F2DC0: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+             n1: 210336 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n1: 210336 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+               n0: 210336 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+          n1: 210336 0x48F2E97: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+           n1: 210336 0x48E416D: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+            n1: 210336 0x48E6AE7: sf::Window::create(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+             n2: 210336 0x48B0A14: sf::RenderWindow::RenderWindow(sf::VideoMode, sf::String const&, unsigned int, sf::ContextSettings const&) (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+              n0: 210336 0x121D7B: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+              n0: 0 in 1 place, below massif's threshold (1.00%)
+ n2: 412032 0x5CB53F3: ???
+  n1: 272832 0x5CCB06E: ???
+   n1: 272832 0x5CBC5F8: ???
+    n1: 272832 0x5CB7DD3: ???
+     n1: 272832 0x5CB8471: ???
+      n1: 272832 0x48F348F: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+       n1: 272832 0x48F2DE4: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+        n1: 272832 0x48E43CE: ??? (in /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1)
+         n1: 272832 0x48B5C72: sf::Texture::Texture() (in /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1)
+          n1: 272832 0x11782F: ResourceManager::loadTexture(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+           n1: 272832 0x117EDA: ResourceManager::loadAllResources() (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+            n0: 272832 0x121CCC: main (in /home/damien/Projects/cpp_projects/Jeu/pokemon)
+  n0: 139200 in 1 place, below massif's threshold (1.00%)

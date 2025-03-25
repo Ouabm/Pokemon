@@ -1,0 +1,95 @@
+\hypertarget{classGameStateManager}{}\doxysection{Game\+State\+Manager Class Reference}
+\label{classGameStateManager}\index{GameStateManager@{GameStateManager}}
+
+
+Classe permettant de gérer les différents états du jeu via une pile.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State\+Manager.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameStateManager_a54870e7edea7078aa18a10b00b097231}{change\+State}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classGameState}{Game\+State}} $>$ new\+State)
+\begin{DoxyCompactList}\small\item\em Change l\textquotesingle{}état actuel du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}{handle\+Input}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Gère les entrées de l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}{update}} ()
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état actuel du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}{render}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état actuel du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe permettant de gérer les différents états du jeu via une pile. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGameStateManager_a54870e7edea7078aa18a10b00b097231}\label{classGameStateManager_a54870e7edea7078aa18a10b00b097231}} 
+\index{GameStateManager@{GameStateManager}!changeState@{changeState}}
+\index{changeState@{changeState}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{changeState()}{changeState()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::change\+State (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classGameState}{Game\+State}} $>$}]{new\+State }\end{DoxyParamCaption})}
+
+
+
+Change l\textquotesingle{}état actuel du jeu. 
+
+Cette fonction remplace l\textquotesingle{}état actuel par un nouvel état en utilisant un {\ttfamily unique\+\_\+ptr} pour garantir une gestion propre de la mémoire.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & Pointeur unique vers le nouvel état du jeu. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}\label{classGameStateManager_a70b6f9f4c19becb3d8b1552b392b9343}} 
+\index{GameStateManager@{GameStateManager}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Gère les entrées de l\textquotesingle{}utilisateur. 
+
+Cette fonction détecte et traite les interactions du joueur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Référence vers la fenêtre S\+F\+ML où les entrées sont captées. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}\label{classGameStateManager_a3223d303fa63acef52f185d4ec0cac5f}} 
+\index{GameStateManager@{GameStateManager}!render@{render}}
+\index{render@{render}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}état actuel du jeu. 
+
+Cette fonction dessine l\textquotesingle{}état en haut de la pile sur la fenêtre S\+F\+ML.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Référence vers la fenêtre S\+F\+ML où l\textquotesingle{}affichage est effectué. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}\label{classGameStateManager_afe49135ce3ef43fce33588c58460fd32}} 
+\index{GameStateManager@{GameStateManager}!update@{update}}
+\index{update@{update}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Game\+State\+Manager\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}état actuel du jeu. 
+
+Cette fonction appelle la mise à jour de l\textquotesingle{}état en haut de la pile. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{GameStateManager_8hpp}{Game\+State\+Manager.\+hpp}}\item 
+src/Game\+State\+Manager.\+cpp\end{DoxyCompactItemize}

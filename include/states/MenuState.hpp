@@ -30,4 +30,5 @@ private:
     void createMenuButtons();                                                       // Initialise les boutons du menu
     void handleButtonClick(const sf::Vector2f &mousePos, sf::RenderWindow &window); // Gère les clics sur les boutons
     void drawButton(const Button &button, sf::RenderWindow &window);                // Affiche un bouton à l'écran
+    void showHelpWindow();
 };

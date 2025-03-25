@@ -66,7 +66,7 @@ void MenuState::handleButtonClick(const sf::Vector2f &mousePos, sf::RenderWindow
     // Vérifie si l'utilisateur a cliqué sur le bouton "Help"
     else if (helpButton.shape.getGlobalBounds().contains(mousePos))
     {
-        // A implémenter HELP ICI
+        showHelpWindow();
     }
     // Vérifie si l'utilisateur a cliqué sur le bouton "Quit"
     else if (quitButton.shape.getGlobalBounds().contains(mousePos))
@@ -104,4 +104,83 @@ void MenuState::drawButton(const Button &button, sf::RenderWindow &window)
 {
     window.draw(button.shape); 
     window.draw(button.text);
+}
+
+
+void MenuState::showHelpWindow()
+{
+    // Charger les ressources
+    sf::Texture bgTexture;
+    sf::Font font;
+
+    if (!font.loadFromFile("assets/fonts/prstartk.ttf"))
+    {
+        std::cerr << "Erreur : Impossible de charger la police." << std::endl;
+        return;
+    }
+    if (!bgTexture.loadFromFile("assets/textures/helpBG.png"))
+    {
+        std::cerr << "Erreur : Impossible de charger l'image de fond." << std::endl;
+        return;
+    }
+
+    // Créer la fenêtre après avoir chargé les ressources
+    sf::RenderWindow helpWindow(sf::VideoMode(1024, 600), "Help", sf::Style::Titlebar | sf::Style::Close);
+
+    sf::Sprite bgSprite(bgTexture);
+    std::string helpText =
+        " Regles du combat Pokemon \n\n"
+        "  Deroulement :\n"
+        "- Chaque joueur choisit 2 Pokemon.\n"
+        "- Les combats se deroulent au tour par tour.\n"
+        "- A chaque tour, vous pouvez attaquer ou changer de Pokemon.\n\n"
+        "  Attaques & Degets :\n"
+        "- Chaque Pokemon a 4 attaques.\n"
+        "- Les degats sont influences par le type (feu, eau, plante...).\n"
+        "- Un coup critique inflige 1,5x les degats normaux.\n"
+        "- Une attaque est 'super efficace' si elle cible une faiblesse.\n"
+        "- Une attaque est 'peu efficace' si elle cible une resistance.\n\n"
+        "  Strategies :\n"
+        "- Changer de Pokemon peut etre utile pour eviter une faiblesse.\n"
+        "- Utilisez les attaques de statut pour prendre l'avantage.\n"
+        "- Gerez vos PV et attaques pour maximiser vos chances de victoire !";
+
+    sf::Text helpWindowText;
+    helpWindowText.setFont(font);
+    helpWindowText.setString(helpText);
+    helpWindowText.setCharacterSize(14);
+    helpWindowText.setLineSpacing(1.5f);
+    helpWindowText.setFillColor(sf::Color::Black);
+
+    sf::FloatRect textBounds = helpWindowText.getLocalBounds();
+    helpWindowText.setPosition(500 - textBounds.width / 2, 40); // Centrer le texte en haut
+
+    // Boucle d'affichage
+    sf::Clock clock; // Pour limiter le taux de rafraîchissement
+    while (helpWindow.isOpen())
+    {
+        sf::Event event;
+        while (helpWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                helpWindow.close();
+            
+            }
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+            {
+                helpWindow.close();
+            }
+        }
+
+        // Limiter la boucle pour éviter de surcharger le CPU
+        if (clock.getElapsedTime().asMilliseconds() > 16) // ~60 FPS max
+        {
+            helpWindow.clear();
+            helpWindow.draw(bgSprite);
+            helpWindow.draw(helpWindowText);
+            helpWindow.display();
+            clock.restart();
+        }
+    }
 }
