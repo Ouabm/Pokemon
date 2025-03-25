@@ -427,7 +427,7 @@ void BattleState::turnHandeler(BattleTeamStruct &blueTeamStruct, BattleTeamStruc
     int blueSpeed = blueTeamStruct.pokemons[blueTeamStruct.activePokemon]->getSpeed();
     int redSpeed = redTeamStruct.pokemons[redTeamStruct.activePokemon]->getSpeed();
 
-    if (blueSpeed == redSpeed)
+    if (blueSpeed == redSpeed) // Si vitesse egale on fait au hasard
     {
         if (rand() % 2 == 1)
         {
@@ -439,7 +439,7 @@ void BattleState::turnHandeler(BattleTeamStruct &blueTeamStruct, BattleTeamStruc
         }
     }
 
-    if (blueSpeed > redSpeed)
+    if (blueSpeed > redSpeed) //Pour savoir qui agit en premier on regarde les vitesse
     {
         int damage1 = calculDamage(*blueTeamStruct.pokemons[blueTeamStruct.activePokemon], *redTeamStruct.pokemons[blueTeamStruct.pokemonTargeted], *blueTeamStruct.currentMove);
         std::cout << "Dammage1 : " << damage1 << std::endl;

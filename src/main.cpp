@@ -24,20 +24,3 @@ int main()
 
     return 0;
 }
-
-
-// A faire : 
-
-// Comprendre pourquoi checkbattleover ne fonction pas uniquement dans update a cause erreur seg sur un sf::Shape update() (gdb)
-
-// AnimationAttack
-
-// Resize Image Menu et Selection 
-
-
-
-// Note : 
-
-// 1 Ajouter un destroy ressources pour utiliser que les ressources utiles pendant un etat
-
-// 2 Ajout d'un hpp GameParameters pour centraliser toutes les positions des elements etc... (en cours)

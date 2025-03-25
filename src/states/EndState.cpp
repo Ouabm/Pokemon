@@ -12,9 +12,6 @@ EndState::EndState(GameStateManager *manager,const std::string winner) : GameSta
     ResourceManager::getInstance().playMusic(End::Music::BACKGROUND_MUSIC, End::Music::VOLUME, true);
     backgroundSprite.setTexture(ResourceManager::getInstance().getTexture("EndStateBG"));
 
-    // Création du texte de fin de jeu
-    
-
     // Taille de la fenêtre
     float mainMenuwindowWidth = 1024.0; // Faudrait avoir acces a window ici; A modifier plus tard ??
     float mainMenuwindowHeight = 640.0;
@@ -31,6 +28,8 @@ EndState::EndState(GameStateManager *manager,const std::string winner) : GameSta
 
     replayButton = createButton(buttonSize, startButtonPos, sf::Color::Green, 0.0f, sf::Color::Transparent, "EndStateFont", "Replay", 24, sf::Color::White);
     quitButton = createButton(buttonSize, helpButtonPos, sf::Color::Red, 0.0f, sf::Color::Transparent, "EndStateFont", "Quit", 24, sf::Color::White);
+    
+    // Création du texte de fin de jeu
     endText=createText("EndStateFont",winner,20,sf::Color::Black,endTextPos);
 }
 
